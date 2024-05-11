@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7969D76F-2CB1-4CF8-ACB8-36B5A043504C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ZvitEXZ</RootNamespace>
+    <AssemblyName>ZvitEXZ</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=24.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.24.4.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Methods\Calculations\Calculate.cs" />
+    <Compile Include="Methods\Calculations\Crossing.cs" />
+    <Compile Include="Methods\Calculations\GetKorNeb.cs" />
+    <Compile Include="Methods\Calculations\GetNezahyst.cs" />
+    <Compile Include="Methods\CreateFolder.cs" />
+    <Compile Include="Methods\File\ConvertListToFile.cs" />
+    <Compile Include="Methods\File\SaveToFiles.cs" />
+    <Compile Include="Methods\Calculations\GetAllPV.cs" />
+    <Compile Include="Methods\File\WriteToFile.cs" />
+    <Compile Include="Methods\Logs.cs" />
+    <Compile Include="Methods\Parse.cs" />
+    <Compile Include="Methods\ParseAllZamers.cs" />
+    <Compile Include="Methods\ParseZamer.cs" />
+    <Compile Include="Methods\PipeName.cs" />
+    <Compile Include="Methods\ReadExcelFile.cs" />
+    <Compile Include="Methods\SetMestnost.cs" />
+    <Compile Include="Methods\File\WriteEcxelFile.cs" />
+    <Compile Include="Models\Calculations\KorNebezpechny.cs" />
+    <Compile Include="Models\Calculations\Nezahyst.cs" />
+    <Compile Include="Models\Constants.cs" />
+    <Compile Include="Models\ExcelDictionary.cs" />
+    <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />
+    <Compile Include="Models\Objects\Lep.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\LogMessage.cs" />
+    <Compile Include="Models\MestnostType.cs" />
+    <Compile Include="Models\Objects\Povorot.cs" />
+    <Compile Include="Models\Objects\ProtectionTypes.cs" />
+    <Compile Include="Models\Objects\Road.cs" />
+    <Compile Include="Models\Objects\RoadTypes.cs" />
+    <Compile Include="Models\Objects\Svecha.cs" />
+    <Compile Include="Models\Objects\SvechaSpecifications.cs" />
+    <Compile Include="Models\Objects\Swamp.cs" />
+    <Compile Include="Models\Objects\PV.cs" />
+    <Compile Include="Models\Objects\River.cs" />
+    <Compile Include="Models\Objects\Zamer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
