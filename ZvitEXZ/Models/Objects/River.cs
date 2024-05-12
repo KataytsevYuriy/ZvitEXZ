@@ -32,5 +32,9 @@ namespace ZvitEXZ.Models.Objects
                 Logs.AddError("Неверная длинна реки");// Add log - wrong river length
             }
         }
+        public override string ToString()
+        {
+            return $"{Name} {RiverName}";
+        }
     }
 }

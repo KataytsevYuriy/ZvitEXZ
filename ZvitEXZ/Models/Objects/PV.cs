@@ -156,5 +156,9 @@ namespace ZvitEXZ.Models.Objects
                 NumberSvyazky = data[248].ToString();
             }
         }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -33,8 +33,20 @@ namespace ZvitEXZ.Methods.Calculations
             GetAllPV getAllPV = new GetAllPV();
             fileSaver.SavePV(getAllPV.Get(zamers));
 
+            //Zvedena
+            ConvertZamersToZvedena convertZamersToZvedena = new ConvertZamersToZvedena(zamers, korNebezpechny);
+            string[,] zvedenaString = convertZamersToZvedena.Convert();
+            fileSaver.SaveZvedena(zvedenaString);
 
+            //UKZ
+            GetAllUkz getAllUkz = new GetAllUkz();
+            fileSaver.SaveUKZ(getAllUkz.Get(zamers));
+       
+        
+        
+        
             Logs.AddLog("Таблицы построены");
+        
         }
     }
 }

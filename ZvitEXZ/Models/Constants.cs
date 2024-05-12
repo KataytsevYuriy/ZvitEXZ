@@ -11,22 +11,30 @@ namespace ZvitEXZ.Models
         //Objects names
         public const string PVName = "ПВ";
         public const string LepName = "ЛЕП";
-        public const string RiverName = "Річка";
-        public const string SwampName = "Болото";
-        public const string PovorotName = "Поворот";
-        public const string SvechaName = "Свіча";
-
-        public const string RiverNameInNaborka = "Река";
         public const string LepNameInNaborka = "ЛЭП";
+        public const string RiverName = "Річка";
+        public const string RiverNameInNaborka = "Река";
+        public const string SwampName = "Болото";
         public const string SwampNameInNaborka = "Болото непроходимое";
+        public const string PovorotName = "Поворот";
         public const string PovorotNameInNaborka = "Поворот";
+        public const string TurnRightName = "праворуч";
+        public const string TurnLeftName = "ліворуч";
+        public const string SvechaName = "Свіча";
         public const string SvechaNameInNaborka = "Свеча";
+        public const string TreeName = "Дерево";
+        public const string Stolb = "Стовп";
+        public const string StolbInNaborka = "Столб";
+        public const string UKZName = "УКЗ";
+        public const string UKZNameInNaborka = "УКЗ";
 
         //File Names
         public const string ShablonFileName = "Shablon.xlsb";
         public const string PVFolderName = "Додаток_И-ПВ";
         public const string NezahFolderName = "Додаток_М-Незахист";
         public const string KornebFolderName = "Додаток_К-КорНеб";
+        public const string ZvedenaFolderName = "Додаток_Р-Зведена";
+        public const string UkzFolderName = "Додаток_Д-УКЗ";
 
 
         public const string KorNebNezahMessage = "Eзах менше нормативного";
@@ -36,5 +44,20 @@ namespace ZvitEXZ.Models
         public const string PrintMessagePZIsEmpty = "На обстеженому трубопроводі ПВ - відсутні";
         public const string PrintMessageKornebIsEmpty = "На обстеженому трубопроводі корозійно-небезпечні ділянки - відсутні";
         public const string PrintMessageNezahIsEmpty = "На обстеженому трубопроводі ділянки із недостатнім зівнем захисного потенціалу - відсутні";
+        public const string PrintMessageUkzIsEmpty = "На обстеженому трубопроводі УКЗ - відсутні";
+
+        //Mestnoct
+        public const string MestnostCX = "с/г угіддя";
+        public const string MestnostPosBPros = "посадка без просіки";
+        public const string MestnostPosSPros = "посадка з просікою";
+        public const string MestnostLesBPros = "ліс без просіки";
+        public const string MestnostLesSPros = "ліс с просікою";
+        public const string MestnostLug = "луговина";
+        public const string MestnostZarosly = "хащі";
+        public const string MestnostZabolHrunt = "заболочений грунт";
+        public const string MestnostPustyr = "пустир";
+        public const string MestnostSad = "сад";
+        public const string MestnostBalka = "балка";
+
     }
 }

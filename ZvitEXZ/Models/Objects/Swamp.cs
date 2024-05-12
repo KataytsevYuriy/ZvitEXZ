@@ -23,5 +23,9 @@ namespace ZvitEXZ.Models.Objects
                 Logs.AddError("Неверная длинна болота");// Add log - wrong swamp length
             }
         }
+        public override string ToString()
+        {
+            return Constants.SwampName;
+        }
     }
 }

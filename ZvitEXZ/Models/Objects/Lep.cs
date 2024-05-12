@@ -22,5 +22,10 @@ namespace ZvitEXZ.Models.Objects
             }
             Name = Constants.LepName;
         }
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(Voltage)) return Name;
+            return $"{Name} {Voltage}кВ";
+        }
     }
 }

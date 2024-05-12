@@ -88,5 +88,9 @@ namespace ZvitEXZ.Models.Objects
                 }
             }
         }
+        public override string ToString()
+        {
+            return Constants.SvechaName;
+        }
     }
 }

@@ -49,6 +49,21 @@ namespace ZvitEXZ.Models.Objects
                 Logs.AddError($"км {data[1]} задайте угол поворота");
             }
         }
+        public override string ToString()
+        {
+            string res = Name;
+            if (NapravlenyePovorota == napravlenye.undefined) { return res; }
+            if (NapravlenyePovorota == napravlenye.right) 
+            {
+                res = $"{res} {Constants.TurnRightName}";
+            }
+            else
+            {
+                res = $"{res} {Constants.TurnLeftName}";
+            }
+            if (Ugol == 0) return res;
+            return $"{res} {Ugol}°";
+        }
         public enum napravlenye { undefined, right, left }
     }
 }

@@ -62,10 +62,12 @@
     </Compile>
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
+    <Compile Include="Methods\Calculations\GetAllUkz.cs" />
     <Compile Include="Methods\Calculations\GetKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\ConvertListToFile.cs" />
+    <Compile Include="Methods\File\ConvertZamersToZvedena.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />
     <Compile Include="Methods\Calculations\GetAllPV.cs" />
     <Compile Include="Methods\File\WriteToFile.cs" />
@@ -85,16 +87,19 @@
     <Compile Include="Models\Objects\Lep.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\LogMessage.cs" />
-    <Compile Include="Models\MestnostType.cs" />
+    <Compile Include="Models\Objects\MestnostType.cs" />
     <Compile Include="Models\Objects\Povorot.cs" />
     <Compile Include="Models\Objects\ProtectionTypes.cs" />
     <Compile Include="Models\Objects\Road.cs" />
     <Compile Include="Models\Objects\RoadTypes.cs" />
+    <Compile Include="Models\Objects\Stolb.cs" />
     <Compile Include="Models\Objects\Svecha.cs" />
     <Compile Include="Models\Objects\SvechaSpecifications.cs" />
     <Compile Include="Models\Objects\Swamp.cs" />
     <Compile Include="Models\Objects\PV.cs" />
     <Compile Include="Models\Objects\River.cs" />
+    <Compile Include="Models\Objects\Tree.cs" />
+    <Compile Include="Models\Objects\UKZ.cs" />
     <Compile Include="Models\Objects\Zamer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

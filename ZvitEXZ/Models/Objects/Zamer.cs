@@ -120,5 +120,9 @@ namespace ZvitEXZ.Models.Objects
                 Note = data[303].ToString();
             }
         }
+        public override string ToString()
+        {
+            return "";
+        }
     }
 }

@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.rTBLogs = new System.Windows.Forms.RichTextBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.labelFileName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnOpen
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Open File";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnOpen.Location = new System.Drawing.Point(12, 12);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.TabIndex = 0;
+            this.btnOpen.Text = "Open File";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.button1_Click);
             // 
             // openFileDialog1
             // 
@@ -89,7 +89,7 @@
             this.Controls.Add(this.labelFileName);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.rTBLogs);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnOpen);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -100,7 +100,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.RichTextBox rTBLogs;
         private System.Windows.Forms.Button btnCalculate;

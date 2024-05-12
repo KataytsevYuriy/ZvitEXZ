@@ -21,12 +21,15 @@ namespace ZvitEXZ.Methods
                 case Constants.SwampNameInNaborka: return new Swamp(data);
                 case Constants.PovorotNameInNaborka: return new Povorot(data);
                 case Constants.SvechaNameInNaborka: return new Svecha(data);
+                case Constants.TreeName: return new Tree(data);
+                case Constants.Stolb: return new Stolb(data);
+                case Constants.UKZNameInNaborka: return new UKZ(data);
                 default:
                     string km = "";
                     if (data[1] != null) km = data[1].ToString();
                     Logs.AddError($"км {km} неверный тип обьекта \"{data[0]}\" замер создан без объекта");
                     return new Zamer(data);
-            };
+            }
         }
     }
 }

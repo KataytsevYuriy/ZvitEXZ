@@ -63,9 +63,11 @@ namespace ZvitEXZ
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             btnCalculate.Enabled = false;
+            btnOpen.Enabled = false;
             Calculate calculate = new Calculate();
             calculate.CalculateAll(zamers, ExcelDictionary);
             btnCalculate.Enabled = true;
+            btnOpen.Enabled = true;
         }
     }
 }

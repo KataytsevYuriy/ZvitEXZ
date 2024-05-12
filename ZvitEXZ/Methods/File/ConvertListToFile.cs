@@ -84,5 +84,59 @@ namespace ZvitEXZ.Methods.File
             }
             return res;
         }
+        public string[,] ConvertUKZ(List<Zamer> data)
+        {
+            int count = data.Count;
+            if (count == 0) return new string[0, 0];
+            string[,] res = new string[count, 25];
+            int i = 0;
+            foreach (Zamer zamer in data)
+            {
+                UKZ item = zamer as UKZ;
+                res[i, 0] = (i + 1).ToString();
+                res[i, 1] = item.Km.ToString().Replace(".", ",");
+                res[i, 2] = item.Identificator;
+                res[i, 3] = item.TypeUkryttya;
+                res[i, 4] = item.PreobrazovatelType;
+                res[i, 5] = item.StartUsing;
+                res[i, 6] = item.Power.Replace(".", ",");
+                res[i, 7] = item.Uwork == null ? "" : item.Uwork.ToString().Replace(".", ",");
+                res[i, 8] = item.Iwork == null ? "" : item.Iwork.ToString().Replace(".", ",");
+                res[i, 9] = item.Umax == null ? "" : item.Umax.ToString().Replace(".", ",");
+                res[i, 10] = item.Imax == null ? "" : item.Imax.ToString().Replace(".", ",");
+                if (item.Umax == null || item.Imax == null || item.Uwork == null || item.Iwork == null)
+                {
+                    res[i, 11] = "";
+                }
+                else
+                {
+                    res[i, 11] = Math.Round((float)((item.Uwork * item.Iwork) / (item.Umax * item.Imax) * 100), 1)
+                        .ToString("0.0").Replace(".",",");
+                }
+                if (item.Imax == null || item.Iwork == null)
+                {
+                    res[i, 12] = "";
+                }
+                else
+                {
+                    res[i, 12] = Math.Round((float)(item.Iwork/item.Imax) * 100, 1).
+                        ToString("0.0").Replace(".",",");
+                }
+                res[i, 13] = item.RecomendedPower.Replace(".", ",");
+                res[i, 14] = item.UtzOn.Replace(".", ",");
+                res[i, 15] = item.UtzOff.Replace(".", ",");
+                res[i, 16] = item.UtzRecomended.Replace(".", ",");
+                res[i, 17] = item.Urecomended.Replace(".", ",");
+                res[i, 18] = item.Irecomended.Replace(".", ",");
+                res[i, 19] = item.Raz.Replace(".", ",");
+                res[i, 20] = item.MarkaKatodProvoda;
+                res[i, 21] = item.SecenieKatodProvoda;
+                res[i, 22] = item.Raz.Replace(".", ",");
+                res[i, 23] = item.TehStan;
+                res[i, 24] = item.Note;
+                i++;
+            }
+            return res;
+        }
     }
 }

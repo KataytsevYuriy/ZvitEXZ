@@ -44,6 +44,7 @@ namespace ZvitEXZ.Methods
                     worksheet.Range[rangeData].Font.Size = 12;
                     worksheet.Range[rangeData].Borders.Weight = 2d;
                     worksheet.Range[rangeData].WrapText = true;
+                    worksheet.Range[rangeData].VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 }
                 worksheet.PageSetup.PrintArea = rangeToPrint;
                 CreateFolder createFolder = new CreateFolder();
