@@ -24,6 +24,14 @@ namespace ZvitEXZ.Methods
                 case Constants.TreeName: return new Tree(data);
                 case Constants.Stolb: return new Stolb(data);
                 case Constants.UKZNameInNaborka: return new UKZ(data);
+                case Constants.UDZNameInNaborka:return new UDZ(data);
+                case Constants.KranNameInNaborka:return new Kran(data);
+                case Constants.TruboprovodNameInNaborka:return new Truboprovod(data);
+                case Constants.OtvodNameInNaborka:return new Otvod(data);
+                case Constants.KanalNameInNaborka:return new Kanal(data);
+                case Constants.YamaNameInNaborka:return new Yama(data);
+                case Constants.SvalkaInNaborka:return new Svalka(data);
+
                 default:
                     string km = "";
                     if (data[1] != null) km = data[1].ToString();

@@ -27,6 +27,20 @@ namespace ZvitEXZ.Models
         public const string StolbInNaborka = "Столб";
         public const string UKZName = "УКЗ";
         public const string UKZNameInNaborka = "УКЗ";
+        public const string UDZName = "УДЗ";
+        public const string UDZNameInNaborka = "УДЗ";
+        public const string KranName = "Кран";
+        public const string KranNameInNaborka = "Кран";
+        public const string TruboprovodName = "Трубопровід";
+        public const string TruboprovodNameInNaborka = "Трубопровод";
+        public const string OtvodName = "Відвід";
+        public const string OtvodNameInNaborka = "Отвод";
+        public const string KanalName = "Канал";
+        public const string KanalNameInNaborka = "Канал";
+        public const string YamaName = "Яма";
+        public const string YamaNameInNaborka = "Яма";
+       public const string SvalkaName = "Звалище";
+        public const string SvalkaInNaborka = "Свалка";
 
         //File Names
         public const string ShablonFileName = "Shablon.xlsb";
@@ -36,10 +50,11 @@ namespace ZvitEXZ.Models
         public const string ZvedenaFolderName = "Додаток_Р-Зведена";
         public const string UkzFolderName = "Додаток_Д-УКЗ";
 
-
+        //Korneb
         public const string KorNebNezahMessage = "Eзах менше нормативного";
         public const string KorNebRhrMessage = "ρґ<=20 Ом*м";
         public const string KorNebZabolHrMessage = "заболочений грунт";
+        public const string KorNebTruboprovodMessage = "перетин із трубопроводом";
         // Message id data is empty
         public const string PrintMessagePZIsEmpty = "На обстеженому трубопроводі ПВ - відсутні";
         public const string PrintMessageKornebIsEmpty = "На обстеженому трубопроводі корозійно-небезпечні ділянки - відсутні";
@@ -59,5 +74,7 @@ namespace ZvitEXZ.Models
         public const string MestnostSad = "сад";
         public const string MestnostBalka = "балка";
 
+
+        public const float TruboprovodKornebLength = (float)0.05;
     }
 }

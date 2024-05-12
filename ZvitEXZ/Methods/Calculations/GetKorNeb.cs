@@ -28,6 +28,8 @@ namespace ZvitEXZ.Methods.Calculations
             ByZabolochennyiHrunt();
             ByRiver();
             BySwamp();
+            ByTruboprovod();
+            BySvalka();
 
             SortKorNeb();
             return korNebezpechny;
@@ -85,7 +87,6 @@ namespace ZvitEXZ.Methods.Calculations
                 if (lastKm > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, lastKm, Constants.KorNebRhrMessage));
             }
         }
- 
         private void ByRiver()
         {
             string filter = Constants.RiverName;
@@ -115,13 +116,14 @@ namespace ZvitEXZ.Methods.Calculations
         {
             float swampStart = -1;
             float lastZamer = -1;
-            foreach(Zamer item in zamers)
+            foreach (Zamer item in zamers)
             {
                 if (item.Mestnost == MestnostType.ZabolHrunt)
                 {
                     lastZamer = item.Km;
                     if (swampStart == -1) swampStart = item.Km;
-                } else if (swampStart > -1)
+                }
+                else if (swampStart > -1)
                 {
                     korNebezpechny.Add(new KorNebezpechny(swampStart, lastZamer, Constants.KorNebZabolHrMessage));
                     swampStart = -1;
@@ -205,6 +207,35 @@ namespace ZvitEXZ.Methods.Calculations
                 listByEnd.Remove(itemEnding);
             }
             korNebezpechny = res;
+        }
+        private void ByTruboprovod()
+        {
+            List<Zamer> truboprovods = zamers.Where(tr => tr.Name == Constants.TruboprovodName).ToList();
+            if (truboprovods.Count == 0) return;
+            float kmStart = zamers.First().Km;
+            float kmEnd = zamers.LastOrDefault().Km;
+            foreach (Zamer item in truboprovods)
+            {
+                Truboprovod truboprovod = item as Truboprovod;
+                if (!truboprovod.IsKorneb) continue;
+                float start = (float)Math.Round(item.Km - Constants.TruboprovodKornebLength < kmStart ? kmStart : item.Km - Constants.TruboprovodKornebLength, 3);
+                float end = (float)Math.Round(item.Km + Constants.TruboprovodKornebLength > kmEnd ? kmEnd : item.Km + Constants.TruboprovodKornebLength, 3);
+                korNebezpechny.Add(new KorNebezpechny(start, end, Constants.KorNebTruboprovodMessage));
+                kmStart = end;
+            }
+        }
+        private void BySvalka()
+        {
+            string filter = Constants.SvalkaName;
+            foreach (Zamer item in zamers)
+            {
+                if (item.Name == filter)
+                {
+                    Svalka svalka = item as Svalka;
+                    if (svalka.Svalkalength > 0)
+                        korNebezpechny.Add(new KorNebezpechny(svalka.Km, svalka.Km + (float)svalka.Svalkalength / 1000, filter));
+                }
+            }
         }
     }
 }

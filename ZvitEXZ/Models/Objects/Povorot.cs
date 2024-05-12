@@ -9,24 +9,24 @@ namespace ZvitEXZ.Models.Objects
 {
     public class Povorot : Zamer
     {
-        public napravlenye NapravlenyePovorota { get; set; }
+        public Napravlenye NapravlenyePovorota { get; set; }
         public int Ugol { get; set; }
         public Povorot(object[] data) : base(data)
         {
             Name = Constants.PovorotName;
             if (data[65] == null)
             {
-                NapravlenyePovorota = Povorot.napravlenye.undefined;
+                NapravlenyePovorota = Napravlenye.undefined;
                 Logs.AddError($"км {data[1]} задайте направление поворота");
             }
             else
             {
                 switch (data[65])
                 {
-                    case "ліво": NapravlenyePovorota = Povorot.napravlenye.left; break;
-                    case "право": NapravlenyePovorota = Povorot.napravlenye.right; break;
+                    case "ліво": NapravlenyePovorota = Napravlenye.left; break;
+                    case "право": NapravlenyePovorota = Napravlenye.right; break;
                     default:
-                        NapravlenyePovorota = Povorot.napravlenye.undefined;
+                        NapravlenyePovorota = Napravlenye.undefined;
                         Logs.AddError($"км {data[1]} задайте направление поворота");
                         break;
                 }
@@ -52,8 +52,8 @@ namespace ZvitEXZ.Models.Objects
         public override string ToString()
         {
             string res = Name;
-            if (NapravlenyePovorota == napravlenye.undefined) { return res; }
-            if (NapravlenyePovorota == napravlenye.right) 
+            if (NapravlenyePovorota == Napravlenye.undefined) { return res; }
+            if (NapravlenyePovorota == Napravlenye.right)
             {
                 res = $"{res} {Constants.TurnRightName}";
             }
@@ -64,6 +64,5 @@ namespace ZvitEXZ.Models.Objects
             if (Ugol == 0) return res;
             return $"{res} {Ugol}°";
         }
-        public enum napravlenye { undefined, right, left }
     }
 }
