@@ -31,6 +31,15 @@ namespace ZvitEXZ.Methods
                 case Constants.KanalNameInNaborka:return new Kanal(data);
                 case Constants.YamaNameInNaborka:return new Yama(data);
                 case Constants.SvalkaInNaborka:return new Svalka(data);
+                case Constants.VyhodIsZemlyInNaborka:return new VyhodIsZemly(data);
+                case Constants.GRSInNaborka:return new GRS(data);
+                case Constants.ZaroslyInNaborka:return new Zarosly(data);
+                case Constants.KabelInNaborka:return new Kabel(data);
+                case Constants.ShurfInNaborka:return new Shurf(data);
+                case Constants.BludyInNaborka:return new Bludy(data);
+                case Constants.SvishInNaborka:return new Svish(data);
+                case Constants.DilyankaKorNebInNaborka:return new DilyankaKorNeb(data);
+                case Constants.DripInNaborka:return new Drip(data);
 
                 default:
                     string km = "";

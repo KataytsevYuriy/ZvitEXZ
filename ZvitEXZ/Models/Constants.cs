@@ -39,8 +39,26 @@ namespace ZvitEXZ.Models
         public const string KanalNameInNaborka = "Канал";
         public const string YamaName = "Яма";
         public const string YamaNameInNaborka = "Яма";
-       public const string SvalkaName = "Звалище";
+        public const string SvalkaName = "Звалище";
         public const string SvalkaInNaborka = "Свалка";
+        public const string VyhodIsZemlyName = "Повітряний перехід";
+        public const string VyhodIsZemlyInNaborka = "Выход из земли";
+        public const string GRSName = "ГРС";
+        public const string GRSInNaborka = "ГРС";
+        public const string ZaroslyName = "Хащі непролазні";
+        public const string ZaroslyInNaborka = "Заросли непрол";
+        public const string KabelName = "Кабель";
+        public const string KabelInNaborka = "Кабель";
+        public const string ShurfName = "Шурф";
+        public const string ShurfInNaborka = "Шурф";
+        public const string BludyName = "Блукаючі струми";
+        public const string BludyInNaborka = "Блужд токи";
+        public const string SvishName = "Свіщ";
+        public const string SvishInNaborka = "Свищ";
+        public const string DilyankaKorNebName = "Корозійно-небезпечна ділянка";
+        public const string DilyankaKorNebInNaborka = "Корр небез уч-ок";
+        public const string DripName = "ДРІП";
+        public const string DripInNaborka = "ДРІП";
 
         //File Names
         public const string ShablonFileName = "Shablon.xlsb";

@@ -84,6 +84,11 @@
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\ExcelDictionary.cs" />
     <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />
+    <Compile Include="Models\Objects\Bludy.cs" />
+    <Compile Include="Models\Objects\DilyankaKorNeb.cs" />
+    <Compile Include="Models\Objects\Drip.cs" />
+    <Compile Include="Models\Objects\GRS.cs" />
+    <Compile Include="Models\Objects\Kabel.cs" />
     <Compile Include="Models\Objects\Kanal.cs" />
     <Compile Include="Models\Objects\Kran.cs" />
     <Compile Include="Models\Objects\Lep.cs" />
@@ -96,10 +101,13 @@
     <Compile Include="Models\Objects\ProtectionTypes.cs" />
     <Compile Include="Models\Objects\Road.cs" />
     <Compile Include="Models\Objects\RoadTypes.cs" />
+    <Compile Include="Models\Objects\Shurf.cs" />
+    <Compile Include="Models\Objects\StartEnd.cs" />
     <Compile Include="Models\Objects\Stolb.cs" />
     <Compile Include="Models\Objects\Svalka.cs" />
     <Compile Include="Models\Objects\Svecha.cs" />
     <Compile Include="Models\Objects\SvechaSpecifications.cs" />
+    <Compile Include="Models\Objects\Svish.cs" />
     <Compile Include="Models\Objects\Swamp.cs" />
     <Compile Include="Models\Objects\PV.cs" />
     <Compile Include="Models\Objects\River.cs" />
@@ -107,8 +115,10 @@
     <Compile Include="Models\Objects\Truboprovod.cs" />
     <Compile Include="Models\Objects\UDZ.cs" />
     <Compile Include="Models\Objects\UKZ.cs" />
+    <Compile Include="Models\Objects\VyhodIsZemly.cs" />
     <Compile Include="Models\Objects\Yama.cs" />
     <Compile Include="Models\Objects\Zamer.cs" />
+    <Compile Include="Models\Objects\Zarosly.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
