@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
+    <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
     <Compile Include="Methods\Calculations\GetAllUkz.cs" />
     <Compile Include="Methods\Calculations\GetKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetNezahyst.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Methods\File\WriteEcxelFile.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
     <Compile Include="Models\Calculations\Nezahyst.cs" />
+    <Compile Include="Models\Calculations\Povregdenya.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\ExcelDictionary.cs" />
     <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />
@@ -96,7 +98,9 @@
     <Compile Include="Models\LogMessage.cs" />
     <Compile Include="Models\Objects\MestnostType.cs" />
     <Compile Include="Models\Objects\Napravlenye.cs" />
+    <Compile Include="Models\Objects\ObjectZamer.cs" />
     <Compile Include="Models\Objects\Otvod.cs" />
+    <Compile Include="Models\Objects\PerehodDn.cs" />
     <Compile Include="Models\Objects\Povorot.cs" />
     <Compile Include="Models\Objects\ProtectionTypes.cs" />
     <Compile Include="Models\Objects\Road.cs" />

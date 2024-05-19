@@ -57,8 +57,8 @@ namespace ZvitEXZ.Methods.File
             foreach (KorNebezpechny item in data)
             {
                 res[i, 0] = Math.Round(item.KmStart * 1000).ToString();
-                res[i, 1] = Math.Round(item.KmEnd * 1000).ToString();
-                res[i, 2] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
+                res[i, 1] = Math.Round(item.KmFinish * 1000).ToString();
+                res[i, 2] = Math.Round((item.KmFinish - item.KmStart) * 1000).ToString();
                 res[i, 3] = item.Description;
                 i++;
             }
@@ -111,7 +111,7 @@ namespace ZvitEXZ.Methods.File
                 else
                 {
                     res[i, 11] = Math.Round((float)((item.Uwork * item.Iwork) / (item.Umax * item.Imax) * 100), 1)
-                        .ToString("0.0").Replace(".",",");
+                        .ToString("0.0").Replace(".", ",");
                 }
                 if (item.Imax == null || item.Iwork == null)
                 {
@@ -119,8 +119,8 @@ namespace ZvitEXZ.Methods.File
                 }
                 else
                 {
-                    res[i, 12] = Math.Round((float)(item.Iwork/item.Imax) * 100, 1).
-                        ToString("0.0").Replace(".",",");
+                    res[i, 12] = Math.Round((float)(item.Iwork / item.Imax) * 100, 1).
+                        ToString("0.0").Replace(".", ",");
                 }
                 res[i, 13] = item.RecomendedPower.Replace(".", ",");
                 res[i, 14] = item.UtzOn.Replace(".", ",");
@@ -134,6 +134,28 @@ namespace ZvitEXZ.Methods.File
                 res[i, 22] = item.Raz.Replace(".", ",");
                 res[i, 23] = item.TehStan;
                 res[i, 24] = item.Note;
+                i++;
+            }
+            return res;
+        }
+        public string[,] ConvertPovregd(List<Povregdenya> data)
+        {
+            int count = data.Count;
+            if (count == 0) return new string[0, 0];
+            string[,] res = new string[count, 10];
+            int i = 0;
+            foreach (Povregdenya item in data)
+            {
+                res[i, 0] = (i + 1).ToString();
+                res[i, 1] = Math.Round(item.KmStart * 1000).ToString();
+                res[i, 2] = Math.Round(item.KmFinish * 1000).ToString();
+                res[i, 3] = Math.Round((item.KmFinish - item.KmStart) * 1000).ToString();
+                res[i, 4] = item.GpsN;
+                res[i, 5] = item.GpsE;
+                res[i, 6] = Math.Round(item.MaxGradient, 3).ToString();
+                res[i, 7] = "-" + Math.Round(item.UMaxGradient, 3).ToString();
+                res[i, 8] = item.Cherga.ToString();
+                res[i, 9] = "";
                 i++;
             }
             return res;

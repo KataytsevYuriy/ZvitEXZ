@@ -14,6 +14,7 @@ namespace ZvitEXZ.Methods.Calculations
     {
         List<Nezahyst> nezahysts;
         List<KorNebezpechny> korNebezpechny;
+        List<Povregdenya> povregdenyas;
         public void CalculateAll(List<Zamer> zamers, ExcelDictionary dictionary)
         {
             SetMestnost setMestnost = new SetMestnost();
@@ -41,12 +42,16 @@ namespace ZvitEXZ.Methods.Calculations
             //UKZ
             GetAllUkz getAllUkz = new GetAllUkz();
             fileSaver.SaveUKZ(getAllUkz.Get(zamers));
-       
-        
-        
-        
+
+            //Povregdenya
+            GetAllPovregdenya getAllPovregdenya = new GetAllPovregdenya(dictionary.GradFirstLine, dictionary.GradSecondLine);
+            povregdenyas = getAllPovregdenya.Get(zamers, korNebezpechny);
+            fileSaver.SavePovregd(povregdenyas);
+
+
+
             Logs.AddLog("Таблицы построены");
-        
+
         }
     }
 }

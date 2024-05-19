@@ -57,6 +57,14 @@ namespace ZvitEXZ.Models.Objects
                     Ugrad = null;
                 }
             }
+            if (Utz == null ^ Ugrad == null)
+            {
+                Logs.AddAlarm($"км {data[1]} введен только защитный либо только градиент");
+                Logs.AddAlarm($"Потенциалы УДАЛЕНЫ");
+                Utz = null;
+                Ugrad = null;
+
+            }
             if (data[5] == null) { Upol = null; }
             else
             {

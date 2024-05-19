@@ -9,12 +9,12 @@ namespace ZvitEXZ.Models.Calculations
     public class KorNebezpechny
     {
         public float KmStart { get; set; }
-        public float KmEnd { get; set; }
+        public float KmFinish { get; set; }
         public string Description { get; set; }
         public KorNebezpechny(float kmStart, float kmEnd, string description)
         {
             KmStart=kmStart;
-            KmEnd=kmEnd;
+            KmFinish=kmEnd;
             Description=description;
         }
     }

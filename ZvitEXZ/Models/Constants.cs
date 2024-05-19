@@ -59,14 +59,20 @@ namespace ZvitEXZ.Models
         public const string DilyankaKorNebInNaborka = "Корр небез уч-ок";
         public const string DripName = "ДРІП";
         public const string DripInNaborka = "ДРІП";
+        public const string ObjectName = "Об'єкт";
+        public const string ObjectInNaborka = "Объект";
+        public const string PerehodDNName = "Перехід діаметрів";
+        public const string PerehodDNInNaborka = "Переход DN";
 
         //File Names
-        public const string ShablonFileName = "Shablon.xlsb";
+        //public const string ShablonFileName = "Shablon.xlsb";
+        public const string ShablonFileName = @"..\..\Shablon.xlsb";
         public const string PVFolderName = "Додаток_И-ПВ";
         public const string NezahFolderName = "Додаток_М-Незахист";
         public const string KornebFolderName = "Додаток_К-КорНеб";
         public const string ZvedenaFolderName = "Додаток_Р-Зведена";
         public const string UkzFolderName = "Додаток_Д-УКЗ";
+        public const string PovregdFolderName = "Додаток_Р-Пошкодження";
 
         //Korneb
         public const string KorNebNezahMessage = "Eзах менше нормативного";
@@ -78,6 +84,7 @@ namespace ZvitEXZ.Models
         public const string PrintMessageKornebIsEmpty = "На обстеженому трубопроводі корозійно-небезпечні ділянки - відсутні";
         public const string PrintMessageNezahIsEmpty = "На обстеженому трубопроводі ділянки із недостатнім зівнем захисного потенціалу - відсутні";
         public const string PrintMessageUkzIsEmpty = "На обстеженому трубопроводі УКЗ - відсутні";
+        public const string PrintMessagepovregdIsEmpty = "На обстеженому трубопроводі пошкождення ізоляції - відсутні";
 
         //Mestnoct
         public const string MestnostCX = "с/г угіддя";
@@ -94,5 +101,9 @@ namespace ZvitEXZ.Models
 
 
         public const float TruboprovodKornebLength = (float)0.05;
+
+
+        public static float PovregdenyaFirstCherga = (float)-0.02;
+        public static float PovregdenyaSecondCherga = (float)-0.15;
     }
 }

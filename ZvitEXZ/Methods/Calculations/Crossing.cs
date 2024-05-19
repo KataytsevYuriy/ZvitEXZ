@@ -15,6 +15,7 @@ namespace ZvitEXZ.Methods.Calculations
         }
         public float GetCrossing(float uStart, float kmStart, float uEnd, float kmEnd)
         {
+            if (kmStart == kmEnd) return kmStart;
             return (float)Math.Round(kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd), 3);
         }
     }

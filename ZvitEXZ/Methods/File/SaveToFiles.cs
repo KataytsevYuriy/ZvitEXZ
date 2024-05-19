@@ -46,5 +46,10 @@ namespace ZvitEXZ.Methods.File
             writeToFile.WriteFile(_fileName, Constants.UkzFolderName, _pipeName, converter.ConvertUKZ(data),
                 "A", "Y", "Y", Constants.PrintMessageNezahIsEmpty, 5);
         }
+        public void SavePovregd(List<Povregdenya> povregdenya)
+        {
+            writeToFile.WriteFile(_fileName, Constants.PovregdFolderName, _pipeName, converter.ConvertPovregd(povregdenya),
+               "A", "J", "J", Constants.PrintMessageNezahIsEmpty, 6);
+        }
     }
 }

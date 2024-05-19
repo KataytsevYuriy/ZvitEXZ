@@ -29,7 +29,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Yamalength = 0;
-                    Logs.AddError("Неверная длинна ямы");
+                    Logs.AddError($"км {data[1]} Неверная длинна ямы");
                 }
             }
         }

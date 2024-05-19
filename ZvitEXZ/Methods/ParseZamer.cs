@@ -40,6 +40,9 @@ namespace ZvitEXZ.Methods
                 case Constants.SvishInNaborka:return new Svish(data);
                 case Constants.DilyankaKorNebInNaborka:return new DilyankaKorNeb(data);
                 case Constants.DripInNaborka:return new Drip(data);
+                case Constants.ObjectInNaborka:return new ObjectZamer(data);
+                case Constants.PerehodDNInNaborka:return new PerehodDn(data);
+
 
                 default:
                     string km = "";

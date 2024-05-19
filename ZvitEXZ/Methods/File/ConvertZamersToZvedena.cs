@@ -81,7 +81,7 @@ namespace ZvitEXZ.Methods.File
             if (korNebezpechnies.Count == 0) return "";
             foreach (KorNebezpechny item in korNebezpechnies)
             {
-                if (km >= item.KmStart && km <= item.KmEnd) return item.Description;
+                if (km >= item.KmStart && km <= item.KmFinish) return item.Description;
             }
             return "";
         }
