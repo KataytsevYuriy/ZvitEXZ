@@ -22,6 +22,8 @@ namespace ZvitEXZ.Models.Objects
         public bool IsBalka { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
+        public int NumberSvyazky { get; set; }
+
         public Zamer(object[] data)
         {
             if (data[1] == null) throw new ArgumentNullException("пустое значение КМ");
@@ -33,29 +35,22 @@ namespace ZvitEXZ.Models.Objects
             {
                 throw new ArgumentNullException("не верное значение КМ " + data[1].ToString());
             }
-            if (data[3] == null) { Utz = null; }
-            else
+            try
             {
-                try
-                {
-                    Utz = Parse.ParseFloat(data[3]);
-                }
-                catch
-                {
-                    Utz = null;
-                }
+                Utz = ParseData.FloatNullable(data[3]);
             }
-            if (data[4] == null) { Ugrad = null; }
-            else
+            catch
             {
-                try
-                {
-                    Ugrad = Parse.ParseFloat(data[4]);
-                }
-                catch
-                {
-                    Ugrad = null;
-                }
+                Utz = null;
+            }
+
+            try
+            {
+                Ugrad = ParseData.FloatNullable(data[4]);
+            }
+            catch
+            {
+                Ugrad = null;
             }
             if (Utz == null ^ Ugrad == null)
             {
@@ -65,68 +60,39 @@ namespace ZvitEXZ.Models.Objects
                 Ugrad = null;
 
             }
-            if (data[5] == null) { Upol = null; }
-            else
+
+            try
             {
-                try
-                {
-                    Upol = Parse.ParseFloat(data[5]);
-                }
-                catch
-                {
-                    Upol = null;
-                }
+                Upol = ParseData.FloatNullable(data[5]);
             }
-            if (data[7] == null) { GpsN = ""; }
-            else
+            catch
             {
-                GpsN = data[7].ToString();
+                Upol = null;
             }
-            if (data[8] == null) { GpsE = ""; }
-            else
+            GpsN = ParseData.String(data[7]);
+            GpsE = ParseData.String(data[8]);
+            Gps = ParseData.String(data[10]);
+            try
             {
-                GpsE = data[8].ToString();
+                Rhr = ParseData.FloatNullable(data[11]);
             }
-            if (data[10] == null) { Gps = ""; }
-            else
+            catch
             {
-                Gps = data[10].ToString();
+                Rhr = null;
             }
-            if (data[11] == null) { Rhr = null; }
-            else
+
+            try
             {
-                try
-                {
-                    Rhr = Parse.ParseFloat(data[11]);
-                }
-                catch
-                {
-                    Rhr = null;
-                }
+                Hlub = ParseData.FloatNullable(data[12]);
             }
-            if (data[12] == null) { Hlub = null; }
-            else
+            catch
             {
-                try
-                {
-                    Hlub = Parse.ParseFloat(data[12]);
-                }
-                catch
-                {
-                    Hlub = null;
-                }
+                Hlub = null;
             }
-            Mestnost = Parse.Mestnost(data[13]);
+            Mestnost = ParseData.Mestnost(data[13]);
             IsBalka = false;
             Name = "";
-            if (data[303] == null)
-            {
-                Note = "";
-            }
-            else
-            {
-                Note = data[303].ToString();
-            }
+            Note = ParseData.String(data[303]);
         }
         public override string ToString()
         {

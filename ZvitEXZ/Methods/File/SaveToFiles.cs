@@ -51,5 +51,23 @@ namespace ZvitEXZ.Methods.File
             writeToFile.WriteFile(_fileName, Constants.PovregdFolderName, _pipeName, converter.ConvertPovregd(povregdenya),
                "A", "J", "J", Constants.PrintMessageNezahIsEmpty, 6);
         }
+        public void SaveUPZ(List<UPZ> uPZs)
+        {
+            writeToFile.WriteFile(_fileName, Constants.UpzFolderName, _pipeName, converter.ConvertUpz(uPZs),
+               "A", "R", "R", Constants.PrintMessageUpzdIsEmpty, 7);
+        }
+        public void SaveVymirKozhuh(List<RoadKozhuh> roadKozhuhs)
+        {
+            writeToFile.WriteFile(_fileName, Constants.PerehodFolderName, _pipeName,
+                converter.ConvertVymirKozhuh(roadKozhuhs), "A", "L", "L",
+                Constants.PrintMessagePerehodKozhuhIsEmpty, 8, Constants.PerehodKozhuhFileName);
+        }
+        public void SaveStanNaPerehode(List<RoadKozhuh> roadKozhuhs)
+        {
+            writeToFile.WriteFile(_fileName, Constants.PerehodFolderName, _pipeName,
+                converter.ConvertStanNaPerehode(roadKozhuhs), "A", "K", "K",
+                Constants.PrintMessageStanPerehoduIsEmpty, 9, Constants.PerehodStanFileName);
+        }
+
     }
 }

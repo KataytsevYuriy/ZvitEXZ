@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.Objects
 {
-    public enum RoadTypes
+   public enum ProvodTypePidklichenyas
     {
-        undefined, automobile, train, polevaya, gruntovaya
+       undefined, pipe, pointDrenazh, kozhuh, upz, storKommunication
     }
 }

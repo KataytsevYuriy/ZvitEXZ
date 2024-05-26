@@ -10,24 +10,23 @@ namespace ZvitEXZ.Models.Objects
     public class Road : Zamer
     {
         public string RoadName { get; set; }
-        public RoadTypes.Type RoadType { get; set; }
+        public RoadTypes RoadType { get; set; }
         public int? length { get; set; }
         public bool HasKozhuh { get; set; }
-        public string Kozhuh { get; set; }
-        public ProtectionTypes.Type ProtectionType { get; set; }
-        public float? UtzStart { get; set; }
-        public float? UtzFinish { get; set; }
-        public float? UkzStart { get; set; }
-        public float? UkzFinish { get; set; }
-        public AtestationVumiruKozhuhs.Atestation AtestationVumiruKozhuh { get; set; }
-        public int NumberSvyazky { get; set; }
+        public int? KozhuhLength { get; set; }
+        public ProtectionTypes ProtectionType { get; set; }
+        public float? UtzStartOff { get; set; }
+        public float? UtzFinishOff { get; set; }
+        public float? UkzStartOff { get; set; }
+        public float? UkzFinishOff { get; set; }
+        public AtestationVumiruKozhuhs AtestationVumiruKozhuh { get; set; }
 
         public Road(object[] data) : base(data)
         {
+            Name = Constants.RoadName;
             if (data[23] == null)
             {
-                Name = "дорога";
-                RoadType = RoadTypes.Type.undefined;
+                RoadType = RoadTypes.undefined;
                 Logs.AddError($"км {data[1]} не задан тип дороги");
             }
             else
@@ -35,34 +34,33 @@ namespace ZvitEXZ.Models.Objects
                 switch (data[23])
                 {
                     case "автомобільна":
-                        Name = "а.д.";
-                        RoadType = RoadTypes.Type.automobile;
+                        RoadType = RoadTypes.automobile;
                         break;
                     case "польова":
-                        Name = "польова дорога";
-                        RoadType = RoadTypes.Type.polevaya;
+                        RoadType = RoadTypes.polevaya;
                         break;
                     case "залізниця":
-                        Name = "залізниця";
-                        RoadType = RoadTypes.Type.train;
+                        RoadType = RoadTypes.train;
                         break;
                     case "грунтова":
-                        Name = "грунтова дорога";
-                        RoadType = RoadTypes.Type.gruntovaya;
+                        RoadType = RoadTypes.gruntovaya;
                         break;
                     default:
-                        Name = "дорога";
-                        RoadType = RoadTypes.Type.undefined;
+                        RoadType = RoadTypes.undefined;
                         Logs.AddError($"км {data[1]} неверно задан тип дороги");
                         break;
 
                 }
             }
-            if (data[19] == null) { RoadName = ""; }
+            if (data[19] == null)
+            {
+                RoadName = "";
+                if (RoadType == RoadTypes.automobile || RoadType == RoadTypes.train)
+                    Logs.AddError($"км {data[1]} укажите название дороги");
+            }
             else
             {
                 RoadName = data[19].ToString();
-                if (RoadType == RoadTypes.Type.automobile) Logs.AddError($"км {data[1]} укажите название дороги");
             }
             if (data[21] == null)
             {
@@ -94,85 +92,106 @@ namespace ZvitEXZ.Models.Objects
                 HasKozhuh = false;
                 Logs.AddError($"км {data[1]} неверно указано наличие кожуха");
             }
-            if (data[208] == null)
+            if (data[115] == null)
             {
-                ProtectionType = ProtectionTypes.Type.without;
+                KozhuhLength = null;
+            }
+            else
+            {
+                try
+                {
+                    KozhuhLength = (int)Parse.ParseFloat(data[115]);
+                }
+                catch
+                {
+                    KozhuhLength = null;
+                    Logs.AddError($"км {data[1]} правильно укажите длинну кожуха");
+                }
+            }
+            if (!HasKozhuh)
+            {
+                ProtectionType = ProtectionTypes.undefined;
+            }
+            else if (data[208] == null)
+            {
+                ProtectionType = ProtectionTypes.undefined;
+                Logs.AddError($"км {data[1]} укажите тип защиты кожуха");
             }
             else
             {
                 switch (data[208].ToString())
                 {
-                    case "захист відсутній": ProtectionType = ProtectionTypes.Type.without; break;
-                    case "протекторний": ProtectionType = ProtectionTypes.Type.hasProtector; break;
-                    case "БСЗ": ProtectionType = ProtectionTypes.Type.bzk; break;
+                    case "захист відсутній": ProtectionType = ProtectionTypes.without; break;
+                    case "протекторний": ProtectionType = ProtectionTypes.hasProtector; break;
+                    case "БСЗ": ProtectionType = ProtectionTypes.bzk; break;
                     default:
-                        ProtectionType = ProtectionTypes.Type.without;
+                        ProtectionType = ProtectionTypes.without;
                         Logs.AddError($"км {data[1]} неверно указано тип защиты кожуха");
                         break;
                 }
             }
             if (data[214] == null)
             {
-                UtzStart = null;
+                UtzStartOff = null;
             }
             else
             {
                 try
                 {
-                    UtzStart = Parse.ParseFloat(data[214]);
+                    UtzStartOff = Parse.ParseFloat(data[214]);
                 }
                 catch
                 {
-                    UtzStart = null;
+                    UtzStartOff = null;
                     Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[215] == null)
             {
-                UtzFinish = null;
+                UtzFinishOff = null;
             }
             else
             {
                 try
                 {
-                    UtzFinish = Parse.ParseFloat(data[215]);
+                    UtzFinishOff = Parse.ParseFloat(data[215]);
                 }
                 catch
                 {
-                    UtzFinish = null;
+                    UtzFinishOff = null;
                     Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[216] == null)
             {
-                UkzStart = null;
+                UkzStartOff = null;
             }
             else
             {
                 try
                 {
-                    UkzStart = Parse.ParseFloat(data[216]);
+                    UkzStartOff = Parse.ParseFloat(data[216]);
                 }
                 catch
                 {
-                    UkzStart = null;
+                    UkzStartOff = null;
                     Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
                 }
-                if (data[217] == null)
+            }
+            if (data[217] == null)
+            {
+                UkzFinishOff = null;
+            }
+            else
+            {
+                try
                 {
-                    UkzFinish = null;
+                    UkzFinishOff = Parse.ParseFloat(data[216]);
                 }
-                else
+                catch
                 {
-                    try
-                    {
-                        UkzFinish = Parse.ParseFloat(data[216]);
-                    }
-                    catch
-                    {
-                        UkzFinish = null;
-                        Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
-                    }
+                    UkzFinishOff = null;
+                    Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[248] == null)
@@ -192,29 +211,63 @@ namespace ZvitEXZ.Models.Objects
                     Logs.AddError($"км {data[1]} проверьте номер привязки");
                 }
             }
-            if (data[218] == null)
+            if (!HasKozhuh)
             {
-                AtestationVumiruKozhuh = AtestationVumiruKozhuhs.Atestation.undefined;
+                AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
+            }
+            else if (data[218] == null)
+            {
+                AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
+                Logs.AddError($"км {data[1]} неуказана атестация измерений");
             }
             else
             {
                 switch (data[218].ToString())
                 {
-                    case "контакт відсутній": AtestationVumiruKozhuh=AtestationVumiruKozhuhs.Atestation.noKontakt; break;
-                    case "електролітичний контакт": AtestationVumiruKozhuh=AtestationVumiruKozhuhs.Atestation.elektrolitKontakt; break;
-                    case "прямий (електричний) контакт": AtestationVumiruKozhuh=AtestationVumiruKozhuhs.Atestation.kontakt; break;
-                    case "відсутні засоби контр.": AtestationVumiruKozhuh=AtestationVumiruKozhuhs.Atestation.noPV; break;
-                    case "не можливо роз'єднати": AtestationVumiruKozhuh=AtestationVumiruKozhuhs.Atestation.coudNotCheck; break;
+                    case "контакт відсутній": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.noKontakt; break;
+                    case "електролітичний контакт": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.elektrolitKontakt; break;
+                    case "прямий (електричний) контакт": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.kontakt; break;
+                    case "відсутні засоби контр.": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.noPV; break;
+                    case "не можливо роз'єднати": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.coudNotCheck; break;
                     default:
-                        AtestationVumiruKozhuh = AtestationVumiruKozhuhs.Atestation.undefined;
-                        Logs.AddError($"км {data[1]} неверно указано атестация измерений");
+                        AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
+                        Logs.AddError($"км {data[1]} неверно указана (неуказана) атестация измерений");
                         break;
                 }
             }
         }
         public override string ToString()
         {
-            return Name;
+            switch (RoadType)
+            {
+                case RoadTypes.automobile: return $"а.д. {RoadName}";
+                case RoadTypes.polevaya: return "польова дорога";
+                case RoadTypes.train: return $"залізниця {RoadName}";
+                case RoadTypes.gruntovaya: return "грунтова дорога";
+                default: return Name;
+            }
+        }
+        public string HasKontakt()
+        {
+            switch (AtestationVumiruKozhuh)
+            {
+                case AtestationVumiruKozhuhs.noKontakt: return "контакт відсутній";
+                case AtestationVumiruKozhuhs.elektrolitKontakt: return "електролітичний контакт";
+                case AtestationVumiruKozhuhs.kontakt: return "прямий (електричний) контакт";
+                case AtestationVumiruKozhuhs.noPV: return "відсутні засоби контролю";
+                case AtestationVumiruKozhuhs.coudNotCheck: return "не можливо роз'єднати";
+                default: return "";
+            }
+        }
+        public string HasProtection()
+        {
+            switch (ProtectionType)
+            {
+                case ProtectionTypes.without: return "захист відсутній";
+                case ProtectionTypes.hasProtector: return "протекторний";
+                case ProtectionTypes.bzk: return "БСЗ";
+                default: return "";
+            }
         }
     }
 }

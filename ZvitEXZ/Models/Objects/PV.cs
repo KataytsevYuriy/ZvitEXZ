@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
@@ -10,134 +11,45 @@ namespace ZvitEXZ.Models.Objects
     {
         public string PVType { get; set; }
         public string PVDiamert { get; set; }
-        public string ProvodPotencial1 { get; set; }
+        public float? ProvodPotencial1 { get; set; }
         public string ProvodType1 { get; set; }
         public string ProvodDyamert1 { get; set; }
-        public string ProvodTypePidklichenya1 { get; set; }
-        public string ProvodPotencial2 { get; set; }
+        public ProvodTypePidklichenyas ProvodTypePidklichenya1 { get; set; }
+        public float? ProvodPotencial2 { get; set; }
         public string ProvodType2 { get; set; }
         public string ProvodDaymetr2 { get; set; }
-        public string ProvodTypePidklichenya2 { get; set; }
-        public string ProvodPotencial3 { get; set; }
+        public ProvodTypePidklichenyas ProvodTypePidklichenya2 { get; set; }
+        public float? ProvodPotencial3 { get; set; }
         public string ProvodType3 { get; set; }
         public string ProvodDyametr3 { get; set; }
-        public string ProvodTypePidklichenya3 { get; set; }
+        public ProvodTypePidklichenyas ProvodTypePidklichenya3 { get; set; }
         public bool IsBroken { get; set; }
-        public string NumberSvyazky { get; set; }
         public PV(object[] data) : base(data)
         {
             Name = Constants.PVName;
-            if (data[26] == null)
+            PVType = ParseData.String(data[26]);
+            PVDiamert = ParseData.String(data[27]);
+            try
             {
-                PVType = "";
+                ProvodPotencial1 = ParseData.FloatNullable(data[30]);//провод - 1
+                ProvodType1 = ParseData.String(data[32]);
+                ProvodDyamert1 = ParseData.String(data[33]);
+                ProvodTypePidklichenya1 = ParseData.ProvodTypePidklichenya(data[34]);
+                ProvodPotencial2 = ParseData.FloatNullable(data[35]); //провод - 2
+                ProvodType2 = ParseData.String(data[36]);
+                ProvodDaymetr2 = ParseData.String(data[37]);
+                ProvodTypePidklichenya2 = ParseData.ProvodTypePidklichenya(data[38]);
+                ProvodPotencial3 = ParseData.FloatNullable(data[39]);  //провод - 3
+                ProvodType3 = ParseData.String(data[40]);
+                ProvodDyametr3 = ParseData.String(data[41]);
+                ProvodTypePidklichenya3 = ParseData.ProvodTypePidklichenya(data[42]);
             }
-            else
+            catch
             {
-                PVType = data[26].ToString();
-            }
-            if (data[27] == null)
-            {
-                PVDiamert = "";
-            }
-            else
-            {
-                PVDiamert = data[27].ToString();
-            }
-            if (data[30] == null)   //провод - 1
-            {
-                ProvodPotencial1 = "";
-            }
-            else
-            {
-                ProvodPotencial1 = data[30].ToString();
-            }
-            if (data[32] == null)
-            {
-                ProvodType1 = "";
-            }
-            else
-            {
-                ProvodType1 = data[32].ToString();
-            }
-            if (data[33] == null)
-            {
-                ProvodDyamert1 = "";
-            }
-            else
-            {
-                ProvodDyamert1 = data[33].ToString();
-            }
-            if (data[34] == null)
-            {
-                ProvodTypePidklichenya1 = "";
-            }
-            else
-            {
-                ProvodTypePidklichenya1 = data[34].ToString();
-            }
-            if (data[35] == null)   //провод - 2
-            {
-                ProvodPotencial2 = "";
-            }
-            else
-            {
-                ProvodPotencial2 = data[35].ToString();
-            }
-            if (data[36] == null)
-            {
-                ProvodType2 = "";
-            }
-            else
-            {
-                ProvodType2 = data[36].ToString();
-            }
-            if (data[37] == null)
-            {
-                ProvodDaymetr2 = "";
-            }
-            else
-            {
-                ProvodDaymetr2 = data[37].ToString();
-            }
-            if (data[38] == null)
-            {
-                ProvodTypePidklichenya2 = "";
-            }
-            else
-            {
-                ProvodTypePidklichenya2 = data[38].ToString();
-            }
-            if (data[39] == null)   //провод - 3
-            {
-                ProvodPotencial3 = "";
-            }
-            else
-            {
-                ProvodPotencial3 = data[39].ToString();
-            }
-            if (data[40] == null)
-            {
-                ProvodType3 = "";
-            }
-            else
-            {
-                ProvodType3 = data[40].ToString();
-            }
-            if (data[41] == null)
-            {
-                ProvodDyametr3 = "";
-            }
-            else
-            {
-                ProvodDyametr3 = data[41].ToString();
-            }
-            if (data[42] == null)
-            {
-                ProvodTypePidklichenya3 = "";
-            }
-            else
-            {
-                ProvodTypePidklichenya3 = data[42].ToString();
+                ProvodTypePidklichenya1 = ProvodTypePidklichenyas.undefined;
+                ProvodTypePidklichenya2 = ProvodTypePidklichenyas.undefined;
+                ProvodTypePidklichenya2 = ProvodTypePidklichenyas.undefined;
+                Logs.AddError($"км {data[1]} проверьте потенциал на проводах");
             }
             if (data[227] == null)
             {
@@ -147,13 +59,36 @@ namespace ZvitEXZ.Models.Objects
             {
                 IsBroken = true;
             }
-            if (data[248] == null)
+            try
             {
-                NumberSvyazky = "";
+                NumberSvyazky = ParseData.Integer(data[248]);
             }
-            else
+            catch
             {
-                NumberSvyazky = data[248].ToString();
+                NumberSvyazky = 0;
+                Logs.AddError($"км {data[1]} проверьте номер привязки");
+            }
+        }
+        public string GetTypepidkluchennya(int provodNumber)
+        {
+            switch (provodNumber)
+            {
+                case 1: return GetProvodType(ProvodTypePidklichenya1);
+                case 2: return GetProvodType(ProvodTypePidklichenya2);
+                case 3: return GetProvodType(ProvodTypePidklichenya3);
+                default: return "";
+            }
+        }
+        private string GetProvodType(ProvodTypePidklichenyas type)
+        {
+            switch (type)
+            {
+                case ProvodTypePidklichenyas.pipe: return "трубопровід";
+                case ProvodTypePidklichenyas.pointDrenazh: return "потенціал труба - земля в точці дренажа";
+                case ProvodTypePidklichenyas.kozhuh: return "захисний кожух";
+                case ProvodTypePidklichenyas.upz: return "УПЗ-земля";
+                case ProvodTypePidklichenyas.storKommunication: return "стороння комунікація";
+                default: return "";
             }
         }
         public override string ToString()

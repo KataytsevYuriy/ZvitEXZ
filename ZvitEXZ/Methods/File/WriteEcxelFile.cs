@@ -17,9 +17,18 @@ namespace ZvitEXZ.Methods
             string path = Directory.GetCurrentDirectory();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Excel.Application excelApp = new Excel.Application();
+            string fileName = "";
+            if (System.IO.File.Exists($"{path}\\{Constants.ShablonFileName}"))
+            {
+                fileName = Constants.ShablonFileName;
+            }
+            else
+            {
+                fileName = Constants.ShablonFileName2;
+            }
             try
             {
-                Excel.Workbook workbook = excelApp.Workbooks.Open($"{path}\\{Constants.ShablonFileName}", Type.Missing, Type.Missing,
+                Excel.Workbook workbook = excelApp.Workbooks.Open($"{path}\\{fileName}", Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[sheetNumber];//получить N sheetNumber лист
@@ -29,6 +38,7 @@ namespace ZvitEXZ.Methods
                 worksheet.Range[rangeName].Value = objectName;
                 worksheet.Range[rangeName].Font.Bold = true;
                 worksheet.Range[rangeName].Font.Size = 12;
+                worksheet.Range[rangeName].HorizontalAlignment= Excel.XlHAlign.xlHAlignCenter;
                 excelApp.DisplayAlerts = false;
                 worksheet.Range[rangeName].Borders.Weight = 2d;
                 if (data.Length == 0)
@@ -37,6 +47,7 @@ namespace ZvitEXZ.Methods
                     excelApp.DisplayAlerts = false;
                     worksheet.Range[rangeDataEmpty].Merge();
                     worksheet.Range[rangeDataEmpty].Borders.Weight = 2d;
+                    worksheet.Range[rangeDataEmpty].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 }
                 else
                 {
@@ -45,6 +56,8 @@ namespace ZvitEXZ.Methods
                     worksheet.Range[rangeData].Borders.Weight = 2d;
                     worksheet.Range[rangeData].WrapText = true;
                     worksheet.Range[rangeData].VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    worksheet.Range[rangeData].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
                 }
                 worksheet.PageSetup.PrintArea = rangeToPrint;
                 CreateFolder createFolder = new CreateFolder();
@@ -53,7 +66,14 @@ namespace ZvitEXZ.Methods
                 Excel.Worksheet workSheet1 = (Excel.Worksheet)newWorkbook.Sheets[1];
                 worksheet.Copy(workSheet1);
                 workbook.Close(false);
-                newWorkbook.SaveAs($"{path}\\{folder}\\{newFileName}", Excel.XlFileFormat.xlExcel12);
+                try
+                {
+                    newWorkbook.SaveAs($"{path}\\{folder}\\{newFileName}", Excel.XlFileFormat.xlExcel12);
+                }
+                catch
+                {
+                    Logs.AddAlarm($"не удалось сохранить файл \"{newFileName}\" снимите защиту от записи");
+                }
             }
             finally
             {

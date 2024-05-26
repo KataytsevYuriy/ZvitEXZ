@@ -15,6 +15,7 @@ namespace ZvitEXZ.Methods.Calculations
         List<Nezahyst> nezahysts;
         List<KorNebezpechny> korNebezpechny;
         List<Povregdenya> povregdenyas;
+        List<RoadKozhuh> roadKozhuhs;
         public void CalculateAll(List<Zamer> zamers, ExcelDictionary dictionary)
         {
             SetMestnost setMestnost = new SetMestnost();
@@ -48,7 +49,18 @@ namespace ZvitEXZ.Methods.Calculations
             povregdenyas = getAllPovregdenya.Get(zamers, korNebezpechny);
             fileSaver.SavePovregd(povregdenyas);
 
+            //UPZ
+            GetAllUpz getAllUpz = new GetAllUpz();
+            List<UPZ> uPZs = getAllUpz.Get(zamers);
+            fileSaver.SaveUPZ(uPZs);
 
+            //Переходы с кожухом
+            GetAllRoadKozhuhs getAllRoadKozhuhs = new GetAllRoadKozhuhs();
+            roadKozhuhs = getAllRoadKozhuhs.Get(zamers);
+            fileSaver.SaveVymirKozhuh(roadKozhuhs);
+
+            //стан на переходах
+            fileSaver.SaveStanNaPerehode(roadKozhuhs);
 
             Logs.AddLog("Таблицы построены");
 

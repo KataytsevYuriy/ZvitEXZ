@@ -16,25 +16,11 @@ namespace ZvitEXZ.Models.Objects
         {
             Name = Constants.DilyankaKorNebName;
 
-            if (data[116] == null)
+            Border = ParseData.StartAndEnd(data[116]);
+            if (Border == StartEnd.undefined)
             {
-                Border = StartEnd.undefined;
                 Logs.AddError($"км {data[1]} укажите границу кор-неб участка");
             }
-            else if (data[116].ToString() == "початок")
-            {
-                Border = StartEnd.start;
-            }
-            else if (data[116].ToString() == "кінець")
-            {
-                Border = StartEnd.end;
-            }
-            else
-            {
-                Border = StartEnd.undefined;
-                Logs.AddError($"км {data[1]} неверно указана граница кор-неб участка");
-            }
-
             if (data[117] == null)
             {
                 Reazon = CharacterCorneb.undefined;

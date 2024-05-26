@@ -12,6 +12,8 @@ namespace ZvitEXZ.Models
         public const string PVName = "ПВ";
         public const string LepName = "ЛЕП";
         public const string LepNameInNaborka = "ЛЭП";
+        public const string RoadName = "Дорога";
+        public const string RoadNameInNaborka = "Дорога";
         public const string RiverName = "Річка";
         public const string RiverNameInNaborka = "Река";
         public const string SwampName = "Болото";
@@ -63,9 +65,11 @@ namespace ZvitEXZ.Models
         public const string ObjectInNaborka = "Объект";
         public const string PerehodDNName = "Перехід діаметрів";
         public const string PerehodDNInNaborka = "Переход DN";
+        public const string UPZName = "УПЗ";
+        public const string UPZNInNaborka = "УПЗ";
 
         //File Names
-        //public const string ShablonFileName = "Shablon.xlsb";
+        public const string ShablonFileName2 = "Shablon.xlsb";
         public const string ShablonFileName = @"..\..\Shablon.xlsb";
         public const string PVFolderName = "Додаток_И-ПВ";
         public const string NezahFolderName = "Додаток_М-Незахист";
@@ -73,6 +77,10 @@ namespace ZvitEXZ.Models
         public const string ZvedenaFolderName = "Додаток_Р-Зведена";
         public const string UkzFolderName = "Додаток_Д-УКЗ";
         public const string PovregdFolderName = "Додаток_Р-Пошкодження";
+        public const string UpzFolderName = "Додаток_Ж-УПЗ";
+        public const string PerehodFolderName = "Додаток_Н-Переходи";
+        public const string PerehodKozhuhFileName = "Додаток_Н-Вимір_кожух";
+        public const string PerehodStanFileName = "Додаток_Н-Стан_переходу";
 
         //Korneb
         public const string KorNebNezahMessage = "Eзах менше нормативного";
@@ -85,6 +93,9 @@ namespace ZvitEXZ.Models
         public const string PrintMessageNezahIsEmpty = "На обстеженому трубопроводі ділянки із недостатнім зівнем захисного потенціалу - відсутні";
         public const string PrintMessageUkzIsEmpty = "На обстеженому трубопроводі УКЗ - відсутні";
         public const string PrintMessagepovregdIsEmpty = "На обстеженому трубопроводі пошкождення ізоляції - відсутні";
+        public const string PrintMessageUpzdIsEmpty = "На обстеженому трубопроводі УПЗ - відсутні";
+        public const string PrintMessagePerehodKozhuhIsEmpty = "На обстеженому трубопроводі переходи через автодороги та залізниці в кожусі - відсутні";
+        public const string PrintMessageStanPerehoduIsEmpty = "На обстеженому трубопроводі переходи через автодороги та залізниці - відсутні";
 
         //Mestnoct
         public const string MestnostCX = "с/г угіддя";

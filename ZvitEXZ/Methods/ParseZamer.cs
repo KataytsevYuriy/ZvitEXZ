@@ -18,6 +18,7 @@ namespace ZvitEXZ.Methods
                 case Constants.PVName: return new PV(data);
                 case Constants.LepNameInNaborka: return new Lep(data);
                 case Constants.RiverNameInNaborka: return new River(data);
+                case Constants.RoadNameInNaborka: return new Road(data);
                 case Constants.SwampNameInNaborka: return new Swamp(data);
                 case Constants.PovorotNameInNaborka: return new Povorot(data);
                 case Constants.SvechaNameInNaborka: return new Svecha(data);
@@ -42,6 +43,7 @@ namespace ZvitEXZ.Methods
                 case Constants.DripInNaborka:return new Drip(data);
                 case Constants.ObjectInNaborka:return new ObjectZamer(data);
                 case Constants.PerehodDNInNaborka:return new PerehodDn(data);
+                case Constants.UPZNInNaborka:return new UPZ(data);
 
 
                 default:

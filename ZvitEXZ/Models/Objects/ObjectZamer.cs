@@ -25,21 +25,14 @@ namespace ZvitEXZ.Models.Objects
                 ObjectName = data[221].ToString();
             }
 
-            if (data[76] == null)
+            try
+            {
+                Uobject = ParseData.FloatNullable(data[76]);
+            }
+            catch
             {
                 Uobject = null;
-            }
-            else
-            {
-                try
-                {
-                    Uobject = (float)Parse.ParseFloat(data[76].ToString());
-                }
-                catch
-                {
-                    Uobject = null;
-                    Logs.AddError($"км {data[1]} Неверный потенциал объекта");
-                }
+                Logs.AddError($"км {data[1]} Неверный потенциал объекта");
             }
         }
         public override string ToString()

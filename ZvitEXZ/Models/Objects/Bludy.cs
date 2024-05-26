@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models;
+using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
@@ -14,32 +15,8 @@ namespace ZvitEXZ.Models.Objects
         public Bludy(object[] data) : base(data)
         {
             Name = Constants.BludyName;
-
-            if (data[118] == null)
-            {
-                Posytion = StartEnd.undefined;
-            }
-            else if (data[118].ToString() == "початок")
-            {
-                Posytion = StartEnd.start;
-            }
-            else if (data[118].ToString() == "кінець")
-            {
-                Posytion = StartEnd.end;
-            }
-            else
-            {
-                Posytion = StartEnd.undefined;
-            }
-
-            if (data[119] == null)
-            {
-                ZnakoPeremen = "";
-            }
-            else
-            {
-                ZnakoPeremen = data[119].ToString();
-            }
+            Posytion = ParseData.StartAndEnd(data[118]);
+            ZnakoPeremen = ParseData.String(data[119]);
         }
         public override string ToString()
         {

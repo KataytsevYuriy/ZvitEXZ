@@ -63,7 +63,9 @@
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
+    <Compile Include="Methods\Calculations\GetAllRoadKozhuhss.cs" />
     <Compile Include="Methods\Calculations\GetAllUkz.cs" />
+    <Compile Include="Methods\Calculations\GetAllUpz.cs" />
     <Compile Include="Methods\Calculations\GetKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
@@ -72,17 +74,21 @@
     <Compile Include="Methods\File\SaveToFiles.cs" />
     <Compile Include="Methods\Calculations\GetAllPV.cs" />
     <Compile Include="Methods\File\WriteToFile.cs" />
+    <Compile Include="Methods\IsAllowed.cs" />
     <Compile Include="Methods\Logs.cs" />
     <Compile Include="Methods\Parse.cs" />
     <Compile Include="Methods\ParseAllZamers.cs" />
+    <Compile Include="Methods\ParseData.cs" />
     <Compile Include="Methods\ParseZamer.cs" />
     <Compile Include="Methods\PipeName.cs" />
     <Compile Include="Methods\ReadExcelFile.cs" />
     <Compile Include="Methods\SetMestnost.cs" />
     <Compile Include="Methods\File\WriteEcxelFile.cs" />
+    <Compile Include="Methods\ConvertToString.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
     <Compile Include="Models\Calculations\Nezahyst.cs" />
     <Compile Include="Models\Calculations\Povregdenya.cs" />
+    <Compile Include="Models\Calculations\RoadKozhuh.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\ExcelDictionary.cs" />
     <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />
@@ -103,6 +109,7 @@
     <Compile Include="Models\Objects\PerehodDn.cs" />
     <Compile Include="Models\Objects\Povorot.cs" />
     <Compile Include="Models\Objects\ProtectionTypes.cs" />
+    <Compile Include="Models\Objects\ProvodTypePidklichenyas.cs" />
     <Compile Include="Models\Objects\Road.cs" />
     <Compile Include="Models\Objects\RoadTypes.cs" />
     <Compile Include="Models\Objects\Shurf.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="Models\Objects\Truboprovod.cs" />
     <Compile Include="Models\Objects\UDZ.cs" />
     <Compile Include="Models\Objects\UKZ.cs" />
+    <Compile Include="Models\Objects\UPZ.cs" />
     <Compile Include="Models\Objects\VyhodIsZemly.cs" />
     <Compile Include="Models\Objects\Yama.cs" />
     <Compile Include="Models\Objects\Zamer.cs" />

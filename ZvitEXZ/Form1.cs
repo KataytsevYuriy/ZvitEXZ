@@ -19,8 +19,6 @@ namespace ZvitEXZ
     {
         List<Zamer> zamers = new List<Zamer>();
         public ExcelDictionary ExcelDictionary;
-        string baseFileName;
-        List<LogMessage> logMessages = new List<LogMessage>();
         public Form1()
         {
             InitializeComponent();
@@ -35,18 +33,23 @@ namespace ZvitEXZ
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             string fileName = openFileDialog1.FileName;
             labelFileName.Text = Path.GetFileName(fileName);
-            baseFileName = Path.GetFileNameWithoutExtension(fileName);
             ReadExcelFile fileReader = new ReadExcelFile();
             List<object[]> listObjects = new List<object[]>();
             listObjects = fileReader.ReadFile(fileName);
             ParseAllZamers parseAllZamers = new ParseAllZamers();
             zamers = parseAllZamers.Parse(listObjects, out ExcelDictionary);
+            IsAllowed isAllowed = new IsAllowed();
+            isAllowed.Check();
             if (zamers.Count > 0)
             {
                 Logs.AddLog($"Файл прочтен, колличество замеров {zamers.Count}");
                 btnCalculate.Enabled = true;
             }
-            else Logs.AddAlarm("Файл не прочтен");
+            else
+            {
+                Logs.AddAlarm("Файл не прочтен");
+                Logs.AddError("\"Я там не ходив...\"");
+            }
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

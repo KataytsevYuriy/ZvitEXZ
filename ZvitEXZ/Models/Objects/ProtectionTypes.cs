@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.Objects
 {
-    public class ProtectionTypes
+    public enum ProtectionTypes
     {
-        public enum Type
-        {
-            without,hasProtector,bzk
-        }
+        undefined, without, hasProtector, bzk
     }
 }

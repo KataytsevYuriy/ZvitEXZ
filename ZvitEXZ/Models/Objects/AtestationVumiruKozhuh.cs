@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.Objects
 {
-    public class AtestationVumiruKozhuhs
+    public enum AtestationVumiruKozhuhs
     {
-        public enum Atestation
-        {
-            undefined, noKontakt, elektrolitKontakt, kontakt, noPV, coudNotCheck
-        }
+        undefined, noKontakt, elektrolitKontakt, kontakt, noPV, coudNotCheck
     }
 }

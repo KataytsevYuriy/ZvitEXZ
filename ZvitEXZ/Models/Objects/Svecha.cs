@@ -12,7 +12,6 @@ namespace ZvitEXZ.Models.Objects
         public SvechaSpecifications.SpecificationType Specification { get; set; }
         public SvechaSpecifications.TehnicState TehnicState { get; set; }
         public float? USvechy { get; set; }
-        public int NumberSvyazky { get; set; }
         public Svecha(object[] data) : base(data)
         {
             Name = Constants.SvechaName;

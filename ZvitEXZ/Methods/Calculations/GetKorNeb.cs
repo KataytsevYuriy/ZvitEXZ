@@ -30,6 +30,7 @@ namespace ZvitEXZ.Methods.Calculations
             BySwamp();
             ByTruboprovod();
             BySvalka();
+            ByBludy();
 
             SortKorNeb();
             return korNebezpechny;
@@ -234,6 +235,33 @@ namespace ZvitEXZ.Methods.Calculations
                     Svalka svalka = item as Svalka;
                     if (svalka.Svalkalength > 0)
                         korNebezpechny.Add(new KorNebezpechny(svalka.Km, svalka.Km + (float)svalka.Svalkalength / 1000, filter));
+                }
+            }
+        }
+        private void ByBludy()
+        {
+            float kmStartPipe = zamers.First().Km;
+            float kmFinishPipe = zamers.Last().Km;
+            float kmStart = 0;
+            float kmFinish = 0;
+            bool isBludyStarted = false;
+            foreach (Zamer zamer in zamers)
+            {
+                if (zamer.Name != Constants.BludyName) continue;
+                Bludy bludy = zamer as Bludy;
+                if (bludy.Posytion == StartEnd.start)
+                {
+                    if (isBludyStarted) Logs.AddError($"км {kmStart} есть только начало блудов");
+                    kmStart = bludy.Km;
+                    if (kmStart - kmStartPipe < 0.01) kmStart = kmStartPipe;
+                    isBludyStarted = true;
+                }
+                if (bludy.Posytion == StartEnd.end)
+                {
+                    kmFinish = bludy.Km;
+                    if (!isBludyStarted) Logs.AddError($"км {kmFinish} есть только окончание блудов");
+                    if (kmFinishPipe - kmFinish < 0.01) kmFinish = kmFinishPipe;
+                    korNebezpechny.Add(new KorNebezpechny(kmStart, kmFinish, Constants.BludyName));
                 }
             }
         }
