@@ -132,7 +132,6 @@
             // cbPovitrPerehody
             // 
             this.cbPovitrPerehody.AutoSize = true;
-            this.cbPovitrPerehody.Enabled = false;
             this.cbPovitrPerehody.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbPovitrPerehody.Location = new System.Drawing.Point(18, 311);
             this.cbPovitrPerehody.Name = "cbPovitrPerehody";

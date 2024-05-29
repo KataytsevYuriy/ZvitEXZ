@@ -80,6 +80,7 @@ namespace ZvitEXZ.Models
         public const string UpzFolderName = "Додаток_Ж-УПЗ";
         public const string FlanetsFolderName = "Додаток_П-Фланці";
         public const string PerehodFolderName = "Додаток_Н-Переходи";
+        public const string PovitrPerehodFolderName = "Додаток_Ф-Повітряні_Переходи";
         public const string PerehodKozhuhFileName = "Додаток_Н-Вимір_кожух";
         public const string PerehodStanFileName = "Додаток_Н-Стан_переходу";
 
@@ -98,6 +99,7 @@ namespace ZvitEXZ.Models
         public const string PrintMessagePerehodKozhuhIsEmpty = "На обстеженому трубопроводі переходи через автодороги та залізниці в кожусі - відсутні";
         public const string PrintMessageStanPerehoduIsEmpty = "На обстеженому трубопроводі переходи через автодороги та залізниці - відсутні";
         public const string PrintMessageFlanetsIsEmpty = "На обстеженому трубопроводі електроізолююці фланці - відсутні";
+        public const string PrintMessagePovitrPerehIsEmpty = "На обстеженому трубопроводі повітряні переходи - відсутні";
 
         //Mestnoct
         public const string MestnostCX = "с/г угіддя";

@@ -76,7 +76,7 @@ namespace ZvitEXZ.Methods.File
                 res[i, 0] = Math.Round(item.KmStart * 1000).ToString();
                 res[i, 1] = Math.Round(item.KmEnd * 1000).ToString();
                 res[i, 2] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
-                res[i, 3] = $"-{Math.Round(item.MinUtz, 3).ToString().Replace(".", ",")}";
+                res[i, 3] = $"-{ConvertToString.FloatToString(item.MinUtz)}";
                 res[i, 4] = "";
                 res[i, 5] = "";
                 res[i, 6] = item.MinGpsN;
@@ -95,24 +95,23 @@ namespace ZvitEXZ.Methods.File
             {
                 UKZ item = zamer as UKZ;
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = item.Km.ToString().Replace(".", ",");
+                res[i, 1] = ConvertToString.FloatToString(item.Km);
                 res[i, 2] = item.Identificator;
                 res[i, 3] = item.TypeUkryttya;
                 res[i, 4] = item.PreobrazovatelType;
                 res[i, 5] = item.StartUsing;
                 res[i, 6] = item.Power.Replace(".", ",");
-                res[i, 7] = item.Uwork == null ? "" : item.Uwork.ToString().Replace(".", ",");
-                res[i, 8] = item.Iwork == null ? "" : item.Iwork.ToString().Replace(".", ",");
-                res[i, 9] = item.Umax == null ? "" : item.Umax.ToString().Replace(".", ",");
-                res[i, 10] = item.Imax == null ? "" : item.Imax.ToString().Replace(".", ",");
+                res[i, 7] = ConvertToString.FloatToString(item.Uwork);
+                res[i, 8] = ConvertToString.FloatToString(item.Iwork);
+                res[i, 9] = ConvertToString.FloatToString(item.Umax);
+                res[i, 10] = ConvertToString.FloatToString(item.Imax);
                 if (item.Umax == null || item.Imax == null || item.Uwork == null || item.Iwork == null)
                 {
                     res[i, 11] = "";
                 }
                 else
                 {
-                    res[i, 11] = Math.Round((float)((item.Uwork * item.Iwork) / (item.Umax * item.Imax) * 100), 1)
-                        .ToString("0.0").Replace(".", ",");
+                    res[i, 11] = ConvertToString.FloatToString(item.Uwork * item.Iwork / (item.Umax * item.Imax) * 100, 1);
                 }
                 if (item.Imax == null || item.Iwork == null)
                 {
@@ -120,8 +119,7 @@ namespace ZvitEXZ.Methods.File
                 }
                 else
                 {
-                    res[i, 12] = Math.Round((float)(item.Iwork / item.Imax) * 100, 1).
-                        ToString("0.0").Replace(".", ",");
+                    res[i, 12] = ConvertToString.FloatToString((float)(item.Iwork / item.Imax) * 100, 1);
                 }
                 res[i, 13] = item.RecomendedPower.Replace(".", ",");
                 res[i, 14] = item.UtzOn.Replace(".", ",");
@@ -153,8 +151,8 @@ namespace ZvitEXZ.Methods.File
                 res[i, 3] = Math.Round((item.KmFinish - item.KmStart) * 1000).ToString();
                 res[i, 4] = item.GpsN;
                 res[i, 5] = item.GpsE;
-                res[i, 6] = Math.Round(item.MaxGradient, 3).ToString();
-                res[i, 7] = "-" + Math.Round(item.UMaxGradient, 3).ToString();
+                res[i, 6] = ConvertToString.FloatToString(item.MaxGradient);
+                res[i, 7] = ConvertToString.FloatToString(item.UMaxGradient);
                 res[i, 8] = item.Cherga.ToString();
                 res[i, 9] = "";
                 i++;
@@ -170,9 +168,9 @@ namespace ZvitEXZ.Methods.File
             foreach (UPZ item in data)
             {
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = Math.Round(item.Km, 3).ToString().Replace(".", ",");
+                res[i, 1] = ConvertToString.FloatToString(item.Km, 3);
                 res[i, 2] = item.BuildingDate;
-                res[i, 3] = Math.Round((float)item.Rhr).ToString();
+                res[i, 3] = ConvertToString.FloatToString(item.Rhr, 1);
                 res[i, 4] = item.ProtectorType;
                 res[i, 5] = item.ProtectorBuilder;
                 res[i, 6] = item.ProtectorCount;
@@ -336,6 +334,11 @@ namespace ZvitEXZ.Methods.File
         {
             ListFlanetsToMassive converter = new ListFlanetsToMassive();
             return converter.Convert(flantsy);
+        }
+        public string[,] ConvertPovitrPerehody(List<PovitrPerehod> povitrPerehody)
+        {
+            ListPovitrPerehToMassive converter = new ListPovitrPerehToMassive();
+            return converter.Convert(povitrPerehody);
         }
     }
 }

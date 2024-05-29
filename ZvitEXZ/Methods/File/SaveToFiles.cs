@@ -68,11 +68,17 @@ namespace ZvitEXZ.Methods.File
                 converter.ConvertStanNaPerehode(roadKozhuhs), "A", "K", "K",
                 Constants.PrintMessageStanPerehoduIsEmpty, 9, Constants.PerehodStanFileName);
         }
-         public void SaveFlantsy(List<Flanets> flantsy)
+        public void SaveFlantsy(List<Flanets> flantsy)
         {
             writeToFile.WriteFile(_fileName, Constants.FlanetsFolderName, _pipeName,
                 converter.ConvertFlantsy(flantsy), "A", "M", "M",
                 Constants.PrintMessageFlanetsIsEmpty, 10);
+        }
+        public void SavePovitrPerehody(List<PovitrPerehod> perehods)
+        {
+            writeToFile.WriteFile(_fileName, Constants.PovitrPerehodFolderName, _pipeName,
+                converter.ConvertPovitrPerehody(perehods), "A", "K", "K",
+                Constants.PrintMessagePovitrPerehIsEmpty, 11);
         }
 
     }

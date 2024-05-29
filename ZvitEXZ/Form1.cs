@@ -81,7 +81,7 @@ namespace ZvitEXZ
                 cbNezah.Checked = true; cbPereh.Checked = true;
                 cbFlantsy.Checked = true;
                 cbZvedena.Checked = true; //cbShurfy.Checked = true;
-                //cbPovitrPerehody.Checked = true;
+                cbPovitrPerehody.Checked = true;
             }
             else if (clearAll)
             {

@@ -27,7 +27,7 @@ namespace ZvitEXZ.Methods.Calculations
                 }
                 else if (zamer.Name == Constants.VyhodIsZemlyName)
                 {
-                    flantsy.Add((zamer as VyhodIsZemly)._Flanets);
+                    flantsy.Add((zamer as VyhodIsZemly).Flanets);
                 }
             }
             return flantsy.Where(fl => fl.FlanetsType == FlanetsTypes.isolative ||

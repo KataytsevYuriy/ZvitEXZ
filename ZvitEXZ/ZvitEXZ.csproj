@@ -64,6 +64,7 @@
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
+    <Compile Include="Methods\Calculations\GetAllPovitrPerehody.cs" />
     <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
     <Compile Include="Methods\Calculations\GetAllRoadKozhuhss.cs" />
     <Compile Include="Methods\Calculations\GetAllUkz.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Methods\Calculations\GetNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\Converters\ListFlanetsToMassive.cs" />
+    <Compile Include="Methods\File\Converters\ListPovitrPerehToMassive.cs" />
     <Compile Include="Methods\File\ConvertListToFile.cs" />
     <Compile Include="Methods\File\ConvertZamersToZvedena.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Models\Calculations\Checked.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
     <Compile Include="Models\Calculations\Nezahyst.cs" />
+    <Compile Include="Models\Calculations\PovitrPerehod.cs" />
     <Compile Include="Models\Calculations\Povregdenya.cs" />
     <Compile Include="Models\Calculations\RoadKozhuh.cs" />
     <Compile Include="Models\Constants.cs" />

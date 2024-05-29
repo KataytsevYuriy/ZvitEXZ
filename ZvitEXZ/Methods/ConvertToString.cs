@@ -8,10 +8,10 @@ namespace ZvitEXZ.Methods
 {
     internal static class ConvertToString
     {
-        public static string FloatToString(float? data)
+        public static string FloatToString(float? data, int decimalCount = 3)
         {
             if (data == null) return "";
-            return Math.Round((float)data, 3).ToString().Replace(".", ",");
+            return Math.Round((float)data, decimalCount).ToString().Replace(".", ",");
         }
     }
 }

@@ -126,6 +126,16 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.Flantsy();
             }
 
+            //Povitr Perehody
+            if (checkeD.IsPovitrPerehody)
+            {
+                GetAllPovitrPerehody getAllPovitrPerehody = new GetAllPovitrPerehody();
+                List<PovitrPerehod> povitrPerehods = getAllPovitrPerehody.Get(zamers);
+                fileSaver.SavePovitrPerehody(povitrPerehods);
+                Progress.AddStep();
+                Done.povitrPerehody();
+            }
+
             Logs.AddLog("Таблицы построены");
             Progress.Finish();
         }
