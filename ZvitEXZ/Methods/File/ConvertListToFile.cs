@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Models.Calculations;
+using ZvitEXZ.Methods.File.Converters;
 
 namespace ZvitEXZ.Methods.File
 {
@@ -330,6 +331,11 @@ namespace ZvitEXZ.Methods.File
                 res = $"{res}{recomendStart}{recomendEnd}{recomendSvecha}{recomendContact}";
             }
             return res;
+        }
+        public string[,] ConvertFlantsy(List<Flanets> flantsy)
+        {
+            ListFlanetsToMassive converter = new ListFlanetsToMassive();
+            return converter.Convert(flantsy);
         }
     }
 }

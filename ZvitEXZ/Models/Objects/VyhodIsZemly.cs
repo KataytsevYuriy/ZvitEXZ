@@ -4,31 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models;
+using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
     internal class VyhodIsZemly : Zamer
     {
-        public PerehodType Type { get; set; }
+        public PerehodTypes PerehodType { get; set; }
+        public Flanets _Flanets { get; set; }
+
         public VyhodIsZemly(object[] data) : base(data)
         {
             Name = Constants.VyhodIsZemlyName;
+            string flanetsPlace = "";
             if (data[109] == null)
             {
-                Type = PerehodType.undefined;
+                PerehodType = PerehodTypes.undefined;
             }
             else if (data[109].ToString() == "початок")
             {
-                Type = PerehodType.start;
+                PerehodType = PerehodTypes.start;
+                flanetsPlace = "на початку переходу";
             }
-            else Type = PerehodType.finish;
+            else
+            {
+                PerehodType = PerehodTypes.finish;
+                flanetsPlace = "в кінці переходу";
+            }
+            _Flanets = new Flanets(Km, $"{Name} км {ConvertToString.FloatToString(Km)}", "-", data[209], data[210],
+                data[110], data[111], data[123], flanetsPlace, data[211], data[224]);
         }
         public override string ToString()
         {
-            if (Type == PerehodType.start) return $"{Name} початок";
-            if (Type == PerehodType.finish) return $"{Name} кінець";
+            if (PerehodType == PerehodTypes.start) return $"{Name} початок";
+            if (PerehodType == PerehodTypes.finish) return $"{Name} кінець";
             return Name;
         }
     }
-    public enum PerehodType { undefined, start, finish }
+    public enum PerehodTypes { undefined, start, finish }
 }

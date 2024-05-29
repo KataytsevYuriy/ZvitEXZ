@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ZvitEXZ.Models.Calculations
+{
+    public class Checked
+    {
+        public bool IsUkz { get; }
+        public bool IsUpz { get; }
+        public bool IsPv { get; }
+        public bool IsKorneb { get; }
+        public bool IsPovregd { get; }
+        public bool IsPovregdGNT { get; }
+        public bool IsNezahyst { get; }
+        public bool IsPerehody { get; }
+        public bool IsFlantsy { get; }
+        public bool IsZvedena { get; }
+        public bool IsShurfy { get; }
+        public bool IsPovitrPerehody { get; }
+        public int CountTrue { get; }
+        public Checked(bool ukz, bool upz, bool pv, bool korneb, bool povregd, bool povregdGnt, bool nezah,
+            bool perehody, bool flantsy, bool zvedena, bool shurfy, bool povitrPerehody)
+        {
+            CountTrue = 0;
+            IsUkz = ukz; IsUpz = upz; IsPv = pv;
+            IsKorneb = korneb; IsPovregd = povregd; IsPovregdGNT = povregdGnt;
+            IsNezahyst = nezah; IsPerehody = perehody;
+            IsFlantsy = flantsy; IsZvedena = zvedena; IsShurfy = shurfy;
+            IsPovitrPerehody = povitrPerehody;
+            if (IsUkz) CountTrue++;
+            if (IsUpz) CountTrue++;
+            if (IsPv) CountTrue++;
+            if (IsKorneb) CountTrue++;
+            if (IsPovregd) CountTrue++;
+            if (IsPovregdGNT) CountTrue++;
+            if (IsNezahyst) CountTrue++;
+            if (IsPerehody) CountTrue++;
+            if (IsFlantsy) CountTrue++;
+            if (IsZvedena) CountTrue++;
+            if (IsShurfy) CountTrue++;
+            if (IsPovitrPerehody) CountTrue++;
+        }
+        public Checked(Form1 form1) : this(form1.cbUkz.Checked, form1.cbUpz.Checked, form1.cbPv.Checked,
+            form1.cbKorneb.Checked, form1.cbPovregd.Checked, form1.cbPovregdGNT.Checked, form1.cbNezah.Checked,
+            form1.cbPereh.Checked, form1.cbFlantsy.Checked, form1.cbZvedena.Checked, form1.cbShurfy.Checked,
+            form1.cbPovitrPerehody.Checked)
+        {
+        }
+    }
+}

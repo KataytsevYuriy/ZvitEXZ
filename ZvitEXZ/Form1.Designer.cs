@@ -33,13 +33,31 @@
             this.rTBLogs = new System.Windows.Forms.RichTextBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.labelFileName = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbPovitrPerehody = new System.Windows.Forms.CheckBox();
+            this.cbShurfy = new System.Windows.Forms.CheckBox();
+            this.cbZvedena = new System.Windows.Forms.CheckBox();
+            this.cbFlantsy = new System.Windows.Forms.CheckBox();
+            this.cbPereh = new System.Windows.Forms.CheckBox();
+            this.cbNezah = new System.Windows.Forms.CheckBox();
+            this.cbPovregdGNT = new System.Windows.Forms.CheckBox();
+            this.cbPovregd = new System.Windows.Forms.CheckBox();
+            this.cbKorneb = new System.Windows.Forms.CheckBox();
+            this.cbPv = new System.Windows.Forms.CheckBox();
+            this.cbUpz = new System.Windows.Forms.CheckBox();
+            this.cbUkz = new System.Windows.Forms.CheckBox();
+            this.cbAll = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpen
             // 
+            this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpen.Location = new System.Drawing.Point(12, 12);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.Size = new System.Drawing.Size(89, 32);
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open File";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -52,12 +70,12 @@
             // rTBLogs
             // 
             this.rTBLogs.BackColor = System.Drawing.SystemColors.Control;
-            this.rTBLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rTBLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rTBLogs.HideSelection = false;
-            this.rTBLogs.Location = new System.Drawing.Point(469, 12);
+            this.rTBLogs.Location = new System.Drawing.Point(539, 2);
             this.rTBLogs.Name = "rTBLogs";
             this.rTBLogs.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rTBLogs.Size = new System.Drawing.Size(338, 426);
+            this.rTBLogs.Size = new System.Drawing.Size(464, 455);
             this.rTBLogs.TabIndex = 3;
             this.rTBLogs.Text = "";
             this.rTBLogs.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -65,9 +83,10 @@
             // btnCalculate
             // 
             this.btnCalculate.Enabled = false;
+            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCalculate.Location = new System.Drawing.Point(12, 97);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+            this.btnCalculate.Size = new System.Drawing.Size(123, 33);
             this.btnCalculate.TabIndex = 5;
             this.btnCalculate.Text = "Рассчитать";
             this.btnCalculate.UseVisualStyleBackColor = true;
@@ -81,11 +100,213 @@
             this.labelFileName.Size = new System.Drawing.Size(0, 13);
             this.labelFileName.TabIndex = 6;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 466);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(991, 23);
+            this.progressBar1.TabIndex = 7;
+            this.progressBar1.UseWaitCursor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbPovitrPerehody);
+            this.panel1.Controls.Add(this.cbShurfy);
+            this.panel1.Controls.Add(this.cbZvedena);
+            this.panel1.Controls.Add(this.cbFlantsy);
+            this.panel1.Controls.Add(this.cbPereh);
+            this.panel1.Controls.Add(this.cbNezah);
+            this.panel1.Controls.Add(this.cbPovregdGNT);
+            this.panel1.Controls.Add(this.cbPovregd);
+            this.panel1.Controls.Add(this.cbKorneb);
+            this.panel1.Controls.Add(this.cbPv);
+            this.panel1.Controls.Add(this.cbUpz);
+            this.panel1.Controls.Add(this.cbUkz);
+            this.panel1.Controls.Add(this.cbAll);
+            this.panel1.Location = new System.Drawing.Point(208, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(308, 348);
+            this.panel1.TabIndex = 8;
+            // 
+            // cbPovitrPerehody
+            // 
+            this.cbPovitrPerehody.AutoSize = true;
+            this.cbPovitrPerehody.Enabled = false;
+            this.cbPovitrPerehody.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPovitrPerehody.Location = new System.Drawing.Point(18, 311);
+            this.cbPovitrPerehody.Name = "cbPovitrPerehody";
+            this.cbPovitrPerehody.Size = new System.Drawing.Size(201, 22);
+            this.cbPovitrPerehody.TabIndex = 12;
+            this.cbPovitrPerehody.Text = "Ф-Воздушные Переходы";
+            this.cbPovitrPerehody.UseVisualStyleBackColor = true;
+            this.cbPovitrPerehody.CheckedChanged += new System.EventHandler(this.cbPovitrPerehody_CheckedChanged);
+            // 
+            // cbShurfy
+            // 
+            this.cbShurfy.AutoSize = true;
+            this.cbShurfy.Enabled = false;
+            this.cbShurfy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbShurfy.Location = new System.Drawing.Point(18, 285);
+            this.cbShurfy.Name = "cbShurfy";
+            this.cbShurfy.Size = new System.Drawing.Size(94, 22);
+            this.cbShurfy.TabIndex = 11;
+            this.cbShurfy.Text = "У-Шурфы";
+            this.cbShurfy.UseVisualStyleBackColor = true;
+            this.cbShurfy.CheckedChanged += new System.EventHandler(this.cbShurfy_CheckedChanged);
+            // 
+            // cbZvedena
+            // 
+            this.cbZvedena.AutoSize = true;
+            this.cbZvedena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbZvedena.Location = new System.Drawing.Point(18, 262);
+            this.cbZvedena.Name = "cbZvedena";
+            this.cbZvedena.Size = new System.Drawing.Size(102, 22);
+            this.cbZvedena.TabIndex = 10;
+            this.cbZvedena.Text = "С-Зведена";
+            this.cbZvedena.UseVisualStyleBackColor = true;
+            this.cbZvedena.CheckedChanged += new System.EventHandler(this.cbZvedena_CheckedChanged);
+            // 
+            // cbFlantsy
+            // 
+            this.cbFlantsy.AutoSize = true;
+            this.cbFlantsy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbFlantsy.Location = new System.Drawing.Point(18, 236);
+            this.cbFlantsy.Name = "cbFlantsy";
+            this.cbFlantsy.Size = new System.Drawing.Size(100, 22);
+            this.cbFlantsy.TabIndex = 9;
+            this.cbFlantsy.Text = "П-Фланцы";
+            this.cbFlantsy.UseVisualStyleBackColor = true;
+            this.cbFlantsy.CheckedChanged += new System.EventHandler(this.cbFlantsy_CheckedChanged);
+            // 
+            // cbPereh
+            // 
+            this.cbPereh.AutoSize = true;
+            this.cbPereh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPereh.Location = new System.Drawing.Point(18, 211);
+            this.cbPereh.Name = "cbPereh";
+            this.cbPereh.Size = new System.Drawing.Size(111, 22);
+            this.cbPereh.TabIndex = 8;
+            this.cbPereh.Text = "Н-Переходи";
+            this.cbPereh.UseVisualStyleBackColor = true;
+            this.cbPereh.CheckedChanged += new System.EventHandler(this.cbPereh_CheckedChanged);
+            // 
+            // cbNezah
+            // 
+            this.cbNezah.AutoSize = true;
+            this.cbNezah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbNezah.Location = new System.Drawing.Point(18, 185);
+            this.cbNezah.Name = "cbNezah";
+            this.cbNezah.Size = new System.Drawing.Size(110, 22);
+            this.cbNezah.TabIndex = 7;
+            this.cbNezah.Text = "М-Незахист";
+            this.cbNezah.UseVisualStyleBackColor = true;
+            this.cbNezah.CheckedChanged += new System.EventHandler(this.cbNezah_CheckedChanged);
+            // 
+            // cbPovregdGNT
+            // 
+            this.cbPovregdGNT.AutoSize = true;
+            this.cbPovregdGNT.Enabled = false;
+            this.cbPovregdGNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPovregdGNT.Location = new System.Drawing.Point(18, 162);
+            this.cbPovregdGNT.Name = "cbPovregdGNT";
+            this.cbPovregdGNT.Size = new System.Drawing.Size(175, 22);
+            this.cbPovregdGNT.TabIndex = 6;
+            this.cbPovregdGNT.Text = "Р-Пошкодження ГНТ";
+            this.cbPovregdGNT.UseVisualStyleBackColor = true;
+            this.cbPovregdGNT.CheckedChanged += new System.EventHandler(this.cbPovregdGNT_CheckedChanged);
+            // 
+            // cbPovregd
+            // 
+            this.cbPovregd.AutoSize = true;
+            this.cbPovregd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPovregd.Location = new System.Drawing.Point(18, 136);
+            this.cbPovregd.Name = "cbPovregd";
+            this.cbPovregd.Size = new System.Drawing.Size(142, 22);
+            this.cbPovregd.TabIndex = 5;
+            this.cbPovregd.Text = "Р-Пошкодження";
+            this.cbPovregd.UseVisualStyleBackColor = true;
+            this.cbPovregd.CheckedChanged += new System.EventHandler(this.cbPovregd_CheckedChanged);
+            // 
+            // cbKorneb
+            // 
+            this.cbKorneb.AutoSize = true;
+            this.cbKorneb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbKorneb.Location = new System.Drawing.Point(18, 113);
+            this.cbKorneb.Name = "cbKorneb";
+            this.cbKorneb.Size = new System.Drawing.Size(153, 22);
+            this.cbKorneb.TabIndex = 4;
+            this.cbKorneb.Text = "К-Кор. небезпечні";
+            this.cbKorneb.UseVisualStyleBackColor = true;
+            this.cbKorneb.CheckedChanged += new System.EventHandler(this.cbKorneb_CheckedChanged);
+            // 
+            // cbPv
+            // 
+            this.cbPv.AutoSize = true;
+            this.cbPv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbPv.Location = new System.Drawing.Point(18, 87);
+            this.cbPv.Name = "cbPv";
+            this.cbPv.Size = new System.Drawing.Size(64, 22);
+            this.cbPv.TabIndex = 3;
+            this.cbPv.Text = "И-ПВ";
+            this.cbPv.UseVisualStyleBackColor = true;
+            this.cbPv.CheckedChanged += new System.EventHandler(this.cbPv_CheckedChanged);
+            // 
+            // cbUpz
+            // 
+            this.cbUpz.AutoSize = true;
+            this.cbUpz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbUpz.Location = new System.Drawing.Point(18, 64);
+            this.cbUpz.Name = "cbUpz";
+            this.cbUpz.Size = new System.Drawing.Size(77, 22);
+            this.cbUpz.TabIndex = 2;
+            this.cbUpz.Text = "Ж-УПЗ";
+            this.cbUpz.UseVisualStyleBackColor = true;
+            this.cbUpz.CheckedChanged += new System.EventHandler(this.cbUpz_CheckedChanged);
+            // 
+            // cbUkz
+            // 
+            this.cbUkz.AutoSize = true;
+            this.cbUkz.BackColor = System.Drawing.SystemColors.Control;
+            this.cbUkz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbUkz.Location = new System.Drawing.Point(18, 38);
+            this.cbUkz.Name = "cbUkz";
+            this.cbUkz.Size = new System.Drawing.Size(74, 22);
+            this.cbUkz.TabIndex = 1;
+            this.cbUkz.Text = "Д-УКЗ";
+            this.cbUkz.UseVisualStyleBackColor = false;
+            this.cbUkz.CheckedChanged += new System.EventHandler(this.cbUkz_CheckedChanged);
+            // 
+            // cbAll
+            // 
+            this.cbAll.AutoSize = true;
+            this.cbAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbAll.Location = new System.Drawing.Point(3, 3);
+            this.cbAll.Name = "cbAll";
+            this.cbAll.Size = new System.Drawing.Size(58, 22);
+            this.cbAll.TabIndex = 0;
+            this.cbAll.Text = "ВСЕ";
+            this.cbAll.UseVisualStyleBackColor = true;
+            this.cbAll.CheckedChanged += new System.EventHandler(this.cbAll_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(43, 350);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1015, 501);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.labelFileName);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.rTBLogs);
@@ -93,6 +314,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +328,22 @@
         public System.Windows.Forms.RichTextBox rTBLogs;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Label labelFileName;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox cbAll;
+        public System.Windows.Forms.CheckBox cbPereh;
+        public System.Windows.Forms.CheckBox cbPovitrPerehody;
+        public System.Windows.Forms.CheckBox cbShurfy;
+        public System.Windows.Forms.CheckBox cbZvedena;
+        public System.Windows.Forms.CheckBox cbFlantsy;
+        public System.Windows.Forms.CheckBox cbNezah;
+        public System.Windows.Forms.CheckBox cbPovregdGNT;
+        public System.Windows.Forms.CheckBox cbPovregd;
+        public System.Windows.Forms.CheckBox cbKorneb;
+        public System.Windows.Forms.CheckBox cbPv;
+        public System.Windows.Forms.CheckBox cbUpz;
+        public System.Windows.Forms.CheckBox cbUkz;
+        private System.Windows.Forms.Button button1;
     }
 }
 

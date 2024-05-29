@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZvitEXZ.Methods;
 using ZvitEXZ.Methods.Calculations;
@@ -19,11 +13,14 @@ namespace ZvitEXZ
     {
         List<Zamer> zamers = new List<Zamer>();
         public ExcelDictionary ExcelDictionary;
+        private bool clearAll = true;
         public Form1()
         {
             InitializeComponent();
             openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
             Logs.AddForm(this);
+            Progress.AddForm(this);
+            Done.AddForm(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -67,10 +64,149 @@ namespace ZvitEXZ
         {
             btnCalculate.Enabled = false;
             btnOpen.Enabled = false;
+            Models.Calculations.Checked chekeD = new Models.Calculations.Checked(this);
             Calculate calculate = new Calculate();
-            calculate.CalculateAll(zamers, ExcelDictionary);
+            calculate.CalculateAll(zamers, ExcelDictionary, chekeD);
             btnCalculate.Enabled = true;
             btnOpen.Enabled = true;
+        }
+
+        private void cbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAll.Checked)
+            {
+                cbUkz.Checked = true; cbUpz.Checked = true;
+                cbPv.Checked = true; cbKorneb.Checked = true;
+                cbPovregd.Checked = true; // cbPovregdGNT.Checked=true;
+                cbNezah.Checked = true; cbPereh.Checked = true;
+                cbFlantsy.Checked = true;
+                cbZvedena.Checked = true; //cbShurfy.Checked = true;
+                //cbPovitrPerehody.Checked = true;
+            }
+            else if (clearAll)
+            {
+                cbUkz.Checked = false; cbUpz.Checked = false;
+                cbPv.Checked = false; cbKorneb.Checked = false;
+                cbPovregd.Checked = false; cbPovregdGNT.Checked = false;
+                cbNezah.Checked = false; cbPereh.Checked = false;
+                cbFlantsy.Checked = false;
+                cbZvedena.Checked = false; cbShurfy.Checked = false;
+                cbPovitrPerehody.Checked = false;
+            }
+            clearAll = true;
+        }
+
+        private void cbUkz_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbUkz.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbUpz_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbUpz.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbPv_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbPv.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbKorneb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbKorneb.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbPovregd_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbPovregd.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbPovregdGNT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbPovregdGNT.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbNezah_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbNezah.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbPereh_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbPereh.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbFlantsy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbFlantsy.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbZvedena_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbZvedena.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbShurfy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbShurfy.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbPovitrPerehody_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbPovitrPerehody.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            progressBar1.Value = progressBar1.Value + 10;
         }
     }
 }

@@ -62,6 +62,8 @@
     </Compile>
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
+    <Compile Include="Methods\Calculations\Done.cs" />
+    <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
     <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
     <Compile Include="Methods\Calculations\GetAllRoadKozhuhss.cs" />
     <Compile Include="Methods\Calculations\GetAllUkz.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Methods\Calculations\GetKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
+    <Compile Include="Methods\File\Converters\ListFlanetsToMassive.cs" />
     <Compile Include="Methods\File\ConvertListToFile.cs" />
     <Compile Include="Methods\File\ConvertZamersToZvedena.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />
@@ -81,10 +84,12 @@
     <Compile Include="Methods\ParseData.cs" />
     <Compile Include="Methods\ParseZamer.cs" />
     <Compile Include="Methods\PipeName.cs" />
+    <Compile Include="Methods\Progress.cs" />
     <Compile Include="Methods\ReadExcelFile.cs" />
     <Compile Include="Methods\SetMestnost.cs" />
     <Compile Include="Methods\File\WriteEcxelFile.cs" />
     <Compile Include="Methods\ConvertToString.cs" />
+    <Compile Include="Models\Calculations\Checked.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
     <Compile Include="Models\Calculations\Nezahyst.cs" />
     <Compile Include="Models\Calculations\Povregdenya.cs" />
@@ -95,6 +100,8 @@
     <Compile Include="Models\Objects\Bludy.cs" />
     <Compile Include="Models\Objects\DilyankaKorNeb.cs" />
     <Compile Include="Models\Objects\Drip.cs" />
+    <Compile Include="Models\Objects\Flanets.cs" />
+    <Compile Include="Models\Objects\FlanetsType.cs" />
     <Compile Include="Models\Objects\GRS.cs" />
     <Compile Include="Models\Objects\Kabel.cs" />
     <Compile Include="Models\Objects\Kanal.cs" />
