@@ -30,23 +30,12 @@ namespace ZvitEXZ.Methods
             }
             else
             {
-                form1.progressBar1.Value = 100;
-            }
-        }
-        public static void AddOne()
-        {
-            if (form1.progressBar1.Value + step < 100)
-            {
-                form1.progressBar1.Value = form1.progressBar1.Value + 1;
-            }
-            else
-            {
-                form1.progressBar1.Value = 100;
+                Finish();
             }
         }
         public static void Clear()
         {
-            form1.progressBar1.Value = 1;
+            form1.progressBar1.Value = 0;
         }
         public static void Finish()
         {

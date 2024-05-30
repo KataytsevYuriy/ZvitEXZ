@@ -80,8 +80,10 @@ namespace ZvitEXZ
                 cbPovregd.Checked = true; // cbPovregdGNT.Checked=true;
                 cbNezah.Checked = true; cbPereh.Checked = true;
                 cbFlantsy.Checked = true;
-                cbZvedena.Checked = true; //cbShurfy.Checked = true;
+                cbZvedena.Checked = true; cbShurfy.Checked = true;
                 cbPovitrPerehody.Checked = true;
+                //cbStatistiks.Checked = true;
+                //cbNenormHlyb.Checked = true;
             }
             else if (clearAll)
             {
@@ -207,6 +209,24 @@ namespace ZvitEXZ
         private void button1_Click_1(object sender, EventArgs e)
         {
             progressBar1.Value = progressBar1.Value + 10;
+        }
+
+        private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbNenormHlyb.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbStatistiks_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbStatistiks.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
         }
     }
 }

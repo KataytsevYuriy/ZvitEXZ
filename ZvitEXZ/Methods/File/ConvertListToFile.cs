@@ -340,5 +340,10 @@ namespace ZvitEXZ.Methods.File
             ListPovitrPerehToMassive converter = new ListPovitrPerehToMassive();
             return converter.Convert(povitrPerehody);
         }
+        public string[,] ConvertShurfy(List<Shurf> shurves)
+        {
+            ListShurvesTiArray converter = new ListShurvesTiArray();
+            return converter.Convert(shurves);
+        }
     }
 }

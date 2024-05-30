@@ -67,6 +67,7 @@
     <Compile Include="Methods\Calculations\GetAllPovitrPerehody.cs" />
     <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
     <Compile Include="Methods\Calculations\GetAllRoadKozhuhss.cs" />
+    <Compile Include="Methods\Calculations\GetAllShurfs.cs" />
     <Compile Include="Methods\Calculations\GetAllUkz.cs" />
     <Compile Include="Methods\Calculations\GetAllUpz.cs" />
     <Compile Include="Methods\Calculations\GetKorNeb.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\Converters\ListFlanetsToMassive.cs" />
     <Compile Include="Methods\File\Converters\ListPovitrPerehToMassive.cs" />
+    <Compile Include="Methods\File\Converters\ListShurvesTiArray.cs" />
     <Compile Include="Methods\File\ConvertListToFile.cs" />
     <Compile Include="Methods\File\ConvertZamersToZvedena.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />

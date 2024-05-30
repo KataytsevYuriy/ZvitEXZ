@@ -35,8 +35,10 @@
             this.labelFileName = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbStatistiks = new System.Windows.Forms.CheckBox();
             this.cbPovitrPerehody = new System.Windows.Forms.CheckBox();
             this.cbShurfy = new System.Windows.Forms.CheckBox();
+            this.cbNenormHlyb = new System.Windows.Forms.CheckBox();
             this.cbZvedena = new System.Windows.Forms.CheckBox();
             this.cbFlantsy = new System.Windows.Forms.CheckBox();
             this.cbPereh = new System.Windows.Forms.CheckBox();
@@ -111,8 +113,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbStatistiks);
             this.panel1.Controls.Add(this.cbPovitrPerehody);
             this.panel1.Controls.Add(this.cbShurfy);
+            this.panel1.Controls.Add(this.cbNenormHlyb);
             this.panel1.Controls.Add(this.cbZvedena);
             this.panel1.Controls.Add(this.cbFlantsy);
             this.panel1.Controls.Add(this.cbPereh);
@@ -126,14 +130,27 @@
             this.panel1.Controls.Add(this.cbAll);
             this.panel1.Location = new System.Drawing.Point(208, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(308, 348);
+            this.panel1.Size = new System.Drawing.Size(308, 406);
             this.panel1.TabIndex = 8;
+            // 
+            // cbStatistiks
+            // 
+            this.cbStatistiks.AutoSize = true;
+            this.cbStatistiks.Enabled = false;
+            this.cbStatistiks.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbStatistiks.Location = new System.Drawing.Point(18, 377);
+            this.cbStatistiks.Name = "cbStatistiks";
+            this.cbStatistiks.Size = new System.Drawing.Size(107, 22);
+            this.cbStatistiks.TabIndex = 14;
+            this.cbStatistiks.Text = "Статистика";
+            this.cbStatistiks.UseVisualStyleBackColor = true;
+            this.cbStatistiks.CheckedChanged += new System.EventHandler(this.cbStatistiks_CheckedChanged);
             // 
             // cbPovitrPerehody
             // 
             this.cbPovitrPerehody.AutoSize = true;
             this.cbPovitrPerehody.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPovitrPerehody.Location = new System.Drawing.Point(18, 311);
+            this.cbPovitrPerehody.Location = new System.Drawing.Point(18, 344);
             this.cbPovitrPerehody.Name = "cbPovitrPerehody";
             this.cbPovitrPerehody.Size = new System.Drawing.Size(201, 22);
             this.cbPovitrPerehody.TabIndex = 12;
@@ -144,9 +161,8 @@
             // cbShurfy
             // 
             this.cbShurfy.AutoSize = true;
-            this.cbShurfy.Enabled = false;
             this.cbShurfy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbShurfy.Location = new System.Drawing.Point(18, 285);
+            this.cbShurfy.Location = new System.Drawing.Point(18, 318);
             this.cbShurfy.Name = "cbShurfy";
             this.cbShurfy.Size = new System.Drawing.Size(94, 22);
             this.cbShurfy.TabIndex = 11;
@@ -154,15 +170,28 @@
             this.cbShurfy.UseVisualStyleBackColor = true;
             this.cbShurfy.CheckedChanged += new System.EventHandler(this.cbShurfy_CheckedChanged);
             // 
+            // cbNenormHlyb
+            // 
+            this.cbNenormHlyb.AutoSize = true;
+            this.cbNenormHlyb.Enabled = false;
+            this.cbNenormHlyb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbNenormHlyb.Location = new System.Drawing.Point(18, 290);
+            this.cbNenormHlyb.Name = "cbNenormHlyb";
+            this.cbNenormHlyb.Size = new System.Drawing.Size(205, 22);
+            this.cbNenormHlyb.TabIndex = 13;
+            this.cbNenormHlyb.Text = "С-Ненормативна глибина";
+            this.cbNenormHlyb.UseVisualStyleBackColor = true;
+            this.cbNenormHlyb.CheckedChanged += new System.EventHandler(this.cbNenormHlyb_CheckedChanged);
+            // 
             // cbZvedena
             // 
             this.cbZvedena.AutoSize = true;
             this.cbZvedena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbZvedena.Location = new System.Drawing.Point(18, 262);
             this.cbZvedena.Name = "cbZvedena";
-            this.cbZvedena.Size = new System.Drawing.Size(102, 22);
+            this.cbZvedena.Size = new System.Drawing.Size(101, 22);
             this.cbZvedena.TabIndex = 10;
-            this.cbZvedena.Text = "С-Зведена";
+            this.cbZvedena.Text = "Р-Зведена";
             this.cbZvedena.UseVisualStyleBackColor = true;
             this.cbZvedena.CheckedChanged += new System.EventHandler(this.cbZvedena_CheckedChanged);
             // 
@@ -209,9 +238,9 @@
             this.cbPovregdGNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbPovregdGNT.Location = new System.Drawing.Point(18, 162);
             this.cbPovregdGNT.Name = "cbPovregdGNT";
-            this.cbPovregdGNT.Size = new System.Drawing.Size(175, 22);
+            this.cbPovregdGNT.Size = new System.Drawing.Size(176, 22);
             this.cbPovregdGNT.TabIndex = 6;
-            this.cbPovregdGNT.Text = "Р-Пошкодження ГНТ";
+            this.cbPovregdGNT.Text = "Л-Пошкодження ГНТ";
             this.cbPovregdGNT.UseVisualStyleBackColor = true;
             this.cbPovregdGNT.CheckedChanged += new System.EventHandler(this.cbPovregdGNT_CheckedChanged);
             // 
@@ -221,9 +250,9 @@
             this.cbPovregd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbPovregd.Location = new System.Drawing.Point(18, 136);
             this.cbPovregd.Name = "cbPovregd";
-            this.cbPovregd.Size = new System.Drawing.Size(142, 22);
+            this.cbPovregd.Size = new System.Drawing.Size(143, 22);
             this.cbPovregd.TabIndex = 5;
-            this.cbPovregd.Text = "Р-Пошкодження";
+            this.cbPovregd.Text = "Л-Пошкодження";
             this.cbPovregd.UseVisualStyleBackColor = true;
             this.cbPovregd.CheckedChanged += new System.EventHandler(this.cbPovregd_CheckedChanged);
             // 
@@ -343,6 +372,8 @@
         public System.Windows.Forms.CheckBox cbUpz;
         public System.Windows.Forms.CheckBox cbUkz;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.CheckBox cbStatistiks;
+        public System.Windows.Forms.CheckBox cbNenormHlyb;
     }
 }
 

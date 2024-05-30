@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZvitEXZ.Models.Objects;
+﻿using System.Collections.Generic;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Calculations;
+using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.File
 {
@@ -79,6 +75,12 @@ namespace ZvitEXZ.Methods.File
             writeToFile.WriteFile(_fileName, Constants.PovitrPerehodFolderName, _pipeName,
                 converter.ConvertPovitrPerehody(perehods), "A", "K", "K",
                 Constants.PrintMessagePovitrPerehIsEmpty, 11);
+        }
+        public void SaveShurves(List<Shurf> shurves)
+        {
+            writeToFile.WriteFile(_fileName, Constants.ShurfFolderName, _pipeName,
+                converter.ConvertShurfy(shurves), "A", "AX", "AX",
+                Constants.PrintMessageShurfIsEmpty, 12);
         }
 
     }

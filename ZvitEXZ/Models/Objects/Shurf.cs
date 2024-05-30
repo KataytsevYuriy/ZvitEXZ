@@ -8,12 +8,13 @@ using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class Shurf : Zamer
+    public class Shurf : Zamer
     {
         public string AktNumber { get; set; }
         public string ShurfLength { get; set; }
         public string IsolationSquare { get; set; }
         public string IsolationGettingSquare { get; set; }
+        public string MestnostCharacteristics { get; set; }
         public string LitologHrunt { get; set; }
         public string StanHruntu { get; set; }
         public string NumbersObhortky { get; set; }
@@ -44,7 +45,7 @@ namespace ZvitEXZ.Models.Objects
         public string SquareMetalPipe { get; set; }
         public string IsKorozyaExist { get; set; }
         public string CharacterKorozii { get; set; }
-        public string Kavernlength { get; set; }
+        public string KavernLength { get; set; }
         public string KavernHeight { get; set; }
         public string KavernPosition { get; set; }
         public string UtzBeforShurf { get; set; }
@@ -86,6 +87,15 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 IsolationSquare = data[125].ToString();
+            }
+
+            if (data[127] == null)
+            {
+                MestnostCharacteristics = "";
+            }
+            else
+            {
+                MestnostCharacteristics = data[127].ToString();
             }
 
             if (data[129] == null)
@@ -360,11 +370,11 @@ namespace ZvitEXZ.Models.Objects
 
             if (data[159] == null)
             {
-                Kavernlength = "";
+                KavernLength = "";
             }
             else
             {
-                Kavernlength = data[159].ToString();
+                KavernLength = data[159].ToString();
             }
 
             if (data[160] == null)

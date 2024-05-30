@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using ZvitEXZ.Methods.File;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Calculations;
-using ZvitEXZ.Methods.File;
 using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.Calculations
@@ -136,8 +132,22 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.povitrPerehody();
             }
 
+            //Shurves
+            if (checkeD.IsShurfy)
+            {
+                GetAllShurfs getAllShurfs = new GetAllShurfs();
+                List<Shurf> shurves = getAllShurfs.Get(zamers);
+                fileSaver.SaveShurves(shurves);
+                Progress.AddStep();
+                Done.Shurfy();
+            }
+
+
+
+
             Logs.AddLog("Таблицы построены");
             Progress.Finish();
+
         }
     }
 }
