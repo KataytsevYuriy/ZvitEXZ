@@ -89,6 +89,15 @@ namespace ZvitEXZ.Models.Objects
                 IsolationSquare = data[125].ToString();
             }
 
+            if (data[126] == null)
+            {
+                IsolationGettingSquare = "";
+            }
+            else
+            {
+                IsolationGettingSquare = data[126].ToString();
+            }
+
             if (data[127] == null)
             {
                 MestnostCharacteristics = "";

@@ -20,7 +20,7 @@ namespace ZvitEXZ.Methods
             switch (obj.ToString())
             {
                 case "трубопровід": return ProvodTypePidklichenyas.pipe;
-                case "потенціал \"труба - земля\" в точці дренажа": return ProvodTypePidklichenyas.pointDrenazh;
+                case "потенціал \"труба-земля\" в точці дренажа": return ProvodTypePidklichenyas.pointDrenazh;
                 case "захисний кожух": return ProvodTypePidklichenyas.kozhuh;
                 case "УПЗ-земля": return ProvodTypePidklichenyas.upz;
                 case "стор. комунік": return ProvodTypePidklichenyas.storKommunication;

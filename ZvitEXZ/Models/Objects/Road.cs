@@ -186,7 +186,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    UkzFinishOff = Parse.ParseFloat(data[216]);
+                    UkzFinishOff = Parse.ParseFloat(data[217]);
                 }
                 catch
                 {
