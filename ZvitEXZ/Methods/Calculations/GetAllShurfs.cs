@@ -9,7 +9,7 @@ namespace ZvitEXZ.Methods.Calculations
     {
         public List<Shurf> Get(List<Zamer> zamers)
         {
-            List<Shurf> shurfs = zamers.Where(el => el.Name == Constants.ShurfName).Select(sh => sh as Shurf).ToList();
+            List<Shurf> shurfs = zamers.Where(el => el.Name == ProjectConstants.ShurfName).Select(sh => sh as Shurf).ToList();
             return shurfs;
         }
     }

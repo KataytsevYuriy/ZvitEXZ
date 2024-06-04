@@ -12,7 +12,7 @@ namespace ZvitEXZ.Methods.Calculations
     {
         public List<Zamer> Get(List<Zamer> data)
         {
-            return data.Where(item => item.Name == Constants.UKZName).ToList();
+            return data.Where(item => item.Name == ProjectConstants.UKZName).ToList();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace ZvitEXZ.Models.Objects
 
         public Road(object[] data) : base(data)
         {
-            Name = Constants.RoadName;
+            Name = ProjectConstants.RoadName;
             if (data[23] == null)
             {
                 RoadType = RoadTypes.undefined;

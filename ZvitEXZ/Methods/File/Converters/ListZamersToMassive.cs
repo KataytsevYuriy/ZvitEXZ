@@ -63,7 +63,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 if (!String.IsNullOrEmpty(mestnost))
                     prymitky = prymitky == "" ? mestnost : $"{prymitky}; {mestnost}";
                 if (item.IsBalka)
-                    prymitky = prymitky == "" ? Constants.MestnostBalka : $"{prymitky}; {Constants.MestnostBalka}";
+                    prymitky = prymitky == "" ? ProjectConstants.MestnostBalka : $"{prymitky}; {ProjectConstants.MestnostBalka}";
                 res[i, 4] = prymitky;
                 res[i, 5] = "";//poskodgennya
                 res[i, 6] = IsKornenebezpechny(item.Km);

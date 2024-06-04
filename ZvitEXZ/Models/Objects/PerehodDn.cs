@@ -12,7 +12,7 @@ namespace ZvitEXZ.Models.Objects
         public int NewDn { get; set; }
         public PerehodDn(object[] data) : base(data)
         {
-            Name = Constants.PerehodDNName;
+            Name = ProjectConstants.PerehodDNName;
             if (data[241] == null)
             {
                 NewDn = 0;

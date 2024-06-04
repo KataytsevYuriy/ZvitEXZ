@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public string UKrana { get; set; }
         public Kran(object[] data) : base(data)
         {
-            Name = Constants.KranName;
+            Name = ProjectConstants.KranName;
             if (data[75] == null)
             {
                 KranNumber = "";
@@ -36,7 +36,7 @@ namespace ZvitEXZ.Models.Objects
         }
         public override string ToString()
         {
-            return Constants.KranName;
+            return ProjectConstants.KranName;
         }
     }
 }

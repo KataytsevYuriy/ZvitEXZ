@@ -13,11 +13,11 @@ namespace ZvitEXZ.Methods.Calculations
         public List<Flanets> GetElektroIsolative(List<Zamer> zamers)
         {
             List<Flanets> flantsy = new List<Flanets>();
-            List<Zamer> zamerWithFlanets = zamers.Where(z => z.Name == Constants.GRSName ||
-              z.Name == Constants.VyhodIsZemlyName).ToList();
+            List<Zamer> zamerWithFlanets = zamers.Where(z => z.Name == ProjectConstants.GRSName ||
+              z.Name == ProjectConstants.VyhodIsZemlyName).ToList();
             foreach (Zamer zamer in zamerWithFlanets)
             {
-                if (zamer.Name == Constants.GRSName)
+                if (zamer.Name == ProjectConstants.GRSName)
                 {
                     GRS item = zamer as GRS;
                     if (item.Flantsy.Count > 0)
@@ -25,7 +25,7 @@ namespace ZvitEXZ.Methods.Calculations
                         flantsy.AddRange(item.Flantsy);
                     }
                 }
-                else if (zamer.Name == Constants.VyhodIsZemlyName)
+                else if (zamer.Name == ProjectConstants.VyhodIsZemlyName)
                 {
                     flantsy.Add((zamer as VyhodIsZemly).Flanets);
                 }

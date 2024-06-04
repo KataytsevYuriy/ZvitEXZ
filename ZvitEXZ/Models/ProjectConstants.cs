@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models
 {
-    public static class Constants
+    public static class ProjectConstants
     {
         //Objects names
         public const string PVName = "ПВ";
@@ -125,5 +125,6 @@ namespace ZvitEXZ.Models
 
         public static float PovregdenyaFirstCherga = (float)-0.02;
         public static float PovregdenyaSecondCherga = (float)-0.15;
+        public static float StepVymiryvannya = (float)0.01;
     }
 }

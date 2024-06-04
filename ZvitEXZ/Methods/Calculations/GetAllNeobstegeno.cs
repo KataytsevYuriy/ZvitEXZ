@@ -16,7 +16,7 @@ namespace ZvitEXZ.Methods.Calculations
             List<NeObstegeno> result = new List<NeObstegeno>();
             foreach (Zamer zamer in zamers)
             {
-                if (zamer.Name == Constants.RoadName)
+                if (zamer.Name == ProjectConstants.RoadName)
                 {
                     Road road = zamer as Road;
                     if (road.RoadType == RoadTypes.automobile || road.RoadType == RoadTypes.train)
@@ -24,9 +24,9 @@ namespace ZvitEXZ.Methods.Calculations
                         result.Add(new NeObstegeno(road.Km, road.Km + (float)road.length / 1000, road.ToString()));
                     }
                 }
-                if (zamer.Name == Constants.RiverName || zamer.Name == Constants.KanalName ||
-                    zamer.Name == Constants.SwampName || zamer.Name == Constants.ZaroslyName ||
-                    zamer.Name == Constants.NeobstegenaDylyankaName)
+                if (zamer.Name == ProjectConstants.RiverName || zamer.Name == ProjectConstants.KanalName ||
+                    zamer.Name == ProjectConstants.SwampName || zamer.Name == ProjectConstants.ZaroslyName ||
+                    zamer.Name == ProjectConstants.NeobstegenaDylyankaName)
                 {
                     Pereshkoda pereshkoda = zamer as Pereshkoda;
                     result.Add(new NeObstegeno(pereshkoda.Km, pereshkoda.Km + pereshkoda.Length / 1000,

@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
 
         public Svalka(object[] data) : base(data)
         {
-            Name = Constants.YamaName;
+            Name = ProjectConstants.YamaName;
             if (data[21] == null)
             {
                 Svalkalength = 0;

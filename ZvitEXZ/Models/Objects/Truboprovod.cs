@@ -16,7 +16,7 @@ namespace ZvitEXZ.Models.Objects
         public bool IsAnoterTruboprovid { get; set; }
         public Truboprovod(object[] data) : base(data)
         {
-            Name = Constants.TruboprovodName;
+            Name = ProjectConstants.TruboprovodName;
 
             if (data[69] == null)
             {
@@ -70,7 +70,7 @@ namespace ZvitEXZ.Models.Objects
                     return $"{Name} {TruboprovodName}";
                 }
             }
-            return Constants.TruboprovodName;
+            return ProjectConstants.TruboprovodName;
         }
     }
 }

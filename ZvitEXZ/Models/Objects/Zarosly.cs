@@ -12,7 +12,7 @@ namespace ZvitEXZ.Models.Objects
     {
         public Zarosly(object[] data) : base(data)
         {
-            Name = Constants.ZaroslyName;
+            Name = ProjectConstants.ZaroslyName;
         }
         public override string ToString()
         {

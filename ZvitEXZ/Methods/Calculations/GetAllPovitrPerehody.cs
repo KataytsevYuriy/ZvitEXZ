@@ -14,7 +14,7 @@ namespace ZvitEXZ.Methods.Calculations
     {
         public List<PovitrPerehod> Get(List<Zamer> zamers)
         {
-            List<Zamer> vyhods = zamers.Where(el => el.Name == ZvitEXZ.Models.Constants.VyhodIsZemlyName).ToList();
+            List<Zamer> vyhods = zamers.Where(el => el.Name == ZvitEXZ.Models.ProjectConstants.VyhodIsZemlyName).ToList();
             List<PovitrPerehod> res = new List<PovitrPerehod>();
             if (vyhods.Count < 2) return res;
             VyhodIsZemly vyhStart = null;

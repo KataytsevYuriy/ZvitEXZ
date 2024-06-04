@@ -4,11 +4,11 @@
     {
         public Swamp(object[] data) : base(data)
         {
-            Name = Constants.SwampName;
+            Name = ProjectConstants.SwampName;
         }
         public override string ToString()
         {
-            return Constants.SwampName;
+            return ProjectConstants.SwampName;
         }
     }
 }

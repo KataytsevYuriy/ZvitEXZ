@@ -16,8 +16,8 @@ namespace ZvitEXZ.Methods.Calculations
             List<Road> roads = new List<Road>();
             foreach (Zamer zamer in zamers)
             {
-                if (zamer.Name == Constants.UPZName) result.Add(zamer as UPZ);
-                if (zamer.Name == Constants.RoadName) roads.Add(zamer as Road);
+                if (zamer.Name == ProjectConstants.UPZName) result.Add(zamer as UPZ);
+                if (zamer.Name == ProjectConstants.RoadName) roads.Add(zamer as Road);
             }
             foreach (UPZ upz in result)
             {

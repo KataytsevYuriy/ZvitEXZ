@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public float? USvechy { get; set; }
         public Svecha(object[] data) : base(data)
         {
-            Name = Constants.SvechaName;
+            Name = ProjectConstants.SvechaName;
             if (data[47] == null)
             {
                 Specification = SvechaSpecifications.SpecificationType.undefined;
@@ -89,7 +89,7 @@ namespace ZvitEXZ.Models.Objects
         }
         public override string ToString()
         {
-            return Constants.SvechaName;
+            return ProjectConstants.SvechaName;
         }
     }
 }

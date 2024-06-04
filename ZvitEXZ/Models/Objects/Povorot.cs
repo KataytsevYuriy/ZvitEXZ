@@ -13,7 +13,7 @@ namespace ZvitEXZ.Models.Objects
         public int Ugol { get; set; }
         public Povorot(object[] data) : base(data)
         {
-            Name = Constants.PovorotName;
+            Name = ProjectConstants.PovorotName;
             if (data[65] == null)
             {
                 NapravlenyePovorota = Napravlenye.undefined;
@@ -55,11 +55,11 @@ namespace ZvitEXZ.Models.Objects
             if (NapravlenyePovorota == Napravlenye.undefined) { return res; }
             if (NapravlenyePovorota == Napravlenye.right)
             {
-                res = $"{res} {Constants.TurnRightName}";
+                res = $"{res} {ProjectConstants.TurnRightName}";
             }
             else
             {
-                res = $"{res} {Constants.TurnLeftName}";
+                res = $"{res} {ProjectConstants.TurnLeftName}";
             }
             if (Ugol == 0) return res;
             return $"{res} {Ugol}°";

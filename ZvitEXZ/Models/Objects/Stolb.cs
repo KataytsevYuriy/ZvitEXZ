@@ -12,7 +12,7 @@ namespace ZvitEXZ.Models.Objects
         public StolbTypes StolbType { get; set; }
         public Stolb(object[] data) : base(data)
         {
-            Name = Constants.Stolb;
+            Name = ProjectConstants.Stolb;
             if (data[68] == null)
             {
                 StolbType = StolbTypes.undefined;

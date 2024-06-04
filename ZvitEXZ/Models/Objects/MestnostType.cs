@@ -28,15 +28,15 @@ namespace ZvitEXZ.Models.Objects
         {
             switch (mestnost)
             {
-                case MestnostType.CX: return Constants.MestnostCX;
-                case MestnostType.PosBPros: return Constants.MestnostPosBPros;
-                case MestnostType.PosSPros: return Constants.MestnostPosSPros;
-                case MestnostType.LesBPros: return Constants.MestnostLesBPros;
-                case MestnostType.LesSPros: return Constants.MestnostLesSPros;
-                case MestnostType.Lug: return Constants.MestnostLug;
-                case MestnostType.Zarosly: return Constants.MestnostZarosly;
-                case MestnostType.ZabolHrunt: return Constants.MestnostPustyr;
-                case MestnostType.Sad: return Constants.MestnostSad;
+                case MestnostType.CX: return ProjectConstants.MestnostCX;
+                case MestnostType.PosBPros: return ProjectConstants.MestnostPosBPros;
+                case MestnostType.PosSPros: return ProjectConstants.MestnostPosSPros;
+                case MestnostType.LesBPros: return ProjectConstants.MestnostLesBPros;
+                case MestnostType.LesSPros: return ProjectConstants.MestnostLesSPros;
+                case MestnostType.Lug: return ProjectConstants.MestnostLug;
+                case MestnostType.Zarosly: return ProjectConstants.MestnostZarosly;
+                case MestnostType.ZabolHrunt: return ProjectConstants.MestnostPustyr;
+                case MestnostType.Sad: return ProjectConstants.MestnostSad;
                 default: return "";
             }
         }

@@ -11,7 +11,7 @@ namespace ZvitEXZ.Models.Objects
     {
         public Svish(object[] data) : base(data)
         {
-            Name=Constants.SvishName;
+            Name=ProjectConstants.SvishName;
         }
         public override string ToString()
         {

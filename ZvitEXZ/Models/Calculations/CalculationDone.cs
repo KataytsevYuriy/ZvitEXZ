@@ -12,5 +12,6 @@
         public bool PovitrPerehody { get; set; }
         public bool Neobstegeno { get; set; }
         public bool Shurfy { get; set; }
+        public bool HruntActivity { get; set; }
     }
 }

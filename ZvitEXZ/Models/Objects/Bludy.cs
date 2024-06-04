@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public string ZnakoPeremen { get; set; }
         public Bludy(object[] data) : base(data)
         {
-            Name = Constants.BludyName;
+            Name = ProjectConstants.BludyName;
             Posytion = ParseData.StartAndEnd(data[118]);
             ZnakoPeremen = ParseData.String(data[119]);
         }

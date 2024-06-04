@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public List<Flanets> Flantsy { get; set; }
         public GRS(object[] data) : base(data)
         {
-            Name = Constants.GRSName;
+            Name = ProjectConstants.GRSName;
             NameGrs = ParseData.String(data[78]);
             Flantsy = new List<Flanets>();
             if (data[81] != null) Flantsy.Add(new Flanets(Km, $"{Name} {NameGrs}", "-", data[85], data[86], data[79],

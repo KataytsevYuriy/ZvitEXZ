@@ -19,6 +19,7 @@ namespace ZvitEXZ.Methods.Calculations
         List<Zamer> zamers;
         List<PV> pVs;
         List<Shurf> shurves;
+        List<HruntAktivity> hruntAktivities;
         CalculationDone calculated;
         ExcelDictionary excelDictionary;
         public Calculate()
@@ -28,7 +29,7 @@ namespace ZvitEXZ.Methods.Calculations
         public void CalculateAll(List<Zamer> Zamers, ExcelDictionary dictionary, Checked checkeD)
         {
             SetMestnost setMestnost = new SetMestnost();
-            zamers = setMestnost.Set(zamers);
+            zamers = setMestnost.Set(Zamers);
             excelDictionary = dictionary;
             PipeName PipeName = new PipeName();
             string pipeName = PipeName.GetPipeName(dictionary);
@@ -208,5 +209,12 @@ namespace ZvitEXZ.Methods.Calculations
             shurves = getAllShurfs.Get(zamers);
             calculated.Shurfy = true;
         }
+        private void CalculateHruntActivity()
+        {
+            GetHruntActivity getHruntActivity = new GetHruntActivity();
+            hruntAktivities = getHruntActivity.Get(zamers);
+            calculated.HruntActivity = true;
+        }
+
     }
 }

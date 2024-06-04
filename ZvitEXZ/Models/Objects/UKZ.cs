@@ -32,7 +32,7 @@ namespace ZvitEXZ.Models.Objects
         public string TehStan { get; set; }
         public UKZ(object[] data) : base(data)
         {
-            Name = Constants.UKZName;
+            Name = ProjectConstants.UKZName;
             if (data[53] == null)
             {
                 Identificator = "";
@@ -268,7 +268,7 @@ namespace ZvitEXZ.Models.Objects
         }
         public override string ToString()
         {
-            return Constants.UKZName;
+            return ProjectConstants.UKZName;
         }
     }
 

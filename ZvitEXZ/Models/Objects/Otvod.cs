@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public Napravlenye NapravlOtvoda { get; set; }
         public Otvod(object[] data) : base(data)
         {
-            Name = Constants.OtvodName;
+            Name = ProjectConstants.OtvodName;
             if (data[73] == null)
             {
                 OtvodName = "";

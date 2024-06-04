@@ -12,7 +12,7 @@ namespace ZvitEXZ.Models.Objects
         public string ReasonNeodstegenosty { get; set; }
         public NeObstegenaDylyanka(object[] data) : base(data)
         {
-            Name = Constants.NeobstegenaDylyankaName;
+            Name = ProjectConstants.NeobstegenaDylyankaName;
             if (data[31] == null)
             {
                 ReasonNeodstegenosty = "";

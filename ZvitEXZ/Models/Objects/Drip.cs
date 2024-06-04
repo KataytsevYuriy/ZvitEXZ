@@ -10,7 +10,7 @@ namespace ZvitEXZ.Models.Objects
     {
         public Drip(object[] data) : base(data)
         {
-            Name = Constants.DripName; 
+            Name = ProjectConstants.DripName; 
         }
         public override string ToString()
         {

@@ -11,11 +11,11 @@ namespace ZvitEXZ.Models.Objects
     {
         public UDZ(object[] data) : base(data)
         {
-            Name = Constants.UDZName;
+            Name = ProjectConstants.UDZName;
         }
         public override string ToString()
         {
-            return Constants.UDZName;
+            return ProjectConstants.UDZName;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 Voltage = data[77].ToString();
             }
-            Name = Constants.LepName;
+            Name = ProjectConstants.LepName;
         }
         public override string ToString()
         {

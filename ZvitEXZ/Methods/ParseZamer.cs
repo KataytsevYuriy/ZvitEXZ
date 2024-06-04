@@ -15,36 +15,36 @@ namespace ZvitEXZ.Methods
             if (data[0] == null) return new Zamer(data);
             switch (data[0].ToString())
             {
-                case Constants.PVName: return new PV(data);
-                case Constants.LepNameInNaborka: return new Lep(data);
-                case Constants.RiverNameInNaborka: return new River(data);
-                case Constants.RoadNameInNaborka: return new Road(data);
-                case Constants.SwampNameInNaborka: return new Swamp(data);
-                case Constants.PovorotNameInNaborka: return new Povorot(data);
-                case Constants.SvechaNameInNaborka: return new Svecha(data);
-                case Constants.TreeName: return new Tree(data);
-                case Constants.Stolb: return new Stolb(data);
-                case Constants.UKZNameInNaborka: return new UKZ(data);
-                case Constants.UDZNameInNaborka:return new UDZ(data);
-                case Constants.KranNameInNaborka:return new Kran(data);
-                case Constants.TruboprovodNameInNaborka:return new Truboprovod(data);
-                case Constants.OtvodNameInNaborka:return new Otvod(data);
-                case Constants.KanalNameInNaborka:return new Kanal(data);
-                case Constants.YamaNameInNaborka:return new Yama(data);
-                case Constants.SvalkaInNaborka:return new Svalka(data);
-                case Constants.VyhodIsZemlyInNaborka:return new VyhodIsZemly(data);
-                case Constants.GRSInNaborka:return new GRS(data);
-                case Constants.ZaroslyInNaborka:return new Zarosly(data);
-                case Constants.KabelInNaborka:return new Kabel(data);
-                case Constants.ShurfInNaborka:return new Shurf(data);
-                case Constants.BludyInNaborka:return new Bludy(data);
-                case Constants.SvishInNaborka:return new Svish(data);
-                case Constants.DilyankaKorNebInNaborka:return new DilyankaKorNeb(data);
-                case Constants.DripInNaborka:return new Drip(data);
-                case Constants.ObjectInNaborka:return new ObjectZamer(data);
-                case Constants.PerehodDNInNaborka:return new PerehodDn(data);
-                case Constants.UPZNInNaborka:return new UPZ(data);
-                case Constants.NeobstegenaDylyankaNInNaborka:return new NeObstegenaDylyanka(data);
+                case ProjectConstants.PVName: return new PV(data);
+                case ProjectConstants.LepNameInNaborka: return new Lep(data);
+                case ProjectConstants.RiverNameInNaborka: return new River(data);
+                case ProjectConstants.RoadNameInNaborka: return new Road(data);
+                case ProjectConstants.SwampNameInNaborka: return new Swamp(data);
+                case ProjectConstants.PovorotNameInNaborka: return new Povorot(data);
+                case ProjectConstants.SvechaNameInNaborka: return new Svecha(data);
+                case ProjectConstants.TreeName: return new Tree(data);
+                case ProjectConstants.Stolb: return new Stolb(data);
+                case ProjectConstants.UKZNameInNaborka: return new UKZ(data);
+                case ProjectConstants.UDZNameInNaborka:return new UDZ(data);
+                case ProjectConstants.KranNameInNaborka:return new Kran(data);
+                case ProjectConstants.TruboprovodNameInNaborka:return new Truboprovod(data);
+                case ProjectConstants.OtvodNameInNaborka:return new Otvod(data);
+                case ProjectConstants.KanalNameInNaborka:return new Kanal(data);
+                case ProjectConstants.YamaNameInNaborka:return new Yama(data);
+                case ProjectConstants.SvalkaInNaborka:return new Svalka(data);
+                case ProjectConstants.VyhodIsZemlyInNaborka:return new VyhodIsZemly(data);
+                case ProjectConstants.GRSInNaborka:return new GRS(data);
+                case ProjectConstants.ZaroslyInNaborka:return new Zarosly(data);
+                case ProjectConstants.KabelInNaborka:return new Kabel(data);
+                case ProjectConstants.ShurfInNaborka:return new Shurf(data);
+                case ProjectConstants.BludyInNaborka:return new Bludy(data);
+                case ProjectConstants.SvishInNaborka:return new Svish(data);
+                case ProjectConstants.DilyankaKorNebInNaborka:return new DilyankaKorNeb(data);
+                case ProjectConstants.DripInNaborka:return new Drip(data);
+                case ProjectConstants.ObjectInNaborka:return new ObjectZamer(data);
+                case ProjectConstants.PerehodDNInNaborka:return new PerehodDn(data);
+                case ProjectConstants.UPZNInNaborka:return new UPZ(data);
+                case ProjectConstants.NeobstegenaDylyankaNInNaborka:return new NeObstegenaDylyanka(data);
 
 
                 default:

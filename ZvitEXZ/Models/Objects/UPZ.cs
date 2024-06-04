@@ -28,7 +28,7 @@ namespace ZvitEXZ.Models.Objects
 
         public UPZ(object[] data) : base(data)
         {
-            Name = Constants.UPZName;
+            Name = ProjectConstants.UPZName;
             if (data[228] == null)
             {
                 BuildingDate = "";
@@ -167,7 +167,7 @@ namespace ZvitEXZ.Models.Objects
         }
         public override string ToString()
         {
-            return Constants.UPZName;
+            return ProjectConstants.UPZName;
         }
     }
 }

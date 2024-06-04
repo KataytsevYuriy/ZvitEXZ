@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
+using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -37,6 +39,7 @@ namespace ZvitEXZ.Methods.Calculations
             float kmFinish = 0;
             float maxGrad = 0;
             float UMaxGrad = 0;
+            bool lastZamerNull = false;
             string gpsN = "";
             string gpsE = "";
             MestnostType mestnost = MestnostType.IndefinedType;
@@ -44,12 +47,34 @@ namespace ZvitEXZ.Methods.Calculations
             Crossing secondCrossing = new Crossing(uSecondCherga);
             foreach (Zamer zamer in data)
             {
-                if (zamer.Ugrad == null || zamer.Utz == null) continue;
+                if (zamer.Ugrad == null || zamer.Utz == null)
+                {
+                    lastZamerNull = true;
+                    continue;
+                }
+                if (flagCherga > 0 && zamer.Km - lastKm > ProjectConstants.StepVymiryvannya)
+                {
+                    if (zamer.Km > kmStart)
+                    {
+                        povregdenyas.Add(new Povregdenya(kmStart, zamer.Km, flagCherga,
+                            maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                    }
+                    flagCherga = 0;
+                    continue;
+                }
                 if (flagCherga == 0)
                 {
                     if (zamer.Ugrad <= uSecondCherga) //to 1 and 2 cherga
                     {
-                        kmStart = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
+                        if (lastZamerNull)
+                        {
+                            kmStart = zamer.Km;
+                            lastKm = zamer.Km;
+                        }
+                        else
+                        {
+                            kmStart = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
+                        }
                         maxGrad = zamer.Ugrad ?? 0;
                         UMaxGrad = zamer.Utz ?? 0;
                         gpsN = zamer.GpsN;
@@ -136,6 +161,7 @@ namespace ZvitEXZ.Methods.Calculations
                 }
                 lastKm = zamer.Km;
                 lastU = zamer.Ugrad ?? 0;
+                lastZamerNull = false;
             }
             if (flagCherga > 0)
             {
@@ -186,7 +212,7 @@ namespace ZvitEXZ.Methods.Calculations
                 if (kmStart != povregd.KmFinish)
                 {
                     newPovregdenya.Add(CreatePovregdenya(kmStart, povregd.KmFinish, povregd.Cherga,
-                           povregd.MaxGradient, povregd.UMaxGradient, povregd.GpsN, povregd.GpsE, povregd.Mestnost,isDelitsya));
+                           povregd.MaxGradient, povregd.UMaxGradient, povregd.GpsN, povregd.GpsE, povregd.Mestnost, isDelitsya));
                 }
             }
             povregdenyas = newPovregdenya;
@@ -226,13 +252,13 @@ namespace ZvitEXZ.Methods.Calculations
         }
         private void AddMaxGrad(List<Zamer> zamers)
         {
-            foreach(Povregdenya povregdenya in povregdenyas)
+            foreach (Povregdenya povregdenya in povregdenyas)
             {
                 if (povregdenya.Mestnost != MestnostType.IndefinedType) continue;
                 Zamer maxZamer = zamers.First();
                 foreach (Zamer zamer in zamers)
                 {
-                    if (zamer.Km < povregdenya.KmStart ||zamer.Ugrad==null) continue;
+                    if (zamer.Km < povregdenya.KmStart || zamer.Ugrad == null) continue;
                     if (zamer.Km > povregdenya.KmFinish) break;
                     if (zamer.Ugrad < maxZamer.Ugrad) maxZamer = zamer;
                 }

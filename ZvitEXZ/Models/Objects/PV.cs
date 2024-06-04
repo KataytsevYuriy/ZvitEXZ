@@ -26,7 +26,7 @@ namespace ZvitEXZ.Models.Objects
         public bool IsBroken { get; set; }
         public PV(object[] data) : base(data)
         {
-            Name = Constants.PVName;
+            Name = ProjectConstants.PVName;
             PVType = ParseData.String(data[26]);
             PVDiamert = ParseData.String(data[27]);
             try

@@ -13,7 +13,7 @@ namespace ZvitEXZ.Models.Objects
         public float Yamalength { get; set; }
         public Yama(object[] data) : base(data)
         {
-            Name = Constants.YamaName;
+            Name = ProjectConstants.YamaName;
             if (data[21] == null)
             {
                 Yamalength = 0;

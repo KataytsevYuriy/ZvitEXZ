@@ -12,7 +12,7 @@ namespace ZvitEXZ.Models.Objects
         public string RiverName { get; set; }
         public River(object[] data) : base(data)
         {
-            Name = Constants.RiverName;
+            Name = ProjectConstants.RiverName;
             if (data[67] == null)
             {
                 RiverName = "";

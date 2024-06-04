@@ -13,7 +13,7 @@ namespace ZvitEXZ.Models.Objects
         public float? Uobject { get; set; }
         public ObjectZamer(object[] data) : base(data)
         {
-            Name = Constants.ObjectName;
+            Name = ProjectConstants.ObjectName;
 
             if (data[221] == null)
             {

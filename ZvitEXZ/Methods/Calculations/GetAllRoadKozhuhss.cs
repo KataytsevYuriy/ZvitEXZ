@@ -20,7 +20,7 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (Zamer zamer in zamers)
             {
                 if (zamer.Utz != null) Utz = (float)zamer.Utz;
-                if (zamer.Name == Constants.RoadName)
+                if (zamer.Name == ProjectConstants.RoadName)
                 {
                     Road road = zamer as Road;
                     if (road.RoadType == RoadTypes.automobile || road.RoadType == RoadTypes.train)
@@ -30,7 +30,7 @@ namespace ZvitEXZ.Methods.Calculations
                         continue;
                     }
                 }
-                else if (zamer.Name == Constants.PVName || zamer.Name == Constants.SvechaName)
+                else if (zamer.Name == ProjectConstants.PVName || zamer.Name == ProjectConstants.SvechaName)
                 {
                     pvsSvechas.Add(zamer);
                 }
@@ -54,13 +54,13 @@ namespace ZvitEXZ.Methods.Calculations
                     if (pvSvecha.Km < roadKozhuh1.Km)
                     {
                         pvBefore = $"{pvBefore}{pvSvecha.Name}, ";
-                        if (pvSvecha.Name == Constants.SvechaName)
+                        if (pvSvecha.Name == ProjectConstants.SvechaName)
                         {
                             Svecha svecha = pvSvecha as Svecha;
                             if (svecha.USvechy != null) ukozBefore = svecha.USvechy;
                             roadKozhuh1.IsSvechaStart = true;
                         }
-                        if (pvSvecha.Name == Constants.PVName)
+                        if (pvSvecha.Name == ProjectConstants.PVName)
                         {
                             PV pV = pvSvecha as PV;
                             if (pV.ProvodTypePidklichenya1 == ProvodTypePidklichenyas.pipe ||
@@ -84,13 +84,13 @@ namespace ZvitEXZ.Methods.Calculations
                     else
                     {
                         pvAfter = $"{pvAfter}{pvSvecha.Name}, ";
-                        if (pvSvecha.Name == Constants.SvechaName)
+                        if (pvSvecha.Name == ProjectConstants.SvechaName)
                         {
                             Svecha svecha = pvSvecha as Svecha;
                             if (svecha.USvechy != null) ukozAfter = svecha.USvechy;
                             roadKozhuh1.IsSvechaEnd = true;
                         }
-                        if (pvSvecha.Name == Constants.PVName)
+                        if (pvSvecha.Name == ProjectConstants.PVName)
                         {
                             PV pV = pvSvecha as PV;
                             if (pV.ProvodTypePidklichenya1 == ProvodTypePidklichenyas.pipe ||

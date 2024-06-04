@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public CharacterCorneb Reazon { get; set; }
         public DilyankaKorNeb(object[] data) : base(data)
         {
-            Name = Constants.DilyankaKorNebName;
+            Name = ProjectConstants.DilyankaKorNebName;
 
             Border = ParseData.StartAndEnd(data[116]);
             if (Border == StartEnd.undefined)

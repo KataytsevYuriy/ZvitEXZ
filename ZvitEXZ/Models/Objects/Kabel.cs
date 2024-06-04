@@ -11,7 +11,7 @@ namespace ZvitEXZ.Models.Objects
     {
         public Kabel(object[] data) : base(data)
         {
-            Name=Constants.KabelName;
+            Name=ProjectConstants.KabelName;
         }
         public override string ToString()
         {

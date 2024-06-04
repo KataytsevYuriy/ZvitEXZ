@@ -11,11 +11,11 @@ namespace ZvitEXZ.Models.Objects
     {
         public Tree(object[] data) : base(data)
         {
-            Name = Constants.TreeName;
+            Name = ProjectConstants.TreeName;
         }
         public override string ToString()
         {
-            return Constants.TreeName;
+            return ProjectConstants.TreeName;
         }
     }
 }

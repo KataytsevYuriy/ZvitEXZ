@@ -18,13 +18,13 @@ namespace ZvitEXZ.Methods
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Excel.Application excelApp = new Excel.Application();
             string fileName = "";
-            if (System.IO.File.Exists($"{path}\\{Constants.ShablonFileName}"))
+            if (System.IO.File.Exists($"{path}\\{ProjectConstants.ShablonFileName}"))
             {
-                fileName = Constants.ShablonFileName;
+                fileName = ProjectConstants.ShablonFileName;
             }
             else
             {
-                fileName = Constants.ShablonFileName2;
+                fileName = ProjectConstants.ShablonFileName2;
             }
             try
             {

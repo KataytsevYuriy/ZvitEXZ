@@ -21,7 +21,7 @@ namespace ZvitEXZ.Models.Objects
 
         public VyhodIsZemly(object[] data) : base(data)
         {
-            Name = Constants.VyhodIsZemlyName;
+            Name = ProjectConstants.VyhodIsZemlyName;
             string flanetsPlace = "";
             if (data[109] == null)
             {

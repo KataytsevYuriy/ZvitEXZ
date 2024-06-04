@@ -14,7 +14,7 @@ namespace ZvitEXZ.Models.Objects
         public string KanalState { get; set; }
         public Kanal(object[] data) : base(data)
         {
-            Name = Constants.KanalName;
+            Name = ProjectConstants.KanalName;
             if (data[112] == null)
             {
                 KanalName = "";

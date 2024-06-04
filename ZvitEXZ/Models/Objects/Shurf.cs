@@ -60,7 +60,7 @@ namespace ZvitEXZ.Models.Objects
 
         public Shurf(object[] data) : base(data)
         {
-            Name = Constants.ShurfName;
+            Name = ProjectConstants.ShurfName;
 
             if (data[122] == null)
             {
