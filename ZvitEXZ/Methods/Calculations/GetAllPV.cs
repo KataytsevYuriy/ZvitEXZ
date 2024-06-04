@@ -10,9 +10,9 @@ namespace ZvitEXZ.Methods.Calculations
 {
     public class GetAllPV
     {
-        public List<Zamer> Get(List<Zamer> data)
+        public List<PV> Get(List<Zamer> data)
         {
-            return data.Where(item => item.Name == Constants.PVName).ToList();
+            return data.Where(item => item.Name == Constants.PVName).Select(el => el as PV).ToList();
         }
     }
 }

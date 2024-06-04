@@ -7,13 +7,13 @@ using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Models;
 
-namespace ZvitEXZ.Methods.File
+namespace ZvitEXZ.Methods.File.Converters
 {
-    public class ConvertZamersToZvedena
+    public class ListZamersToMassive
     {
         private List<Zamer> zamers;
         private List<KorNebezpechny> korNebezpechnies;
-        public ConvertZamersToZvedena(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies)
+        public ListZamersToMassive(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies)
         {
             this.korNebezpechnies = korNebezpechnies;
             this.zamers = zamers;

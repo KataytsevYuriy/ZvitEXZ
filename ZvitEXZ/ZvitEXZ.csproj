@@ -67,6 +67,7 @@
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
+    <Compile Include="Methods\Calculations\GetAllNeobstegeno.cs" />
     <Compile Include="Methods\Calculations\GetAllPovitrPerehody.cs" />
     <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
     <Compile Include="Methods\Calculations\GetAllRoadKozhuhss.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Methods\File\Converters\ListPovitrPerehToMassive.cs" />
     <Compile Include="Methods\File\Converters\ListShurvesTiArray.cs" />
     <Compile Include="Methods\File\ConvertListToFile.cs" />
-    <Compile Include="Methods\File\ConvertZamersToZvedena.cs" />
+    <Compile Include="Methods\File\Converters\ListZamersToMassive.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />
     <Compile Include="Methods\Calculations\GetAllPV.cs" />
     <Compile Include="Methods\File\WriteToFile.cs" />
@@ -96,8 +97,11 @@
     <Compile Include="Methods\SetMestnost.cs" />
     <Compile Include="Methods\File\WriteEcxelFile.cs" />
     <Compile Include="Methods\ConvertToString.cs" />
+    <Compile Include="Models\Calculations\CalculationDone.cs" />
     <Compile Include="Models\Calculations\Checked.cs" />
+    <Compile Include="Models\Calculations\KorAktyvnist.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
+    <Compile Include="Models\Calculations\NeObstegeno.cs" />
     <Compile Include="Models\Calculations\Nezahyst.cs" />
     <Compile Include="Models\Calculations\PovitrPerehod.cs" />
     <Compile Include="Models\Calculations\Povregdenya.cs" />
@@ -119,9 +123,11 @@
     <Compile Include="Models\LogMessage.cs" />
     <Compile Include="Models\Objects\MestnostType.cs" />
     <Compile Include="Models\Objects\Napravlenye.cs" />
+    <Compile Include="Models\Objects\NeObstegenaDylyanka.cs" />
     <Compile Include="Models\Objects\ObjectZamer.cs" />
     <Compile Include="Models\Objects\Otvod.cs" />
     <Compile Include="Models\Objects\PerehodDn.cs" />
+    <Compile Include="Models\Objects\Pereshkoda.cs" />
     <Compile Include="Models\Objects\Povorot.cs" />
     <Compile Include="Models\Objects\ProtectionTypes.cs" />
     <Compile Include="Models\Objects\ProvodTypePidklichenyas.cs" />

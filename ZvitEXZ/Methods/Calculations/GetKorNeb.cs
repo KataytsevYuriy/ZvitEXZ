@@ -96,8 +96,8 @@ namespace ZvitEXZ.Methods.Calculations
                 if (item.Name == filter)
                 {
                     River river = item as River;
-                    if (river.RiverLength > 0)
-                        korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (float)river.RiverLength / 1000, filter));
+                    if (river.Length > 0)
+                        korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (float)river.Length / 1000, filter));
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace ZvitEXZ.Methods.Calculations
                 if (item.Name == filter)
                 {
                     Swamp river = item as Swamp;
-                    korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (float)river.SwampLength / 1000, filter));
+                    korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (float)river.Length / 1000, filter));
                 }
             }
         }
@@ -206,7 +206,7 @@ namespace ZvitEXZ.Methods.Calculations
                     continue;
                 }
                 string korNebDescription = String.Join(", ", listByEnd.Select(el => el.Description).OrderBy(t => t).ToArray());
-                if (kmEnd > kmStart)
+                if (itemEnding.KmFinish > kmStart)
                     res.Add(new KorNebezpechny(kmStart, itemEnding.KmFinish, korNebDescription));
                 kmStart = itemEnding.KmFinish;
                 listByEnd.Remove(itemEnding);

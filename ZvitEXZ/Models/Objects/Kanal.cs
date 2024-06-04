@@ -8,11 +8,10 @@ using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class Kanal : Zamer
+    internal class Kanal : Pereshkoda
     {
         public string KanalName { get; set; }
         public string KanalState { get; set; }
-        public int KanalLenght { get; set; }
         public Kanal(object[] data) : base(data)
         {
             Name = Constants.KanalName;
@@ -32,24 +31,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 KanalState = data[113].ToString();
             }
-            if (data[21] == null)
-            {
-                KanalLenght = 0;
-                Logs.AddError($"км {data[1]} укажите длинну канала");
 
-            }
-            else
-            {
-                try
-                {
-                    KanalLenght = int.Parse(data[21].ToString());
-                }
-                catch
-                {
-                    KanalLenght = 0;
-                    Logs.AddError("Неверная длинна канала");
-                }
-            }
         }
         public override string ToString()
         {

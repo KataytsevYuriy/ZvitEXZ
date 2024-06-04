@@ -7,10 +7,9 @@ using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class River : Zamer
+    internal class River : Pereshkoda
     {
         public string RiverName { get; set; }
-        public int RiverLength { get; set; }
         public River(object[] data) : base(data)
         {
             Name = Constants.RiverName;
@@ -21,24 +20,6 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 RiverName = data[67].ToString();
-            }
-            if (data[21] == null)
-            {
-                RiverLength = 0;
-                Logs.AddError($"км {data[1]} укажите длинну реки");
-
-            }
-            else
-            {
-                try
-                {
-                    RiverLength = int.Parse(data[21].ToString());
-                }
-                catch
-                {
-                    RiverLength = 0;
-                    Logs.AddError("Неверная длинна реки");
-                }
             }
         }
         public override string ToString()

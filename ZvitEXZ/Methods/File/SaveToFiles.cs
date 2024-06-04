@@ -17,7 +17,7 @@ namespace ZvitEXZ.Methods.File
             converter = new ConvertListToFile();
             writeToFile = new WriteToFile();
         }
-        public void SavePV(List<Zamer> zamers)
+        public void SavePV(List<PV> zamers)
         {
             writeToFile.WriteFile(_fileName, Constants.PVFolderName, _pipeName, converter.ConvertPV(zamers),
                 "B", "L", "L", Constants.PrintMessagePZIsEmpty, 1);

@@ -44,6 +44,7 @@ namespace ZvitEXZ.Methods
                 case Constants.ObjectInNaborka:return new ObjectZamer(data);
                 case Constants.PerehodDNInNaborka:return new PerehodDn(data);
                 case Constants.UPZNInNaborka:return new UPZ(data);
+                case Constants.NeobstegenaDylyankaNInNaborka:return new NeObstegenaDylyanka(data);
 
 
                 default:

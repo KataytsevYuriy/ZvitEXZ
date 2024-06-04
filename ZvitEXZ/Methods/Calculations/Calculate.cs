@@ -3,6 +3,7 @@ using ZvitEXZ.Methods.File;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
+using ZvitEXZ.Methods.File.Converters;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -13,10 +14,22 @@ namespace ZvitEXZ.Methods.Calculations
         List<Povregdenya> povregdenyas;
         List<RoadKozhuh> roadKozhuhs;
         List<Flanets> flantsy;
-        public void CalculateAll(List<Zamer> zamers, ExcelDictionary dictionary, Checked checkeD)
+        List<NeObstegeno> neObstegenos;
+        List<PovitrPerehod> povitrPerehods;
+        List<Zamer> zamers;
+        List<PV> pVs;
+        List<Shurf> shurves;
+        CalculationDone calculated;
+        ExcelDictionary excelDictionary;
+        public Calculate()
+        {
+            calculated = new CalculationDone();
+        }
+        public void CalculateAll(List<Zamer> Zamers, ExcelDictionary dictionary, Checked checkeD)
         {
             SetMestnost setMestnost = new SetMestnost();
             zamers = setMestnost.Set(zamers);
+            excelDictionary = dictionary;
             PipeName PipeName = new PipeName();
             string pipeName = PipeName.GetPipeName(dictionary);
             SaveToFiles fileSaver = new SaveToFiles(dictionary.SourceFileName, pipeName);
@@ -24,28 +37,18 @@ namespace ZvitEXZ.Methods.Calculations
             Progress.AddStep();
 
             //Незахист
-            if (checkeD.IsNezahyst || checkeD.IsKorneb || checkeD.IsPovregd || checkeD.IsPovregdGNT ||
-                checkeD.IsZvedena || checkeD.IsPovregd || checkeD.IsPovregdGNT)
-            {
-                GetNezahyst getNezahyst = new GetNezahyst();
-                nezahysts = getNezahyst.CalculateNezah(zamers);
-            }
             if (checkeD.IsNezahyst)
             {
+                if (!calculated.Nezahyst) CalculateNezah();
                 fileSaver.SaveNezahyst(nezahysts);
                 Progress.AddStep();
                 Done.Nezahyst();
             }
 
             //Корнебезепечні
-            if (checkeD.IsNezahyst || checkeD.IsKorneb || checkeD.IsPovregd || checkeD.IsPovregdGNT)
+            if (checkeD.IsKorneb)
             {
-
-                GetKorNeb getKorNeb = new GetKorNeb(zamers, nezahysts);
-                korNebezpechny = getKorNeb.Calculate();
-            }
-            if (checkeD.IsNezahyst)
-            {
+                if (!calculated.Korneb) CalculateKorneb();
                 fileSaver.SaveKornebezpechny(korNebezpechny);
                 Progress.AddStep();
                 Done.Korneb();
@@ -54,8 +57,8 @@ namespace ZvitEXZ.Methods.Calculations
             //ПВ
             if (checkeD.IsPv)
             {
-                GetAllPV getAllPV = new GetAllPV();
-                fileSaver.SavePV(getAllPV.Get(zamers));
+                if (!calculated.PV) CalculatePV();
+                fileSaver.SavePV(pVs);
                 Progress.AddStep();
                 Done.PV();
             }
@@ -63,9 +66,9 @@ namespace ZvitEXZ.Methods.Calculations
             //Zvedena
             if (checkeD.IsZvedena)
             {
-                ConvertZamersToZvedena convertZamersToZvedena = new ConvertZamersToZvedena(zamers, korNebezpechny);
-                string[,] zvedenaString = convertZamersToZvedena.Convert();
-                fileSaver.SaveZvedena(zvedenaString);
+                if (!calculated.Korneb) CalculateKorneb();
+                ListZamersToMassive convertZamersToZvedena = new ListZamersToMassive(zamers, korNebezpechny);
+                fileSaver.SaveZvedena(convertZamersToZvedena.Convert());
                 Progress.AddStep();
                 Done.Zvedena();
             }
@@ -82,8 +85,7 @@ namespace ZvitEXZ.Methods.Calculations
             //Povregdenya
             if (checkeD.IsPovregd)
             {
-                GetAllPovregdenya getAllPovregdenya = new GetAllPovregdenya(dictionary.GradFirstLine, dictionary.GradSecondLine);
-                povregdenyas = getAllPovregdenya.Get(zamers, korNebezpechny);
+                if (!calculated.Povregd) CalculatePovregd();
                 fileSaver.SavePovregd(povregdenyas);
                 Progress.AddStep();
                 Done.Povregd();
@@ -102,8 +104,7 @@ namespace ZvitEXZ.Methods.Calculations
             //Переходы с кожухом
             if (checkeD.IsPerehody)
             {
-                GetAllRoadKozhuhs getAllRoadKozhuhs = new GetAllRoadKozhuhs();
-                roadKozhuhs = getAllRoadKozhuhs.Get(zamers);
+                if (!calculated.RoadKozhuh) CalculateRoadKozhuh();
                 fileSaver.SaveVymirKozhuh(roadKozhuhs);
                 Progress.AddStep();
                 //стан на переходах
@@ -115,8 +116,7 @@ namespace ZvitEXZ.Methods.Calculations
             // Flantsy
             if (checkeD.IsFlantsy)
             {
-                GetAllFlanets getAllFlantsy = new GetAllFlanets();
-                flantsy = getAllFlantsy.GetElektroIsolative(zamers);
+                if (!calculated.Flantsy) CalculateFlantsy();
                 fileSaver.SaveFlantsy(flantsy);
                 Progress.AddStep();
                 Done.Flantsy();
@@ -125,18 +125,19 @@ namespace ZvitEXZ.Methods.Calculations
             //Povitr Perehody
             if (checkeD.IsPovitrPerehody)
             {
-                GetAllPovitrPerehody getAllPovitrPerehody = new GetAllPovitrPerehody();
-                List<PovitrPerehod> povitrPerehods = getAllPovitrPerehody.Get(zamers);
+                if (!calculated.PovitrPerehody) CalculatePovitrPerehody();
                 fileSaver.SavePovitrPerehody(povitrPerehods);
                 Progress.AddStep();
                 Done.povitrPerehody();
             }
 
+            //необстежено
+            //CalculateNeobstegeno();
+
             //Shurves
             if (checkeD.IsShurfy)
             {
-                GetAllShurfs getAllShurfs = new GetAllShurfs();
-                List<Shurf> shurves = getAllShurfs.Get(zamers);
+                if (!calculated.Shurfy) CalculateShurfy();
                 fileSaver.SaveShurves(shurves);
                 Progress.AddStep();
                 Done.Shurfy();
@@ -148,6 +149,64 @@ namespace ZvitEXZ.Methods.Calculations
             Logs.AddLog("Таблицы построены");
             Progress.Finish();
 
+        }
+        private void CalculateNezah()
+        {
+            GetNezahyst getNezahyst = new GetNezahyst();
+            nezahysts = getNezahyst.CalculateNezah(zamers);
+            calculated.Nezahyst = true;
+        }
+        private void CalculateKorneb()
+        {
+            if (!calculated.Nezahyst) CalculateNezah();
+            GetKorNeb getKorNeb = new GetKorNeb(zamers, nezahysts);
+            korNebezpechny = getKorNeb.Calculate();
+            calculated.Korneb = true;
+        }
+        private void CalculatePV()
+        {
+            GetAllPV getAllPV = new GetAllPV();
+            pVs = getAllPV.Get(zamers);
+            calculated.PV = true;
+        }
+        private void CalculatePovregd()
+        {
+            if (!calculated.Korneb) CalculateKorneb();
+            GetAllPovregdenya getAllPovregdenya = new GetAllPovregdenya(excelDictionary.GradFirstLine,
+                excelDictionary.GradSecondLine);
+            povregdenyas = getAllPovregdenya.Get(zamers, korNebezpechny);
+            calculated.Povregd = true;
+        }
+        private void CalculateRoadKozhuh()
+        {
+            GetAllRoadKozhuhs getAllRoadKozhuhs = new GetAllRoadKozhuhs();
+            roadKozhuhs = getAllRoadKozhuhs.Get(zamers);
+            calculated.RoadKozhuh = true;
+        }
+        private void CalculateFlantsy()
+        {
+            GetAllFlanets getAllFlantsy = new GetAllFlanets();
+            flantsy = getAllFlantsy.GetElektroIsolative(zamers);
+            calculated.Flantsy = true;
+        }
+        private void CalculatePovitrPerehody()
+        {
+            GetAllPovitrPerehody getAllPovitrPerehody = new GetAllPovitrPerehody();
+            povitrPerehods = getAllPovitrPerehody.Get(zamers);
+            calculated.PovitrPerehody = true;
+        }
+        private void CalculateNeobstegeno()
+        {
+            if (!calculated.PovitrPerehody) CalculatePovitrPerehody();
+            GetAllNeobstegeno getAllNeobstegeno = new GetAllNeobstegeno();
+            neObstegenos = getAllNeobstegeno.Get(zamers, povitrPerehods);
+            calculated.Neobstegeno = true;
+        }
+        private void CalculateShurfy()
+        {
+            GetAllShurfs getAllShurfs = new GetAllShurfs();
+            shurves = getAllShurfs.Get(zamers);
+            calculated.Shurfy = true;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ZvitEXZ.Methods.File
 {
     public class ConvertListToFile
     {
-        public string[,] ConvertPV(List<Zamer> data)
+        public string[,] ConvertPV(List<PV> data)
         {
             if (data.Count == 0) return new string[0, 0];
             string[,] res = new string[data.Count, 11];
