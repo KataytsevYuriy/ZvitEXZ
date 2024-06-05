@@ -125,6 +125,6 @@ namespace ZvitEXZ.Models
 
         public static float PovregdenyaFirstCherga = (float)-0.02;
         public static float PovregdenyaSecondCherga = (float)-0.15;
-        public static float StepVymiryvannya = (float)0.01;
+        public static float StepVymiryvannya = (float)(0.01+0.002);
     }
 }

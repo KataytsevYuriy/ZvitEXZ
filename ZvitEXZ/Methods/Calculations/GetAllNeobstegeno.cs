@@ -21,7 +21,12 @@ namespace ZvitEXZ.Methods.Calculations
                     Road road = zamer as Road;
                     if (road.RoadType == RoadTypes.automobile || road.RoadType == RoadTypes.train)
                     {
-                        result.Add(new NeObstegeno(road.Km, road.Km + (float)road.length / 1000, road.ToString()));
+                        int addToKozhuh = 0;
+                        if (road.HasKozhuh && (int)road.KozhuhLength > (int)road.length)
+                            addToKozhuh = (int)Math.Round((double)((road.KozhuhLength ?? 0 - road.length ?? 0) / 2));
+
+                        result.Add(new NeObstegeno(road.Km - addToKozhuh / 1000,
+                            road.Km + (float)(road.length + addToKozhuh) / 1000, road.ToString()));
                     }
                 }
                 if (zamer.Name == ProjectConstants.RiverName || zamer.Name == ProjectConstants.KanalName ||

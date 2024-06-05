@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZvitEXZ.Models;
+﻿using System.Collections.Generic;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
+using ZvitEXZ.Models;
 
 
 namespace ZvitEXZ.Methods.Calculations
@@ -27,6 +23,15 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (Zamer zamer in zamers)
             {
                 if (zamer.Utz == null) continue;
+                if (zamer.Km - lastKm > ProjectConstants.StepVymiryvannya)
+                {
+                    if (lastKm > kmStart)
+                    {
+                        Nezahyst nezahyst = new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz);
+                        res.Add(nezahyst);
+                        flag = 0;
+                    }
+                }
                 if (zamer.Utz < crossLine) // незахист
                 {
                     if (flag == 0)

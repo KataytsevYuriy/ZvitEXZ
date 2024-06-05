@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
@@ -15,11 +13,13 @@ namespace ZvitEXZ.Methods.Calculations
         List<Zamer> zamers;
         List<KorNebezpechny> korNebezpechny;
         List<Nezahyst> nezahysts;
-        public GetKorNeb(List<Zamer> zamers, List<Nezahyst> nezahysts)
+        List<HruntAktivity> hruntAktivities;
+        public GetKorNeb(List<Zamer> zamers, List<Nezahyst> nezahysts, List<HruntAktivity> hruntAktivities)
         {
             this.zamers = zamers;
             this.nezahysts = nezahysts;
             korNebezpechny = new List<KorNebezpechny>();
+            this.hruntAktivities = hruntAktivities;
         }
         public List<KorNebezpechny> Calculate()
         {
@@ -45,48 +45,53 @@ namespace ZvitEXZ.Methods.Calculations
         }
         private void ByRhr()
         {
-            float crossLine = 20;
-            Crossing Crossing = new Crossing(crossLine);
-            float kmStart = 0;
-            int flag = 0;// 0=undefined, 1 = not korNebezpechny, 2 = korNebezpechny
-            float lastRhr = 0;
-            float lastKm = 0;
-            foreach (Zamer item in zamers)
-            {
-                if (item.Rhr == null) continue;
-                if (flag == 0)
+            if (hruntAktivities.Count > 0)
+                foreach (HruntAktivity aktivity in hruntAktivities)
                 {
-                    if (item.Rhr < crossLine)
-                    {
-                        kmStart = item.Km;
-                        flag = 2;
-                    }
-                    else
-                    {
-                        flag = 1;
-                    }
+                    korNebezpechny.Add(new KorNebezpechny(aktivity.KmStart, aktivity.KmFinish, ProjectConstants.KorNebRhrMessage));
                 }
-                else if (flag == 1)
-                {
-                    if (item.Rhr < crossLine)
-                    {
-                        kmStart = Crossing.GetCrossing((float)lastRhr, lastKm, (float)item.Rhr, item.Km);
-                        flag = 2;
-                    }
-                }
-                else if (item.Rhr >= crossLine)  //flag =2
-                {
-                    flag = 1;
-                    float kmEnd = Crossing.GetCrossing((float)lastRhr, lastKm, (float)item.Rhr, item.Km);
-                    if (kmEnd > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, kmEnd, ProjectConstants.KorNebRhrMessage));
-                }
-                lastKm = item.Km;
-                lastRhr = (float)item.Rhr;
-            }
-            if (flag == 2)
-            {
-                if (lastKm > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, lastKm, ProjectConstants.KorNebRhrMessage));
-            }
+            //float crossLine = 20;
+            //Crossing Crossing = new Crossing(crossLine);
+            //float kmStart = 0;
+            //int flag = 0;// 0=undefined, 1 = not korNebezpechny, 2 = korNebezpechny
+            //float lastRhr = 0;
+            //float lastKm = 0;
+            //foreach (Zamer item in zamers)
+            //{
+            //    if (item.Rhr == null) continue;
+            //    if (flag == 0)
+            //    {
+            //        if (item.Rhr < crossLine)
+            //        {
+            //            kmStart = item.Km;
+            //            flag = 2;
+            //        }
+            //        else
+            //        {
+            //            flag = 1;
+            //        }
+            //    }
+            //    else if (flag == 1)
+            //    {
+            //        if (item.Rhr < crossLine)
+            //        {
+            //            kmStart = Crossing.GetCrossing((float)lastRhr, lastKm, (float)item.Rhr, item.Km);
+            //            flag = 2;
+            //        }
+            //    }
+            //    else if (item.Rhr >= crossLine)  //flag =2
+            //    {
+            //        flag = 1;
+            //        float kmEnd = Crossing.GetCrossing((float)lastRhr, lastKm, (float)item.Rhr, item.Km);
+            //        if (kmEnd > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, kmEnd, ProjectConstants.KorNebRhrMessage));
+            //    }
+            //    lastKm = item.Km;
+            //    lastRhr = (float)item.Rhr;
+            //}
+            //if (flag == 2)
+            //{
+            //    if (lastKm > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, lastKm, ProjectConstants.KorNebRhrMessage));
+            //}
         }
         private void ByRiver()
         {

@@ -160,7 +160,8 @@ namespace ZvitEXZ.Methods.Calculations
         private void CalculateKorneb()
         {
             if (!calculated.Nezahyst) CalculateNezah();
-            GetKorNeb getKorNeb = new GetKorNeb(zamers, nezahysts);
+            if (!calculated.HruntActivity) CalculateHruntActivity();
+            GetKorNeb getKorNeb = new GetKorNeb(zamers, nezahysts, hruntAktivities);
             korNebezpechny = getKorNeb.Calculate();
             calculated.Korneb = true;
         }
