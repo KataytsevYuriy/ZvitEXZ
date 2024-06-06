@@ -24,7 +24,7 @@ namespace ZvitEXZ.Methods.Calculations
                         int addToKozhuh = 0;
                         if (road.HasKozhuh && (int)road.KozhuhLength > (int)road.length)
                             addToKozhuh = (int)Math.Round((double)((road.KozhuhLength ?? 0 - road.length ?? 0) / 2));
-
+                        float
                         result.Add(new NeObstegeno(road.Km - addToKozhuh / 1000,
                             road.Km + (float)(road.length + addToKozhuh) / 1000, road.ToString()));
                     }
@@ -34,7 +34,7 @@ namespace ZvitEXZ.Methods.Calculations
                     zamer.Name == ProjectConstants.NeobstegenaDylyankaName)
                 {
                     Pereshkoda pereshkoda = zamer as Pereshkoda;
-                    result.Add(new NeObstegeno(pereshkoda.Km, pereshkoda.Km + pereshkoda.Length / 1000,
+                    result.Add(new NeObstegeno(pereshkoda.Km, pereshkoda.Km + ((float)pereshkoda.Length )/ 1000,
                         pereshkoda.ToString()));
                 }
             }

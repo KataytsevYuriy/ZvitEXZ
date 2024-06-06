@@ -15,6 +15,7 @@ namespace ZvitEXZ.Methods.Calculations
         List<RoadKozhuh> roadKozhuhs;
         List<Flanets> flantsy;
         List<NeObstegeno> neObstegenos;
+        List<Dylyanka> neObstegenoDylyanka;
         List<PovitrPerehod> povitrPerehods;
         List<Zamer> zamers;
         List<PV> pVs;
@@ -153,8 +154,9 @@ namespace ZvitEXZ.Methods.Calculations
         }
         private void CalculateNezah()
         {
+            if (!calculated.Neobstegeno) CalculateNeobstegeno();
             GetNezahyst getNezahyst = new GetNezahyst();
-            nezahysts = getNezahyst.CalculateNezah(zamers);
+            nezahysts = getNezahyst.CalculateNezah(zamers,neObstegenoDylyanka);
             calculated.Nezahyst = true;
         }
         private void CalculateKorneb()
@@ -202,6 +204,9 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.PovitrPerehody) CalculatePovitrPerehody();
             GetAllNeobstegeno getAllNeobstegeno = new GetAllNeobstegeno();
             neObstegenos = getAllNeobstegeno.Get(zamers, povitrPerehods);
+            neObstegenoDylyanka = new List<Dylyanka>();
+            foreach (NeObstegeno neObstegeno in neObstegenos)
+            { neObstegenoDylyanka.Add(new Dylyanka(neObstegeno.KmStart, neObstegeno.KmEnd)); }
             calculated.Neobstegeno = true;
         }
         private void CalculateShurfy()

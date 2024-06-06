@@ -2,13 +2,14 @@
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Models;
+using System.Linq;
 
 
 namespace ZvitEXZ.Methods.Calculations
 {
     internal class GetNezahyst
     {
-        public List<Nezahyst> CalculateNezah(List<Zamer> zamers)
+        public List<Nezahyst> CalculateNezah(List<Zamer> zamers, List<Dylyanka> neObstegenos)
         {
             float crossLine = (float)0.9;
             Crossing crossingNezah = new Crossing(crossLine);
@@ -23,15 +24,15 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (Zamer zamer in zamers)
             {
                 if (zamer.Utz == null) continue;
-                if (zamer.Km - lastKm > ProjectConstants.StepVymiryvannya)
-                {
-                    if (lastKm > kmStart)
-                    {
-                        Nezahyst nezahyst = new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz);
-                        res.Add(nezahyst);
-                        flag = 0;
-                    }
-                }
+                //if (zamer.Km - lastKm > ProjectConstants.StepVymiryvannya)
+                //{
+                //    if (lastKm > kmStart)
+                //    {
+                //        Nezahyst nezahyst = new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz);
+                //        res.Add(nezahyst);
+                //        flag = 0;
+                //    }
+                //}
                 if (zamer.Utz < crossLine) // незахист
                 {
                     if (flag == 0)
@@ -75,6 +76,18 @@ namespace ZvitEXZ.Methods.Calculations
             if (flag == 2)
             {
                 if (lastKm > kmStart) res.Add(new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz));
+            }
+            res = TrimNeobstegeno(res, neObstegenos);
+            return res;
+        }
+        private List<Nezahyst> TrimNeobstegeno(List<Nezahyst> data, List<Dylyanka> neObstegenos)
+        {
+            List<Nezahyst> res = new List<Nezahyst>();
+            foreach(Nezahyst nezahyst in data)
+            {
+                List<Dylyanka> tt = nezahyst.TrimBylist(neObstegenos);
+                List<Nezahyst> curNezah = nezahyst.TrimBylist(neObstegenos).Select(el => el as Nezahyst).ToList();
+                res.AddRange(curNezah);
             }
             return res;
         }

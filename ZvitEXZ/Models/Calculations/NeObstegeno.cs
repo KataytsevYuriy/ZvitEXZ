@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.Calculations
 {
-    public class NeObstegeno
+    public class NeObstegeno : Dylyanka
     {
-        public float KmStart { get; set; }
-        public float KmFinish { get; set; }
         public string Description { get; set; }
-        public NeObstegeno(float kmStart, float kmFinish, string description = "")
+        public NeObstegeno(float kmStart, float kmFinish, string description = "") : base(kmStart, kmFinish)
         {
-            KmStart = kmStart;
-            KmFinish = kmFinish;
-            Description=description;
+            Description = description;
         }
     }
 }
