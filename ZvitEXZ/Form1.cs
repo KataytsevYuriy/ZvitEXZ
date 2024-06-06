@@ -208,7 +208,7 @@ namespace ZvitEXZ
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            progressBar1.Value = progressBar1.Value + 10;
+
         }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)

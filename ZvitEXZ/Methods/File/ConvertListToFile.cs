@@ -58,8 +58,8 @@ namespace ZvitEXZ.Methods.File
             foreach (KorNebezpechny item in data)
             {
                 res[i, 0] = Math.Round(item.KmStart * 1000).ToString();
-                res[i, 1] = Math.Round(item.KmFinish * 1000).ToString();
-                res[i, 2] = Math.Round((item.KmFinish - item.KmStart) * 1000).ToString();
+                res[i, 1] = Math.Round(item.KmEnd * 1000).ToString();
+                res[i, 2] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
                 res[i, 3] = item.Description;
                 i++;
             }

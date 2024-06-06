@@ -185,7 +185,7 @@ namespace ZvitEXZ.Methods.Calculations
                 bool isDelitsya = false;
                 foreach (KorNebezpechny kornebEl in korneb)
                 {
-                    if (kornebEl.KmFinish < povregd.KmStart) continue;
+                    if (kornebEl.KmEnd < povregd.KmStart) continue;
                     if (kornebEl.KmStart > povregd.KmFinish) break;
                     if (kornebEl.KmStart > kmStart)
                     {
@@ -194,7 +194,7 @@ namespace ZvitEXZ.Methods.Calculations
                                                  0, 0, "", "", MestnostType.IndefinedType, isDelitsya));
                         kmStart = kornebEl.KmStart;
                     }
-                    if (kornebEl.KmFinish >= povregd.KmFinish)
+                    if (kornebEl.KmEnd >= povregd.KmFinish)
                     {
                         newPovregdenya.Add(CreatePovregdenya(kmStart, povregd.KmFinish, 1, povregd.MaxGradient,
                             povregd.UMaxGradient, povregd.GpsN, povregd.GpsE, povregd.Mestnost, isDelitsya));
@@ -203,9 +203,9 @@ namespace ZvitEXZ.Methods.Calculations
                     else
                     {
                         isDelitsya = true;
-                        newPovregdenya.Add(CreatePovregdenya(kmStart, kornebEl.KmFinish, 1, 0, 0, "", "",
+                        newPovregdenya.Add(CreatePovregdenya(kmStart, kornebEl.KmEnd, 1, 0, 0, "", "",
                             MestnostType.IndefinedType, isDelitsya));
-                        kmStart = kornebEl.KmFinish;
+                        kmStart = kornebEl.KmEnd;
                     }
 
                 }

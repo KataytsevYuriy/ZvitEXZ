@@ -153,6 +153,7 @@ namespace ZvitEXZ.Methods.Calculations
         }
         private void CalculateNezah()
         {
+            if(!calculated.Neobstegeno) CalculateNeobstegeno();
             GetNezahyst getNezahyst = new GetNezahyst();
             nezahysts = getNezahyst.CalculateNezah(zamers);
             calculated.Nezahyst = true;

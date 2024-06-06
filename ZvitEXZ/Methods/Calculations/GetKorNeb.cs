@@ -151,36 +151,36 @@ namespace ZvitEXZ.Methods.Calculations
             float kmEnd = 0;
             foreach (KorNebezpechny item in listByStart)
             {
-                if (item.KmStart == item.KmFinish) continue;
+                if (item.KmStart == item.KmEnd) continue;
                 if (listByEnd.Count == 0)
                 {
                     listByEnd.Add(item);
                     kmStart = item.KmStart;
                     continue;
                 }
-                if (item.KmStart < listByEnd.First().KmFinish)
+                if (item.KmStart < listByEnd.First().KmEnd)
                 {
                     while (listByEnd.Count > 0 && item.KmStart > kmStart)
                     {
                         KorNebezpechny itemEnding = listByEnd.First();
-                        if (kmStart == itemEnding.KmFinish)
+                        if (kmStart == itemEnding.KmEnd)
                         {
                             listByEnd.Remove(itemEnding);
                             continue;
                         }
                         string korNebDescription = String.Join(", ", listByEnd.Select(el => el.Description).OrderBy(t => t).ToArray());
-                        kmEnd = itemEnding.KmFinish > item.KmStart ? item.KmStart : itemEnding.KmFinish;
+                        kmEnd = itemEnding.KmEnd > item.KmStart ? item.KmStart : itemEnding.KmEnd;
                         if (kmEnd > kmStart)
                             res.Add(new KorNebezpechny(kmStart, kmEnd, korNebDescription));
                         kmStart = kmEnd;
-                        if (itemEnding.KmFinish <= item.KmStart)
+                        if (itemEnding.KmEnd <= item.KmStart)
                         {
                             listByEnd.Remove(itemEnding);
                         }
                     }
                     if (listByEnd.Count == 0) kmStart = item.KmStart;
                     listByEnd.Add(item);
-                    listByEnd = listByEnd.OrderBy(elem => elem.KmFinish).ToList();
+                    listByEnd = listByEnd.OrderBy(elem => elem.KmEnd).ToList();
                 }
                 else //item.KmStart >= listByEnd.First().KmEnd
                 {
@@ -188,32 +188,32 @@ namespace ZvitEXZ.Methods.Calculations
                     {
                         KorNebezpechny itemEnding = listByEnd.First();
                         string korNebDescription = String.Join(", ", listByEnd.Select(el => el.Description).OrderBy(t => t).ToArray());
-                        kmEnd = itemEnding.KmFinish > item.KmStart ? item.KmStart : itemEnding.KmFinish;
+                        kmEnd = itemEnding.KmEnd > item.KmStart ? item.KmStart : itemEnding.KmEnd;
                         if (kmEnd > kmStart)
                             res.Add(new KorNebezpechny(kmStart, kmEnd, korNebDescription));
                         kmStart = kmEnd;
-                        if (itemEnding.KmFinish <= item.KmStart)
+                        if (itemEnding.KmEnd <= item.KmStart)
                         {
                             listByEnd.Remove(itemEnding);
                         }
                     }
                     if (listByEnd.Count == 0) kmStart = item.KmStart;
                     listByEnd.Add(item);
-                    listByEnd = listByEnd.OrderBy(elem => elem.KmFinish).ToList();
+                    listByEnd = listByEnd.OrderBy(elem => elem.KmEnd).ToList();
                 }
             }
             while (listByEnd.Count > 0)
             {
                 KorNebezpechny itemEnding = listByEnd.First();
-                if (kmStart == itemEnding.KmFinish)
+                if (kmStart == itemEnding.KmEnd)
                 {
                     listByEnd.Remove(itemEnding);
                     continue;
                 }
                 string korNebDescription = String.Join(", ", listByEnd.Select(el => el.Description).OrderBy(t => t).ToArray());
-                if (itemEnding.KmFinish > kmStart)
-                    res.Add(new KorNebezpechny(kmStart, itemEnding.KmFinish, korNebDescription));
-                kmStart = itemEnding.KmFinish;
+                if (itemEnding.KmEnd > kmStart)
+                    res.Add(new KorNebezpechny(kmStart, itemEnding.KmEnd, korNebDescription));
+                kmStart = itemEnding.KmEnd;
                 listByEnd.Remove(itemEnding);
             }
             korNebezpechny = res;

@@ -78,5 +78,9 @@ namespace ZvitEXZ.Methods.Calculations
             }
             return res;
         }
+        //private List<Nezahyst> TrimNeobstegeno(List<Nezahyst> data)
+        //{
+        //    List<Nezahyst> res=new List<Nezahyst>();
+        //}
     }
 }
