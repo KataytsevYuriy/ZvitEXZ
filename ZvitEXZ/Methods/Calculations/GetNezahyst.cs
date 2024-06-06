@@ -24,15 +24,6 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (Zamer zamer in zamers)
             {
                 if (zamer.Utz == null) continue;
-                //if (zamer.Km - lastKm > ProjectConstants.StepVymiryvannya)
-                //{
-                //    if (lastKm > kmStart)
-                //    {
-                //        Nezahyst nezahyst = new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz);
-                //        res.Add(nezahyst);
-                //        flag = 0;
-                //    }
-                //}
                 if (zamer.Utz < crossLine) // незахист
                 {
                     if (flag == 0)
@@ -78,12 +69,14 @@ namespace ZvitEXZ.Methods.Calculations
                 if (lastKm > kmStart) res.Add(new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz));
             }
             res = TrimNeobstegeno(res, neObstegenos);
+            res = AddPotencial(res, zamers);
+            CheckEmpdyData(res);
             return res;
         }
         private List<Nezahyst> TrimNeobstegeno(List<Nezahyst> data, List<Dylyanka> neObstegenos)
         {
             List<Nezahyst> res = new List<Nezahyst>();
-            foreach(Nezahyst nezahyst in data)
+            foreach (Nezahyst nezahyst in data)
             {
                 List<Dylyanka> tt = nezahyst.TrimBylist(neObstegenos);
                 List<Nezahyst> curNezah = nezahyst.TrimBylist(neObstegenos).Select(el => el as Nezahyst).ToList();
@@ -91,9 +84,45 @@ namespace ZvitEXZ.Methods.Calculations
             }
             return res;
         }
-        //private List<Nezahyst> TrimNeobstegeno(List<Nezahyst> data)
-        //{
-        //    List<Nezahyst> res=new List<Nezahyst>();
-        //}
+        private List<Nezahyst> AddPotencial(List<Nezahyst> data, List<Zamer> zamers)
+        {
+            foreach (Nezahyst nezahyst in data)
+            {
+                if (nezahyst.MinUtz != 0) continue;
+                float minUtz = 0;
+                string gpsN = "";
+                string gpsE = "";
+                foreach(Zamer zamer in zamers)
+                {
+                    if (zamer.Ugrad == null) continue;
+                    if (zamer.Km<nezahyst.KmStart) continue;
+                    if(zamer.Km>nezahyst.KmEnd) break;
+                    if (minUtz == 0)
+                    {
+                        minUtz = zamer.Utz ?? 0;
+                        gpsN = zamer.GpsN;
+                        gpsE = zamer.GpsE;
+                        continue;
+                    }
+                    if (minUtz > zamer.Utz)
+                    {
+                        minUtz = zamer.Utz ?? 0;
+                        gpsN = zamer.GpsN;
+                        gpsE = zamer.GpsE;
+                    }
+                }
+                nezahyst.MinUtz = minUtz;
+                nezahyst.MinGpsN = gpsN;
+                nezahyst.MinGpsE = gpsE;
+            }
+            return data;
+        }
+        private void CheckEmpdyData(List<Nezahyst> nezahysts)
+        {
+            foreach(Nezahyst nezahyst in nezahysts)
+            {
+                if (nezahyst.MinUtz == 0) Logs.AddError($"Незахист км {nezahyst.KmStart} - км {nezahyst.KmEnd} невосможно установить минимальный защитный потренциал");
+            }
+        }
     }
 }

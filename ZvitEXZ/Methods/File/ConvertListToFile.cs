@@ -76,11 +76,18 @@ namespace ZvitEXZ.Methods.File
                 res[i, 0] = Math.Round(item.KmStart * 1000).ToString();
                 res[i, 1] = Math.Round(item.KmEnd * 1000).ToString();
                 res[i, 2] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
-                res[i, 3] = $"-{ConvertToString.FloatToString(item.MinUtz)}";
+                if (item.MinUtz == 0)
+                {
+                    res[i, 3] = "-";
+                }
+                else
+                {
+                    res[i, 3] = $"-{ConvertToString.FloatToString(item.MinUtz)}";
+                }
                 res[i, 4] = "";
                 res[i, 5] = "";
-                res[i, 6] = item.MinGpsN;
-                res[i, 7] = item.MinGpsE;
+                res[i, 6] = String.IsNullOrEmpty(item.MinGpsN) ? "-" : item.MinGpsN;
+                res[i, 7] = String.IsNullOrEmpty(item.MinGpsE) ? "-" : item.MinGpsE;
                 i++;
             }
             return res;

@@ -23,18 +23,11 @@ namespace ZvitEXZ.Methods.Calculations
                     {
                         float addToKozhuh = 0;
                         if (road.HasKozhuh && (int)road.KozhuhLength > (int)road.length)
-<<<<<<< HEAD
                         {
                             addToKozhuh = (float)Math.Round((double)(road.KozhuhLength - road.length) / 2000, 3);
                         }
                         result.Add(new NeObstegeno(road.Km - addToKozhuh,
                            (float)Math.Round(road.Km + (float)(road.length) / 1000 + addToKozhuh, 3), road.ToString()));
-=======
-                            addToKozhuh = (int)Math.Round((double)((road.KozhuhLength ?? 0 - road.length ?? 0) / 2));
-                        float
-                        result.Add(new NeObstegeno(road.Km - addToKozhuh / 1000,
-                            road.Km + (float)(road.length + addToKozhuh) / 1000, road.ToString()));
->>>>>>> e4a63cedf9cbb19511b582d4bc648c2ae935c48d
                     }
                 }
                 if (zamer.Name == ProjectConstants.RiverName || zamer.Name == ProjectConstants.KanalName ||
@@ -42,11 +35,7 @@ namespace ZvitEXZ.Methods.Calculations
                     zamer.Name == ProjectConstants.NeobstegenaDylyankaName)
                 {
                     Pereshkoda pereshkoda = zamer as Pereshkoda;
-<<<<<<< HEAD
                     result.Add(new NeObstegeno(pereshkoda.Km, (float)Math.Round(pereshkoda.Km + (float)pereshkoda.Length / 1000, 3),
-=======
-                    result.Add(new NeObstegeno(pereshkoda.Km, pereshkoda.Km + ((float)pereshkoda.Length )/ 1000,
->>>>>>> e4a63cedf9cbb19511b582d4bc648c2ae935c48d
                         pereshkoda.ToString()));
                 }
             }

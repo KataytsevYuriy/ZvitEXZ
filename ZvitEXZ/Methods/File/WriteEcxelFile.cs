@@ -53,6 +53,7 @@ namespace ZvitEXZ.Methods
                 {
                     worksheet.Range[rangeData].Value = data;
                     worksheet.Range[rangeData].Font.Size = 12;
+                    worksheet.Range[rangeData].Font.Name = "Times New Roman";
                     worksheet.Range[rangeData].Borders.Weight = 2d;
                     worksheet.Range[rangeData].WrapText = true;
                     worksheet.Range[rangeData].VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;

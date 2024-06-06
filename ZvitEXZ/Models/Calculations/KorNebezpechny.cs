@@ -6,13 +6,34 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.Calculations
 {
-    public class KorNebezpechny:Dylyanka
+    public class KorNebezpechny : Dylyanka
     {
         public string Description { get; set; }
-        public KorNebezpechny(float kmStart, float kmEnd, string description):base(kmStart,kmEnd)
+        public KorNebezpechny(float kmStart, float kmEnd, string description) : base(kmStart, kmEnd)
         {
-            Description=description;
+            Description = description;
         }
-        //public override dy
+        public override Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
+        {
+            Dylyanka result;
+            KorNebezpechny korNeb = dylyanka as KorNebezpechny;
+            if (KmStart < korNeb.KmStart && KmEnd > korNeb.KmStart)
+            {
+                result = new KorNebezpechny(ostatok.KmStart, dylyanka.KmStart, korNeb.Description);
+            }
+            else
+            {
+                result = null;
+            }
+            if (ostatok.KmStart < dylyanka.KmEnd && ostatok.KmEnd > dylyanka.KmEnd)
+            {
+                ostatok = new KorNebezpechny(dylyanka.KmEnd, KmEnd,korNeb.Description);
+            }
+            else
+            {
+                ostatok = null;
+            }
+            return result;
+        }
     }
 }
