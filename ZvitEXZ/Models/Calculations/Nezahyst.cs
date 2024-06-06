@@ -19,5 +19,26 @@ namespace ZvitEXZ.Models.Calculations
             MinGpsN = minGpsN;
             MinGpsE = minGpsE;
         }
+        public override Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
+        {
+            Nezahyst result;
+            if (KmStart < dylyanka.KmStart && KmEnd > dylyanka.KmStart)
+            {
+                result = new Nezahyst(ostatok.KmStart, dylyanka.KmStart,0,"","");
+            }
+            else
+            {
+                result = null;
+            }
+            if (ostatok.KmStart < dylyanka.KmEnd && ostatok.KmEnd > dylyanka.KmEnd)
+            {
+                ostatok = new Nezahyst(dylyanka.KmEnd, KmEnd, 0, "", "");
+            }
+            else
+            {
+                ostatok = null;
+            }
+            return result;
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace ZvitEXZ.Models.Calculations
             if (rested != null) result.Add(rested);
             return result;
         }
-        public Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
+        public virtual Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
         {
             Dylyanka result;
             if (KmStart < dylyanka.KmStart && KmEnd > dylyanka.KmStart)
