@@ -12,10 +12,10 @@ namespace ZvitEXZ.Methods.Calculations
 {
     internal class GetAllPovregdenya
     {
-        private float uFirstCherga;
-        private float uSecondCherga;
+        private double uFirstCherga;
+        private double uSecondCherga;
         List<Povregdenya> povregdenyas;
-        public GetAllPovregdenya(float UFirstChergaGradient, float USecondChergaGradient)
+        public GetAllPovregdenya(double UFirstChergaGradient, double USecondChergaGradient)
         {
             uFirstCherga = UFirstChergaGradient;
             uSecondCherga = USecondChergaGradient;
@@ -33,12 +33,12 @@ namespace ZvitEXZ.Methods.Calculations
         private void GetAll(List<Zamer> data)
         {
             int flagCherga = 0;
-            float kmStart = 0;
-            float lastKm = data.First().Km;
-            float lastU = 1;
-            float kmFinish = 0;
-            float maxGrad = 0;
-            float UMaxGrad = 0;
+            double kmStart = 0;
+            double lastKm = data.First().Km;
+            double lastU = 1;
+            double kmFinish = 0;
+            double maxGrad = 0;
+            double UMaxGrad = 0;
             bool lastZamerNull = false;
             string gpsN = "";
             string gpsE = "";
@@ -173,7 +173,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             List<Povregdenya> newPovregdenya = new List<Povregdenya>();
             if (korneb.Count == 0 || povregdenyas.Count == 0) return;
-            float kmStart;
+            double kmStart;
             foreach (Povregdenya povregd in povregdenyas)
             {
                 if (povregd.Cherga == 1)
@@ -262,15 +262,15 @@ namespace ZvitEXZ.Methods.Calculations
                     if (zamer.Km > povregdenya.KmFinish) break;
                     if (zamer.Ugrad < maxZamer.Ugrad) maxZamer = zamer;
                 }
-                povregdenya.MaxGradient = (float)maxZamer.Ugrad;
-                povregdenya.UMaxGradient = (float)maxZamer.Utz;
+                povregdenya.MaxGradient = (double)maxZamer.Ugrad;
+                povregdenya.UMaxGradient = (double)maxZamer.Utz;
                 povregdenya.GpsN = maxZamer.GpsN;
                 povregdenya.GpsE = maxZamer.GpsE;
                 povregdenya.Mestnost = maxZamer.Mestnost;
             }
         }
-        private Povregdenya CreatePovregdenya(float kmStart, float kmFinish, int cherga,
-            float maxGradient, float uMaxGradient, string GpsN, string GpsE, MestnostType mestnost, bool obnulit = true)
+        private Povregdenya CreatePovregdenya(double kmStart, double kmFinish, int cherga,
+            double maxGradient, double uMaxGradient, string GpsN, string GpsE, MestnostType mestnost, bool obnulit = true)
         {
             if (obnulit) return new Povregdenya(kmStart, kmFinish, cherga, 0, 0, "", "", MestnostType.IndefinedType);
             return new Povregdenya(kmStart, kmFinish, cherga, maxGradient, uMaxGradient, GpsN, GpsE, mestnost);

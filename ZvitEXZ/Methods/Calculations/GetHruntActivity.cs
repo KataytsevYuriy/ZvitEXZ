@@ -10,10 +10,10 @@ namespace ZvitEXZ.Methods.Calculations
         public List<HruntAktivity> Get(List<Zamer> zamers)
         {
             List<HruntAktivity> hruntAktivities = new List<HruntAktivity>();
-            float kmStart = zamers.First().Km;
-            float kmLast = kmStart;
-            float kmFinish = 0;
-            float RhrLast = 0;
+            double kmStart = zamers.First().Km;
+            double kmLast = kmStart;
+            double kmFinish = 0;
+            double RhrLast = 0;
             foreach (Zamer zamer in zamers)
             {
                 if (zamer.Km == kmStart)
@@ -30,10 +30,10 @@ namespace ZvitEXZ.Methods.Calculations
                 }
                 else
                 {
-                    float crossLine = 50;
+                    double crossLine = 50;
                     if ((RhrLast < 20 && zamer.Rhr >= 20) || ((RhrLast >= 20 && zamer.Rhr < 20))) crossLine = 20;
                     Crossing crossing = new Crossing(crossLine);
-                    kmFinish = crossing.GetCrossing(RhrLast, kmLast, (float)zamer.Rhr, zamer.Km);
+                    kmFinish = crossing.GetCrossing(RhrLast, kmLast, (double)zamer.Rhr, zamer.Km);
                     hruntAktivities.Add(new HruntAktivity(kmStart, kmFinish, RhrLast));
                     kmStart = kmFinish;
                     RhrLast = zamer.Rhr ?? 0;

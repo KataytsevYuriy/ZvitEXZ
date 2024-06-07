@@ -9,9 +9,9 @@ namespace ZvitEXZ.Methods
 {
     public static class Parse
     {
-        public static float ParseFloat(object data)
+        public static double ParseDouble(object data)
         {
-            return float.Parse(CorrectString(data.ToString()));
+            return double.Parse(CorrectString(data.ToString()));
         }
         private static string CorrectString(string data)
         {

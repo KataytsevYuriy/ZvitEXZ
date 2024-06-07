@@ -14,13 +14,13 @@ namespace ZvitEXZ.Methods.File.Converters
             foreach (Shurf shurf in shurves)
             {
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = ConvertToString.FloatToString(shurf.Km);
-                res[i, 2] = ConvertToString.FloatToString(shurf.Hlub);
+                res[i, 1] = ConvertToString.DoubleToString(shurf.Km);
+                res[i, 2] = ConvertToString.DoubleToString(shurf.Hlub);
                 res[i, 3] = shurf.ShurfLength.Replace(".", ",");
                 res[i, 4] = shurf.IsolationSquare.Replace(".", ",");
                 res[i, 5] = shurf.IsolationGettingSquare.Replace(".", ",");
                 res[i, 6] = shurf.MestnostCharacteristics;
-                res[i, 7] = ConvertToString.FloatToString(shurf.Rhr);
+                res[i, 7] = ConvertToString.DoubleToString(shurf.Rhr);
                 res[i, 8] = shurf.LitologHrunt;
                 res[i, 9] = shurf.StanHruntu;
                 res[i, 10] = shurf.NumbersObhortky;

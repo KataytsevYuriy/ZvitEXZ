@@ -9,16 +9,16 @@ namespace ZvitEXZ.Models.Calculations
 {
     public class Povregdenya
     {
-        public float KmStart { get; set; }
-        public float KmFinish { get; set; }
-        public float MaxGradient { get; set; }
-        public float UMaxGradient { get; set; }
+        public double KmStart { get; set; }
+        public double KmFinish { get; set; }
+        public double MaxGradient { get; set; }
+        public double UMaxGradient { get; set; }
         public string GpsN { get; set; }
         public string GpsE { get; set; }
         public int Cherga { get; set; }
         public MestnostType Mestnost { get; set; }
-        public Povregdenya(float kmStart, float kmFinish, int cherga,
-            float maxGradient, float uMaxGradient, string GpsN, string GpsE, MestnostType mestnost)
+        public Povregdenya(double kmStart, double kmFinish, int cherga,
+            double maxGradient, double uMaxGradient, string GpsN, string GpsE, MestnostType mestnost)
         {
             KmStart=kmStart;
             KmFinish=kmFinish;

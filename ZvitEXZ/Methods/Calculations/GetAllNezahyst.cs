@@ -7,17 +7,17 @@ using System.Linq;
 
 namespace ZvitEXZ.Methods.Calculations
 {
-    internal class GetNezahyst
+    internal class GetAllNezahyst
     {
         public List<Nezahyst> CalculateNezah(List<Zamer> zamers, List<Dylyanka> neObstegenos)
         {
-            float crossLine = (float)0.9;
+            double crossLine = 0.9;
             Crossing crossingNezah = new Crossing(crossLine);
             int flag = 0; //0 - Null, 1 - защищено, 2 - незахист
-            float kmStart = 0;
-            float? lastUtz = 0;
-            float lastKm = 0;
-            float? minUtz = 0;
+            double kmStart = 0;
+            double? lastUtz = 0;
+            double lastKm = 0;
+            double? minUtz = 0;
             string gpsNMinUtz = "";
             string gpsEMinUtz = "";
             List<Nezahyst> res = new List<Nezahyst>();
@@ -35,7 +35,7 @@ namespace ZvitEXZ.Methods.Calculations
                     }
                     else if (flag == 1)
                     {
-                        kmStart = crossingNezah.GetCrossing((float)lastUtz, lastKm, (float)zamer.Utz, zamer.Km);
+                        kmStart = crossingNezah.GetCrossing((double)lastUtz, lastKm, (double)zamer.Utz, zamer.Km);
                         minUtz = zamer.Utz;
                         gpsNMinUtz = zamer.GpsN;
                         gpsEMinUtz = zamer.GpsE;
@@ -52,10 +52,10 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     if (flag == 2)
                     {
-                        float kmEnd = crossingNezah.GetCrossing((float)lastUtz, lastKm, (float)zamer.Utz, zamer.Km);
+                        double kmEnd = crossingNezah.GetCrossing((double)lastUtz, lastKm, (double)zamer.Utz, zamer.Km);
                         if (kmEnd > kmStart)
                         {
-                            Nezahyst nezahyst = new Nezahyst(kmStart, kmEnd, (float)minUtz, gpsNMinUtz, gpsEMinUtz);
+                            Nezahyst nezahyst = new Nezahyst(kmStart, kmEnd, (double)minUtz, gpsNMinUtz, gpsEMinUtz);
                             res.Add(nezahyst);
                         }
                     }
@@ -66,7 +66,7 @@ namespace ZvitEXZ.Methods.Calculations
             }
             if (flag == 2)
             {
-                if (lastKm > kmStart) res.Add(new Nezahyst(kmStart, lastKm, (float)minUtz, gpsNMinUtz, gpsEMinUtz));
+                if (lastKm > kmStart) res.Add(new Nezahyst(kmStart, lastKm, (double)minUtz, gpsNMinUtz, gpsEMinUtz));
             }
             res = TrimNeobstegeno(res, neObstegenos);
             res = AddPotencial(res, zamers);
@@ -89,7 +89,7 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (Nezahyst nezahyst in data)
             {
                 if (nezahyst.MinUtz != 0) continue;
-                float minUtz = 0;
+                double minUtz = 0;
                 string gpsN = "";
                 string gpsE = "";
                 foreach(Zamer zamer in zamers)

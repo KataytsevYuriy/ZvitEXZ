@@ -9,15 +9,15 @@ namespace ZvitEXZ.Methods.Calculations
 {
     public class Crossing
     {
-        private float crossLine;
-        public Crossing(float crossline)
+        private double crossLine;
+        public Crossing(double crossline)
         {
             crossLine = crossline;
         }
-        public float GetCrossing(float uStart, float kmStart, float uEnd, float kmEnd)
+        public double GetCrossing(double uStart, double kmStart, double uEnd, double kmEnd)
         {
             if (kmStart == kmEnd) return kmStart;
-            return (float)Math.Round(kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd), 3);
+            return Math.Round(kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd), 3);
         }
     }
 }

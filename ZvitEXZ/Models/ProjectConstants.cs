@@ -121,6 +121,7 @@ namespace ZvitEXZ.Models
 
 
         public const float TruboprovodKornebLength = (float)0.05;
+        public const float RoadKornebLength = (float)0.05;
 
 
         public static float PovregdenyaFirstCherga = (float)-0.02;

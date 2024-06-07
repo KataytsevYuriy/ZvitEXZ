@@ -35,7 +35,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 }
                 else
                 {
-                    string utz = ((float)item.Utz).ToString("0.000").Replace(".", ",");
+                    string utz = ((double)item.Utz).ToString("0.000").Replace(".", ",");
                     res[i, 1] = $"-{utz}";
 
                 }
@@ -45,7 +45,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 }
                 else
                 {
-                    string upz = ((float)item.Utz).ToString("0.000").Replace(".", ",");
+                    string upz = ((double)item.Utz).ToString("0.000").Replace(".", ",");
 
                     res[i, 2] = $"-{upz}";
                 }
@@ -55,7 +55,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 }
                 else
                 {
-                    res[i, 3] = Math.Round((float)item.Ugrad * 1000).ToString();
+                    res[i, 3] = Math.Round((double)item.Ugrad * 1000).ToString();
                 }
                 string prymitky = "";
                 if (!string.IsNullOrEmpty(item.ToString())) prymitky = item.ToString();
@@ -76,7 +76,7 @@ namespace ZvitEXZ.Methods.File.Converters
             }
             return res;
         }
-        private string IsKornenebezpechny(float km)
+        private string IsKornenebezpechny(double km)
         {
             if (korNebezpechnies.Count == 0) return "";
             foreach (KorNebezpechny item in korNebezpechnies)

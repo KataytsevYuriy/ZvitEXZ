@@ -21,13 +21,13 @@ namespace ZvitEXZ.Methods.Calculations
                     Road road = zamer as Road;
                     if (road.RoadType == RoadTypes.automobile || road.RoadType == RoadTypes.train)
                     {
-                        float addToKozhuh = 0;
+                        double addToKozhuh = 0;
                         if (road.HasKozhuh && (int)road.KozhuhLength > (int)road.length)
                         {
-                            addToKozhuh = (float)Math.Round((double)(road.KozhuhLength - road.length) / 2000, 3);
+                            addToKozhuh = Math.Round((double)(road.KozhuhLength - road.length) / 2000, 3);
                         }
                         result.Add(new NeObstegeno(road.Km - addToKozhuh,
-                           (float)Math.Round(road.Km + (float)(road.length) / 1000 + addToKozhuh, 3), road.ToString()));
+                           Math.Round(road.Km + (double)(road.length) / 1000 + addToKozhuh, 3), road.ToString()));
                     }
                 }
                 if (zamer.Name == ProjectConstants.RiverName || zamer.Name == ProjectConstants.KanalName ||
@@ -35,13 +35,13 @@ namespace ZvitEXZ.Methods.Calculations
                     zamer.Name == ProjectConstants.NeobstegenaDylyankaName)
                 {
                     Pereshkoda pereshkoda = zamer as Pereshkoda;
-                    result.Add(new NeObstegeno(pereshkoda.Km, (float)Math.Round(pereshkoda.Km + (float)pereshkoda.Length / 1000, 3),
+                    result.Add(new NeObstegeno(pereshkoda.Km, Math.Round(pereshkoda.Km + (double)pereshkoda.Length / 1000, 3),
                         pereshkoda.ToString()));
                 }
             }
             foreach (PovitrPerehod povitrPerehod in povitrPerehods)
             {
-                result.Add(new NeObstegeno((float)povitrPerehod.KmStart / 1000, (float)povitrPerehod.KmFinish / 1000,
+                result.Add(new NeObstegeno((double)povitrPerehod.KmStart / 1000, (double)povitrPerehod.KmFinish / 1000,
                     $"повітряний перехід {povitrPerehod.OpysPereshkody}"));
             }
             result = CheckKrossing(result);
@@ -51,6 +51,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             List<NeObstegeno> result = new List<NeObstegeno>();
             NeObstegeno last = null;
+            data = data.OrderBy(x => x.KmStart).ToList();
             foreach (NeObstegeno item in data)
             {
                 if (last == null)
@@ -65,7 +66,8 @@ namespace ZvitEXZ.Methods.Calculations
                 }
                 else
                 {
-                    result.Add(new NeObstegeno(last.KmStart, item.KmStart, last.Description));
+                    if (last.KmStart > item.KmStart)
+                        result.Add(new NeObstegeno(last.KmStart, item.KmStart, last.Description));
                     if (last.KmEnd < item.KmEnd)
                     {
                         result.Add(new NeObstegeno(item.KmStart, last.KmEnd, last.Description + item.Description));

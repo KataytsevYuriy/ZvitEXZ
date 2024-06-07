@@ -23,10 +23,10 @@ namespace ZvitEXZ.Methods.File.Converters
                 res[i, 3] = flanets.FlanetsPlace;
                 res[i, 4] = flanets.MontageType;
                 res[i, 5] = "";
-                res[i, 6] = ConvertToString.FloatToString(flanets.UbeforeOn);
-                res[i, 7] = ConvertToString.FloatToString(flanets.UafterOn);
-                res[i, 8] = ConvertToString.FloatToString(flanets.UbeforeOff);
-                res[i, 9] = ConvertToString.FloatToString(flanets.UafterOff);
+                res[i, 6] = ConvertToString.DoubleToString(flanets.UbeforeOn);
+                res[i, 7] = ConvertToString.DoubleToString(flanets.UafterOn);
+                res[i, 8] = ConvertToString.DoubleToString(flanets.UbeforeOff);
+                res[i, 9] = ConvertToString.DoubleToString(flanets.UafterOff);
                 res[i, 10] = "";
                 res[i, 11] = flanets.GetAtestation();
                 res[i, 12] = "";

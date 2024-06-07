@@ -155,7 +155,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    NumberSvyazky = (int)Parse.ParseFloat(data[248].ToString());
+                    NumberSvyazky = (int)Parse.ParseDouble(data[248].ToString());
                 }
                 catch
                 {

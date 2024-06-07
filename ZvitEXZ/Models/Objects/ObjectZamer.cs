@@ -10,7 +10,7 @@ namespace ZvitEXZ.Models.Objects
     internal class ObjectZamer : Zamer
     {
         public string ObjectName { get; set; }
-        public float? Uobject { get; set; }
+        public double? Uobject { get; set; }
         public ObjectZamer(object[] data) : base(data)
         {
             Name = ProjectConstants.ObjectName;
@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
 
             try
             {
-                Uobject = ParseData.FloatNullable(data[76]);
+                Uobject = ParseData.DoubleNullable(data[76]);
             }
             catch
             {

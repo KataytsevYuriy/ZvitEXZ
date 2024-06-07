@@ -8,12 +8,12 @@ namespace ZvitEXZ.Models.Calculations
 {
     public class Dylyanka
     {
-        public float KmStart { get; set; }
-        public float KmEnd { get; set; }
-        public Dylyanka(float kmStart, float kmEnd)
+        public double KmStart { get; set; }
+        public double KmEnd { get; set; }
+        public Dylyanka(double kmStart, double kmEnd)
         {
-            KmStart = kmStart;
-            KmEnd = kmEnd;
+            KmStart = Math.Round(kmStart, 3);
+            KmEnd = Math.Round(kmEnd, 3);
         }
         public List<Dylyanka> TrimBylist(List<Dylyanka> trimmer)
         {
@@ -23,8 +23,8 @@ namespace ZvitEXZ.Models.Calculations
             {
                 if (rested.KmStart > trim.KmEnd) continue;
                 if (rested.KmEnd < trim.KmStart) break;
-                Dylyanka trimed = Trim(trim,ref rested);
-                if (trimed != null) result.Add(trimed);
+                Dylyanka trimed = Trim(trim, ref rested);
+                if (trimed != null && trimed.KmStart < trimed.KmEnd) result.Add(trimed);
                 if (rested == null) break;
             }
             if (rested != null) result.Add(rested);
@@ -37,13 +37,13 @@ namespace ZvitEXZ.Models.Calculations
             {
                 result = new Dylyanka(ostatok.KmStart, dylyanka.KmStart);
             }
-            else 
+            else
             {
-                result = null; 
+                result = null;
             }
             if (ostatok.KmStart < dylyanka.KmEnd && ostatok.KmEnd > dylyanka.KmEnd)
             {
-               ostatok= new Dylyanka(dylyanka.KmEnd, KmEnd);
+                ostatok = new Dylyanka(dylyanka.KmEnd, KmEnd);
             }
             else
             {

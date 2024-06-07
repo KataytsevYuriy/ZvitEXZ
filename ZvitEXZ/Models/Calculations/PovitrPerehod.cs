@@ -15,11 +15,11 @@ namespace ZvitEXZ.Models.Calculations
         public string RezultOglyduPokrytta { get; set; }
         public string RezultOglyduPokryttaZemlyaPovitria { get; set; }
         public string PidcylKozhuh { get; set; }
-        public float? UtzOn { get; set; }
-        public float? UkozgOff { get; set; }
+        public double? UtzOn { get; set; }
+        public double? UkozgOff { get; set; }
         public string Kontakt { get; set; }
         public PovitrPerehod(int kmStart, int kmFinish, string opysPereshkody, string rezultOglyduPokrytta, string rezultOglyduPokryttaZemlyaPovitria,
-           string pidcylKozhuh, float? utzOn, float? ukozgOff, string kontakt)
+           string pidcylKozhuh, double? utzOn, double? ukozgOff, string kontakt)
         {
             KmStart = kmStart;
             KmFinish = kmFinish;

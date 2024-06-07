@@ -76,7 +76,7 @@
     <Compile Include="Methods\Calculations\GetAllUpz.cs" />
     <Compile Include="Methods\Calculations\GetHruntActivity.cs" />
     <Compile Include="Methods\Calculations\GetKorNeb.cs" />
-    <Compile Include="Methods\Calculations\GetNezahyst.cs" />
+    <Compile Include="Methods\Calculations\GetAllNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\Converters\ListFlanetsToMassive.cs" />
     <Compile Include="Methods\File\Converters\ListPovitrPerehToMassive.cs" />

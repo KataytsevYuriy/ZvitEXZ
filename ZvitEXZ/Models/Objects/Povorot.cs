@@ -35,7 +35,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    Ugol = (int)Parse.ParseFloat(data[66]);
+                    Ugol = (int)Parse.ParseDouble(data[66]);
                 }
                 catch
                 {

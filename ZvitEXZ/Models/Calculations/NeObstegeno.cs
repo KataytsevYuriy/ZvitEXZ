@@ -9,7 +9,7 @@ namespace ZvitEXZ.Models.Calculations
     public class NeObstegeno : Dylyanka
     {
         public string Description { get; set; }
-        public NeObstegeno(float kmStart, float kmFinish, string description = "") : base(kmStart, kmFinish)
+        public NeObstegeno(double kmStart, double kmFinish, string description = "") : base(kmStart, kmFinish)
         {
             Description = description;
         }

@@ -11,23 +11,23 @@ namespace ZvitEXZ.Models.Objects
     {
         public string ObjectName { get; set; }
         public string BuildingDate { get; set; }
-        public float? UbeforeOn { get; set; }
-        public float? UafterOn { get; set; }
-        public float? UbeforeOff { get; set; }
-        public float? UafterOff { get; set; }
-        public float? Irezistor { get; set; }
+        public double? UbeforeOn { get; set; }
+        public double? UafterOn { get; set; }
+        public double? UbeforeOff { get; set; }
+        public double? UafterOff { get; set; }
+        public double? Irezistor { get; set; }
         public FlanetsTypes FlanetsType { get; set; }
         public string FlanetsPlace { get; set; }
         public string MontageType { get; set; }
         public FlanestAtistation AtestationVimiryv { get; set; }
-        public Flanets(float km, string objectName, string buildingDate, object ubeforeOn, object uafterOn, object ubeforeOff, object uafterOff, object flanetsType,
+        public Flanets(double km, string objectName, string buildingDate, object ubeforeOn, object uafterOn, object ubeforeOff, object uafterOff, object flanetsType,
             string flanetsPlace, object atestationVimiryv, object montageType)
         {
             ObjectName = objectName;
             BuildingDate = buildingDate;
             try
             {
-                UbeforeOn = ParseData.FloatNullable(ubeforeOn);
+                UbeforeOn = ParseData.DoubleNullable(ubeforeOn);
             }
             catch
             {
@@ -35,7 +35,7 @@ namespace ZvitEXZ.Models.Objects
             }
             try
             {
-                UafterOn = ParseData.FloatNullable(uafterOn);
+                UafterOn = ParseData.DoubleNullable(uafterOn);
             }
             catch
             {
@@ -43,7 +43,7 @@ namespace ZvitEXZ.Models.Objects
             }
             try
             {
-                UbeforeOff = ParseData.FloatNullable(ubeforeOff);
+                UbeforeOff = ParseData.DoubleNullable(ubeforeOff);
             }
             catch
             {
@@ -51,7 +51,7 @@ namespace ZvitEXZ.Models.Objects
             }
             try
             {
-                UafterOff = ParseData.FloatNullable(uafterOff);
+                UafterOff = ParseData.DoubleNullable(uafterOff);
             }
             catch
             {

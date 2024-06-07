@@ -11,7 +11,7 @@ namespace ZvitEXZ.Models.Objects
     {
         public SvechaSpecifications.SpecificationType Specification { get; set; }
         public SvechaSpecifications.TehnicState TehnicState { get; set; }
-        public float? USvechy { get; set; }
+        public double? USvechy { get; set; }
         public Svecha(object[] data) : base(data)
         {
             Name = ProjectConstants.SvechaName;
@@ -62,7 +62,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    USvechy = Parse.ParseFloat(data[49]);
+                    USvechy = Parse.ParseDouble(data[49]);
                 }
                 catch
                 {
@@ -78,7 +78,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    NumberSvyazky = (int)Parse.ParseFloat(data[248]);
+                    NumberSvyazky = (int)Parse.ParseDouble(data[248]);
                 }
                 catch
                 {

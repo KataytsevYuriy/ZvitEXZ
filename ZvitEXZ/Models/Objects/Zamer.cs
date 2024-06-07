@@ -9,15 +9,15 @@ namespace ZvitEXZ.Models.Objects
 {
     public class Zamer
     {
-        public float Km { get; set; }
-        public float? Utz { get; set; }
-        public float? Ugrad { get; set; }
-        public float? Upol { get; set; }
+        public double Km { get; set; }
+        public double? Utz { get; set; }
+        public double? Ugrad { get; set; }
+        public double? Upol { get; set; }
         public string GpsN { get; set; }
         public string GpsE { get; set; }
         public string Gps { get; set; }
-        public float? Rhr { get; set; }
-        public float? Hlub { get; set; }
+        public double? Rhr { get; set; }
+        public double? Hlub { get; set; }
         public MestnostType Mestnost { get; set; }
         public bool IsBalka { get; set; }
         public string Name { get; set; }
@@ -29,7 +29,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[1] == null) throw new ArgumentNullException("пустое значение КМ");
             try
             {
-                Km = Parse.ParseFloat(data[1]);
+                Km = Parse.ParseDouble(data[1]);
             }
             catch
             {
@@ -37,7 +37,7 @@ namespace ZvitEXZ.Models.Objects
             }
             try
             {
-                Utz = ParseData.FloatNullable(data[3]);
+                Utz = ParseData.DoubleNullable(data[3]);
             }
             catch
             {
@@ -46,7 +46,7 @@ namespace ZvitEXZ.Models.Objects
 
             try
             {
-                Ugrad = ParseData.FloatNullable(data[4]);
+                Ugrad = ParseData.DoubleNullable(data[4]);
             }
             catch
             {
@@ -63,7 +63,7 @@ namespace ZvitEXZ.Models.Objects
 
             try
             {
-                Upol = ParseData.FloatNullable(data[5]);
+                Upol = ParseData.DoubleNullable(data[5]);
             }
             catch
             {
@@ -74,7 +74,7 @@ namespace ZvitEXZ.Models.Objects
             Gps = ParseData.String(data[10]);
             try
             {
-                Rhr = ParseData.FloatNullable(data[11]);
+                Rhr = ParseData.DoubleNullable(data[11]);
             }
             catch
             {
@@ -83,7 +83,7 @@ namespace ZvitEXZ.Models.Objects
 
             try
             {
-                Hlub = ParseData.FloatNullable(data[12]);
+                Hlub = ParseData.DoubleNullable(data[12]);
             }
             catch
             {

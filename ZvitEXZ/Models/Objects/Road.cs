@@ -15,10 +15,10 @@ namespace ZvitEXZ.Models.Objects
         public bool HasKozhuh { get; set; }
         public int? KozhuhLength { get; set; }
         public ProtectionTypes ProtectionType { get; set; }
-        public float? UtzStartOff { get; set; }
-        public float? UtzFinishOff { get; set; }
-        public float? UkzStartOff { get; set; }
-        public float? UkzFinishOff { get; set; }
+        public double? UtzStartOff { get; set; }
+        public double? UtzFinishOff { get; set; }
+        public double? UkzStartOff { get; set; }
+        public double? UkzFinishOff { get; set; }
         public AtestationVumiruKozhuhs AtestationVumiruKozhuh { get; set; }
 
         public Road(object[] data) : base(data)
@@ -71,7 +71,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    length = (int)Parse.ParseFloat(data[21]);
+                    length = (int)Parse.ParseDouble(data[21]);
                 }
                 catch
                 {
@@ -100,7 +100,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    KozhuhLength = (int)Parse.ParseFloat(data[115]);
+                    KozhuhLength = (int)Parse.ParseDouble(data[115]);
                 }
                 catch
                 {
@@ -138,7 +138,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    UtzStartOff = Parse.ParseFloat(data[214]);
+                    UtzStartOff = Parse.ParseDouble(data[214]);
                 }
                 catch
                 {
@@ -154,7 +154,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    UtzFinishOff = Parse.ParseFloat(data[215]);
+                    UtzFinishOff = Parse.ParseDouble(data[215]);
                 }
                 catch
                 {
@@ -170,7 +170,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    UkzStartOff = Parse.ParseFloat(data[216]);
+                    UkzStartOff = Parse.ParseDouble(data[216]);
                 }
                 catch
                 {
@@ -186,7 +186,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    UkzFinishOff = Parse.ParseFloat(data[217]);
+                    UkzFinishOff = Parse.ParseDouble(data[217]);
                 }
                 catch
                 {
@@ -203,7 +203,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    NumberSvyazky = (int)Parse.ParseFloat(data[248]);
+                    NumberSvyazky = (int)Parse.ParseDouble(data[248]);
                 }
                 catch
                 {

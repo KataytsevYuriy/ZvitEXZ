@@ -12,7 +12,7 @@ namespace ZvitEXZ.Models.Calculations
     {
         public string RoadName { get; set; }
         public RoadTypes RoadType { get; set; }
-        public float Km { get; set; }
+        public double Km { get; set; }
         public int? KozhuhLength { get; set; }
         public bool HasKozhuh { get; set; }
         public string Kozhuh { get; set; }
@@ -22,8 +22,8 @@ namespace ZvitEXZ.Models.Calculations
         public string UtzOff { get; set; }
         public string UkozhOn { get; set; }
         public string UkozhOff { get; set; }
-        public float? UtzStart { get; set; }
-        public float? UtzFinish { get; set; }
+        public double? UtzStart { get; set; }
+        public double? UtzFinish { get; set; }
         public string AtestationKontakt { get; set; }
         public AtestationVumiruKozhuhs AtestationVumiruKozhuh { get; set; }
         public int NumberSvyazky { get; set; }
@@ -34,7 +34,7 @@ namespace ZvitEXZ.Models.Calculations
         public bool IsPvEndPtovodUkozh { get; set; } 
         public bool IsSvechaStart { get; set; }
         public bool IsSvechaEnd { get; set; }
-        public RoadKozhuh(Road road, float? lastUtz = null)
+        public RoadKozhuh(Road road, double? lastUtz = null)
         {
             RoadName = road.ToString();
             RoadType = road.RoadType;
@@ -46,9 +46,9 @@ namespace ZvitEXZ.Models.Calculations
             AtestationVumiruKozhuh = road.AtestationVumiruKozhuh;
             CheckPlace = "";
             UtzOn = "";
-            UtzOff = $"-{ConvertToString.FloatToString(road.UtzStartOff)} / -{ConvertToString.FloatToString(road.UtzFinishOff)}";
+            UtzOff = $"-{ConvertToString.DoubleToString(road.UtzStartOff)} / -{ConvertToString.DoubleToString(road.UtzFinishOff)}";
             UkozhOn = "";
-            UkozhOff = $"-{ConvertToString.FloatToString(road.UkzStartOff)} / -{ConvertToString.FloatToString(road.UkzFinishOff)}";
+            UkozhOff = $"-{ConvertToString.DoubleToString(road.UkzStartOff)} / -{ConvertToString.DoubleToString(road.UkzFinishOff)}";
             UtzStart = lastUtz;
             NumberSvyazky = road.NumberSvyazky;
             PVsSvechas = new List<Zamer>();

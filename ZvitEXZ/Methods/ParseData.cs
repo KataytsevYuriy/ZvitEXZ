@@ -33,10 +33,10 @@ namespace ZvitEXZ.Methods
             if (obj == null) return 0;
             return int.Parse(obj.ToString().Trim());
         }
-        public static float? FloatNullable(object obj)
+        public static double? DoubleNullable(object obj)
         {
             if (obj == null) return null;
-            return float.Parse(obj.ToString().Replace(",", ".").Trim());
+            return double.Parse(obj.ToString().Replace(",", ".").Trim());
         }
         public static MestnostType Mestnost(object data)
         {

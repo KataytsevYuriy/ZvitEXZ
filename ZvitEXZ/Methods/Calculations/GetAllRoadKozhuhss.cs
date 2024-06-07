@@ -15,11 +15,11 @@ namespace ZvitEXZ.Methods.Calculations
         {
             List<RoadKozhuh> roadKozhuhs = new List<RoadKozhuh>();
             List<Zamer> pvsSvechas = new List<Zamer>();
-            float Utz = 0;
+            double Utz = 0;
             bool addUEnd = false;
             foreach (Zamer zamer in zamers)
             {
-                if (zamer.Utz != null) Utz = (float)zamer.Utz;
+                if (zamer.Utz != null) Utz = (double)zamer.Utz;
                 if (zamer.Name == ProjectConstants.RoadName)
                 {
                     Road road = zamer as Road;
@@ -47,7 +47,7 @@ namespace ZvitEXZ.Methods.Calculations
             }
             foreach (RoadKozhuh roadKozhuh1 in roadKozhuhs)
             {
-                float? utzBefore = null, utzAfter = null, ukozBefore = null, ukozAfter = null;
+                double? utzBefore = null, utzAfter = null, ukozBefore = null, ukozAfter = null;
                 string pvBefore = "", pvAfter = "";
                 foreach (Zamer pvSvecha in roadKozhuh1.PVsSvechas)
                 {
@@ -120,8 +120,8 @@ namespace ZvitEXZ.Methods.Calculations
                 string starAfter = utzAfter == null && roadKozhuh1.UtzFinish != null ? "*" : "";
                 utzBefore = utzBefore ?? roadKozhuh1.UtzStart;
                 utzAfter = utzAfter ?? roadKozhuh1.UtzFinish;
-                roadKozhuh1.UtzOn = $"-{ConvertToString.FloatToString(utzBefore)}{starBefore} / -{ConvertToString.FloatToString(utzAfter)}{starAfter}";
-                roadKozhuh1.UkozhOn = $"-{ConvertToString.FloatToString(ukozBefore)} / -{ConvertToString.FloatToString(ukozAfter)}";
+                roadKozhuh1.UtzOn = $"-{ConvertToString.DoubleToString(utzBefore)}{starBefore} / -{ConvertToString.DoubleToString(utzAfter)}{starAfter}";
+                roadKozhuh1.UkozhOn = $"-{ConvertToString.DoubleToString(ukozBefore)} / -{ConvertToString.DoubleToString(ukozAfter)}";
             }
             return roadKozhuhs;
         }

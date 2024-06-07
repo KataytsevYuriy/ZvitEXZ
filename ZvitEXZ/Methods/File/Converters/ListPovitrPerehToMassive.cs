@@ -24,8 +24,8 @@ namespace ZvitEXZ.Methods.File.Converters
                 res[i, 4] = perehod.RezultOglyduPokrytta;
                 res[i, 5] = perehod.RezultOglyduPokryttaZemlyaPovitria;
                 res[i, 6] = perehod.PidcylKozhuh;
-                res[i, 7] = ConvertToString.FloatToString(perehod.UtzOn);
-                res[i, 8] = ConvertToString.FloatToString(perehod.UkozgOff);
+                res[i, 7] = ConvertToString.DoubleToString(perehod.UtzOn);
+                res[i, 8] = ConvertToString.DoubleToString(perehod.UkozgOff);
                 res[i, 9] = perehod.Kontakt;
                 res[i, 10] = "";
                 i++;

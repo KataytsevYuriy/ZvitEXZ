@@ -24,7 +24,7 @@ namespace ZvitEXZ.Methods.File
                 else res[i, 2] = $"{item.PVType} Ø{item.PVDiamert}";
                 string kabel = $"{item.ProvodType1} x {item.ProvodDyamert1}";
                 string pidkluchennya = item.GetTypepidkluchennya(1);
-                string potencial = $"-{ConvertToString.FloatToString(item.ProvodPotencial1)}";
+                string potencial = $"-{ConvertToString.DoubleToString(item.ProvodPotencial1)}";
                 if (!string.IsNullOrEmpty(item.ProvodType2))
                 {
                     kabel += $"/ {item.ProvodType2} x {item.ProvodDaymetr2}";
@@ -82,7 +82,7 @@ namespace ZvitEXZ.Methods.File
                 }
                 else
                 {
-                    res[i, 3] = $"-{ConvertToString.FloatToString(item.MinUtz)}";
+                    res[i, 3] = $"-{ConvertToString.DoubleToString(item.MinUtz)}";
                 }
                 res[i, 4] = "";
                 res[i, 5] = "";
@@ -102,23 +102,23 @@ namespace ZvitEXZ.Methods.File
             {
                 UKZ item = zamer as UKZ;
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = ConvertToString.FloatToString(item.Km);
+                res[i, 1] = ConvertToString.DoubleToString(item.Km);
                 res[i, 2] = item.Identificator;
                 res[i, 3] = item.TypeUkryttya;
                 res[i, 4] = item.PreobrazovatelType;
                 res[i, 5] = item.StartUsing;
                 res[i, 6] = item.Power.Replace(".", ",");
-                res[i, 7] = ConvertToString.FloatToString(item.Uwork);
-                res[i, 8] = ConvertToString.FloatToString(item.Iwork);
-                res[i, 9] = ConvertToString.FloatToString(item.Umax);
-                res[i, 10] = ConvertToString.FloatToString(item.Imax);
+                res[i, 7] = ConvertToString.DoubleToString(item.Uwork);
+                res[i, 8] = ConvertToString.DoubleToString(item.Iwork);
+                res[i, 9] = ConvertToString.DoubleToString(item.Umax);
+                res[i, 10] = ConvertToString.DoubleToString(item.Imax);
                 if (item.Umax == null || item.Imax == null || item.Uwork == null || item.Iwork == null)
                 {
                     res[i, 11] = "";
                 }
                 else
                 {
-                    res[i, 11] = ConvertToString.FloatToString(item.Uwork * item.Iwork / (item.Umax * item.Imax) * 100, 1);
+                    res[i, 11] = ConvertToString.DoubleToString(item.Uwork * item.Iwork / (item.Umax * item.Imax) * 100, 1);
                 }
                 if (item.Imax == null || item.Iwork == null)
                 {
@@ -126,7 +126,7 @@ namespace ZvitEXZ.Methods.File
                 }
                 else
                 {
-                    res[i, 12] = ConvertToString.FloatToString((float)(item.Iwork / item.Imax) * 100, 1);
+                    res[i, 12] = ConvertToString.DoubleToString((float)(item.Iwork / item.Imax) * 100, 1);
                 }
                 res[i, 13] = item.RecomendedPower.Replace(".", ",");
                 res[i, 14] = item.UtzOn.Replace(".", ",");
@@ -158,8 +158,8 @@ namespace ZvitEXZ.Methods.File
                 res[i, 3] = Math.Round((item.KmFinish - item.KmStart) * 1000).ToString();
                 res[i, 4] = item.GpsN;
                 res[i, 5] = item.GpsE;
-                res[i, 6] = ConvertToString.FloatToString(item.MaxGradient);
-                res[i, 7] = ConvertToString.FloatToString(item.UMaxGradient);
+                res[i, 6] = ConvertToString.DoubleToString(item.MaxGradient);
+                res[i, 7] = ConvertToString.DoubleToString(item.UMaxGradient);
                 res[i, 8] = item.Cherga.ToString();
                 res[i, 9] = "";
                 i++;
@@ -175,9 +175,9 @@ namespace ZvitEXZ.Methods.File
             foreach (UPZ item in data)
             {
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = ConvertToString.FloatToString(item.Km, 3);
+                res[i, 1] = ConvertToString.DoubleToString(item.Km, 3);
                 res[i, 2] = item.BuildingDate;
-                res[i, 3] = ConvertToString.FloatToString(item.Rhr, 1);
+                res[i, 3] = ConvertToString.DoubleToString(item.Rhr, 1);
                 res[i, 4] = item.ProtectorType;
                 res[i, 5] = item.ProtectorBuilder;
                 res[i, 6] = item.ProtectorCount;
@@ -207,9 +207,9 @@ namespace ZvitEXZ.Methods.File
             foreach (RoadKozhuh item in data)
             {
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = ConvertToString.FloatToString(item.Km);
+                res[i, 1] = ConvertToString.DoubleToString(item.Km);
                 res[i, 2] = item.RoadName;
-                res[i, 3] = ConvertToString.FloatToString(item.KozhuhLength);
+                res[i, 3] = ConvertToString.DoubleToString(item.KozhuhLength);
                 res[i, 4] = item.ProtectionType;
                 res[i, 5] = item.CheckPlace;
                 res[i, 6] = item.UtzOn;
@@ -230,7 +230,7 @@ namespace ZvitEXZ.Methods.File
             int i = 0;
             foreach (RoadKozhuh item in data)
             {
-                res[i, 0] = ConvertToString.FloatToString(item.Km * 1000);
+                res[i, 0] = ConvertToString.DoubleToString(item.Km * 1000);
                 res[i, 1] = item.RoadName;
                 res[i, 2] = ProvodNaPerehode(item.IsPvStartPtovodUtz,
                     item.IsPvStartPtovodUtz || item.IsPvStartPtovodUkozh, true);
@@ -245,13 +245,13 @@ namespace ZvitEXZ.Methods.File
                 res[i, 8] = item.HasKozhuh ? "" : "кожух відсутній";
                 string isSvechaNaPerehode = item.HasKozhuh && !item.IsSvechaStart && !item.IsSvechaEnd ?
                     "На переході відсутня витяжна свічка. " : "";
-                res[i, 9] = item.RoadName + " км " + ConvertToString.FloatToString(item.Km) +
+                res[i, 9] = item.RoadName + " км " + ConvertToString.DoubleToString(item.Km) +
                     HasProvod(true, item.IsPvStartPtovodUtz, item.IsPvStartPtovodUkozh, item.HasKozhuh, out string nUse) +
                     HasProvod(false, item.IsPvEndPtovodUtz, item.IsPvEndPtovodUkozh, item.HasKozhuh, out nUse) +
                     isSvechaNaPerehode +
                     AtestationContact(item, out nUse);
                 string recomendation = Recomendation(item);
-                res[i, 10] = recomendation == "" ? "" : $"{item.RoadName} км {ConvertToString.FloatToString(item.Km)} - {recomendation}";
+                res[i, 10] = recomendation == "" ? "" : $"{item.RoadName} км {ConvertToString.DoubleToString(item.Km)} - {recomendation}";
                 i++;
             }
             return res;

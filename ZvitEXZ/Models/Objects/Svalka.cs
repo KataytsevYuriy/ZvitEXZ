@@ -10,7 +10,7 @@ namespace ZvitEXZ.Models.Objects
 {
     internal class Svalka:Zamer
     {
-        public float Svalkalength { get; set; }
+        public double Svalkalength { get; set; }
 
         public Svalka(object[] data) : base(data)
         {
@@ -24,7 +24,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    Svalkalength = Parse.ParseFloat(data[21]);
+                    Svalkalength = Parse.ParseDouble(data[21]);
                 }
                 catch
                 {

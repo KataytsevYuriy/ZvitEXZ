@@ -31,6 +31,7 @@ namespace ZvitEXZ.Methods.Calculations
             ByTruboprovod();
             BySvalka();
             ByBludy();
+            ByRoads();
 
             SortKorNeb();
             return korNebezpechny;
@@ -50,48 +51,6 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     korNebezpechny.Add(new KorNebezpechny(aktivity.KmStart, aktivity.KmFinish, ProjectConstants.KorNebRhrMessage));
                 }
-            //float crossLine = 20;
-            //Crossing Crossing = new Crossing(crossLine);
-            //float kmStart = 0;
-            //int flag = 0;// 0=undefined, 1 = not korNebezpechny, 2 = korNebezpechny
-            //float lastRhr = 0;
-            //float lastKm = 0;
-            //foreach (Zamer item in zamers)
-            //{
-            //    if (item.Rhr == null) continue;
-            //    if (flag == 0)
-            //    {
-            //        if (item.Rhr < crossLine)
-            //        {
-            //            kmStart = item.Km;
-            //            flag = 2;
-            //        }
-            //        else
-            //        {
-            //            flag = 1;
-            //        }
-            //    }
-            //    else if (flag == 1)
-            //    {
-            //        if (item.Rhr < crossLine)
-            //        {
-            //            kmStart = Crossing.GetCrossing((float)lastRhr, lastKm, (float)item.Rhr, item.Km);
-            //            flag = 2;
-            //        }
-            //    }
-            //    else if (item.Rhr >= crossLine)  //flag =2
-            //    {
-            //        flag = 1;
-            //        float kmEnd = Crossing.GetCrossing((float)lastRhr, lastKm, (float)item.Rhr, item.Km);
-            //        if (kmEnd > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, kmEnd, ProjectConstants.KorNebRhrMessage));
-            //    }
-            //    lastKm = item.Km;
-            //    lastRhr = (float)item.Rhr;
-            //}
-            //if (flag == 2)
-            //{
-            //    if (lastKm > kmStart) korNebezpechny.Add(new KorNebezpechny(kmStart, lastKm, ProjectConstants.KorNebRhrMessage));
-            //}
         }
         private void ByRiver()
         {
@@ -102,7 +61,7 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     River river = item as River;
                     if (river.Length > 0)
-                        korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (float)river.Length / 1000, filter));
+                        korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (double)river.Length / 1000, filter));
                 }
             }
         }
@@ -114,14 +73,14 @@ namespace ZvitEXZ.Methods.Calculations
                 if (item.Name == filter)
                 {
                     Swamp river = item as Swamp;
-                    korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (float)river.Length / 1000, filter));
+                    korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (double)river.Length / 1000, filter));
                 }
             }
         }
         private void ByZabolochennyiHrunt()
         {
-            float swampStart = -1;
-            float lastZamer = -1;
+            double swampStart = -1;
+            double lastZamer = -1;
             foreach (Zamer item in zamers)
             {
                 if (item.Mestnost == MestnostType.ZabolHrunt)
@@ -147,8 +106,8 @@ namespace ZvitEXZ.Methods.Calculations
             List<KorNebezpechny> listByStart = korNebezpechny.OrderBy(item => item.KmStart).ToList();
             List<KorNebezpechny> listByEnd = new List<KorNebezpechny>();
             List<KorNebezpechny> res = new List<KorNebezpechny>();
-            float kmStart = 0;
-            float kmEnd = 0;
+            double kmStart = 0;
+            double kmEnd = 0;
             foreach (KorNebezpechny item in listByStart)
             {
                 if (item.KmStart == item.KmEnd) continue;
@@ -222,14 +181,14 @@ namespace ZvitEXZ.Methods.Calculations
         {
             List<Zamer> truboprovods = zamers.Where(tr => tr.Name == ProjectConstants.TruboprovodName).ToList();
             if (truboprovods.Count == 0) return;
-            float kmStart = zamers.First().Km;
-            float kmEnd = zamers.LastOrDefault().Km;
+            double kmStart = zamers.First().Km;
+            double kmEnd = zamers.LastOrDefault().Km;
             foreach (Zamer item in truboprovods)
             {
                 Truboprovod truboprovod = item as Truboprovod;
                 if (!truboprovod.IsKorneb) continue;
-                float start = (float)Math.Round(item.Km - ProjectConstants.TruboprovodKornebLength < kmStart ? kmStart : item.Km - ProjectConstants.TruboprovodKornebLength, 3);
-                float end = (float)Math.Round(item.Km + ProjectConstants.TruboprovodKornebLength > kmEnd ? kmEnd : item.Km + ProjectConstants.TruboprovodKornebLength, 3);
+                double start = Math.Round(item.Km - ProjectConstants.TruboprovodKornebLength < kmStart ? kmStart : item.Km - ProjectConstants.TruboprovodKornebLength, 3);
+                double end = Math.Round(item.Km + ProjectConstants.TruboprovodKornebLength > kmEnd ? kmEnd : item.Km + ProjectConstants.TruboprovodKornebLength, 3);
                 korNebezpechny.Add(new KorNebezpechny(start, end, ProjectConstants.KorNebTruboprovodMessage));
                 kmStart = end;
             }
@@ -243,16 +202,16 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     Svalka svalka = item as Svalka;
                     if (svalka.Svalkalength > 0)
-                        korNebezpechny.Add(new KorNebezpechny(svalka.Km, svalka.Km + (float)svalka.Svalkalength / 1000, filter));
+                        korNebezpechny.Add(new KorNebezpechny(svalka.Km, svalka.Km + (double)svalka.Svalkalength / 1000, filter));
                 }
             }
         }
         private void ByBludy()
         {
-            float kmStartPipe = zamers.First().Km;
-            float kmFinishPipe = zamers.Last().Km;
-            float kmStart = 0;
-            float kmFinish = 0;
+            double kmStartPipe = zamers.First().Km;
+            double kmFinishPipe = zamers.Last().Km;
+            double kmStart = 0;
+            double kmFinish = 0;
             bool isBludyStarted = false;
             foreach (Zamer zamer in zamers)
             {
@@ -271,6 +230,24 @@ namespace ZvitEXZ.Methods.Calculations
                     if (!isBludyStarted) Logs.AddError($"км {kmFinish} есть только окончание блудов");
                     if (kmFinishPipe - kmFinish < 0.01) kmFinish = kmFinishPipe;
                     korNebezpechny.Add(new KorNebezpechny(kmStart, kmFinish, ProjectConstants.BludyName));
+                }
+            }
+        }
+        private void ByRoads()
+        {
+            double kmFirst = zamers.First().Km;
+            double kmLast = zamers.Last().Km;
+            foreach (Zamer zamer in zamers)
+            {
+                if (zamer.Name != ProjectConstants.RoadName) continue;
+                Road road = zamer as Road;
+                if (road.RoadType == RoadTypes.automobile || road.RoadType == RoadTypes.train)
+                {
+                    double kmstart = road.Km - ProjectConstants.TruboprovodKornebLength < kmFirst ?
+                    kmFirst : road.Km - ProjectConstants.TruboprovodKornebLength;
+                    double kmfinish = road.Km + ProjectConstants.TruboprovodKornebLength + (double)road.length / 1000 > kmLast ?
+                        kmLast : road.Km + ProjectConstants.TruboprovodKornebLength + (double)road.length / 1000;
+                    korNebezpechny.Add(new KorNebezpechny(kmstart, kmfinish, road.ToString()));
                 }
             }
         }

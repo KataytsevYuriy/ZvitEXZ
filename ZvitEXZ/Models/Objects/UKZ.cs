@@ -15,10 +15,10 @@ namespace ZvitEXZ.Models.Objects
         public string PreobrazovatelType { get; set; }
         public string StartUsing { get; set; }
         public string Power { get; set; }
-        public float? Uwork { get; set; }
-        public float? Iwork { get; set; }
-        public float? Umax { get; set; }
-        public float? Imax { get; set; }
+        public double? Uwork { get; set; }
+        public double? Iwork { get; set; }
+        public double? Umax { get; set; }
+        public double? Imax { get; set; }
         public string RecomendedPower { get; set; }
         public string UtzOn { get; set; }
         public string UtzOff { get; set; }
@@ -90,7 +90,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    Uwork = Parse.ParseFloat(data[59]);
+                    Uwork = Parse.ParseDouble(data[59]);
                 }
                 catch
                 {
@@ -108,7 +108,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    Iwork = Parse.ParseFloat(data[60]);
+                    Iwork = Parse.ParseDouble(data[60]);
                 }
                 catch
                 {
@@ -126,7 +126,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    Umax = Parse.ParseFloat(data[61]);
+                    Umax = Parse.ParseDouble(data[61]);
                 }
                 catch
                 {
@@ -144,7 +144,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    Imax = Parse.ParseFloat(data[62]);
+                    Imax = Parse.ParseDouble(data[62]);
                 }
                 catch
                 {

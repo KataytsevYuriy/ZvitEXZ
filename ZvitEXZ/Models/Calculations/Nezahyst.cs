@@ -9,26 +9,22 @@ namespace ZvitEXZ.Models.Calculations
 {
     public class Nezahyst : Dylyanka
     {
-        public float MinUtz { get; set; }
+        public double MinUtz { get; set; }
         public string MinGpsN { get; set; }
         public string MinGpsE { get; set; }
-        public Nezahyst(float kmStart, float kmEnd, float minUtz, string minGpsN, string minGpsE)
+        public Nezahyst(double kmStart, double kmEnd, double minUtz, string minGpsN, string minGpsE)
             : base(kmStart, kmEnd)
         {
-            MinUtz = minUtz;
+            MinUtz = Math.Round(minUtz, 3);
             MinGpsN = minGpsN;
             MinGpsE = minGpsE;
         }
         public override Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
         {
-            Nezahyst result;
+            Nezahyst result = null;
             if (KmStart < dylyanka.KmStart && KmEnd > dylyanka.KmStart)
             {
-                result = new Nezahyst(ostatok.KmStart, dylyanka.KmStart,0,"","");
-            }
-            else
-            {
-                result = null;
+                result = new Nezahyst(ostatok.KmStart, dylyanka.KmStart, 0, "", "");
             }
             if (ostatok.KmStart < dylyanka.KmEnd && ostatok.KmEnd > dylyanka.KmEnd)
             {

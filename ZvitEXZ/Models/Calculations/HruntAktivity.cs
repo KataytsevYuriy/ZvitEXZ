@@ -8,16 +8,16 @@ namespace ZvitEXZ.Models.Calculations
 {
     public class HruntAktivity
     {
-        public float KmStart { get; set; }
-        public float KmFinish { get; set; }
+        public double KmStart { get; set; }
+        public double KmFinish { get; set; }
         public HruntAktivityTypes HruntAktivityType { get; set; }
-        public HruntAktivity(float kmStart, float kmFinish, HruntAktivityTypes hruntAktivity)
+        public HruntAktivity(double kmStart, double kmFinish, HruntAktivityTypes hruntAktivity)
         {
             KmStart = kmStart;
             KmFinish = kmFinish;
             HruntAktivityType = hruntAktivity;
         }
-        public HruntAktivity(float kmStart, float kmFinish, float Rhrunta)
+        public HruntAktivity(double kmStart, double kmFinish, double Rhrunta)
         {
             KmStart = kmStart;
             KmFinish = kmFinish;

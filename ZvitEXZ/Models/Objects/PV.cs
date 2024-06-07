@@ -11,15 +11,15 @@ namespace ZvitEXZ.Models.Objects
     {
         public string PVType { get; set; }
         public string PVDiamert { get; set; }
-        public float? ProvodPotencial1 { get; set; }
+        public double? ProvodPotencial1 { get; set; }
         public string ProvodType1 { get; set; }
         public string ProvodDyamert1 { get; set; }
         public ProvodTypePidklichenyas ProvodTypePidklichenya1 { get; set; }
-        public float? ProvodPotencial2 { get; set; }
+        public double? ProvodPotencial2 { get; set; }
         public string ProvodType2 { get; set; }
         public string ProvodDaymetr2 { get; set; }
         public ProvodTypePidklichenyas ProvodTypePidklichenya2 { get; set; }
-        public float? ProvodPotencial3 { get; set; }
+        public double? ProvodPotencial3 { get; set; }
         public string ProvodType3 { get; set; }
         public string ProvodDyametr3 { get; set; }
         public ProvodTypePidklichenyas ProvodTypePidklichenya3 { get; set; }
@@ -31,15 +31,15 @@ namespace ZvitEXZ.Models.Objects
             PVDiamert = ParseData.String(data[27]);
             try
             {
-                ProvodPotencial1 = ParseData.FloatNullable(data[30]);//провод - 1
+                ProvodPotencial1 = ParseData.DoubleNullable(data[30]);//провод - 1
                 ProvodType1 = ParseData.String(data[32]);
                 ProvodDyamert1 = ParseData.String(data[33]);
                 ProvodTypePidklichenya1 = ParseData.ProvodTypePidklichenya(data[34]);
-                ProvodPotencial2 = ParseData.FloatNullable(data[35]); //провод - 2
+                ProvodPotencial2 = ParseData.DoubleNullable(data[35]); //провод - 2
                 ProvodType2 = ParseData.String(data[36]);
                 ProvodDaymetr2 = ParseData.String(data[37]);
                 ProvodTypePidklichenya2 = ParseData.ProvodTypePidklichenya(data[38]);
-                ProvodPotencial3 = ParseData.FloatNullable(data[39]);  //провод - 3
+                ProvodPotencial3 = ParseData.DoubleNullable(data[39]);  //провод - 3
                 ProvodType3 = ParseData.String(data[40]);
                 ProvodDyametr3 = ParseData.String(data[41]);
                 ProvodTypePidklichenya3 = ParseData.ProvodTypePidklichenya(data[42]);

@@ -9,7 +9,7 @@ namespace ZvitEXZ.Models.Calculations
     public class KorNebezpechny : Dylyanka
     {
         public string Description { get; set; }
-        public KorNebezpechny(float kmStart, float kmEnd, string description) : base(kmStart, kmEnd)
+        public KorNebezpechny(double kmStart, double kmEnd, string description) : base(kmStart, kmEnd)
         {
             Description = description;
         }
