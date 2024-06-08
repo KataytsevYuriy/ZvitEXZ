@@ -15,11 +15,11 @@ namespace ZvitEXZ.Models.Calculations
             KmStart = Math.Round(kmStart, 3);
             KmEnd = Math.Round(kmEnd, 3);
         }
-        public List<Dylyanka> TrimBylist(List<Dylyanka> trimmer)
+        public List<Dylyanka> TrimBylist(List<NeObstegeno> trimmer)
         {
             List<Dylyanka> result = new List<Dylyanka>();
             Dylyanka rested = this;
-            foreach (Dylyanka trim in trimmer)
+            foreach (NeObstegeno trim in trimmer)
             {
                 if (rested.KmStart > trim.KmEnd) continue;
                 if (rested.KmEnd < trim.KmStart) break;
@@ -30,20 +30,20 @@ namespace ZvitEXZ.Models.Calculations
             if (rested != null) result.Add(rested);
             return result;
         }
-        public virtual Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
+        public virtual Dylyanka Trim(Dylyanka trimer, ref Dylyanka ostatok)
         {
             Dylyanka result;
-            if (KmStart < dylyanka.KmStart && KmEnd > dylyanka.KmStart)
+            if (KmStart < trimer.KmStart && KmEnd > trimer.KmStart)
             {
-                result = new Dylyanka(ostatok.KmStart, dylyanka.KmStart);
+                result = new Dylyanka(ostatok.KmStart, trimer.KmStart);
             }
             else
             {
                 result = null;
             }
-            if (ostatok.KmStart < dylyanka.KmEnd && ostatok.KmEnd > dylyanka.KmEnd)
+            if (ostatok.KmStart < trimer.KmEnd && ostatok.KmEnd > trimer.KmEnd)
             {
-                ostatok = new Dylyanka(dylyanka.KmEnd, KmEnd);
+                ostatok = new Dylyanka(trimer.KmEnd, KmEnd);
             }
             else
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,7 @@ namespace ZvitEXZ.Methods
         public static void Finish()
         {
             form1.progressBar1.Value = 100;
+            form1.progressBar1.ForeColor = Color.Gray;
         }
     }
 }

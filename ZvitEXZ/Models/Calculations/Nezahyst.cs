@@ -19,16 +19,16 @@ namespace ZvitEXZ.Models.Calculations
             MinGpsN = minGpsN;
             MinGpsE = minGpsE;
         }
-        public override Dylyanka Trim(Dylyanka dylyanka, ref Dylyanka ostatok)
+        public override Dylyanka Trim(Dylyanka trimmer, ref Dylyanka ostatok)
         {
             Nezahyst result = null;
-            if (KmStart < dylyanka.KmStart && KmEnd > dylyanka.KmStart)
+            if (KmStart < trimmer.KmStart && KmEnd > trimmer.KmStart)
             {
-                result = new Nezahyst(ostatok.KmStart, dylyanka.KmStart, 0, "", "");
+                result = new Nezahyst(ostatok.KmStart, trimmer.KmStart, 0, "", "");
             }
-            if (ostatok.KmStart < dylyanka.KmEnd && ostatok.KmEnd > dylyanka.KmEnd)
+            if (ostatok.KmStart < trimmer.KmEnd && ostatok.KmEnd > trimmer.KmEnd)
             {
-                ostatok = new Nezahyst(dylyanka.KmEnd, KmEnd, 0, "", "");
+                ostatok = new Nezahyst(trimmer.KmEnd, KmEnd, 0, "", "");
             }
             else
             {

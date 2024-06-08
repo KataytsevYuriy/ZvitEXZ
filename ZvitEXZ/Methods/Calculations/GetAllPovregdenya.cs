@@ -15,10 +15,12 @@ namespace ZvitEXZ.Methods.Calculations
         private double uFirstCherga;
         private double uSecondCherga;
         List<Povregdenya> povregdenyas;
-        public GetAllPovregdenya(double UFirstChergaGradient, double USecondChergaGradient)
+        List<NeObstegeno> neobstegenes;
+        public GetAllPovregdenya(double UFirstChergaGradient, double USecondChergaGradient,List<NeObstegeno> neobstegeno)
         {
             uFirstCherga = UFirstChergaGradient;
             uSecondCherga = USecondChergaGradient;
+            neobstegenes = neobstegeno;
             povregdenyas = new List<Povregdenya>();
         }
         public List<Povregdenya> Get(List<Zamer> zamers, List<KorNebezpechny> korneb)
@@ -26,20 +28,21 @@ namespace ZvitEXZ.Methods.Calculations
             GetAll(zamers);
             AddKorneb(korneb);
             SplitPovregdenya();
+            TrimPovregdenya();
             AddMaxGrad(zamers);
 
             return povregdenyas;
         }
         private void GetAll(List<Zamer> data)
         {
-            int flagCherga = 0;
+            int flagCherga = -1;
+            int currentCherga;
             double kmStart = 0;
             double lastKm = data.First().Km;
             double lastU = 1;
             double kmFinish = 0;
             double maxGrad = 0;
             double UMaxGrad = 0;
-            bool lastZamerNull = false;
             string gpsN = "";
             string gpsE = "";
             MestnostType mestnost = MestnostType.IndefinedType;
@@ -49,125 +52,99 @@ namespace ZvitEXZ.Methods.Calculations
             {
                 if (zamer.Ugrad == null || zamer.Utz == null)
                 {
-                    lastZamerNull = true;
                     continue;
                 }
-                if (flagCherga > 0 && zamer.Km - lastKm > ProjectConstants.StepVymiryvannya)
+                currentCherga = GetCherga(zamer.Utz, zamer.Ugrad);
+                if (flagCherga == -1)
                 {
-                    if (zamer.Km > kmStart)
+                    if (currentCherga > 0)
                     {
-                        povregdenyas.Add(new Povregdenya(kmStart, zamer.Km, flagCherga,
-                            maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        kmStart = zamer.Km;
+                        maxGrad = zamer.Ugrad ?? 0;
+                        UMaxGrad = zamer.Utz ?? 0;
                     }
-                    flagCherga = 0;
-                    continue;
                 }
-                if (flagCherga == 0)
+                else if (flagCherga == 0)
                 {
-                    if (zamer.Ugrad <= uSecondCherga) //to 1 and 2 cherga
+                    if (currentCherga > 0)
                     {
-                        if (lastZamerNull)
-                        {
-                            kmStart = zamer.Km;
-                            lastKm = zamer.Km;
-                        }
-                        else
-                        {
-                            kmStart = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        }
+                        kmStart = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
                         maxGrad = zamer.Ugrad ?? 0;
                         UMaxGrad = zamer.Utz ?? 0;
                         gpsN = zamer.GpsN;
                         gpsE = zamer.GpsE;
                         mestnost = zamer.Mestnost;
-                        if (zamer.Ugrad <= uFirstCherga) { flagCherga = 1; }
-                        else { flagCherga = 2; }
                     }
                 }
                 else if (flagCherga == 2)
                 {
-                    if (zamer.Ugrad > uSecondCherga) //to 0 cherga
+                    if (currentCherga == 0)
                     {
                         kmFinish = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        if (kmFinish > kmStart)
-                        {
-                            povregdenyas.Add(new Povregdenya(kmStart, kmFinish, flagCherga,
-                                maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
-                        }
-                        flagCherga = 0;
+                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 2, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
                     }
-                    else if (zamer.Ugrad <= uFirstCherga) //to 1 cherga
+                    else if (currentCherga == 2 && maxGrad > zamer.Utz)
+                    {
+                        maxGrad = zamer.Ugrad ?? 0;
+                        UMaxGrad = zamer.Utz ?? 0;
+                        gpsN = zamer.GpsN;
+                        gpsE = zamer.GpsE;
+                        mestnost = zamer.Mestnost;
+                    }
+                    else if (currentCherga == 1)
                     {
                         kmFinish = firstToSecondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        if (kmFinish > kmStart)
-                        {
-                            povregdenyas.Add(new Povregdenya(kmStart, kmFinish, flagCherga,
-                                maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
-                        }
-                        flagCherga = 1;
+                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 2, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        maxGrad = zamer.Ugrad ?? 0;
+                        UMaxGrad = zamer.Utz ?? 0;
+                        gpsN = zamer.GpsN;
+                        gpsE = zamer.GpsE;
+                        mestnost = zamer.Mestnost;
                         kmStart = kmFinish;
-                        maxGrad = zamer.Ugrad ?? 0;
-                        UMaxGrad = zamer.Utz ?? 0;
-                        gpsN = zamer.GpsN;
-                        gpsE = zamer.GpsE;
-                        mestnost = zamer.Mestnost;
-                    }
-                    else if (zamer.Ugrad < UMaxGrad) //leave in 2 cherga
-                    {
-                        maxGrad = zamer.Ugrad ?? 0;
-                        UMaxGrad = zamer.Utz ?? 0;
-                        gpsN = zamer.GpsN;
-                        gpsE = zamer.GpsE;
-                        mestnost = zamer.Mestnost;
                     }
                 }
-                else //if FlagCherga==1
+                else if (flagCherga == 1)
                 {
-                    if (zamer.Ugrad > uSecondCherga) //to 0 cherga
+                    if (currentCherga == 0)
                     {
                         kmFinish = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        if (kmFinish > kmStart)
-                        {
-                            povregdenyas.Add(new Povregdenya(kmStart, kmFinish, flagCherga,
-                                maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
-                        }
-                        flagCherga = 0;
-
+                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 1, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
                     }
-                    else if (zamer.Ugrad > uFirstCherga)//to 2 cherga
+                    else if (currentCherga == 1 && maxGrad > zamer.Utz)
+                    {
+                        maxGrad = zamer.Ugrad ?? 0;
+                        UMaxGrad = zamer.Utz ?? 0;
+                        gpsN = zamer.GpsN;
+                        gpsE = zamer.GpsE;
+                        mestnost = zamer.Mestnost;
+                    }
+                    else if (currentCherga == 2)
                     {
                         kmFinish = firstToSecondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        if (kmFinish > kmStart)
-                        {
-                            povregdenyas.Add(new Povregdenya(kmStart, kmFinish, flagCherga,
-                                maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
-                        }
-                        flagCherga = 2;
+                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 1, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        maxGrad = zamer.Ugrad ?? 0;
+                        UMaxGrad = zamer.Utz ?? 0;
+                        gpsN = zamer.GpsN;
+                        gpsE = zamer.GpsE;
+                        mestnost = zamer.Mestnost;
                         kmStart = kmFinish;
-                        maxGrad = zamer.Ugrad ?? 0;
-                        UMaxGrad = zamer.Utz ?? 0;
-                        gpsN = zamer.GpsN;
-                        gpsE = zamer.GpsE;
-                        mestnost = zamer.Mestnost;
-                    }
-                    else if (zamer.Ugrad < UMaxGrad) //leave in 1 cherga
-                    {
-                        maxGrad = zamer.Ugrad ?? 0;
-                        UMaxGrad = zamer.Utz ?? 0;
-                        gpsN = zamer.GpsN;
-                        gpsE = zamer.GpsE;
-                        mestnost = zamer.Mestnost;
                     }
                 }
                 lastKm = zamer.Km;
                 lastU = zamer.Ugrad ?? 0;
-                lastZamerNull = false;
+                flagCherga = currentCherga;
             }
             if (flagCherga > 0)
             {
                 povregdenyas.Add(new Povregdenya(kmStart, lastKm, flagCherga,
                                 maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
             }
+        }
+        private int GetCherga(double? utz, double? ugrad)
+        {
+            if ((double)ugrad > uSecondCherga) return 0;
+            if ((double)ugrad < uFirstCherga) return 1;
+            return 2;
         }
         private void AddKorneb(List<KorNebezpechny> korneb) //2 cherga to 1
         {
@@ -186,7 +163,7 @@ namespace ZvitEXZ.Methods.Calculations
                 foreach (KorNebezpechny kornebEl in korneb)
                 {
                     if (kornebEl.KmEnd < povregd.KmStart) continue;
-                    if (kornebEl.KmStart > povregd.KmFinish) break;
+                    if (kornebEl.KmStart > povregd.KmEnd) break;
                     if (kornebEl.KmStart > kmStart)
                     {
                         isDelitsya = true;
@@ -194,11 +171,11 @@ namespace ZvitEXZ.Methods.Calculations
                                                  0, 0, "", "", MestnostType.IndefinedType, isDelitsya));
                         kmStart = kornebEl.KmStart;
                     }
-                    if (kornebEl.KmEnd >= povregd.KmFinish)
+                    if (kornebEl.KmEnd >= povregd.KmEnd)
                     {
-                        newPovregdenya.Add(CreatePovregdenya(kmStart, povregd.KmFinish, 1, povregd.MaxGradient,
+                        newPovregdenya.Add(CreatePovregdenya(kmStart, povregd.KmEnd, 1, povregd.MaxGradient,
                             povregd.UMaxGradient, povregd.GpsN, povregd.GpsE, povregd.Mestnost, isDelitsya));
-                        kmStart = povregd.KmFinish;
+                        kmStart = povregd.KmEnd;
                     }
                     else
                     {
@@ -209,9 +186,9 @@ namespace ZvitEXZ.Methods.Calculations
                     }
 
                 }
-                if (kmStart != povregd.KmFinish)
+                if (kmStart != povregd.KmEnd)
                 {
-                    newPovregdenya.Add(CreatePovregdenya(kmStart, povregd.KmFinish, povregd.Cherga,
+                    newPovregdenya.Add(CreatePovregdenya(kmStart, povregd.KmEnd, povregd.Cherga,
                            povregd.MaxGradient, povregd.UMaxGradient, povregd.GpsN, povregd.GpsE, povregd.Mestnost, isDelitsya));
                 }
             }
@@ -229,7 +206,7 @@ namespace ZvitEXZ.Methods.Calculations
                     previousPovregd = item;
                     continue;
                 }
-                if (previousPovregd.KmFinish == item.KmStart && previousPovregd.Cherga == item.Cherga)
+                if (previousPovregd.KmEnd == item.KmStart && previousPovregd.Cherga == item.Cherga)
                 {
                     if (previousPovregd.MaxGradient > item.MaxGradient)
                     {
@@ -239,7 +216,7 @@ namespace ZvitEXZ.Methods.Calculations
                         previousPovregd.GpsE = item.GpsE;
                         previousPovregd.Mestnost = item.Mestnost;
                     }
-                    previousPovregd.KmFinish = item.KmFinish;
+                    previousPovregd.KmEnd = item.KmEnd;
                 }
                 else
                 {
@@ -259,7 +236,7 @@ namespace ZvitEXZ.Methods.Calculations
                 foreach (Zamer zamer in zamers)
                 {
                     if (zamer.Km < povregdenya.KmStart || zamer.Ugrad == null) continue;
-                    if (zamer.Km > povregdenya.KmFinish) break;
+                    if (zamer.Km > povregdenya.KmEnd) break;
                     if (zamer.Ugrad < maxZamer.Ugrad) maxZamer = zamer;
                 }
                 povregdenya.MaxGradient = (double)maxZamer.Ugrad;
@@ -274,6 +251,16 @@ namespace ZvitEXZ.Methods.Calculations
         {
             if (obnulit) return new Povregdenya(kmStart, kmFinish, cherga, 0, 0, "", "", MestnostType.IndefinedType);
             return new Povregdenya(kmStart, kmFinish, cherga, maxGradient, uMaxGradient, GpsN, GpsE, mestnost);
+        }
+        private void TrimPovregdenya()
+        {
+            List<Povregdenya> res = new List<Povregdenya>();
+            foreach (Povregdenya povregd in povregdenyas)
+            {
+                List<Povregdenya> curKorneb = povregd.TrimBylist(neobstegenes).Select(el => el as Povregdenya).ToList();
+                res.AddRange(curKorneb);
+            }
+            povregdenyas = res;
         }
     }
 }

@@ -154,12 +154,12 @@ namespace ZvitEXZ.Methods.File
             {
                 res[i, 0] = (i + 1).ToString();
                 res[i, 1] = Math.Round(item.KmStart * 1000).ToString();
-                res[i, 2] = Math.Round(item.KmFinish * 1000).ToString();
-                res[i, 3] = Math.Round((item.KmFinish - item.KmStart) * 1000).ToString();
+                res[i, 2] = Math.Round(item.KmEnd * 1000).ToString();
+                res[i, 3] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
                 res[i, 4] = item.GpsN;
                 res[i, 5] = item.GpsE;
                 res[i, 6] = ConvertToString.DoubleToString(item.MaxGradient);
-                res[i, 7] = ConvertToString.DoubleToString(item.UMaxGradient);
+                res[i, 7] = $"-{ConvertToString.DoubleToString(item.UMaxGradient)}";
                 res[i, 8] = item.Cherga.ToString();
                 res[i, 9] = "";
                 i++;

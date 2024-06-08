@@ -120,12 +120,12 @@ namespace ZvitEXZ.Models
         public const string MestnostBalka = "балка";
 
 
-        public const float TruboprovodKornebLength = (float)0.05;
-        public const float RoadKornebLength = (float)0.05;
+        public const double TruboprovodKornebLength = 0.05;
+        public const double RoadKornebLength = 0.05;
 
 
-        public static float PovregdenyaFirstCherga = (float)-0.02;
-        public static float PovregdenyaSecondCherga = (float)-0.15;
-        public static float StepVymiryvannya = (float)(0.01+0.002);
+        public static double PovregdenyaFirstCherga = -0.02;
+        public static double PovregdenyaSecondCherga = -0.15;
+        //public static double StepVymiryvannya = (0.01+0.002);
     }
 }

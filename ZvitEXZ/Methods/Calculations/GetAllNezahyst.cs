@@ -9,7 +9,7 @@ namespace ZvitEXZ.Methods.Calculations
 {
     internal class GetAllNezahyst
     {
-        public List<Nezahyst> CalculateNezah(List<Zamer> zamers, List<Dylyanka> neObstegenos)
+        public List<Nezahyst> CalculateNezah(List<Zamer> zamers, List<NeObstegeno> neObstegenos)
         {
             double crossLine = 0.9;
             Crossing crossingNezah = new Crossing(crossLine);
@@ -73,12 +73,11 @@ namespace ZvitEXZ.Methods.Calculations
             CheckEmpdyData(res);
             return res;
         }
-        private List<Nezahyst> TrimNeobstegeno(List<Nezahyst> data, List<Dylyanka> neObstegenos)
+        private List<Nezahyst> TrimNeobstegeno(List<Nezahyst> data, List<NeObstegeno> neObstegenos)
         {
             List<Nezahyst> res = new List<Nezahyst>();
             foreach (Nezahyst nezahyst in data)
             {
-                List<Dylyanka> tt = nezahyst.TrimBylist(neObstegenos);
                 List<Nezahyst> curNezah = nezahyst.TrimBylist(neObstegenos).Select(el => el as Nezahyst).ToList();
                 res.AddRange(curNezah);
             }

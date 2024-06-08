@@ -8,18 +8,20 @@ using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.Calculations
 {
-    internal class GetKorNeb
+    internal class GetAllKorNeb
     {
         List<Zamer> zamers;
         List<KorNebezpechny> korNebezpechny;
         List<Nezahyst> nezahysts;
         List<HruntAktivity> hruntAktivities;
-        public GetKorNeb(List<Zamer> zamers, List<Nezahyst> nezahysts, List<HruntAktivity> hruntAktivities)
+        List<NeObstegeno> neObstegenos;
+        public GetAllKorNeb(List<Zamer> zamers, List<Nezahyst> nezahysts, List<HruntAktivity> hruntAktivities, List<NeObstegeno> neObstegenos)
         {
             this.zamers = zamers;
             this.nezahysts = nezahysts;
             korNebezpechny = new List<KorNebezpechny>();
             this.hruntAktivities = hruntAktivities;
+            this.neObstegenos = neObstegenos;
         }
         public List<KorNebezpechny> Calculate()
         {
@@ -34,6 +36,7 @@ namespace ZvitEXZ.Methods.Calculations
             ByRoads();
 
             SortKorNeb();
+            TrimNeobstegeno();
             return korNebezpechny;
         }
         private void ByUtz()
@@ -250,6 +253,16 @@ namespace ZvitEXZ.Methods.Calculations
                     korNebezpechny.Add(new KorNebezpechny(kmstart, kmfinish, road.ToString()));
                 }
             }
+        }
+        private void TrimNeobstegeno()
+        {
+            List<KorNebezpechny> res = new List<KorNebezpechny>();
+            foreach (KorNebezpechny korneb in korNebezpechny)
+            {
+                List<KorNebezpechny> curKorneb = korneb.TrimBylist(neObstegenos).Select(el => el as KorNebezpechny).ToList();
+                res.AddRange(curKorneb);
+            }
+            korNebezpechny = res;
         }
     }
 }
