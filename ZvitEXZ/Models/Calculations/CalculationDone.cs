@@ -13,5 +13,6 @@
         public bool Neobstegeno { get; set; }
         public bool Shurfy { get; set; }
         public bool HruntActivity { get; set; }
+        public bool Hlubyna { get; set; }
     }
 }

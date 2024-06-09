@@ -4,6 +4,7 @@ using ZvitEXZ.Models;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Methods.File.Converters;
+using System.Linq;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -20,6 +21,8 @@ namespace ZvitEXZ.Methods.Calculations
         List<PV> pVs;
         List<Shurf> shurves;
         List<HruntAktivity> hruntAktivities;
+        List<Hlubyna> hlubynas;
+        List<NenormHlubyna> nenormHlubynas;
         CalculationDone calculated;
         ExcelDictionary excelDictionary;
         public Calculate()
@@ -144,8 +147,8 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.Shurfy();
             }
 
-
-
+            CalculateAllHlubynas();
+            
 
             Logs.AddLog("Таблицы построены");
             Progress.Finish();
@@ -219,6 +222,10 @@ namespace ZvitEXZ.Methods.Calculations
             hruntAktivities = getHruntActivity.Get(zamers);
             calculated.HruntActivity = true;
         }
-
+        private void CalculateAllHlubynas()
+        {
+            GetAllHlubynas getAllHlubynas = new GetAllHlubynas(zamers);
+            hlubynas = getAllHlubynas.Get();
+        }
     }
 }

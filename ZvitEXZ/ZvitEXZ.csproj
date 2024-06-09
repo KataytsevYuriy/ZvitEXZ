@@ -67,6 +67,8 @@
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
+    <Compile Include="Methods\Calculations\GetAllHlubynas.cs" />
+    <Compile Include="Methods\Calculations\GetAllNenormHlubyna.cs" />
     <Compile Include="Methods\Calculations\GetAllNeobstegeno.cs" />
     <Compile Include="Methods\Calculations\GetAllPovitrPerehody.cs" />
     <Compile Include="Methods\Calculations\GetAllPovregdenya.cs" />
@@ -101,8 +103,10 @@
     <Compile Include="Models\Calculations\CalculationDone.cs" />
     <Compile Include="Models\Calculations\Checked.cs" />
     <Compile Include="Models\Calculations\Dylyanka.cs" />
+    <Compile Include="Models\Calculations\Hlubyna.cs" />
     <Compile Include="Models\Calculations\HruntAktivity.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
+    <Compile Include="Models\Calculations\NenormHlubyna.cs" />
     <Compile Include="Models\Calculations\NeObstegeno.cs" />
     <Compile Include="Models\Calculations\Nezahyst.cs" />
     <Compile Include="Models\Calculations\PovitrPerehod.cs" />
