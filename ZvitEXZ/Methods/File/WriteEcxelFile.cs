@@ -37,6 +37,7 @@ namespace ZvitEXZ.Methods
                 excelApp.DisplayAlerts = true;
                 worksheet.Range[rangeName].Value = objectName;
                 worksheet.Range[rangeName].Font.Bold = true;
+                worksheet.Range[rangeName].Font.Name = "Times New Roman";
                 worksheet.Range[rangeName].Font.Size = 12;
                 worksheet.Range[rangeName].HorizontalAlignment= Excel.XlHAlign.xlHAlignCenter;
                 excelApp.DisplayAlerts = false;
@@ -46,6 +47,7 @@ namespace ZvitEXZ.Methods
                     worksheet.Range[rangeDataEmpty].Value = ifDataEmpty;
                     excelApp.DisplayAlerts = false;
                     worksheet.Range[rangeDataEmpty].Merge();
+                    worksheet.Range[rangeData].Font.Name = "Times New Roman";
                     worksheet.Range[rangeDataEmpty].Borders.Weight = 2d;
                     worksheet.Range[rangeDataEmpty].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 }

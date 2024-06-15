@@ -8,7 +8,7 @@ using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class Kanal : Pereshkoda
+    public class Kanal : Pereshkoda
     {
         public string KanalName { get; set; }
         public string KanalState { get; set; }

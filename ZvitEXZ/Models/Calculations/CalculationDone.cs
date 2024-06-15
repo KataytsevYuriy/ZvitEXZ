@@ -14,5 +14,8 @@
         public bool Shurfy { get; set; }
         public bool HruntActivity { get; set; }
         public bool Hlubyna { get; set; }
+        public bool NenormHlybyna { get; set; }
+        public bool Forests { get; set; }
+        public bool Statistiks { get; set; }
     }
 }

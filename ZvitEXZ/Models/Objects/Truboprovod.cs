@@ -8,12 +8,12 @@ using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class Truboprovod : Zamer
+    public class Truboprovod : Zamer
     {
         public string TruboprovodName { get; set; }
         public string TruboprovodType { get; set; }
         public bool IsKorneb { get; set; }
-        public bool IsAnoterTruboprovid { get; set; }
+        public bool IsVrezkaToAnoterTruboprovid { get; set; }
         public Truboprovod(object[] data) : base(data)
         {
             Name = ProjectConstants.TruboprovodName;
@@ -49,11 +49,11 @@ namespace ZvitEXZ.Models.Objects
 
             if (data[219] == null)
             {
-                IsAnoterTruboprovid = false;
+                IsVrezkaToAnoterTruboprovid = false;
             }
             else
             {
-                IsAnoterTruboprovid = true;
+                IsVrezkaToAnoterTruboprovid = true;
             }
 
         }

@@ -52,7 +52,8 @@ namespace ZvitEXZ.Methods.Calculations
             if (hruntAktivities.Count > 0)
                 foreach (HruntAktivity aktivity in hruntAktivities)
                 {
-                    korNebezpechny.Add(new KorNebezpechny(aktivity.KmStart, aktivity.KmFinish, ProjectConstants.KorNebRhrMessage));
+                    if (aktivity.HruntAktivityType == HruntAktivityTypes.hight)
+                        korNebezpechny.Add(new KorNebezpechny(aktivity.KmStart, aktivity.KmFinish, ProjectConstants.KorNebRhrMessage));
                 }
         }
         private void ByRiver()

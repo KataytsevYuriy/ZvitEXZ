@@ -136,7 +136,6 @@
             // cbStatistiks
             // 
             this.cbStatistiks.AutoSize = true;
-            this.cbStatistiks.Enabled = false;
             this.cbStatistiks.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbStatistiks.Location = new System.Drawing.Point(18, 377);
             this.cbStatistiks.Name = "cbStatistiks";
@@ -173,7 +172,6 @@
             // cbNenormHlyb
             // 
             this.cbNenormHlyb.AutoSize = true;
-            this.cbNenormHlyb.Enabled = false;
             this.cbNenormHlyb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbNenormHlyb.Location = new System.Drawing.Point(18, 290);
             this.cbNenormHlyb.Name = "cbNenormHlyb";

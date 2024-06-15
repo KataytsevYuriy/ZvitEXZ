@@ -19,29 +19,40 @@ namespace ZvitEXZ.Methods.File
             foreach (PV item in data)
             {
                 res[i, 0] = (item.Km * 1000).ToString();
-                res[i, 1] = "спеціалізований ПВ";
-                if (string.IsNullOrEmpty(item.PVDiamert)) res[i, 2] = item.PVType;
-                else res[i, 2] = $"{item.PVType} Ø{item.PVDiamert}";
-                string kabel = $"{item.ProvodType1} x {item.ProvodDyamert1}";
-                string pidkluchennya = item.GetTypepidkluchennya(1);
                 string potencial = $"-{ConvertToString.DoubleToString(item.ProvodPotencial1)}";
-                if (!string.IsNullOrEmpty(item.ProvodType2))
+                if (string.IsNullOrEmpty(item.Description))
                 {
-                    kabel += $"/ {item.ProvodType2} x {item.ProvodDaymetr2}";
-                    pidkluchennya += "/ " + item.GetTypepidkluchennya(2);
-                    potencial += "/ " + item.ProvodPotencial2;
+                    res[i, 1] = "спеціалізований ПВ";
+                    if (string.IsNullOrEmpty(item.PVDiamert)) res[i, 2] = item.PVType;
+                    else res[i, 2] = $"{item.PVType} Ø{item.PVDiamert}";
+                    string kabel = $"{item.ProvodType1} x {item.ProvodDyamert1}";
+                    string pidkluchennya = item.GetTypepidkluchennya(1);
+                    if (!string.IsNullOrEmpty(item.ProvodType2))
+                    {
+                        kabel += $"/ {item.ProvodType2} x {item.ProvodDaymetr2}";
+                        pidkluchennya += "/ " + item.GetTypepidkluchennya(2);
+                        potencial += "/ " + item.ProvodPotencial2;
+                    }
+                    if (!string.IsNullOrEmpty(item.ProvodType3))
+                    {
+                        kabel += $"/ {item.ProvodType3} x {item.ProvodDyametr3}";
+                        pidkluchennya += "/ " + item.GetTypepidkluchennya(3);
+                        potencial += "/ " + item.ProvodPotencial3;
+                    }
+                    res[i, 3] = kabel;
+                    res[i, 4] = pidkluchennya;
+                    res[i, 7] = item.IsBroken ? "Зламаний" : "робочий";
                 }
-                if (!string.IsNullOrEmpty(item.ProvodType3))
+                else
                 {
-                    kabel += $"/ {item.ProvodType3} x {item.ProvodDyametr3}";
-                    pidkluchennya += "/ " + item.GetTypepidkluchennya(3);
-                    potencial += "/ " + item.ProvodPotencial3;
+                    res[i, 1] = item.Description;
+                    res[i, 2] = "-";
+                    res[i, 3] = "-";
+                    res[i, 4] = "-";
+                    res[i, 7] = "-";
                 }
-                res[i, 3] = kabel;
-                res[i, 4] = pidkluchennya;
                 res[i, 5] = potencial;
                 res[i, 6] = "";
-                res[i, 7] = item.IsBroken ? "Зламаний" : "робочий";
                 res[i, 8] = item.Note;
                 res[i, 9] = item.GpsN;
                 res[i, 10] = item.GpsE;
@@ -258,9 +269,9 @@ namespace ZvitEXZ.Methods.File
         }
         private string ProvodNaPerehode(bool provodExist, bool pvExist, bool kozhuhExist)
         {
+            if (!kozhuhExist) return "кожух відсутній";
             if (!pvExist) return "ПВ відсутній";
             if (provodExist) return "присутній";
-            if (!kozhuhExist) return "кожух відсутній";
             return "відсутній";
         }
         private string SvechaNaPerehode(bool svechaExist, bool kozhuhExist)
@@ -351,6 +362,16 @@ namespace ZvitEXZ.Methods.File
         {
             ListShurvesTiArray converter = new ListShurvesTiArray();
             return converter.Convert(shurves);
+        }
+        public string[,] ConvertNenormHlubyna(List<NenormHlubyna> nenormHlubyna)
+        {
+            ListNeonrmHlubToArray converter = new ListNeonrmHlubToArray();
+            return converter.Convert(nenormHlubyna);
+        }
+      public string[,] ConvertStatistics(Statistics statistics)
+        {
+            StatisticToArray converter = new StatisticToArray();
+            return converter.Convert(statistics);
         }
     }
 }

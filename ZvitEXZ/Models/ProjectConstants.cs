@@ -81,9 +81,11 @@ namespace ZvitEXZ.Models
         public const string PovregdFolderName = "Додаток_Л-Пошкодження";
         public const string UpzFolderName = "Додаток_Ж-УПЗ";
         public const string FlanetsFolderName = "Додаток_П-Фланці";
+        public const string NenormHlubFolderName = "Додаток_С-Ненор_глибина";
         public const string PerehodFolderName = "Додаток_Н-Переходи";
         public const string ShurfFolderName = "Додаток_У-Шурфи";
         public const string PovitrPerehodFolderName = "Додаток_Ф-Повітряні_Переходи";
+        public const string StatisticsFolderName = "Статистика";
 
         public const string PerehodKozhuhFileName = "Додаток_Н-Вимір_кожух";
         public const string PerehodStanFileName = "Додаток_Н-Стан_переходу";
@@ -105,6 +107,7 @@ namespace ZvitEXZ.Models
         public const string PrintMessageFlanetsIsEmpty = "На обстеженому трубопроводі електроізолююці фланці - відсутні";
         public const string PrintMessagePovitrPerehIsEmpty = "На обстеженому трубопроводі повітряні переходи - відсутні";
         public const string PrintMessageShurfIsEmpty = "На обстеженому трубопроводі шурфи - відсутні";
+        public const string PrintMessageNenormHlubIsEmpty = "На обстеженому трубопроводі ділянки з ненормативною глибиною залягання - відсутні";
 
         //Mestnoct
         public const string MestnostCX = "с/г угіддя";
@@ -126,6 +129,6 @@ namespace ZvitEXZ.Models
 
         public static double PovregdenyaFirstCherga = -0.02;
         public static double PovregdenyaSecondCherga = -0.15;
-        //public static double StepVymiryvannya = (0.01+0.002);
+        public static double StepVymiryvannya = 0.01;
     }
 }

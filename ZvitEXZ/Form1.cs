@@ -83,8 +83,8 @@ namespace ZvitEXZ
                 cbFlantsy.Checked = true;
                 cbZvedena.Checked = true; cbShurfy.Checked = true;
                 cbPovitrPerehody.Checked = true;
-                //cbStatistiks.Checked = true;
-                //cbNenormHlyb.Checked = true;
+                cbStatistiks.Checked = true;
+                cbNenormHlyb.Checked = true;
             }
             else if (clearAll)
             {
@@ -95,6 +95,8 @@ namespace ZvitEXZ
                 cbFlantsy.Checked = false;
                 cbZvedena.Checked = false; cbShurfy.Checked = false;
                 cbPovitrPerehody.Checked = false;
+                cbStatistiks.Checked = false;
+                cbNenormHlyb.Checked = false;
             }
             clearAll = true;
         }

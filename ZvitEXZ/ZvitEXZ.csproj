@@ -67,6 +67,7 @@
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
+    <Compile Include="Methods\Calculations\GetAllForest.cs" />
     <Compile Include="Methods\Calculations\GetAllHlubynas.cs" />
     <Compile Include="Methods\Calculations\GetAllNenormHlubyna.cs" />
     <Compile Include="Methods\Calculations\GetAllNeobstegeno.cs" />
@@ -81,8 +82,10 @@
     <Compile Include="Methods\Calculations\GetAllNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\Converters\ListFlanetsToMassive.cs" />
+    <Compile Include="Methods\File\Converters\ListNeonrmHlubToArray.cs" />
     <Compile Include="Methods\File\Converters\ListPovitrPerehToMassive.cs" />
     <Compile Include="Methods\File\Converters\ListShurvesTiArray.cs" />
+    <Compile Include="Methods\File\Converters\StatisticToArray.cs" />
     <Compile Include="Methods\File\ConvertListToFile.cs" />
     <Compile Include="Methods\File\Converters\ListZamersToMassive.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="Models\Calculations\CalculationDone.cs" />
     <Compile Include="Models\Calculations\Checked.cs" />
     <Compile Include="Models\Calculations\Dylyanka.cs" />
+    <Compile Include="Models\Calculations\Forest.cs" />
     <Compile Include="Models\Calculations\Hlubyna.cs" />
     <Compile Include="Models\Calculations\HruntAktivity.cs" />
     <Compile Include="Models\Calculations\KorNebezpechny.cs" />
@@ -112,6 +116,7 @@
     <Compile Include="Models\Calculations\PovitrPerehod.cs" />
     <Compile Include="Models\Calculations\Povregdenya.cs" />
     <Compile Include="Models\Calculations\RoadKozhuh.cs" />
+    <Compile Include="Models\Calculations\Statistics.cs" />
     <Compile Include="Models\ProjectConstants.cs" />
     <Compile Include="Models\ExcelDictionary.cs" />
     <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />

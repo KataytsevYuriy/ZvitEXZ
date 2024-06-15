@@ -94,6 +94,12 @@ namespace ZvitEXZ.Models.Objects
             Name = "";
             Note = ParseData.String(data[303]);
         }
+        public Zamer(double km, string gpsN, string gpsE)
+        {
+            Km = km;
+            GpsN = gpsN;
+            GpsE = gpsE;
+        }
         public override string ToString()
         {
             return "";

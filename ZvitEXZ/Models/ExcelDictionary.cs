@@ -13,7 +13,7 @@ namespace ZvitEXZ.Models
         //public string TypeRodPadezh { get; set; } //на будущее
         public string Name { get; set; }
         public string NameDilyanky { get; set; }
-        public string KmDilyanky { get; set; }
+        public string DylaynkaKm { get; set; }
         public string DN { get; set; }
         public string TypeIziliatsii { get; set; }
         public float GradFirstLine { get; set; }
@@ -24,15 +24,15 @@ namespace ZvitEXZ.Models
         public string BuildingsOrganization { get; set; }
         public string StartDN { get; set; }
         public string Thikness { get; set; }
-        public string StailMark { get; set; }
+        public string StealMark { get; set; }
         public string PipeBuilder { get; set; }//производитель труб
-        public string LongByTZ { get; set; }
+        public string LengthByTZ { get; set; }
         public string ProjectPressure { get; set; }
         public string WorkPressure { get; set; }
         public string Temperuture { get; set; }
         public string Rechovyna { get; set; }
-        public string ProtectionKlass { get; set; }
-        public string ProtectionConstruction { get; set; }
+        public string IsolationKlass { get; set; }
+        public string IsolationConstruction { get; set; }
         public string DnToDn { get; set; } //переход диаметров
         public string Remonty { get; set; }
         public string PoperObstegennya { get; set; }
@@ -51,10 +51,10 @@ namespace ZvitEXZ.Models
             {
                 NameDilyanky = data[3].ToString();
             }
-            if (data[4] == null) { KmDilyanky = ""; }
+            if (data[4] == null) { DylaynkaKm = ""; }
             else
             {
-                KmDilyanky = data[4].ToString();
+                DylaynkaKm = data[4].ToString();
             }
              if (data[5] == null) { DN = ""; }
             else
@@ -103,20 +103,20 @@ namespace ZvitEXZ.Models
             {
                 Thikness = data[16].ToString();
             }
-              if (data[17] == null) { StailMark = ""; }
+              if (data[17] == null) { StealMark = ""; }
             else
             {
-                StailMark = data[17].ToString();
+                StealMark = data[17].ToString();
             }
                if (data[18] == null) { PipeBuilder = ""; }
             else
             {
                 PipeBuilder = data[18].ToString();
             }
-               if (data[19] == null) { LongByTZ = ""; }
+               if (data[19] == null) { LengthByTZ = ""; }
             else
             {
-                LongByTZ = data[19].ToString();
+                LengthByTZ = data[19].ToString();
             }
                if (data[20] == null) { ProjectPressure = ""; }
             else
@@ -138,15 +138,15 @@ namespace ZvitEXZ.Models
             {
                 Rechovyna = data[23].ToString();
             }
-                 if (data[24] == null) { ProtectionKlass = ""; }
+                 if (data[24] == null) { IsolationKlass = ""; }
             else
             {
-                ProtectionKlass = data[24].ToString();
+                IsolationKlass = data[24].ToString();
             }
-                 if (data[26] == null) { ProtectionConstruction = ""; }
+                 if (data[26] == null) { IsolationConstruction = ""; }
             else
             {
-                ProtectionConstruction = data[26].ToString();
+                IsolationConstruction = data[26].ToString();
             }
                  if (data[27] == null) { DnToDn = ""; }
             else

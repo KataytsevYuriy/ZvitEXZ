@@ -62,6 +62,10 @@ namespace ZvitEXZ.Methods.Calculations
         {
             form1.cbPovitrPerehody.BackColor = color;
         }
+        public static void NenormHlubynas()
+        {
+            form1.cbNenormHlyb.BackColor = color;
+        }
 
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZvitEXZ.Methods;
+﻿using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
@@ -24,6 +19,7 @@ namespace ZvitEXZ.Models.Objects
         public string ProvodDyametr3 { get; set; }
         public ProvodTypePidklichenyas ProvodTypePidklichenya3 { get; set; }
         public bool IsBroken { get; set; }
+        public string Description { get; set; }
         public PV(object[] data) : base(data)
         {
             Name = ProjectConstants.PVName;
@@ -68,6 +64,14 @@ namespace ZvitEXZ.Models.Objects
                 NumberSvyazky = 0;
                 Logs.AddError($"км {data[1]} проверьте номер привязки");
             }
+        }
+        public PV(double km, string gpsN, string gpsE, double? utz, string description) : base(km, gpsN, gpsE)
+        {
+            ProvodPotencial1 = utz;
+            Description = description;
+            ProvodTypePidklichenya1 = ProvodTypePidklichenyas.undefined;
+            ProvodTypePidklichenya2 = ProvodTypePidklichenyas.undefined;
+            ProvodTypePidklichenya2 = ProvodTypePidklichenyas.undefined;
         }
         public string GetTypepidkluchennya(int provodNumber)
         {

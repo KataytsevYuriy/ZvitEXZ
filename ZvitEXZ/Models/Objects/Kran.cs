@@ -11,7 +11,7 @@ namespace ZvitEXZ.Models.Objects
     public class Kran : Zamer
     {
         public string KranNumber { get; set; }
-        public string UKrana { get; set; }
+        public double? UKrana { get; set; }
         public Kran(object[] data) : base(data)
         {
             Name = ProjectConstants.KranName;
@@ -26,16 +26,25 @@ namespace ZvitEXZ.Models.Objects
             }
             if (data[76] == null)
             {
-                UKrana = "";
+                UKrana = null;
                 Logs.AddError($"км {Km} укажите потенциал крана");
             }
             else
             {
-                UKrana = data[76].ToString().Replace(".", ",");
+                try
+                {
+                    UKrana= ParseData.DoubleNullable(data[76]);
+                }
+                catch
+                {
+                    UKrana=null;
+                    Logs.AddError($"км {Km} укажите вотенциал крана");
+                }
             }
         }
         public override string ToString()
         {
+            if (!string.IsNullOrEmpty(KranNumber)) return $"{ProjectConstants.KranName} №{KranNumber}";
             return ProjectConstants.KranName;
         }
     }

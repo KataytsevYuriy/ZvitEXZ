@@ -7,23 +7,22 @@ namespace ZvitEXZ.Methods.Calculations
 {
     internal class GetHruntActivity
     {
-        public List<HruntAktivity> Get(List<Zamer> zamers)
+        public List<HruntAktivity> Get(List<Zamer> zamers, List<NeObstegeno> neObstegenos)
         {
             List<HruntAktivity> hruntAktivities = new List<HruntAktivity>();
-            double kmStart = zamers.First().Km;
+            double kmStart = -1;
             double kmLast = kmStart;
-            double kmFinish = 0;
-            double RhrLast = 0;
+            double kmFinish = -1;
+            double RhrLast = -1;
             foreach (Zamer zamer in zamers)
             {
-                if (zamer.Km == kmStart)
-                {
-                    RhrLast = zamer.Rhr ?? 0;
-                    continue;
-                }
                 if (zamer.Rhr == null) continue;
-                if ((RhrLast < 20 && zamer.Rhr < 20) || (RhrLast > 50 && zamer.Rhr > 50) ||
-                    (zamer.Rhr >= 20 && zamer.Rhr <= 50 && RhrLast >= 20 && RhrLast <= 50))
+                if (kmStart == -1)
+                {
+                    kmStart = zamer.Km;
+                }
+                else if ((RhrLast < 20 && zamer.Rhr < 20) || (RhrLast > 50 && zamer.Rhr > 50) ||
+                     (zamer.Rhr >= 20 && zamer.Rhr <= 50 && RhrLast >= 20 && RhrLast <= 50))
                 {
                     RhrLast = zamer.Rhr ?? 0;
                     kmLast = zamer.Km;
@@ -36,14 +35,41 @@ namespace ZvitEXZ.Methods.Calculations
                     kmFinish = crossing.GetCrossing(RhrLast, kmLast, (double)zamer.Rhr, zamer.Km);
                     hruntAktivities.Add(new HruntAktivity(kmStart, kmFinish, RhrLast));
                     kmStart = kmFinish;
-                    RhrLast = zamer.Rhr ?? 0;
                 }
+                RhrLast = zamer.Rhr ?? 0;
+                kmLast = zamer.Km;
             }
-            if (kmFinish > kmStart)
+            if (kmLast > kmStart)
             {
-                hruntAktivities.Add(new HruntAktivity(kmStart, zamers.Last().Km, RhrLast));
+                hruntAktivities.Add(new HruntAktivity(kmStart, kmLast, RhrLast));
             }
+            hruntAktivities = TrimNeobstegeno(hruntAktivities, neObstegenos);
             return hruntAktivities;
+        }
+        private List<HruntAktivity> TrimNeobstegeno(List<HruntAktivity> aktivities, List<NeObstegeno> neObstegenos)
+        {
+            List<HruntAktivity> res = new List<HruntAktivity>();
+            foreach (HruntAktivity hruntAktivity in aktivities)
+            {
+                double kmStart = hruntAktivity.KmStart;
+                foreach (NeObstegeno neObstegeno in neObstegenos)
+                {
+                    if (hruntAktivity.KmStart > neObstegeno.KmEnd) continue;
+                    if (hruntAktivity.KmFinish < neObstegeno.KmStart) break;
+                    if (hruntAktivity.KmStart >= hruntAktivity.KmFinish) break;
+                    if (hruntAktivity.KmStart < neObstegeno.KmStart)
+                    {
+                        res.Add(new HruntAktivity(hruntAktivity.KmStart, neObstegeno.KmStart, hruntAktivity.HruntAktivityType));
+                        hruntAktivity.KmStart = neObstegeno.KmEnd;
+                    }
+                    else
+                    {
+                        hruntAktivity.KmStart = neObstegeno.KmEnd;
+                    }
+                }
+                if (hruntAktivity.KmStart < hruntAktivity.KmFinish) res.Add(hruntAktivity);
+            }
+            return res;
         }
     }
 }

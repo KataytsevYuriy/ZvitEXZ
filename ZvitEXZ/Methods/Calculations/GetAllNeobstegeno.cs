@@ -50,44 +50,43 @@ namespace ZvitEXZ.Methods.Calculations
         private List<NeObstegeno> CheckKrossing(List<NeObstegeno> data)
         {
             List<NeObstegeno> result = new List<NeObstegeno>();
-            NeObstegeno last = null;
+            NeObstegeno previousNeobsteg = null;
             data = data.OrderBy(x => x.KmStart).ToList();
             foreach (NeObstegeno item in data)
             {
-                if (last == null)
+                if (previousNeobsteg == null)
                 {
-                    last = item;
-                    continue;
+                    previousNeobsteg = item;
                 }
-                if (last.KmEnd < item.KmStart)
+                else if (previousNeobsteg.KmEnd <= item.KmStart)
                 {
-                    result.Add(last);
-                    last = item;
+                    result.Add(previousNeobsteg);
+                    previousNeobsteg = item;
                 }
                 else
                 {
-                    if (last.KmStart > item.KmStart)
-                        result.Add(new NeObstegeno(last.KmStart, item.KmStart, last.Description));
-                    if (last.KmEnd < item.KmEnd)
+                    if (previousNeobsteg.KmStart < item.KmStart)
+                        result.Add(new NeObstegeno(previousNeobsteg.KmStart, item.KmStart, previousNeobsteg.Description));
+                    if (previousNeobsteg.KmEnd < item.KmEnd)
                     {
-                        result.Add(new NeObstegeno(item.KmStart, last.KmEnd, last.Description + item.Description));
-                        last = new NeObstegeno(last.KmEnd, item.KmEnd, item.Description);
+                        result.Add(new NeObstegeno(item.KmStart, previousNeobsteg.KmEnd, previousNeobsteg.Description + item.Description));
+                        previousNeobsteg = new NeObstegeno(previousNeobsteg.KmEnd, item.KmEnd, item.Description);
                     }
-                    else if (last.KmEnd > item.KmEnd)
+                    else if (previousNeobsteg.KmEnd > item.KmEnd)
                     {
-                        result.Add(new NeObstegeno(item.KmStart, item.KmEnd, last.Description + item.Description));
-                        last = new NeObstegeno(item.KmEnd, last.KmEnd, last.Description);
+                        result.Add(new NeObstegeno(item.KmStart, item.KmEnd, previousNeobsteg.Description + item.Description));
+                        previousNeobsteg = new NeObstegeno(item.KmEnd, previousNeobsteg.KmEnd, previousNeobsteg.Description);
                     }
                     else
                     {
-                        result.Add(new NeObstegeno(item.KmStart, last.KmEnd, last.Description + item.Description));
-                        last = null;
+                        result.Add(new NeObstegeno(item.KmStart, previousNeobsteg.KmEnd, previousNeobsteg.Description + item.Description));
+                        previousNeobsteg = null;
                     }
                 }
             }
-            if (last != null)
+            if (previousNeobsteg != null)
             {
-                result.Add(last);
+                result.Add(previousNeobsteg);
             }
             return result;
         }

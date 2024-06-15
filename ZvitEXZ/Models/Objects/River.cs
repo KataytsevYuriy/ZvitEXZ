@@ -7,7 +7,7 @@ using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class River : Pereshkoda
+    public class River : Pereshkoda
     {
         public string RiverName { get; set; }
         public River(object[] data) : base(data)

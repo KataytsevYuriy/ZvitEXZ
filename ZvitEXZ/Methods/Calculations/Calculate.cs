@@ -5,6 +5,7 @@ using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Methods.File.Converters;
 using System.Linq;
+using System.Collections;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -25,6 +26,8 @@ namespace ZvitEXZ.Methods.Calculations
         List<NenormHlubyna> nenormHlubynas;
         CalculationDone calculated;
         ExcelDictionary excelDictionary;
+        List<Forest> forests;
+        Statistics statistics;
         public Calculate()
         {
             calculated = new CalculationDone();
@@ -147,8 +150,26 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.Shurfy();
             }
 
+            //Ненормативна глибина
+            if (checkeD.IsNenormHlybyna)
+            {
+                if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
+                fileSaver.SaveNenormHlubynas(nenormHlubynas);
+                Progress.AddStep();
+                Done.NenormHlubynas();
+            }
+
+            //Статистика
+            if (checkeD.IsStatistiks)
+            {
+                if (!calculated.Statistiks) CalculateAllStatistics();
+                fileSaver.SaveStatistics(statistics);
+                Progress.AddStep();
+                Done.NenormHlubynas();
+            }
+
             CalculateAllHlubynas();
-            
+
 
             Logs.AddLog("Таблицы построены");
             Progress.Finish();
@@ -218,14 +239,49 @@ namespace ZvitEXZ.Methods.Calculations
         }
         private void CalculateHruntActivity()
         {
+            if (!calculated.Neobstegeno) CalculateNeobstegeno();
             GetHruntActivity getHruntActivity = new GetHruntActivity();
-            hruntAktivities = getHruntActivity.Get(zamers);
+            hruntAktivities = getHruntActivity.Get(zamers, neObstegenos);
             calculated.HruntActivity = true;
         }
         private void CalculateAllHlubynas()
         {
             GetAllHlubynas getAllHlubynas = new GetAllHlubynas(zamers);
             hlubynas = getAllHlubynas.Get();
+            calculated.Hlubyna = true;
+        }
+        private void CalculateAllNenormHlubynas()
+        {
+            if (!calculated.Hlubyna) CalculateAllHlubynas();
+            if (!calculated.Neobstegeno) CalculateNeobstegeno();
+            GetAllNenormHlubyna getAllNenormHlubynas = new GetAllNenormHlubyna(hlubynas, neObstegenos);
+            nenormHlubynas = getAllNenormHlubynas.Get();
+            calculated.NenormHlybyna = true;
+        }
+        private void CalculateForests()
+        {
+            GetAllForest getAllForest = new GetAllForest();
+            forests = getAllForest.Get(zamers);
+            calculated.Forests = true;
+        }
+        private void CalculateAllStatistics()
+        {
+            if (!calculated.Nezahyst) CalculateNezah();
+            if (!calculated.Korneb) CalculateKorneb();
+            if (!calculated.Povregd) CalculatePovregd();
+            if (!calculated.RoadKozhuh) CalculateRoadKozhuh();
+            if (!calculated.Flantsy) CalculateFlantsy();
+            if (!calculated.Neobstegeno) CalculateNeobstegeno();
+            if (!calculated.PovitrPerehody) CalculatePovitrPerehody();
+            if (!calculated.PV) CalculatePV();
+            if (!calculated.Shurfy) CalculateShurfy();
+            if (!calculated.HruntActivity) CalculateHruntActivity();
+            if (!calculated.Hlubyna) CalculateAllHlubynas();
+            if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
+            if (!calculated.Forests) CalculateForests();
+            statistics = new Statistics(zamers, excelDictionary, nezahysts, korNebezpechny, povregdenyas, roadKozhuhs, flantsy,
+                neObstegenos, povitrPerehods, pVs, shurves, hruntAktivities, hlubynas, nenormHlubynas, forests);
+            calculated.Statistiks = true;
         }
     }
 }

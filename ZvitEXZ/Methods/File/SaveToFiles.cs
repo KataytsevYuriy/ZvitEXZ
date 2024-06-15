@@ -82,6 +82,16 @@ namespace ZvitEXZ.Methods.File
                 converter.ConvertShurfy(shurves), "A", "AX", "AX",
                 ProjectConstants.PrintMessageShurfIsEmpty, 12);
         }
+        public void SaveNenormHlubynas(List<NenormHlubyna> nenormHlubynas)
+        {
+            writeToFile.WriteFile(_fileName, ProjectConstants.NenormHlubFolderName, _pipeName,
+                converter.ConvertNenormHlubyna(nenormHlubynas), "A", "I", "I",
+                ProjectConstants.PrintMessageNenormHlubIsEmpty, 13);
+        }
+        public void SaveStatistics(Statistics statistics)
+        {
+            writeToFile.WriteFile(_fileName, ProjectConstants.StatisticsFolderName, _pipeName, converter.ConvertStatistics(statistics), "B", "K", "K", "", 14);
+        }
 
     }
 }
