@@ -17,5 +17,6 @@
         public bool NenormHlybyna { get; set; }
         public bool Forests { get; set; }
         public bool Statistiks { get; set; }
+        public bool Zapyska { get; set; }
     }
 }

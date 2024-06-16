@@ -44,6 +44,10 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,6 +81,7 @@
     <Compile Include="Methods\Calculations\GetAllShurfs.cs" />
     <Compile Include="Methods\Calculations\GetAllUkz.cs" />
     <Compile Include="Methods\Calculations\GetAllUpz.cs" />
+    <Compile Include="Methods\Calculations\GetAllWordReplacer.cs" />
     <Compile Include="Methods\Calculations\GetHruntActivity.cs" />
     <Compile Include="Methods\Calculations\GetAllKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetAllNezahyst.cs" />
@@ -91,6 +96,7 @@
     <Compile Include="Methods\File\SaveToFiles.cs" />
     <Compile Include="Methods\Calculations\GetAllPV.cs" />
     <Compile Include="Methods\File\WriteToFile.cs" />
+    <Compile Include="Methods\File\WriteWordFile.cs" />
     <Compile Include="Methods\IsAllowed.cs" />
     <Compile Include="Methods\Logs.cs" />
     <Compile Include="Methods\Parse.cs" />
@@ -117,6 +123,7 @@
     <Compile Include="Models\Calculations\Povregdenya.cs" />
     <Compile Include="Models\Calculations\RoadKozhuh.cs" />
     <Compile Include="Models\Calculations\Statistics.cs" />
+    <Compile Include="Models\Calculations\WordReplace.cs" />
     <Compile Include="Models\ProjectConstants.cs" />
     <Compile Include="Models\ExcelDictionary.cs" />
     <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />

@@ -85,6 +85,7 @@ namespace ZvitEXZ
                 cbPovitrPerehody.Checked = true;
                 cbStatistiks.Checked = true;
                 cbNenormHlyb.Checked = true;
+                cbZapycka.Checked = true;
             }
             else if (clearAll)
             {
@@ -211,8 +212,7 @@ namespace ZvitEXZ
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            progressBar1.Value = 50;
-            progressBar1.BackColor = Color.Gray;
+
         }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)
@@ -227,6 +227,15 @@ namespace ZvitEXZ
         private void cbStatistiks_CheckedChanged(object sender, EventArgs e)
         {
             if (!cbStatistiks.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbZapycka_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbZapycka.Checked)
             {
                 clearAll = false;
                 cbAll.Checked = false;

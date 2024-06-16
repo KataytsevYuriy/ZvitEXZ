@@ -72,7 +72,9 @@ namespace ZvitEXZ.Models
 
         //File Names
         public const string ShablonFileName2 = "Shablon.xlsb";
+        public const string ShablonWordFileName2 = "Shablon.docm";
         public const string ShablonFileName = @"..\..\Shablon.xlsb";
+        public const string ShablonWordFileName = @"..\..\Shablon.docm";
         public const string PVFolderName = "Додаток_И-ПВ";
         public const string NezahFolderName = "Додаток_М-Незахист";
         public const string KornebFolderName = "Додаток_К-КорНеб";

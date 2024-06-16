@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models
 {
@@ -10,7 +11,7 @@ namespace ZvitEXZ.Models
     {
         public string Type { get; set; }
         public string ShortType { get; set; }
-        //public string TypeRodPadezh { get; set; } //на будущее
+        public string PipeTypeRodPadezh { get; set; }
         public string Name { get; set; }
         public string NameDilyanky { get; set; }
         public string DylaynkaKm { get; set; }
@@ -43,7 +44,14 @@ namespace ZvitEXZ.Models
             if (data[1] == null) throw new ArgumentNullException("пустое значение тип трубопровода");
             Type = data[1].ToString();
             if (data[0] == null) throw new ArgumentNullException("пустое значение краткого типа трубопровода");
-            ShortType = data[0].ToString();
+            string[] t = data[0].ToString().Split('/');
+            ShortType = t[0];
+            if (t.Length > 1) { PipeTypeRodPadezh = t[1]; }
+            else 
+            {
+                PipeTypeRodPadezh = ShortType;
+                Logs.AddError($"Укажите название трубопровода в родительном падеже закладка \"Справочник\" ячейка \"E1\" через символ \"\\\" (нужно только для записки)");
+            }
             if (data[2] == null) throw new ArgumentNullException("пустое значение названия трубопровода");
             Name = data[2].ToString();
             if (data[3] == null) { NameDilyanky = ""; }
@@ -56,15 +64,15 @@ namespace ZvitEXZ.Models
             {
                 DylaynkaKm = data[4].ToString();
             }
-             if (data[5] == null) { DN = ""; }
+            if (data[5] == null) { DN = ""; }
             else
             {
                 DN = data[5].ToString();
             }
-              if (data[6].ToString() == "стрічкове")
+            if (data[6].ToString() == "стрічкове")
             {
-                TypeIziliatsii = "стрічкове"; 
-                GradFirstLine=float.Parse(data[10].ToString().Replace(",","."));
+                TypeIziliatsii = "стрічкове";
+                GradFirstLine = float.Parse(data[10].ToString().Replace(",", "."));
                 GradSecondLine = float.Parse(data[8].ToString().Replace(",", "."));
             }
             else
@@ -73,97 +81,97 @@ namespace ZvitEXZ.Models
                 GradFirstLine = float.Parse(data[9].ToString().Replace(",", "."));
                 GradSecondLine = float.Parse(data[7].ToString().Replace(",", "."));
             }
-              if (data[11] == null) { NameOrganization = ""; }
+            if (data[11] == null) { NameOrganization = ""; }
             else
             {
-                NameOrganization = data[3].ToString();
+                NameOrganization = data[11].ToString();
             }
-              if (data[12] == null) { DateStart = ""; }
+            if (data[12] == null) { DateStart = ""; }
             else
             {
                 DateStart = data[12].ToString();
             }
-              if (data[13] == null) { ProjectsOrganization = ""; }
+            if (data[13] == null) { ProjectsOrganization = ""; }
             else
             {
                 ProjectsOrganization = data[13].ToString();
             }
-              if (data[14] == null) { BuildingsOrganization = ""; }
+            if (data[14] == null) { BuildingsOrganization = ""; }
             else
             {
                 BuildingsOrganization = data[14].ToString();
             }
-              if (data[15] == null) { StartDN = ""; }
+            if (data[15] == null) { StartDN = ""; }
             else
             {
                 StartDN = data[15].ToString();
             }
-              if (data[16] == null) { Thikness = ""; }
+            if (data[16] == null) { Thikness = ""; }
             else
             {
                 Thikness = data[16].ToString();
             }
-              if (data[17] == null) { StealMark = ""; }
+            if (data[17] == null) { StealMark = ""; }
             else
             {
                 StealMark = data[17].ToString();
             }
-               if (data[18] == null) { PipeBuilder = ""; }
+            if (data[18] == null) { PipeBuilder = ""; }
             else
             {
                 PipeBuilder = data[18].ToString();
             }
-               if (data[19] == null) { LengthByTZ = ""; }
+            if (data[19] == null) { LengthByTZ = ""; }
             else
             {
                 LengthByTZ = data[19].ToString();
             }
-               if (data[20] == null) { ProjectPressure = ""; }
+            if (data[20] == null) { ProjectPressure = ""; }
             else
             {
                 ProjectPressure = data[20].ToString();
             }
-               if (data[21] == null) { WorkPressure = ""; }
+            if (data[21] == null) { WorkPressure = ""; }
             else
             {
                 WorkPressure = data[21].ToString();
             }
-               if (data[22] == null) { Temperuture = ""; }
+            if (data[22] == null) { Temperuture = ""; }
             else
             {
                 Temperuture = data[22].ToString();
             }
-               if (data[23] == null) { Rechovyna = ""; }
+            if (data[23] == null) { Rechovyna = ""; }
             else
             {
                 Rechovyna = data[23].ToString();
             }
-                 if (data[24] == null) { IsolationKlass = ""; }
+            if (data[24] == null) { IsolationKlass = ""; }
             else
             {
                 IsolationKlass = data[24].ToString();
             }
-                 if (data[26] == null) { IsolationConstruction = ""; }
+            if (data[26] == null) { IsolationConstruction = ""; }
             else
             {
                 IsolationConstruction = data[26].ToString();
             }
-                 if (data[27] == null) { DnToDn = ""; }
+            if (data[27] == null) { DnToDn = ""; }
             else
             {
                 DnToDn = data[27].ToString();
             }
-                 if (data[28] == null) { Remonty = ""; }
+            if (data[28] == null) { Remonty = ""; }
             else
             {
                 Remonty = data[28].ToString();
             }
-                 if (data[29] == null) { PoperObstegennya = ""; }
+            if (data[29] == null) { PoperObstegennya = ""; }
             else
             {
                 PoperObstegennya = data[29].ToString();
             }
-                 if (data[31] == null) { Shyfr = ""; }
+            if (data[31] == null) { Shyfr = ""; }
             else
             {
                 Shyfr = data[31].ToString();

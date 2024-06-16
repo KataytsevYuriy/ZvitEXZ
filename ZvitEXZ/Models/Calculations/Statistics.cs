@@ -13,8 +13,9 @@ namespace ZvitEXZ.Models.Calculations
     {
         public string PipeType { get; set; }
         public string PipeShortType { get; set; }
+        public string PipeTypeRodPadezh { get; set; }
         public string PipeName { get; set; }
-        public string PipeShortName { get; set; }
+        //public string PipeShortName { get; set; }
         public string DylyankaKm { get; set; }
         public string DylyankaName { get; set; }
         public string DN { get; set; }
@@ -88,6 +89,7 @@ namespace ZvitEXZ.Models.Calculations
         {
             PipeType = dictionary.Type;
             PipeShortType = dictionary.ShortType;
+            PipeTypeRodPadezh = dictionary.PipeTypeRodPadezh;
             PipeName = dictionary.Name;
             DylyankaKm = dictionary.DylaynkaKm;
             DylyankaName = dictionary.NameDilyanky;

@@ -35,6 +35,7 @@
             this.labelFileName = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbZapycka = new System.Windows.Forms.CheckBox();
             this.cbStatistiks = new System.Windows.Forms.CheckBox();
             this.cbPovitrPerehody = new System.Windows.Forms.CheckBox();
             this.cbShurfy = new System.Windows.Forms.CheckBox();
@@ -86,7 +87,7 @@
             // 
             this.btnCalculate.Enabled = false;
             this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCalculate.Location = new System.Drawing.Point(12, 97);
+            this.btnCalculate.Location = new System.Drawing.Point(12, 171);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(123, 33);
             this.btnCalculate.TabIndex = 5;
@@ -97,7 +98,7 @@
             // labelFileName
             // 
             this.labelFileName.AutoSize = true;
-            this.labelFileName.Location = new System.Drawing.Point(107, 22);
+            this.labelFileName.Location = new System.Drawing.Point(12, 58);
             this.labelFileName.Name = "labelFileName";
             this.labelFileName.Size = new System.Drawing.Size(0, 13);
             this.labelFileName.TabIndex = 6;
@@ -113,6 +114,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbZapycka);
             this.panel1.Controls.Add(this.cbStatistiks);
             this.panel1.Controls.Add(this.cbPovitrPerehody);
             this.panel1.Controls.Add(this.cbShurfy);
@@ -128,16 +130,28 @@
             this.panel1.Controls.Add(this.cbUpz);
             this.panel1.Controls.Add(this.cbUkz);
             this.panel1.Controls.Add(this.cbAll);
-            this.panel1.Location = new System.Drawing.Point(208, 2);
+            this.panel1.Location = new System.Drawing.Point(172, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(308, 406);
+            this.panel1.Size = new System.Drawing.Size(344, 455);
             this.panel1.TabIndex = 8;
+            // 
+            // cbZapycka
+            // 
+            this.cbZapycka.AutoSize = true;
+            this.cbZapycka.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbZapycka.Location = new System.Drawing.Point(25, 372);
+            this.cbZapycka.Name = "cbZapycka";
+            this.cbZapycka.Size = new System.Drawing.Size(85, 22);
+            this.cbZapycka.TabIndex = 15;
+            this.cbZapycka.Text = "Записка";
+            this.cbZapycka.UseVisualStyleBackColor = true;
+            this.cbZapycka.CheckedChanged += new System.EventHandler(this.cbZapycka_CheckedChanged);
             // 
             // cbStatistiks
             // 
             this.cbStatistiks.AutoSize = true;
             this.cbStatistiks.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbStatistiks.Location = new System.Drawing.Point(18, 377);
+            this.cbStatistiks.Location = new System.Drawing.Point(81, 344);
             this.cbStatistiks.Name = "cbStatistiks";
             this.cbStatistiks.Size = new System.Drawing.Size(107, 22);
             this.cbStatistiks.TabIndex = 14;
@@ -149,7 +163,7 @@
             // 
             this.cbPovitrPerehody.AutoSize = true;
             this.cbPovitrPerehody.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPovitrPerehody.Location = new System.Drawing.Point(18, 344);
+            this.cbPovitrPerehody.Location = new System.Drawing.Point(81, 311);
             this.cbPovitrPerehody.Name = "cbPovitrPerehody";
             this.cbPovitrPerehody.Size = new System.Drawing.Size(201, 22);
             this.cbPovitrPerehody.TabIndex = 12;
@@ -161,7 +175,7 @@
             // 
             this.cbShurfy.AutoSize = true;
             this.cbShurfy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbShurfy.Location = new System.Drawing.Point(18, 318);
+            this.cbShurfy.Location = new System.Drawing.Point(81, 285);
             this.cbShurfy.Name = "cbShurfy";
             this.cbShurfy.Size = new System.Drawing.Size(94, 22);
             this.cbShurfy.TabIndex = 11;
@@ -173,7 +187,7 @@
             // 
             this.cbNenormHlyb.AutoSize = true;
             this.cbNenormHlyb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbNenormHlyb.Location = new System.Drawing.Point(18, 290);
+            this.cbNenormHlyb.Location = new System.Drawing.Point(81, 257);
             this.cbNenormHlyb.Name = "cbNenormHlyb";
             this.cbNenormHlyb.Size = new System.Drawing.Size(205, 22);
             this.cbNenormHlyb.TabIndex = 13;
@@ -185,7 +199,7 @@
             // 
             this.cbZvedena.AutoSize = true;
             this.cbZvedena.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbZvedena.Location = new System.Drawing.Point(18, 262);
+            this.cbZvedena.Location = new System.Drawing.Point(81, 229);
             this.cbZvedena.Name = "cbZvedena";
             this.cbZvedena.Size = new System.Drawing.Size(101, 22);
             this.cbZvedena.TabIndex = 10;
@@ -197,7 +211,7 @@
             // 
             this.cbFlantsy.AutoSize = true;
             this.cbFlantsy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbFlantsy.Location = new System.Drawing.Point(18, 236);
+            this.cbFlantsy.Location = new System.Drawing.Point(81, 203);
             this.cbFlantsy.Name = "cbFlantsy";
             this.cbFlantsy.Size = new System.Drawing.Size(100, 22);
             this.cbFlantsy.TabIndex = 9;
@@ -209,7 +223,7 @@
             // 
             this.cbPereh.AutoSize = true;
             this.cbPereh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPereh.Location = new System.Drawing.Point(18, 211);
+            this.cbPereh.Location = new System.Drawing.Point(81, 178);
             this.cbPereh.Name = "cbPereh";
             this.cbPereh.Size = new System.Drawing.Size(111, 22);
             this.cbPereh.TabIndex = 8;
@@ -221,7 +235,7 @@
             // 
             this.cbNezah.AutoSize = true;
             this.cbNezah.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbNezah.Location = new System.Drawing.Point(18, 185);
+            this.cbNezah.Location = new System.Drawing.Point(81, 152);
             this.cbNezah.Name = "cbNezah";
             this.cbNezah.Size = new System.Drawing.Size(110, 22);
             this.cbNezah.TabIndex = 7;
@@ -234,7 +248,7 @@
             this.cbPovregdGNT.AutoSize = true;
             this.cbPovregdGNT.Enabled = false;
             this.cbPovregdGNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPovregdGNT.Location = new System.Drawing.Point(18, 162);
+            this.cbPovregdGNT.Location = new System.Drawing.Point(81, 129);
             this.cbPovregdGNT.Name = "cbPovregdGNT";
             this.cbPovregdGNT.Size = new System.Drawing.Size(176, 22);
             this.cbPovregdGNT.TabIndex = 6;
@@ -246,7 +260,7 @@
             // 
             this.cbPovregd.AutoSize = true;
             this.cbPovregd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPovregd.Location = new System.Drawing.Point(18, 136);
+            this.cbPovregd.Location = new System.Drawing.Point(81, 103);
             this.cbPovregd.Name = "cbPovregd";
             this.cbPovregd.Size = new System.Drawing.Size(143, 22);
             this.cbPovregd.TabIndex = 5;
@@ -258,7 +272,7 @@
             // 
             this.cbKorneb.AutoSize = true;
             this.cbKorneb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbKorneb.Location = new System.Drawing.Point(18, 113);
+            this.cbKorneb.Location = new System.Drawing.Point(81, 80);
             this.cbKorneb.Name = "cbKorneb";
             this.cbKorneb.Size = new System.Drawing.Size(153, 22);
             this.cbKorneb.TabIndex = 4;
@@ -270,7 +284,7 @@
             // 
             this.cbPv.AutoSize = true;
             this.cbPv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbPv.Location = new System.Drawing.Point(18, 87);
+            this.cbPv.Location = new System.Drawing.Point(81, 54);
             this.cbPv.Name = "cbPv";
             this.cbPv.Size = new System.Drawing.Size(64, 22);
             this.cbPv.TabIndex = 3;
@@ -282,7 +296,7 @@
             // 
             this.cbUpz.AutoSize = true;
             this.cbUpz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbUpz.Location = new System.Drawing.Point(18, 64);
+            this.cbUpz.Location = new System.Drawing.Point(81, 31);
             this.cbUpz.Name = "cbUpz";
             this.cbUpz.Size = new System.Drawing.Size(77, 22);
             this.cbUpz.TabIndex = 2;
@@ -295,7 +309,7 @@
             this.cbUkz.AutoSize = true;
             this.cbUkz.BackColor = System.Drawing.SystemColors.Control;
             this.cbUkz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbUkz.Location = new System.Drawing.Point(18, 38);
+            this.cbUkz.Location = new System.Drawing.Point(81, 5);
             this.cbUkz.Name = "cbUkz";
             this.cbUkz.Size = new System.Drawing.Size(74, 22);
             this.cbUkz.TabIndex = 1;
@@ -307,7 +321,7 @@
             // 
             this.cbAll.AutoSize = true;
             this.cbAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbAll.Location = new System.Drawing.Point(3, 3);
+            this.cbAll.Location = new System.Drawing.Point(3, 8);
             this.cbAll.Name = "cbAll";
             this.cbAll.Size = new System.Drawing.Size(58, 22);
             this.cbAll.TabIndex = 0;
@@ -317,7 +331,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 350);
+            this.button1.Location = new System.Drawing.Point(1, 410);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -372,6 +386,7 @@
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.CheckBox cbStatistiks;
         public System.Windows.Forms.CheckBox cbNenormHlyb;
+        public System.Windows.Forms.CheckBox cbZapycka;
     }
 }
 

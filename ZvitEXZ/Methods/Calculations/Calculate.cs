@@ -28,6 +28,7 @@ namespace ZvitEXZ.Methods.Calculations
         ExcelDictionary excelDictionary;
         List<Forest> forests;
         Statistics statistics;
+        List<WordReplace> wordReplaces;
         public Calculate()
         {
             calculated = new CalculationDone();
@@ -168,6 +169,16 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.NenormHlubynas();
             }
 
+            //Записка
+            if (checkeD.IsZapyska)
+            {
+                if (!calculated.Zapyska) CalculateZapyska();
+                WriteWordFile writeWordFile = new WriteWordFile();
+                writeWordFile.Save(dictionary.SourceFileName, wordReplaces);
+                Progress.AddStep();
+                Done.Zapyska();
+            }
+
             CalculateAllHlubynas();
 
 
@@ -282,6 +293,12 @@ namespace ZvitEXZ.Methods.Calculations
             statistics = new Statistics(zamers, excelDictionary, nezahysts, korNebezpechny, povregdenyas, roadKozhuhs, flantsy,
                 neObstegenos, povitrPerehods, pVs, shurves, hruntAktivities, hlubynas, nenormHlubynas, forests);
             calculated.Statistiks = true;
+        }
+        private void CalculateZapyska()
+        {
+            if (!calculated.Statistiks) CalculateAllStatistics();
+            GetAllWordReplacer GetWordReplacer = new GetAllWordReplacer();
+            wordReplaces = GetWordReplacer.Get(statistics);
         }
     }
 }
