@@ -92,9 +92,15 @@ namespace ZvitEXZ.Methods.File.Converters
                 i++;
             }
             i = 0;
+            foreach (Lep lep in statistics.Leps)
+            {
+                res[i, 5] = $"{lep} км {ConvertToString.DoubleToString(lep.Km)}";
+                i++;
+            }
+            i = 0;
             foreach (NeObstegeno neObstegeno in statistics.NeObstegenos)
             {
-                res[i, 5] = $" км {ConvertToString.DoubleToString(neObstegeno.KmStart)} - км {ConvertToString.DoubleToString(neObstegeno.KmEnd)}, L = {ConvertToString.DoubleToString(neObstegeno.KmEnd - neObstegeno.KmStart)} км";
+                res[i, 6] = $" км {ConvertToString.DoubleToString(neObstegeno.KmStart)} - км {ConvertToString.DoubleToString(neObstegeno.KmEnd)}, L = {ConvertToString.DoubleToString(neObstegeno.KmEnd - neObstegeno.KmStart)} км";
                 i++;
             }
             return res;

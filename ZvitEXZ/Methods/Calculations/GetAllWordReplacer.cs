@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models.Calculations;
+using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -49,7 +50,47 @@ namespace ZvitEXZ.Methods.Calculations
             wordReplaces.Add(new WordReplace("35", statistics.Shyfr));
             wordReplaces.Add(new WordReplace("36", statistics.Shyfr.Replace("КК", "ПЗ").Replace("KK", "ПЗ")));
             wordReplaces.Add(new WordReplace("37", DoubleToString(statistics.KmFakt)));
-
+            wordReplaces.Add(new WordReplace("38", statistics.DylyankaName.ToUpper()));
+            wordReplaces.Add(new WordReplace("39", DoubleToString(statistics.KmObstegeno)));
+            wordReplaces.Add(new WordReplace("40", DoubleToString(statistics.KmObstegenoPerсent, 2)));
+            wordReplaces.Add(new WordReplace("41", DoubleToString(statistics.KmNeobstegeno)));
+            wordReplaces.Add(new WordReplace("42", DoubleToString(statistics.KmNeobstegenoPerсent, 2)));
+            wordReplaces.Add(new WordReplace("43", DoubleToString(statistics.Water)));
+            wordReplaces.Add(new WordReplace("44", DoubleToString(statistics.WaterPersent, 2)));
+            wordReplaces.Add(new WordReplace("45", DoubleToString(statistics.HruntHight)));
+            wordReplaces.Add(new WordReplace("46", DoubleToString(statistics.HruntHightPerсent, 2)));
+            wordReplaces.Add(new WordReplace("47", DoubleToString(statistics.HruntMedium)));
+            wordReplaces.Add(new WordReplace("48", DoubleToString(statistics.HruntMediumtPerсent, 2)));
+            wordReplaces.Add(new WordReplace("49", DoubleToString(statistics.HruntLow)));
+            wordReplaces.Add(new WordReplace("50", DoubleToString(statistics.HruntLowPersent, 2)));
+            wordReplaces.Add(new WordReplace("51", DoubleToString(statistics.Protected)));
+            wordReplaces.Add(new WordReplace("52", DoubleToString(statistics.ProtectedPerсent, 2)));
+            wordReplaces.Add(new WordReplace("53", DoubleToString(statistics.NoProtected)));
+            wordReplaces.Add(new WordReplace("54", DoubleToString(statistics.NoProtectedPerсent, 2)));
+            wordReplaces.Add(new WordReplace("55", DoubleToString(statistics.Korneb)));
+            wordReplaces.Add(new WordReplace("56", DoubleToString(statistics.KornebPersent, 2)));
+            wordReplaces.Add(new WordReplace("57", DoubleToString(statistics.RhruntMin, 1)));
+            wordReplaces.Add(new WordReplace("58", DoubleToString(statistics.RhruntMax, 1)));
+            wordReplaces.Add(new WordReplace("59", DoubleToString(statistics.PovregdFirstCherga)));
+            wordReplaces.Add(new WordReplace("60", DoubleToString(statistics.PovregdFirstChergaPercent, 2)));
+            wordReplaces.Add(new WordReplace("61", DoubleToString(statistics.PovregdSecondCherga)));
+            wordReplaces.Add(new WordReplace("62", DoubleToString(statistics.PovregdSecondChergaPercent, 2)));
+            wordReplaces.Add(new WordReplace("63", DoubleToString(statistics.Umin)));
+            wordReplaces.Add(new WordReplace("64", DoubleToString(statistics.Umax)));
+            wordReplaces.Add(new WordReplace("65", DoubleToString(statistics.HlubMin, 2)));
+            wordReplaces.Add(new WordReplace("66", DoubleToString(statistics.HlybMax, 2)));
+            wordReplaces.Add(new WordReplace("67", DoubleToString(statistics.ForestsAll)));
+            wordReplaces.Add(new WordReplace("68", DoubleToString(statistics.ForestsAllPrecent, 2)));
+            wordReplaces.Add(new WordReplace("69", DoubleToString(statistics.ForestsToClear)));
+            wordReplaces.Add(new WordReplace("70", DoubleToString(statistics.ForestsToClearPrecent, 2)));
+            wordReplaces.Add(new WordReplace("71", statistics.PvCount.ToString()));
+            wordReplaces.Add(new WordReplace("72", statistics.NenormHlubynas.Count == 0 ? "не має" : "має"));
+            string shurves = "";
+            foreach (Shurf shurf in statistics.Shurves)
+            {
+                shurves += $"км {DoubleToString(shurf.Km)} (акт № {shurf.AktNumber}), ";
+            }
+            wordReplaces.Add(new WordReplace("73", shurves));
 
             return wordReplaces;
         }
@@ -60,7 +101,7 @@ namespace ZvitEXZ.Methods.Calculations
         private string DoubleToString(double? value, int round = 3)
         {
             if (value == null) return "";
-            return Math.Round((double)value, round).ToString().Replace(".", ",");
+            return Math.Round((double)value, round).ToString("0.0##").Replace(".", ",");
         }
     }
 }

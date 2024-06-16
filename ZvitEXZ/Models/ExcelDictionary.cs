@@ -47,18 +47,22 @@ namespace ZvitEXZ.Models
             string[] t = data[0].ToString().Split('/');
             ShortType = t[0];
             if (t.Length > 1) { PipeTypeRodPadezh = t[1]; }
-            else 
+            else
             {
                 PipeTypeRodPadezh = ShortType;
-                Logs.AddError($"Укажите название трубопровода в родительном падеже закладка \"Справочник\" ячейка \"E1\" через символ \"\\\" (нужно только для записки)");
+                Logs.AddError($"Укажите название трубопровода именительном и родительном падежах. Закладка \"Справочник\" ячейка \"E1\" через символ \"/\" (нужно только для записки)");
             }
             if (data[2] == null) throw new ArgumentNullException("пустое значение названия трубопровода");
             Name = data[2].ToString();
-            if (data[3] == null) { NameDilyanky = ""; }
+            if (data[3] == null)
+            {
+                NameDilyanky = "";
+            }
             else
             {
                 NameDilyanky = data[3].ToString();
             }
+            if (string.IsNullOrEmpty(NameDilyanky)) Logs.AddError("Укажмте название УКПГ(ЦВНГК)... в графе \"Назва ділянки\" (C3).");
             if (data[4] == null) { DylaynkaKm = ""; }
             else
             {

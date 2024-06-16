@@ -81,6 +81,9 @@ namespace ZvitEXZ.Models.Calculations
         public List<Kanal> Kanals { get; set; }
         public List<River> Rivers { get; set; }
         public List<Lep> Leps { get; set; }
+        public int PvCount { get; set; }
+        public List<NenormHlubyna> NenormHlubynas { get; set; }
+        public List<Shurf> Shurves { get; set; }
 
         public Statistics(List<Zamer> zamers, ExcelDictionary dictionary, List<Nezahyst> nezahysts, List<KorNebezpechny> korNebezpechny,
             List<Povregdenya> povregdenyas, List<RoadKozhuh> roadKozhuhs, List<Flanets> flantsy, List<NeObstegeno> neObstegenos,
@@ -162,6 +165,9 @@ namespace ZvitEXZ.Models.Calculations
             Kanals = zamers.Where(el => el.Name == ProjectConstants.KanalName).Select(tr => tr as Kanal).ToList();
             Rivers = zamers.Where(el => el.Name == ProjectConstants.RiverName).Select(tr => tr as River).ToList();
             Leps = zamers.Where(el => el.Name == ProjectConstants.LepName).Select(tr => tr as Lep).ToList();
+            PvCount=zamers.Where(el=>el.Name==ProjectConstants.PVName).Count();
+            NenormHlubynas = nenormHlubynas;
+            Shurves=shurves;
         }
         public Statistics()
         {

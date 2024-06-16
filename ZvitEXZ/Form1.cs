@@ -212,7 +212,8 @@ namespace ZvitEXZ
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            double k = 1;
+            Logs.AddLog(k.ToString("0.0#"));
         }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)

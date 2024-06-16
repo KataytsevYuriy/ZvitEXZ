@@ -137,8 +137,6 @@
     <Compile Include="Models\Objects\Kanal.cs" />
     <Compile Include="Models\Objects\Kran.cs" />
     <Compile Include="Models\Objects\Lep.cs" />
-    <Compile Include="Models\Log.cs" />
-    <Compile Include="Models\LogMessage.cs" />
     <Compile Include="Models\Objects\MestnostType.cs" />
     <Compile Include="Models\Objects\Napravlenye.cs" />
     <Compile Include="Models\Objects\NeObstegenaDylyanka.cs" />
