@@ -14,6 +14,8 @@ namespace ZvitEXZ.Methods.Calculations
         List<Nezahyst> nezahysts;
         List<KorNebezpechny> korNebezpechny;
         List<Povregdenya> povregdenyas;
+        List<PovregdenyaGNT> povregdenyasGNT;
+        double mediumBall;
         List<RoadKozhuh> roadKozhuhs;
         List<Flanets> flantsy;
         List<NeObstegeno> neObstegenos;
@@ -97,6 +99,15 @@ namespace ZvitEXZ.Methods.Calculations
                 fileSaver.SavePovregd(povregdenyas);
                 Progress.AddStep();
                 Done.Povregd();
+            }
+            //PovregdenyaGNT
+            if (checkeD.IsPovregdGNT)
+            {
+                if (!calculated.PovregdGNT) CalculatePovregdGNT();
+
+                fileSaver.SavePovregdGNT(povregdenyasGNT, mediumBall);
+                Progress.AddStep();
+                Done.PovregdGNT();
             }
 
             //UPZ
@@ -202,6 +213,9 @@ namespace ZvitEXZ.Methods.Calculations
             korNebezpechny = getKorNeb.Calculate();
             calculated.Korneb = true;
         }
+
+
+
         private void CalculatePV()
         {
             GetAllPV getAllPV = new GetAllPV();
@@ -216,6 +230,13 @@ namespace ZvitEXZ.Methods.Calculations
                 excelDictionary.GradSecondLine, neObstegenos);
             povregdenyas = getAllPovregdenya.Get(zamers, korNebezpechny);
             calculated.Povregd = true;
+        }
+        private void CalculatePovregdGNT()
+        {
+            if (!calculated.Povregd) CalculatePovregd();
+            GetAllPovregdenyasGNT allPovregdenyasGNT = new GetAllPovregdenyasGNT();
+            povregdenyasGNT = allPovregdenyasGNT.Get(povregdenyas, neObstegenos, zamers.First().Km, zamers.Last().Km, out mediumBall);
+            calculated.PovregdGNT = true;
         }
         private void CalculateRoadKozhuh()
         {

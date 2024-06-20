@@ -373,5 +373,10 @@ namespace ZvitEXZ.Methods.File
             StatisticToArray converter = new StatisticToArray();
             return converter.Convert(statistics);
         }
+    public string[,] ConvertPovregdGNT(List<PovregdenyaGNT> povregdGNT)
+        {
+            ListPovregdGNTToArray converter = new ListPovregdGNTToArray();
+            return converter.Convert(povregdGNT);
+        }
     }
 }

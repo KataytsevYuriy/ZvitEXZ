@@ -12,7 +12,7 @@ namespace ZvitEXZ.Methods
     public class WriteEcxelFile
     {
         public void WriteFile(string folder, string newFileName, string objectName, string[,] data, string rangeName,
-            string rangeData, string rangeDataEmpty, string rangeToPrint, string ifDataEmpty, int sheetNumber)
+            string rangeData, string rangeDataEmpty, string rangeToPrint, string ifDataEmpty, int sheetNumber, double bal, string rangeBal)
         {
             string path = Directory.GetCurrentDirectory();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
@@ -39,7 +39,7 @@ namespace ZvitEXZ.Methods
                 worksheet.Range[rangeName].Font.Bold = true;
                 worksheet.Range[rangeName].Font.Name = "Times New Roman";
                 worksheet.Range[rangeName].Font.Size = 12;
-                worksheet.Range[rangeName].HorizontalAlignment= Excel.XlHAlign.xlHAlignCenter;
+                worksheet.Range[rangeName].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 excelApp.DisplayAlerts = false;
                 worksheet.Range[rangeName].Borders.Weight = 2d;
                 if (data.Length == 0)
@@ -61,6 +61,18 @@ namespace ZvitEXZ.Methods
                     worksheet.Range[rangeData].VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     worksheet.Range[rangeData].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
+                }
+                if (bal > -0.5)
+                {
+                    excelApp.DisplayAlerts = false;
+                    worksheet.Range[rangeBal].Merge();
+                    //excelApp.DisplayAlerts = true;
+                    worksheet.Range[rangeBal].Value = bal == 0 ? "-" :  bal.ToString();
+                    worksheet.Range[rangeBal].Font.Bold = false;
+                    worksheet.Range[rangeBal].Font.Name = "Times New Roman";
+                    worksheet.Range[rangeBal].Font.Size = 12;
+                    worksheet.Range[rangeBal].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    worksheet.Range[rangeBal].Borders.Weight = 2d;
                 }
                 worksheet.PageSetup.PrintArea = rangeToPrint;
                 CreateFolder createFolder = new CreateFolder();

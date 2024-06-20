@@ -81,6 +81,7 @@ namespace ZvitEXZ.Models
         public const string ZvedenaFolderName = "Додаток_Р-Зведена";
         public const string UkzFolderName = "Додаток_Д-УКЗ";
         public const string PovregdFolderName = "Додаток_Л-Пошкодження";
+        public const string PovregdGNTFolderName = "Додаток_Л-Пошкодження_ГНТ";
         public const string UpzFolderName = "Додаток_Ж-УПЗ";
         public const string FlanetsFolderName = "Додаток_П-Фланці";
         public const string NenormHlubFolderName = "Додаток_С-Ненор_глибина";
@@ -131,6 +132,7 @@ namespace ZvitEXZ.Models
 
         public static double PovregdenyaFirstCherga = -0.02;
         public static double PovregdenyaSecondCherga = -0.15;
-        public static double StepVymiryvannya = 0.01;
+        public static double StepVymiryvannya = 0.0101;
+        public static double DylyankaGNT = 0.1;
     }
 }

@@ -78,7 +78,7 @@ namespace ZvitEXZ
             {
                 cbUkz.Checked = true; cbUpz.Checked = true;
                 cbPv.Checked = true; cbKorneb.Checked = true;
-                cbPovregd.Checked = true; // cbPovregdGNT.Checked=true;
+                cbPovregd.Checked = true; cbPovregdGNT.Checked = true;
                 cbNezah.Checked = true; cbPereh.Checked = true;
                 cbFlantsy.Checked = true;
                 cbZvedena.Checked = true; cbShurfy.Checked = true;
@@ -212,8 +212,8 @@ namespace ZvitEXZ
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            double k = 1;
-            Logs.AddLog(k.ToString("0.0#"));
+            AcadDriwingTest acadDriwing = new AcadDriwingTest();
+            acadDriwing.PrintPline();
         }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)

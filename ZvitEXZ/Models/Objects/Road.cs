@@ -92,20 +92,33 @@ namespace ZvitEXZ.Models.Objects
                 HasKozhuh = false;
                 Logs.AddError($"км {data[1]} неверно указано наличие кожуха");
             }
-            if (data[115] == null)
+            if (!HasKozhuh)
             {
                 KozhuhLength = null;
             }
             else
             {
-                try
+                if (data[115] == null)
                 {
-                    KozhuhLength = (int)Parse.ParseDouble(data[115]);
+                    KozhuhLength = length;
+                    Logs.AddError($"км {data[1]} укажите длинну кожуха");
                 }
-                catch
+                else
                 {
-                    KozhuhLength = null;
-                    Logs.AddError($"км {data[1]} правильно укажите длинну кожуха");
+                    try
+                    {
+                        KozhuhLength = (int)Parse.ParseDouble(data[115]);
+                    }
+                    catch
+                    {
+                        KozhuhLength = length;
+                        Logs.AddError($"км {data[1]} правильно укажите длинну кожуха");
+                    }
+                }
+                if (KozhuhLength < length)
+                {
+                    KozhuhLength = length;
+                    Logs.AddError($"км {data[1]} правильную укажите длинну кожуха");
                 }
             }
             if (!HasKozhuh)

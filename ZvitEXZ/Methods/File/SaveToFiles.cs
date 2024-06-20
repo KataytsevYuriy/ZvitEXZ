@@ -92,6 +92,11 @@ namespace ZvitEXZ.Methods.File
         {
             writeToFile.WriteFile(_fileName, ProjectConstants.StatisticsFolderName, _pipeName, converter.ConvertStatistics(statistics), "B", "K", "K", "", 14);
         }
+        public void SavePovregdGNT(List<PovregdenyaGNT> povregdenyaGNT, double bal)
+        {
+            writeToFile.WriteFile(_fileName, ProjectConstants.PovregdFolderName, _pipeName, converter.ConvertPovregdGNT(povregdenyaGNT),
+                           "A", "E", "F", ProjectConstants.PrintMessageNezahIsEmpty, 15, ProjectConstants.PovregdGNTFolderName, bal);
+        }
 
     }
 }
