@@ -9,21 +9,23 @@ using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Methods.File.Converters
 {
-    public class ListZamersToMassive
+    public class ConvertZamersToZvedena
     {
         private List<Zamer> zamers;
         private List<KorNebezpechny> korNebezpechnies;
-        public ListZamersToMassive(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies)
+        private List<Povregdenya> povregdenyas;
+        public ConvertZamersToZvedena(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies, List<Povregdenya> povregdenyas)
         {
             this.korNebezpechnies = korNebezpechnies;
             this.zamers = zamers;
+            this.povregdenyas = povregdenyas;
             //add povrezhdenya
         }
-        public string[,] Convert()
+        public object[,] Convert()
         {
             if (zamers.Count == 0) return new string[0, 0];
             int cellCount = 12;
-            string[,] res = new string[zamers.Count, cellCount];
+            object[,] res = new object[zamers.Count, cellCount];
             int i = 0;
             MestnostToString mestnostToString = new MestnostToString();
             foreach (Zamer item in zamers)
@@ -65,7 +67,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 if (item.IsBalka)
                     prymitky = prymitky == "" ? ProjectConstants.MestnostBalka : $"{prymitky}; {ProjectConstants.MestnostBalka}";
                 res[i, 4] = prymitky;
-                res[i, 5] = "";//poskodgennya
+                res[i, 5] = IsPovregdenya(item.Km);
                 res[i, 6] = IsKornenebezpechny(item.Km);
                 res[i, 7] = item.Hlub == null ? "" : item.Hlub.ToString().Replace(".", ",");
                 res[i, 8] = item.Rhr == null ? "" : item.Rhr.ToString().Replace(".", ",");
@@ -84,6 +86,12 @@ namespace ZvitEXZ.Methods.File.Converters
                 if (km >= item.KmStart && km <= item.KmEnd) return item.Description;
             }
             return "";
+        }
+        private string IsPovregdenya(double km)
+        {
+            Povregdenya povregdenya = povregdenyas.Where(el => el.KmStart <= km && el.KmEnd >= km).FirstOrDefault();
+            if (povregdenya == null) return "";
+            return povregdenya.Cherga.ToString();
         }
     }
 }

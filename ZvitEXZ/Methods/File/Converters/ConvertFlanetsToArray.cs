@@ -8,7 +8,7 @@ using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Methods.File.Converters
 {
-    internal class ListFlanetsToMassive
+    internal class ConvertFlanetsToArray
     {
         public string[,] Convert(List<Flanets> flantsy)
         {

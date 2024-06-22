@@ -16,7 +16,7 @@ namespace ZvitEXZ.Methods.Calculations
         private double uSecondCherga;
         List<Povregdenya> povregdenyas;
         List<NeObstegeno> neobstegenes;
-        public GetAllPovregdenya(double UFirstChergaGradient, double USecondChergaGradient,List<NeObstegeno> neobstegeno)
+        public GetAllPovregdenya(double UFirstChergaGradient, double USecondChergaGradient, List<NeObstegeno> neobstegeno)
         {
             uFirstCherga = UFirstChergaGradient;
             uSecondCherga = USecondChergaGradient;
@@ -81,7 +81,8 @@ namespace ZvitEXZ.Methods.Calculations
                     if (currentCherga == 0)
                     {
                         kmFinish = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 2, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        if (kmStart < kmFinish)
+                            povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 2, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
                     }
                     else if (currentCherga == 2 && maxGrad > zamer.Utz)
                     {
@@ -94,7 +95,7 @@ namespace ZvitEXZ.Methods.Calculations
                     else if (currentCherga == 1)
                     {
                         kmFinish = firstToSecondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 2, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        if (kmStart < kmFinish) povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 2, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
                         maxGrad = zamer.Ugrad ?? 0;
                         UMaxGrad = zamer.Utz ?? 0;
                         gpsN = zamer.GpsN;
@@ -108,7 +109,7 @@ namespace ZvitEXZ.Methods.Calculations
                     if (currentCherga == 0)
                     {
                         kmFinish = secondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 1, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        if (kmStart < kmFinish) povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 1, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
                     }
                     else if (currentCherga == 1 && maxGrad > zamer.Utz)
                     {
@@ -121,7 +122,7 @@ namespace ZvitEXZ.Methods.Calculations
                     else if (currentCherga == 2)
                     {
                         kmFinish = firstToSecondCrossing.GetCrossing(lastU, lastKm, zamer.Ugrad ?? 0, zamer.Km);
-                        povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 1, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
+                        if (kmStart < kmFinish) povregdenyas.Add(new Povregdenya(kmStart, kmFinish, 1, maxGrad, UMaxGrad, gpsN, gpsE, mestnost));
                         maxGrad = zamer.Ugrad ?? 0;
                         UMaxGrad = zamer.Utz ?? 0;
                         gpsN = zamer.GpsN;

@@ -4,7 +4,7 @@ using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.File.Converters
 {
-    internal class ListShurvesTiArray
+    internal class ConvertShurvesToArray
     {
         public string[,] Convert(List<Shurf> shurves)
         {

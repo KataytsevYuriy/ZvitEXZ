@@ -11,7 +11,7 @@ namespace ZvitEXZ.Methods
 {
     public class WriteEcxelFile
     {
-        public void WriteFile(string folder, string newFileName, string objectName, string[,] data, string rangeName,
+        public void WriteFile(string folder, string newFileName, string objectName, object[,] data, string rangeName,
             string rangeData, string rangeDataEmpty, string rangeToPrint, string ifDataEmpty, int sheetNumber, double bal, string rangeBal)
         {
             string path = Directory.GetCurrentDirectory();

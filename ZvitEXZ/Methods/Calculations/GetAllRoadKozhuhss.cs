@@ -67,17 +67,17 @@ namespace ZvitEXZ.Methods.Calculations
                                 pV.ProvodTypePidklichenya1 == ProvodTypePidklichenyas.pointDrenazh)
                             {
                                 utzBefore = pV.ProvodPotencial1;
-                                roadKozhuh1.IsPvStartPtovodUtz = true;
+                                roadKozhuh1.IsPvStartProvodUtz = true;
                             }
                             if (pV.ProvodTypePidklichenya2 == ProvodTypePidklichenyas.kozhuh)
                             {
                                 ukozBefore = pV.ProvodPotencial2;
-                                roadKozhuh1.IsPvStartPtovodUkozh = true;
+                                roadKozhuh1.IsPvStartProvodUkozh = true;
                             }
                             if (pV.ProvodTypePidklichenya3 == ProvodTypePidklichenyas.kozhuh)
                             {
                                 ukozBefore = pV.ProvodPotencial3;
-                                roadKozhuh1.IsPvStartPtovodUkozh = true;
+                                roadKozhuh1.IsPvStartProvodUkozh = true;
                             }
                         }
                     }
@@ -97,17 +97,17 @@ namespace ZvitEXZ.Methods.Calculations
                                 pV.ProvodTypePidklichenya1 == ProvodTypePidklichenyas.pointDrenazh)
                             {
                                 utzAfter = pV.ProvodPotencial1;
-                                roadKozhuh1.IsPvEndPtovodUtz = true;
+                                roadKozhuh1.IsPvEndProvodUtz = true;
                             }
                             if (pV.ProvodTypePidklichenya2 == ProvodTypePidklichenyas.kozhuh)
                             {
                                 ukozAfter = pV.ProvodPotencial2;
-                                roadKozhuh1.IsPvEndPtovodUkozh = true;
+                                roadKozhuh1.IsPvEndProvodUkozh = true;
                             }
                             if (pV.ProvodTypePidklichenya3 == ProvodTypePidklichenyas.kozhuh)
                             {
                                 ukozAfter = pV.ProvodPotencial3;
-                                roadKozhuh1.IsPvEndPtovodUkozh = true;
+                                roadKozhuh1.IsPvEndProvodUkozh = true;
                             }
                         }
                     }

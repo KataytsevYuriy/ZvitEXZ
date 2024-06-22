@@ -28,15 +28,19 @@ namespace ZvitEXZ.Methods.Calculations
             ByUtz();
             ByRhr();
             ByZabolochennyiHrunt();
-            ByRiver();
-            BySwamp();
             ByTruboprovod();
             BySvalka();
             ByBludy();
-            ByRoads();
 
             SortKorNeb();
             TrimNeobstegeno();
+
+            ByRiver();
+            BySwamp();
+            ByRoads();
+
+            SortKorNeb();
+
             return korNebezpechny;
         }
         private void ByUtz()

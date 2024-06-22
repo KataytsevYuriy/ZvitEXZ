@@ -8,7 +8,7 @@ using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.File.Converters
 {
-    internal class ListPovitrPerehToMassive
+    internal class ConvertPovitrPerehToArray
     {
         public string[,] Convert(List<PovitrPerehod> perehods)
         {

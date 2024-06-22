@@ -77,7 +77,8 @@ namespace ZvitEXZ.Methods.Calculations
             if (checkeD.IsZvedena)
             {
                 if (!calculated.Korneb) CalculateKorneb();
-                ListZamersToMassive convertZamersToZvedena = new ListZamersToMassive(zamers, korNebezpechny);
+                if (!calculated.Povregd) CalculatePovregd();
+                ConvertZamersToZvedena convertZamersToZvedena = new ConvertZamersToZvedena(zamers, korNebezpechny, povregdenyas);
                 fileSaver.SaveZvedena(convertZamersToZvedena.Convert());
                 Progress.AddStep();
                 Done.Zvedena();

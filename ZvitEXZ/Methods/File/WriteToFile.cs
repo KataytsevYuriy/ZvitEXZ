@@ -9,7 +9,7 @@ namespace ZvitEXZ.Methods.File
 {
     public class WriteToFile
     {
-        public void WriteFile(string sourceFileName, string folderName, string PipeName, string[,] data,
+        public void WriteFile(string sourceFileName, string folderName, string PipeName, object[,] data,
             string callStartName, string callFinishName, string callPrintFinishName, string ifDataEmpty,
             int sheetNumber, string alternativeFileName = "", double bal = -1, string rangeBal = "F")
         {

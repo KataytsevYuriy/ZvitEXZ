@@ -8,7 +8,7 @@ using ZvitEXZ.Models.Calculations;
 
 namespace ZvitEXZ.Methods.File.Converters
 {
-    internal class ListNeonrmHlubToArray
+    internal class ConvertNeonrmHlubToArray
     {
         public string[,] Convert(List<NenormHlubyna> nenormHlubynas)
         {
