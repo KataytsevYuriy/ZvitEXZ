@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 using ZvitEXZ.Models;
+using Microsoft.Office.Interop.Excel;
 
 namespace ZvitEXZ.Methods
 {
@@ -32,6 +33,13 @@ namespace ZvitEXZ.Methods
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[sheetNumber];//получить N sheetNumber лист
+
+               // string cell = worksheet.Cells[11, 15].Value.ToString();
+               // Excel.Range rng = (Excel.Range)worksheet.get_Range(worksheet.Cells[1, 1], worksheet.Cells[3, 3]);
+                var s = worksheet.Cells[6, 1];
+                var e = worksheet.Cells[7, 6];
+                var arrData = (object[,])worksheet.Range[s,e].Value;
+
                 excelApp.DisplayAlerts = false;
                 worksheet.Range[rangeName].Merge();
                 excelApp.DisplayAlerts = true;

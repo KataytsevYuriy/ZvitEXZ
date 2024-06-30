@@ -212,8 +212,7 @@ namespace ZvitEXZ
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AcadDriwingTest acadDriwing = new AcadDriwingTest();
-            acadDriwing.PrintPline();
+
         }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)

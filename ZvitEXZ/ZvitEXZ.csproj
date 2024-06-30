@@ -67,10 +67,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Methods\AcadDriwingTest.cs" />
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
+    <Compile Include="Methods\Calculations\GetAcadDrawing.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
     <Compile Include="Methods\Calculations\GetAllForest.cs" />
     <Compile Include="Methods\Calculations\GetAllHlubynas.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Methods\Calculations\GetAllKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetAllNezahyst.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
+    <Compile Include="Methods\File\Converters\ConvertCadDocToArray.cs" />
     <Compile Include="Methods\File\Converters\ConvertKornebToArray.cs" />
     <Compile Include="Methods\File\Converters\ConvertNezahToArray.cs" />
     <Compile Include="Methods\File\Converters\ConvertPovregdToAtrray.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Methods\File\Converters\ConvertZamersToZvedena.cs" />
     <Compile Include="Methods\File\SaveToFiles.cs" />
     <Compile Include="Methods\Calculations\GetAllPV.cs" />
+    <Compile Include="Methods\File\WriteCadProtocol.cs" />
     <Compile Include="Methods\File\WriteToFile.cs" />
     <Compile Include="Methods\File\WriteWordFile.cs" />
     <Compile Include="Methods\IsAllowed.cs" />
@@ -121,10 +123,13 @@
     <Compile Include="Methods\File\WriteEcxelFile.cs" />
     <Compile Include="Methods\ConvertToString.cs" />
     <Compile Include="Models\AcadConstants.cs" />
-    <Compile Include="Models\AcadModels\AcadDriwing.cs" />
-    <Compile Include="Models\AcadModels\ListPotencials.cs" />
-    <Compile Include="Models\AcadModels\Point.cs" />
-    <Compile Include="Models\AcadModels\Potencial.cs" />
+    <Compile Include="Models\AcadModels\AcadDoc.cs" />
+    <Compile Include="Models\AcadModels\AcadDrawing.cs" />
+    <Compile Include="Models\AcadModels\DrawBlock.cs" />
+    <Compile Include="Models\AcadModels\DrawingStep.cs" />
+    <Compile Include="Models\AcadModels\DrawingText.cs" />
+    <Compile Include="Models\AcadModels\DrawLayer.cs" />
+    <Compile Include="Models\AcadModels\DrawPline.cs" />
     <Compile Include="Models\Calculations\CalculationDone.cs" />
     <Compile Include="Models\Calculations\Checked.cs" />
     <Compile Include="Models\Calculations\Dylyanka.cs" />
