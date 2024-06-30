@@ -79,7 +79,7 @@ namespace ZvitEXZ.Methods.Calculations
                 if (!calculated.Korneb) CalculateKorneb();
                 if (!calculated.Povregd) CalculatePovregd();
                 ConvertZamersToZvedena convertZamersToZvedena = new ConvertZamersToZvedena(zamers, korNebezpechny, povregdenyas);
-                fileSaver.SaveZvedena(convertZamersToZvedena.Convert());
+                fileSaver.SaveZvedena(zamers, korNebezpechny, povregdenyas);
                 Progress.AddStep();
                 Done.Zvedena();
             }

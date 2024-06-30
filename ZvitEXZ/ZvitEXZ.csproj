@@ -68,9 +68,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Methods\AcadDriwingTest.cs" />
-    <Compile Include="Methods\AcadMethods\CreateAcadDriwing.cs" />
-    <Compile Include="Methods\AcadMethods\Drivepotencial.cs" />
-    <Compile Include="Methods\AcadMethods\GetAcadFile.cs" />
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
@@ -220,33 +217,6 @@
     <Content Include="science_outofspace_world_galaxy_astronomy_universe_space_solar_system_planet_icon_263084 %281%29.ico" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="ACFOCUSCTRLLib">
-      <Guid>{FC0C6DFB-96E9-4520-B0D2-993650F89DD4}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="AutoCAD">
-      <Guid>{D5C3CB6F-AA0A-4D45-B02D-CF2974EFD4BE}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="AXDBLib">
-      <Guid>{AB513495-C0DC-4E03-AD6E-E851E08428D1}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>

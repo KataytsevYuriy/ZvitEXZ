@@ -81,5 +81,10 @@ namespace ZvitEXZ.Methods.File
             ConvertPovregdGNTToArray converter = new ConvertPovregdGNTToArray();
             return converter.Convert(povregdGNT);
         }
+        public object[,] ConvertZvedena(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies, List<Povregdenya> povregdenyas)
+        {
+            ConvertZamersToZvedena converter = new ConvertZamersToZvedena(zamers, korNebezpechnies, povregdenyas);
+            return converter.Convert();
+        }
     }
 }
