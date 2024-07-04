@@ -255,7 +255,8 @@ namespace ZvitEXZ.Methods.Calculations
                     kmFirst : road.Km - ProjectConstants.TruboprovodKornebLength;
                     double kmfinish = road.Km + ProjectConstants.TruboprovodKornebLength + (double)road.length / 1000 > kmLast ?
                         kmLast : road.Km + ProjectConstants.TruboprovodKornebLength + (double)road.length / 1000;
-                    korNebezpechny.Add(new KorNebezpechny(kmstart, kmfinish, road.ToString()));
+                    string description = road.RoadType == RoadTypes.automobile ? $"перетин з автодорогою {road.RoadName}" : $"перетин із залізницею {road.RoadName}";
+                    korNebezpechny.Add(new KorNebezpechny(kmstart, kmfinish, description));
                 }
             }
         }

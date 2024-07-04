@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using ZvitEXZ.Methods;
 using ZvitEXZ.Methods.Calculations;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Objects;
+using Newtonsoft.Json.Linq;
 
 namespace ZvitEXZ
 {
@@ -66,6 +70,15 @@ namespace ZvitEXZ
             btnCalculate.Enabled = false;
             btnOpen.Enabled = false;
             Models.Calculations.Checked chekeD = new Models.Calculations.Checked(this);
+            ProjectConstants.DocShablonPath = "";
+            if (!cbIsStandartWordShablon.Checked)
+            {
+                openFileDialog1.Filter = "Word (*.docm)|*.docm|All files(*.*)|*.*";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ProjectConstants.DocShablonPath = openFileDialog1.FileName; ;
+                }
+            }
             Calculate calculate = new Calculate();
             calculate.CalculateAll(zamers, ExcelDictionary, chekeD);
             btnCalculate.Enabled = true;
@@ -86,6 +99,7 @@ namespace ZvitEXZ
                 cbStatistiks.Checked = true;
                 cbNenormHlyb.Checked = true;
                 cbZapycka.Checked = true;
+                cbProtokol.Checked = true;
             }
             else if (clearAll)
             {
@@ -98,6 +112,8 @@ namespace ZvitEXZ
                 cbPovitrPerehody.Checked = false;
                 cbStatistiks.Checked = false;
                 cbNenormHlyb.Checked = false;
+                cbZapycka.Checked = false;
+                cbProtokol.Checked = false;
             }
             clearAll = true;
         }
@@ -210,9 +226,25 @@ namespace ZvitEXZ
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private async void button1_Click_1(object sender, EventArgs e)
         {
+            DateTime dt = await GetServerTimeAsync();
+            string d = dt.ToString();
+        }
+        public static async Task<DateTime> GetServerTimeAsync()
+        {
+            string TimeApiUrl = "http://worldtimeapi.org/api/timezone/Etc/UTC";
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(TimeApiUrl);
+                response.EnsureSuccessStatusCode();
 
+                string responseBody = await response.Content.ReadAsStringAsync();
+                JObject json = JObject.Parse(responseBody);
+                string dateTimeString = json["utc_datetime"].ToString();
+
+                return DateTime.Parse(dateTimeString);
+            }
         }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)
@@ -236,6 +268,16 @@ namespace ZvitEXZ
         private void cbZapycka_CheckedChanged(object sender, EventArgs e)
         {
             if (!cbZapycka.Checked)
+            {
+                clearAll = false;
+                cbAll.Checked = false;
+            }
+        }
+
+        private void cbProtokol_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (!cbProtokol.Checked)
             {
                 clearAll = false;
                 cbAll.Checked = false;

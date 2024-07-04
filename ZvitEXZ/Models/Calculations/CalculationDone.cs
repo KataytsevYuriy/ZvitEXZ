@@ -18,5 +18,6 @@
         public bool Forests { get; set; }
         public bool Statistiks { get; set; }
         public bool Zapyska { get; set; }
+        public bool Protokol { get; set; }
     }
 }

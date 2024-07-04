@@ -23,6 +23,7 @@ namespace ZvitEXZ.Models.Objects
         public string Name { get; set; }
         public string Note { get; set; }
         public int NumberSvyazky { get; set; }
+        public string ErrorMessageStart { get; set; }
 
         public Zamer(object[] data)
         {
@@ -35,6 +36,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 throw new ArgumentNullException("не верное значение КМ " + data[1].ToString());
             }
+            ErrorMessageStart = $"км {ConvertToString.DoubleToString(Km)}";
             try
             {
                 Utz = ParseData.DoubleNullable(data[3]);

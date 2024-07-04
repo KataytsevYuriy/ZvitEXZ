@@ -23,13 +23,20 @@ namespace ZvitEXZ.Methods.File
             Documents docs = null;
             Document doc = null;
             string fileName = "";
-            if (System.IO.File.Exists($"{path}\\{ProjectConstants.ShablonWordFileName}"))
+            if (string.IsNullOrEmpty(ProjectConstants.DocShablonPath))
             {
-                fileName = ProjectConstants.ShablonWordFileName;
+                if (System.IO.File.Exists($"{path}\\{ProjectConstants.ShablonWordFileName}"))
+                {
+                    fileName = $"{path}\\{ProjectConstants.ShablonWordFileName}";
+                }
+                else
+                {
+                    fileName = $"{path}\\{ProjectConstants.ShablonWordFileName2}"; ;
+                }
             }
             else
             {
-                fileName = ProjectConstants.ShablonWordFileName2;
+                fileName = ProjectConstants.DocShablonPath;
             }
             try
             {
@@ -37,7 +44,7 @@ namespace ZvitEXZ.Methods.File
                 app.Visible = true;
                 app.DisplayAlerts = WdAlertLevel.wdAlertsNone;
                 docs = app.Documents;
-                doc = docs.Open($"{path}\\{fileName}", ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o);
+                doc = docs.Open(fileName, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o);
                 doc.Activate();
 
                 if (wordReplaces.Count > 0)

@@ -35,6 +35,7 @@
             this.labelFileName = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbProtokol = new System.Windows.Forms.CheckBox();
             this.cbZapycka = new System.Windows.Forms.CheckBox();
             this.cbStatistiks = new System.Windows.Forms.CheckBox();
             this.cbPovitrPerehody = new System.Windows.Forms.CheckBox();
@@ -52,6 +53,7 @@
             this.cbUkz = new System.Windows.Forms.CheckBox();
             this.cbAll = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbIsStandartWordShablon = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +116,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cbIsStandartWordShablon);
+            this.panel1.Controls.Add(this.cbProtokol);
             this.panel1.Controls.Add(this.cbZapycka);
             this.panel1.Controls.Add(this.cbStatistiks);
             this.panel1.Controls.Add(this.cbPovitrPerehody);
@@ -135,15 +139,27 @@
             this.panel1.Size = new System.Drawing.Size(344, 455);
             this.panel1.TabIndex = 8;
             // 
+            // cbProtokol
+            // 
+            this.cbProtokol.AutoSize = true;
+            this.cbProtokol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbProtokol.Location = new System.Drawing.Point(25, 400);
+            this.cbProtokol.Name = "cbProtokol";
+            this.cbProtokol.Size = new System.Drawing.Size(254, 22);
+            this.cbProtokol.TabIndex = 16;
+            this.cbProtokol.Text = "Протокол построения графиков";
+            this.cbProtokol.UseVisualStyleBackColor = true;
+            this.cbProtokol.CheckedChanged += new System.EventHandler(this.cbProtokol_CheckedChanged);
+            // 
             // cbZapycka
             // 
             this.cbZapycka.AutoSize = true;
             this.cbZapycka.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbZapycka.Location = new System.Drawing.Point(25, 372);
             this.cbZapycka.Name = "cbZapycka";
-            this.cbZapycka.Size = new System.Drawing.Size(85, 22);
+            this.cbZapycka.Size = new System.Drawing.Size(94, 22);
             this.cbZapycka.TabIndex = 15;
-            this.cbZapycka.Text = "Записка";
+            this.cbZapycka.Text = "Записка (";
             this.cbZapycka.UseVisualStyleBackColor = true;
             this.cbZapycka.CheckedChanged += new System.EventHandler(this.cbZapycka_CheckedChanged);
             // 
@@ -338,6 +354,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // cbIsStandartWordShablon
+            // 
+            this.cbIsStandartWordShablon.AutoSize = true;
+            this.cbIsStandartWordShablon.Checked = true;
+            this.cbIsStandartWordShablon.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIsStandartWordShablon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbIsStandartWordShablon.Location = new System.Drawing.Point(116, 372);
+            this.cbIsStandartWordShablon.Name = "cbIsStandartWordShablon";
+            this.cbIsStandartWordShablon.Size = new System.Drawing.Size(132, 22);
+            this.cbIsStandartWordShablon.TabIndex = 17;
+            this.cbIsStandartWordShablon.Text = "Shablon.docm )";
+            this.cbIsStandartWordShablon.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,6 +415,8 @@
         public System.Windows.Forms.CheckBox cbStatistiks;
         public System.Windows.Forms.CheckBox cbNenormHlyb;
         public System.Windows.Forms.CheckBox cbZapycka;
+        public System.Windows.Forms.CheckBox cbProtokol;
+        public System.Windows.Forms.CheckBox cbIsStandartWordShablon;
     }
 }
 

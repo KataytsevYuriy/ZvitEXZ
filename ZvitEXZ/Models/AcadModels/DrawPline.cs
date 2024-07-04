@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.AcadModels
 {
-    internal class DrawPline : DrawingStep
+    public class DrawPline : DrawingStep
     {
         public List<double> Values { get; set; }
         public DrawPline() : base(AcadConstants.DrawingPlineName)

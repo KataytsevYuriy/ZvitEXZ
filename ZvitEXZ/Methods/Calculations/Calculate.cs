@@ -6,6 +6,7 @@ using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Methods.File.Converters;
 using System.Linq;
 using System.Collections;
+using ZvitEXZ.Models.AcadModels;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -31,6 +32,7 @@ namespace ZvitEXZ.Methods.Calculations
         List<Forest> forests;
         Statistics statistics;
         List<WordReplace> wordReplaces;
+        AcadDrawing acadDrawing;
         public Calculate()
         {
             calculated = new CalculationDone();
@@ -191,6 +193,15 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.Zapyska();
             }
 
+            //Drawing protokol
+            if (checkeD.IsProtokol)
+            {
+                if (!calculated.Protokol) CalculateProtokol();
+                fileSaver.SaveCadProtocol(acadDrawing);
+            }
+
+
+
             CalculateAllHlubynas();
 
 
@@ -321,6 +332,17 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.Statistiks) CalculateAllStatistics();
             GetAllWordReplacer GetWordReplacer = new GetAllWordReplacer();
             wordReplaces = GetWordReplacer.Get(statistics);
+        }
+        private void CalculateProtokol()
+        {
+            if (!calculated.Nezahyst) CalculateNezah();
+            if (!calculated.Korneb) CalculateKorneb();
+            if (!calculated.Povregd) CalculatePovregd();
+            if (!calculated.HruntActivity) CalculateHruntActivity();
+            if (!calculated.Hlubyna) CalculateAllHlubynas();
+            if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
+            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers);
+            acadDrawing = getAcadDrawing.Calculate(0);
         }
     }
 }

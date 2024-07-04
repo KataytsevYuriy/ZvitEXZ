@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.AcadModels
 {
-    internal class DrawingText : DrawingStep
+    public class DrawingText : DrawingStep
     {
         public string Text { get; set; }
         public double X { get; set; }

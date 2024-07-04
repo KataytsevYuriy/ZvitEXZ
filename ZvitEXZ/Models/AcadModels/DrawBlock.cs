@@ -1,6 +1,6 @@
 ﻿namespace ZvitEXZ.Models.AcadModels
 {
-    internal class DrawBlock : DrawingStep
+    public class DrawBlock : DrawingStep
     {
         public string BlockName { get; set; }
         public double X { get; set; }

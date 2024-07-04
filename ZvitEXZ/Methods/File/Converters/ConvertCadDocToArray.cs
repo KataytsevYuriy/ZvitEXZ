@@ -10,12 +10,21 @@ namespace ZvitEXZ.Methods.File.Converters
 {
     internal class ConvertCadDocToArray
     {
-        public object[,] Convert(AcadDoc doc)
+        public List<object[,]> Convert(AcadDrawing acadDrawing)
+        {
+            List<object[,]> res = new List<object[,]>();
+            foreach (AcadDoc acadDoc in acadDrawing.Docs)
+            {
+                res.Add(ConvertDoc(acadDoc));
+            }
+            return res;
+        }
+        private object[,] ConvertDoc(AcadDoc doc)
         {
             int cellCount = doc.CellsCount;
             if (cellCount < 10) cellCount = 10;
             int rowCount = doc.DrawingSteps.Count + 1;
-            object[,] res = new object[cellCount, rowCount];
+            object[,] res = new object[rowCount, cellCount];
             int i = 1;
             res[0, 0] = doc.FileName;
             res[0, 1] = doc.FolderName;

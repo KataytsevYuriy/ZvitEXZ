@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[23] == null)
             {
                 RoadType = RoadTypes.undefined;
-                Logs.AddError($"км {data[1]} не задан тип дороги");
+                Logs.AddError($"{ErrorMessageStart} не задан тип дороги");
             }
             else
             {
@@ -47,7 +47,7 @@ namespace ZvitEXZ.Models.Objects
                         break;
                     default:
                         RoadType = RoadTypes.undefined;
-                        Logs.AddError($"км {data[1]} неверно задан тип дороги");
+                        Logs.AddError($"{ErrorMessageStart} неверно задан тип дороги");
                         break;
 
                 }
@@ -56,7 +56,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 RoadName = "";
                 if (RoadType == RoadTypes.automobile || RoadType == RoadTypes.train)
-                    Logs.AddError($"км {data[1]} укажите название дороги");
+                    Logs.AddError($"{ErrorMessageStart} укажите название дороги");
             }
             else
             {
@@ -65,7 +65,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[21] == null)
             {
                 length = null;
-                Logs.AddError($"км {data[1]} укажите ширину дороги");
+                Logs.AddError($"{ErrorMessageStart} укажите ширину дороги");
             }
             else
             {
@@ -76,7 +76,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Upol = null;
-                    Logs.AddError($"км {data[1]} укажите ширину дороги");
+                    Logs.AddError($"{ErrorMessageStart} укажите ширину дороги");
                 }
             }
             if (data[114] == null)
@@ -90,7 +90,7 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 HasKozhuh = false;
-                Logs.AddError($"км {data[1]} неверно указано наличие кожуха");
+                Logs.AddError($"{ErrorMessageStart} неверно указано наличие кожуха");
             }
             if (!HasKozhuh)
             {
@@ -101,7 +101,7 @@ namespace ZvitEXZ.Models.Objects
                 if (data[115] == null)
                 {
                     KozhuhLength = length;
-                    Logs.AddError($"км {data[1]} укажите длинну кожуха");
+                    Logs.AddError($"{ErrorMessageStart} укажите длинну кожуха");
                 }
                 else
                 {
@@ -112,13 +112,13 @@ namespace ZvitEXZ.Models.Objects
                     catch
                     {
                         KozhuhLength = length;
-                        Logs.AddError($"км {data[1]} правильно укажите длинну кожуха");
+                        Logs.AddError($"{ErrorMessageStart} правильно укажите длинну кожуха");
                     }
                 }
                 if (KozhuhLength < length)
                 {
                     KozhuhLength = length;
-                    Logs.AddError($"км {data[1]} правильную укажите длинну кожуха");
+                    Logs.AddError($"{ErrorMessageStart} правильную укажите длинну кожуха");
                 }
             }
             if (!HasKozhuh)
@@ -128,7 +128,7 @@ namespace ZvitEXZ.Models.Objects
             else if (data[208] == null)
             {
                 ProtectionType = ProtectionTypes.undefined;
-                Logs.AddError($"км {data[1]} укажите тип защиты кожуха");
+                Logs.AddError($"{ErrorMessageStart} укажите тип защиты кожуха");
             }
             else
             {
@@ -139,7 +139,7 @@ namespace ZvitEXZ.Models.Objects
                     case "БСЗ": ProtectionType = ProtectionTypes.bzk; break;
                     default:
                         ProtectionType = ProtectionTypes.without;
-                        Logs.AddError($"км {data[1]} неверно указано тип защиты кожуха");
+                        Logs.AddError($"{ErrorMessageStart} неверно указано тип защиты кожуха");
                         break;
                 }
             }
@@ -156,7 +156,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UtzStartOff = null;
-                    Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[215] == null)
@@ -172,7 +172,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UtzFinishOff = null;
-                    Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[216] == null)
@@ -188,7 +188,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UkzStartOff = null;
-                    Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[217] == null)
@@ -204,12 +204,12 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UkzFinishOff = null;
-                    Logs.AddError($"км {data[1]} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
                 }
             }
             if (data[248] == null)
             {
-                Logs.AddError($"км {data[1]} проверьте номер привязки");
+                Logs.AddError($"{ErrorMessageStart} проверьте номер привязки");
                 NumberSvyazky = 0;
             }
             else
@@ -221,7 +221,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     NumberSvyazky = 0;
-                    Logs.AddError($"км {data[1]} проверьте номер привязки");
+                    Logs.AddError($"{ErrorMessageStart} проверьте номер привязки");
                 }
             }
             if (!HasKozhuh)
@@ -231,7 +231,7 @@ namespace ZvitEXZ.Models.Objects
             else if (data[218] == null)
             {
                 AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
-                Logs.AddError($"км {data[1]} неуказана атестация измерений");
+                Logs.AddError($"{ErrorMessageStart} неуказана атестация измерений");
             }
             else
             {
@@ -244,7 +244,7 @@ namespace ZvitEXZ.Models.Objects
                     case "не можливо роз'єднати": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.coudNotCheck; break;
                     default:
                         AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
-                        Logs.AddError($"км {data[1]} неверно указана (неуказана) атестация измерений");
+                        Logs.AddError($"{ErrorMessageStart } неверно указана (неуказана) атестация измерений");
                         break;
                 }
             }
@@ -253,7 +253,7 @@ namespace ZvitEXZ.Models.Objects
         {
             switch (RoadType)
             {
-                case RoadTypes.automobile: return $"а.д. {RoadName}";
+                case RoadTypes.automobile: return $"автодорога {RoadName}";
                 case RoadTypes.polevaya: return "польова дорога";
                 case RoadTypes.train: return $"залізниця {RoadName}";
                 case RoadTypes.gruntovaya: return "грунтова дорога";

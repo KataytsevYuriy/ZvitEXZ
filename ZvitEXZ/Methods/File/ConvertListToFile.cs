@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Methods.File.Converters;
+using ZvitEXZ.Models.AcadModels;
 
 namespace ZvitEXZ.Methods.File
 {
@@ -85,6 +86,11 @@ namespace ZvitEXZ.Methods.File
         {
             ConvertZamersToZvedena converter = new ConvertZamersToZvedena(zamers, korNebezpechnies, povregdenyas);
             return converter.Convert();
+        }
+        public List<object[,]> ConvertProtokol(AcadDrawing acadDrawing)
+        {
+            ConvertCadDocToArray converter = new ConvertCadDocToArray();
+            return converter.Convert(acadDrawing);
         }
     }
 }

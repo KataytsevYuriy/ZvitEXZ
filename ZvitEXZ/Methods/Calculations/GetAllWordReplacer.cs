@@ -96,6 +96,7 @@ namespace ZvitEXZ.Methods.Calculations
         }
         private string FromUpper(string word)
         {
+            if (string.IsNullOrEmpty(word)) return word;
             return Char.ToUpper(word[0]) + word.Substring(1);
         }
         private string DoubleToString(double? value, int round = 3)

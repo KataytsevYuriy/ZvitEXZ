@@ -134,5 +134,8 @@ namespace ZvitEXZ.Models
         public static double PovregdenyaSecondCherga = -0.15;
         public static double StepVymiryvannya = 0.0101;
         public static double DylyankaGNT = 0.1;
+
+        //static variables
+        public static string DocShablonPath;
     }
 }

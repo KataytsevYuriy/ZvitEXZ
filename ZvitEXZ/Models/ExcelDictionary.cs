@@ -52,8 +52,15 @@ namespace ZvitEXZ.Models
                 PipeTypeRodPadezh = ShortType;
                 Logs.AddError($"Укажите название трубопровода именительном и родительном падежах. Закладка \"Справочник\" ячейка \"E1\" через символ \"/\" (нужно только для записки)");
             }
-            if (data[2] == null) throw new ArgumentNullException("пустое значение названия трубопровода");
-            Name = data[2].ToString();
+            if (data[2] == null)
+            {
+                Name = "";
+                Logs.AddAlarm("пустое значение названия трубопровода");
+            }
+            else
+            {
+                Name = data[2].ToString();
+            }
             if (data[3] == null)
             {
                 NameDilyanky = "";

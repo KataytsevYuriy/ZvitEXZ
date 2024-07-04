@@ -66,9 +66,13 @@ namespace ZvitEXZ.Methods.Calculations
         {
             form1.cbNenormHlyb.BackColor = color;
         }
-         public static void Zapyska()
+        public static void Zapyska()
         {
             form1.cbZapycka.BackColor = color;
+        }
+        public static void Protokol()
+        {
+            form1.cbProtokol.BackColor = color;
         }
 
     }

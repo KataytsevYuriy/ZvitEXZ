@@ -8,7 +8,7 @@ namespace ZvitEXZ.Models
 {
     internal static class AcadConstants
     {
-        public static double LenthByKm = 100;
+        public static double LenthByDoc = 300;
         public static double AdocDefaultLenthKm = 3;
         public static double AcadMaxDrawingStep = 0.011;
 
@@ -32,6 +32,7 @@ namespace ZvitEXZ.Models
 
         //Files
         public const string AcadFolderName = "Графики";
+        public const string AcadPrefixFileName = "Protocol";
         public const string ShablonProtokolFilename = "Shablon_Protocol.xlsm";
 
     }

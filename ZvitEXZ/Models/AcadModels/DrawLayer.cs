@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ZvitEXZ.Models.AcadModels
 {
-    internal class DrawLayer : DrawingStep
+    public class DrawLayer : DrawingStep
     {
         public string LayerName { get; set; }
-        public DrawLayer(string layerName) : base(AcadConstants.DrawingTextName)
+        public DrawLayer(string layerName) : base(AcadConstants.DrawingLayerName)
         {
             LayerName = layerName;
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ZvitEXZ.Models;
+using ZvitEXZ.Models.AcadModels;
 using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 
@@ -97,6 +98,10 @@ namespace ZvitEXZ.Methods.File
             writeToFile.WriteFile(_fileName, ProjectConstants.PovregdFolderName, _pipeName, converter.ConvertPovregdGNT(povregdenyaGNT),
                            "A", "E", "F", ProjectConstants.PrintMessageNezahIsEmpty, 15, ProjectConstants.PovregdGNTFolderName, bal);
         }
-
+        public void SaveCadProtocol(AcadDrawing acadDrawing)
+        {
+            WriteCadProtocol writeCadProtocol = new WriteCadProtocol();
+            writeCadProtocol.Write($"{AcadConstants.AcadPrefixFileName}_{acadDrawing.SourceFileName}", converter.ConvertProtokol(acadDrawing));
+        }
     }
 }
