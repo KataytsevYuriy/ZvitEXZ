@@ -18,6 +18,10 @@ namespace ZvitEXZ.Methods.Calculations
         AcadDrawing AcadDrawing;
         string pipeName;
         string sourceFileName;
+        double UtzMinY;
+        double UtzMaxY;
+        double UtzMax;
+        double UtzMin;
         public GetAcadDrawing(ExcelDictionary excelDictionary, List<Zamer> Zamers)
         {
             this.Zamers = Zamers;
@@ -26,6 +30,10 @@ namespace ZvitEXZ.Methods.Calculations
             AcadDrawing = new AcadDrawing($"{AcadConstants.AcadPrefixFileName}_{excelDictionary.SourceFileName}", pipeName,
                 excelDictionary.SourceFileName, excelDictionary.SourceFileName, excelDictionary.Shyfr);
             sourceFileName = excelDictionary.SourceFileName;
+            UtzMinY = AcadConstants.UtzMinY;
+            UtzMaxY = AcadConstants.UtzMaxY;
+            UtzMax = AcadConstants.UtzMax;
+            UtzMin = AcadConstants.UtzMin;
         }
         public AcadDrawing Calculate(double kmstart, double kmPerDrawing = 3, bool drawAllDocs = true)
         {
@@ -62,8 +70,7 @@ namespace ZvitEXZ.Methods.Calculations
                 if (lastKm == -1)
                 {
                     pline.Values.Add(AcadConstants.DocStartX + (zamer.Km - kmstart) * lenthByKm);
-                    pline.Values.Add(AcadConstants.UtzMinY + (AcadConstants.UtzMaxY - AcadConstants.UtzMinY) / (AcadConstants.UtzMax - AcadConstants.UtzMin)
-                        * ((double)zamer.Utz - AcadConstants.UtzMin));
+                    pline.Values.Add(CalkulateY(zamer.Utz));
                     pline.Values.Add(0);
                     lastKm = zamer.Km;
                 }
@@ -72,21 +79,41 @@ namespace ZvitEXZ.Methods.Calculations
                     if (pline.Values.Count > 3) acadDoc.DrawingSteps.Add(pline);
                     pline = new DrawPline();
                     pline.Values.Add(AcadConstants.DocStartX + (zamer.Km - kmstart) * lenthByKm);
-                    pline.Values.Add(AcadConstants.UtzMinY + (AcadConstants.UtzMaxY - AcadConstants.UtzMinY) / (AcadConstants.UtzMax - AcadConstants.UtzMin)
-                        * ((double)zamer.Utz - AcadConstants.UtzMin));
+                    pline.Values.Add(CalkulateY(zamer.Utz));
                     pline.Values.Add(0);
                     lastKm = zamer.Km;
                 }
                 else
                 {
                     pline.Values.Add(AcadConstants.DocStartX + (zamer.Km - kmstart) * lenthByKm);
-                    pline.Values.Add(AcadConstants.UtzMinY + (AcadConstants.UtzMaxY - AcadConstants.UtzMinY) / (AcadConstants.UtzMax - AcadConstants.UtzMin)
-                        * ((double)zamer.Utz - AcadConstants.UtzMin));
+                    pline.Values.Add(CalkulateY(zamer.Utz));
                     pline.Values.Add(0);
                     lastKm = zamer.Km;
                 }
             }
             if (pline.Values.Count > 3) acadDoc.DrawingSteps.Add(pline);
+            AddUtzShkala(ref acadDoc, AcadConstants.ShkalaUtzStep);
+            // Add Line 0.9B
+
+        }
+        private void AddUtzShkala(ref AcadDoc acadDoc, double step)
+        {
+            double currentU = UtzMin;
+            while (currentU <= UtzMax)
+            {
+                string txt = $"-{Math.Round(currentU, 1).ToString().Replace(".", ",")}";
+                double y = CalkulateY(currentU);
+                acadDoc.DrawingSteps.Add(new DrawingText(txt, AcadConstants.DocStartX - AcadConstants.DigitMoveLeft, y, AcadConstants.DigitHeight));
+                acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX - AcadConstants.RyskaLenth, y, AcadConstants.DocStartX, y));
+                currentU += step;
+            }
+            acadDoc.DrawingSteps.Add(new DrawLayer("Текст"));
+            double y09 = CalkulateY(0.9);
+            acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX, y09, AcadConstants.DocStartX + AcadConstants.LenthByDoc, y09));
+        }
+        private double CalkulateY(double? value)
+        {
+            return UtzMinY + (UtzMaxY - UtzMinY) / (UtzMax - UtzMin) * ((double)value - UtzMin);
         }
     }
 }

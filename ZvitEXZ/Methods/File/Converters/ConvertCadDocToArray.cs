@@ -47,11 +47,11 @@ namespace ZvitEXZ.Methods.File.Converters
                         break;
                     case AcadConstants.DrawingTextName:
                         DrawingText text = step as DrawingText;
-                        res[1, 1] = text.Text;
-                        res[1, 2] = text.X;
-                        res[1, 3] = text.Y;
-                        res[1, 4] = text.Size;
-                        res[1, 5] = text.Alignment;
+                        res[i, 1] = text.Text;
+                        res[i, 2] = text.X;
+                        res[i, 3] = text.Y;
+                        res[i, 4] = text.Size;
+                        res[i, 5] = text.Alignment;
                         break;
                     case AcadConstants.DrawingPlineName:
                         DrawPline pline = step as DrawPline;
