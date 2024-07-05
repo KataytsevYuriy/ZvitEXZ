@@ -109,8 +109,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Methods\Calculations\Calculate.cs" />
+    <Compile Include="Methods\Calculations\CalculateCoordinateX.cs" />
+    <Compile Include="Methods\Calculations\CalculateCoordinateY.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
+    <Compile Include="Methods\Calculations\DrawObjects.cs" />
+    <Compile Include="Methods\Calculations\DrawPotencial.cs" />
     <Compile Include="Methods\Calculations\GetAcadDrawing.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
     <Compile Include="Methods\Calculations\GetAllForest.cs" />
@@ -166,6 +170,8 @@
     <Compile Include="Models\AcadConstants.cs" />
     <Compile Include="Models\AcadModels\AcadDoc.cs" />
     <Compile Include="Models\AcadModels\AcadDrawing.cs" />
+    <Compile Include="Models\AcadModels\AcadZamer.cs" />
+    <Compile Include="Models\AcadModels\CalculationYSettings.cs" />
     <Compile Include="Models\AcadModels\DrawBlock.cs" />
     <Compile Include="Models\AcadModels\DrawingStep.cs" />
     <Compile Include="Models\AcadModels\DrawingText.cs" />

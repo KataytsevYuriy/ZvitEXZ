@@ -8,13 +8,15 @@ namespace ZvitEXZ.Models
 {
     internal static class AcadConstants
     {
-        public static double LenthByDoc = 300;
+        public static double LenthXByDoc = 300;
         public static double AdocDefaultLenthKm = 3;
         public static double AcadMaxDrawingStep = 0.011;
 
         //Acad Layer Names
         public static string LayerUtz = "График_U";
+        public static string LayerUpol = "График_UPolar";
         public static string LayerGrad = "График_G";
+        public static string LayerText = "Текст";
 
         public static double DocStartX = 100;
 
@@ -32,6 +34,9 @@ namespace ZvitEXZ.Models
         public static double UtzMaxY = 162;
         public static double UtzMax = 2.5;
 
+        //Coordinates objects
+        public static double PipeStartY = 254;
+
         //Drawing block Names
         public const string DrawingBlockName = "block";
         public const string DrawingLayerName = "layer";
@@ -42,6 +47,9 @@ namespace ZvitEXZ.Models
         public const string AcadFolderName = "Графики";
         public const string AcadPrefixFileName = "Protocol";
         public const string ShablonProtokolFilename = "Shablon_Protocol.xlsm";
+
+        //Objects
+        public const string ThisPipe = "pipe";
 
     }
 }
