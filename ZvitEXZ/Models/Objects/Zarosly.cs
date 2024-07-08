@@ -19,5 +19,9 @@ namespace ZvitEXZ.Models.Objects
             if (Length != 0) return $"{Name} {Length}м";
             return Name;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjZaroslyNP;
+        }
     }
 }

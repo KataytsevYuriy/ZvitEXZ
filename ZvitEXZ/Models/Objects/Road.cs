@@ -20,6 +20,7 @@ namespace ZvitEXZ.Models.Objects
         public double? UkzStartOff { get; set; }
         public double? UkzFinishOff { get; set; }
         public AtestationVumiruKozhuhs AtestationVumiruKozhuh { get; set; }
+        public TrainRoadTypes TrainRoadType { get; set; }
 
         public Road(object[] data) : base(data)
         {
@@ -244,7 +245,29 @@ namespace ZvitEXZ.Models.Objects
                     case "не можливо роз'єднати": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.coudNotCheck; break;
                     default:
                         AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
-                        Logs.AddError($"{ErrorMessageStart } неверно указана (неуказана) атестация измерений");
+                        Logs.AddError($"{ErrorMessageStart} неверно указана (неуказана) атестация измерений");
+                        break;
+                }
+            }
+            if (data[225] == null)
+            {
+                TrainRoadType = TrainRoadTypes.undefined;
+            }
+            else
+            {
+                switch (data[225])
+                {
+                    case "не елекрифік":
+                        TrainRoadType = TrainRoadTypes.noElectrificied;
+                        break;
+                    case "пост. струм":
+                        TrainRoadType = TrainRoadTypes.postStrum;
+                        break;
+                    case "змін. струм":
+                        TrainRoadType = TrainRoadTypes.peremStrum;
+                        break;
+                    default:
+                        TrainRoadType = TrainRoadTypes.undefined;
                         break;
                 }
             }
@@ -281,6 +304,19 @@ namespace ZvitEXZ.Models.Objects
                 case ProtectionTypes.bzk: return "БСЗ";
                 default: return "";
             }
+        }
+        public override string GetCadType()
+        {
+            if (RoadType == RoadTypes.automobile) return AcadConstants.ObjRoadAutomobil;
+            if (RoadType == RoadTypes.polevaya) return AcadConstants.ObjRoadPolevaya;
+            if (RoadType == RoadTypes.gruntovaya) return AcadConstants.ObjRoadHrunt;
+            if (RoadType == RoadTypes.train)
+            {
+                if (TrainRoadType == TrainRoadTypes.postStrum) return AcadConstants.ObjRoadRailPost;
+                if (TrainRoadType == TrainRoadTypes.peremStrum) return AcadConstants.ObjRoadRailPerem;
+                return AcadConstants.ObjRoadRail;
+            }
+            return "";
         }
     }
 }

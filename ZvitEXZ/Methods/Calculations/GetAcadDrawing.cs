@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.AcadModels;
+using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.Calculations
@@ -19,7 +20,9 @@ namespace ZvitEXZ.Methods.Calculations
         string pipeName;
         string sourceFileName;
         CalculationYSettings UtzSettings;
-        public GetAcadDrawing(ExcelDictionary excelDictionary, List<Zamer> Zamers)
+        List<PovitrPerehod> PovitrPerehods;
+        List<HruntAktivity> hruntAktivities;
+        public GetAcadDrawing(ExcelDictionary excelDictionary, List<Zamer> Zamers, List<PovitrPerehod> povitrPerehods, List<HruntAktivity> hruntAktivities)
         {
             this.Zamers = Zamers;
             this.excelDictionary = excelDictionary;
@@ -28,6 +31,8 @@ namespace ZvitEXZ.Methods.Calculations
                 excelDictionary.SourceFileName, excelDictionary.SourceFileName, excelDictionary.Shyfr);
             sourceFileName = excelDictionary.SourceFileName;
             UtzSettings = new CalculationYSettings(AcadConstants.UtzMin, AcadConstants.UtzMax, AcadConstants.UtzMinY, AcadConstants.UtzMaxY, AcadConstants.ShkalaUtzStep);
+            PovitrPerehods = povitrPerehods;
+            this.hruntAktivities = hruntAktivities;
         }
         public AcadDrawing Calculate(double kmstart, double kmPerDrawing = 3, bool drawAllDocs = true)
         {
@@ -55,8 +60,9 @@ namespace ZvitEXZ.Methods.Calculations
                 acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Upol)).ToList();
                 potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerUpol, X, Y);       // Draw Upol
                 DrawObjects drawObjects = new DrawObjects();
-                drawObjects.AddObjects(ref acadDoc, docZamers, X, start, end, kmPerDrawing);                //Draw pipe objects
-
+                drawObjects.AddObjects(ref acadDoc, docZamers, X, start, end, kmPerDrawing, PovitrPerehods);                //Draw pipe objects
+                DrawHruntActivities drawHruntActivities = new DrawHruntActivities();
+                drawHruntActivities.AddHruntActivities(ref acadDoc, X, start, end, hruntAktivities);
                 AcadDrawing.Docs.Add(acadDoc);
             }
             return AcadDrawing;

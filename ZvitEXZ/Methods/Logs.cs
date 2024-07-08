@@ -34,7 +34,7 @@ namespace ZvitEXZ.Methods
             form1.rTBLogs.SelectionStart = form1.rTBLogs.TextLength;
             form1.rTBLogs.SelectionLength = 0;
             form1.rTBLogs.SelectionColor = color;
-            form1.rTBLogs.AppendText($"{text};\r\n");
+            form1.rTBLogs.AppendText($"{text.Replace(".", ",")};\r\n");
         }
     }
 }

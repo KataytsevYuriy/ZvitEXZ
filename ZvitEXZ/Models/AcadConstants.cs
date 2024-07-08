@@ -33,9 +33,13 @@ namespace ZvitEXZ.Models
         public static double UtzMin = 0.5;
         public static double UtzMaxY = 162;
         public static double UtzMax = 2.5;
+        public static double HruntActivityStartY = 51.5;
 
         //Coordinates objects
         public static double PipeStartY = 254;
+        public static double ObjPovPerehHeight = 4.8;
+        public static double ObjPovPerehWidth = 1.25;
+
 
         //Drawing block Names
         public const string DrawingBlockName = "block";
@@ -50,6 +54,63 @@ namespace ZvitEXZ.Models
 
         //Objects
         public const string ThisPipe = "pipe";
+        public const string ObjRiver = "Река";
+        public const string ObjDrip = "Кран_Дренажн";
+        public const string ObjGRS = "ГРС";
+        public const string ObjKabel = "Кабель";
+        public const string ObjKanal = "Канал";
+        public const string ObjKran = "Кран";
+        public const string ObjLep02 = "ЛЭП_2";
+        public const string ObjLep04 = "ЛЭП_4";
+        public const string ObjLep10 = "ЛЭП_10";
+        public const string ObjLep35 = "ЛЭП_35";
+        public const string ObjLep110 = "ЛЭП_110";
+        public const string ObjLep220 = "ЛЭП_220";
+        public const string ObjLep330 = "ЛЭП_330";
+        public const string ObjLep500 = "ЛЭП_500";
+        public const string ObjLep750 = "ЛЭП_750";
+        public const string ObjOtvodLeft = "Отвод_лево";
+        public const string ObjOtvodRight = "Отвод_право";
+        public const string ObjPerehodDn = "Переход_DN";
+        public const string ObjPovorotLeft = "Поворот_лево";
+        public const string ObjPovoroRight = "Поворот_право";
+        public const string ObjPV = "КИП_рабоч";
+        public const string ObjPVNwork = "КИП_нерабоч";
+        public const string ObjRoadAutomobil = "Дорога_автомобильная";
+        public const string ObjRoadHrunt = "Дорога_грунтовая";
+        public const string ObjRoadPolevaya = "Дорога_полевая";
+        public const string ObjRoadRail = "Дорога_железная";
+        public const string ObjRoadRailPost = "Дорога_железная(постоянный ток)";
+        public const string ObjRoadRailPerem = "Дорога_железная (переменный ток)";
+        public const string Objkozhuh = "Кожух";
+        public const string ObjShurf = "Шурф";
+        public const string ObjStolbUkaz = "Столб_указательный";
+        public const string ObjStolbKm = "Столб_километровый";
+        public const string ObjSvechaProduv = "Свеча_продув";
+        public const string ObjSvechaObrez = "Свеча_обрезанная";
+        public const string ObjSvechaVytyazh = "Свеча_вытяжная";
+        public const string ObjSvish = "Свищь";
+        public const string ObjSwampNP = "Болото_непроходимое";
+        public const string ObjTree = "Дерево_на_трубе";
+        public const string ObjTruboprovid = "Трубопровод";
+        public const string ObjGazoprovid = "Газопровод";
+        public const string ObjNaftaprovid = "Нефтепровод";
+        public const string ObjVodovod = "Водовод";
+        public const string ObjAmiakprovid = "Аммиакопровод";
+        public const string ObjUDZ = "УДЗ";
+        public const string ObjUKZ = "СКЗ_работающая";
+        public const string ObjUKZDontWork = "СКЗ_неработающая";
+        public const string ObjUKZRezerv = "СКЗ_резервн";
+        public const string ObjVhodVZemlyu = "Вход_в_землю";
+        public const string ObjVyhodIzZemly = "Выход_из_земли";
+        public const string ObjPovitrPerehStart = "Возд_перех_нач";
+        public const string ObjPovitrPerehEnd = "Возд_перех_кон";
+        public const string ObjPovitrPereh = "Возд_переход";
+        public const string ObjZaroslyNP = "Заросли_непролазные";
 
+        //Блоки с заливкой
+        public const string HruntActivitiLow = "green";
+        public const string HruntActivitiMedium = "yellow";
+        public const string HruntActivitiHight = "red";
     }
 }

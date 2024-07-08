@@ -40,6 +40,11 @@ namespace ZvitEXZ.Models.Objects
                 default: return "стовп";
             }
         }
+        public override string GetCadType()
+        {
+            if (StolbType == StolbTypes.kilimetroviy) return AcadConstants.ObjStolbKm;
+            return AcadConstants.ObjStolbUkaz;
+        }
     }
     public enum StolbTypes
     {

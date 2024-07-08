@@ -29,5 +29,9 @@ namespace ZvitEXZ.Models.Objects
             if (!String.IsNullOrEmpty(NameGrs)) return $"{Name} {NameGrs}";
             return Name;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjGRS;
+        }
     }
 }

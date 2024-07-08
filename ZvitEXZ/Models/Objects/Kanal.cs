@@ -38,5 +38,9 @@ namespace ZvitEXZ.Models.Objects
             if (!String.IsNullOrEmpty(KanalName)) return $"{Name} {KanalName}";
             return KanalName;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjKanal;
+        }
     }
 }

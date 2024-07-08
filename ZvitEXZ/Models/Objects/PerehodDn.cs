@@ -36,5 +36,9 @@ namespace ZvitEXZ.Models.Objects
             if (NewDn == 0) return Name;
             return $"{Name} (на DN {NewDn}мм)";
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjPerehodDn;
+        }
     }
 }

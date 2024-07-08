@@ -64,5 +64,10 @@ namespace ZvitEXZ.Models.Objects
             if (Ugol == 0) return res;
             return $"{res} {Ugol}°";
         }
+        public override string GetCadType()
+        {
+            if (NapravlenyePovorota == Napravlenye.right) return AcadConstants.ObjPovoroRight;
+            return AcadConstants.ObjPovorotLeft;
+        }
     }
 }

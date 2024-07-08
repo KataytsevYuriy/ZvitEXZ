@@ -91,5 +91,11 @@ namespace ZvitEXZ.Models.Objects
         {
             return ProjectConstants.SvechaName;
         }
+        public override string GetCadType()
+        {
+            if (TehnicState == SvechaSpecifications.TehnicState.obrezana) return AcadConstants.ObjSvechaObrez;
+            if (Specification == SvechaSpecifications.SpecificationType.produvochna) return AcadConstants.ObjSvechaProduv;
+            return AcadConstants.ObjSvechaVytyazh;
+        }
     }
 }

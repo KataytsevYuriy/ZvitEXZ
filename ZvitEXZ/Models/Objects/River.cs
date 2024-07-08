@@ -26,5 +26,9 @@ namespace ZvitEXZ.Models.Objects
         {
             return $"{Name} {RiverName}";
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjRiver;
+        }
     }
 }

@@ -10,5 +10,9 @@
         {
             return ProjectConstants.SwampName;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjSwampNP;
+        }
     }
 }

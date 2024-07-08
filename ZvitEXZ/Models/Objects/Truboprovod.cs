@@ -72,5 +72,24 @@ namespace ZvitEXZ.Models.Objects
             }
             return ProjectConstants.TruboprovodName;
         }
+        public override string GetCadType()
+        {
+            switch (TruboprovodType)
+            {
+                case "аміакопровід": return AcadConstants.ObjAmiakprovid;
+                case "водовід": return AcadConstants.ObjVodovod;
+                case "газопровід": return AcadConstants.ObjGazoprovid;
+                case "газопровід низького тиску": return AcadConstants.ObjGazoprovid;
+                case "газопровід-відвід": return AcadConstants.ObjGazoprovid;
+                case "конденсатопровід": return AcadConstants.ObjTruboprovid;
+                case "магістральний газопровід": return AcadConstants.ObjGazoprovid;
+                case "нафтопровід": return AcadConstants.ObjNaftaprovid;
+                case "перемичка": return AcadConstants.ObjTruboprovid;
+                case "розподільчий газопровід до будинку оператора": return AcadConstants.ObjTruboprovid;
+                case "трубопровід": return AcadConstants.ObjTruboprovid;
+                case "шлейф": return AcadConstants.ObjTruboprovid;
+                default: return AcadConstants.ObjTruboprovid;
+            }
+        }
     }
 }

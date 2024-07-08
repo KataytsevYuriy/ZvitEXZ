@@ -113,6 +113,7 @@
     <Compile Include="Methods\Calculations\CalculateCoordinateY.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
+    <Compile Include="Methods\Calculations\DrawHruntActivities.cs" />
     <Compile Include="Methods\Calculations\DrawObjects.cs" />
     <Compile Include="Methods\Calculations\DrawPotencial.cs" />
     <Compile Include="Methods\Calculations\GetAcadDrawing.cs" />

@@ -341,7 +341,7 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.HruntActivity) CalculateHruntActivity();
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
-            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers);
+            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods,hruntAktivities);
             acadDrawing = getAcadDrawing.Calculate(0);
         }
     }

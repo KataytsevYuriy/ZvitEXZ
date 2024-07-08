@@ -17,5 +17,9 @@ namespace ZvitEXZ.Models.Objects
         {
             return ProjectConstants.TreeName;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjTree;
+        }
     }
 }

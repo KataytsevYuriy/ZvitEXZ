@@ -10,4 +10,8 @@ namespace ZvitEXZ.Models.Objects
     {
         undefined, automobile, train, polevaya, gruntovaya
     }
+    public enum TrainRoadTypes
+    {
+        undefined, noElectrificied, postStrum, peremStrum
+    }
 }

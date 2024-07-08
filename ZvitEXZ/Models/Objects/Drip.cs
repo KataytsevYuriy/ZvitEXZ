@@ -16,5 +16,9 @@ namespace ZvitEXZ.Models.Objects
         {
             return Name;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjDrip;
+        }
     }
 }

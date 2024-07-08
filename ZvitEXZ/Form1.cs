@@ -28,8 +28,11 @@ namespace ZvitEXZ
             Done.AddForm(this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            bool allowed = false;
+            //IsAllowed isAllowed = new IsAllowed();
+            allowed = await IsAllowed.Check();
             btnCalculate.Enabled = false;
             openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
@@ -40,12 +43,11 @@ namespace ZvitEXZ
             listObjects = fileReader.ReadFile(fileName);
             ParseAllZamers parseAllZamers = new ParseAllZamers();
             zamers = parseAllZamers.Parse(listObjects, out ExcelDictionary);
-            IsAllowed isAllowed = new IsAllowed();
-            isAllowed.Check();
+
             if (zamers.Count > 0)
             {
                 Logs.AddLog($"Файл прочтен, колличество замеров {zamers.Count}");
-                btnCalculate.Enabled = true;
+                if (allowed) btnCalculate.Enabled = true;
             }
             else
             {
@@ -228,24 +230,10 @@ namespace ZvitEXZ
 
         private async void button1_Click_1(object sender, EventArgs e)
         {
-            DateTime dt = await GetServerTimeAsync();
-            string d = dt.ToString();
+            //DateTime dt = await GetServerTimeAsync();
+            //string d = dt.ToString();
         }
-        public static async Task<DateTime> GetServerTimeAsync()
-        {
-            string TimeApiUrl = "http://worldtimeapi.org/api/timezone/Etc/UTC";
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage response = await client.GetAsync(TimeApiUrl);
-                response.EnsureSuccessStatusCode();
 
-                string responseBody = await response.Content.ReadAsStringAsync();
-                JObject json = JObject.Parse(responseBody);
-                string dateTimeString = json["utc_datetime"].ToString();
-
-                return DateTime.Parse(dateTimeString);
-            }
-        }
 
         private void cbNenormHlyb_CheckedChanged(object sender, EventArgs e)
         {

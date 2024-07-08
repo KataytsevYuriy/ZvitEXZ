@@ -7,15 +7,19 @@ using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class Svish:Zamer
+    internal class Svish : Zamer
     {
         public Svish(object[] data) : base(data)
         {
-            Name=ProjectConstants.SvishName;
+            Name = ProjectConstants.SvishName;
         }
         public override string ToString()
         {
             return Name;
+        }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjSvish;
         }
     }
 }

@@ -5,17 +5,92 @@ using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.AcadModels;
+using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.Calculations
 {
     public class DrawObjects
     {
-        public void AddObjects(ref AcadDoc acadDoc, List<Zamer> zamers, CalculateCoordinateX X, double kmStart, double kmEnd, double kmPerDrawing)
+        public void AddObjects(ref AcadDoc acadDoc, List<Zamer> zamers, CalculateCoordinateX X, double kmStart, double kmEnd, double kmPerDrawing, List<PovitrPerehod> povitrPerehods)
         {
             double thisPipeScale = (kmEnd - kmStart) * AcadConstants.LenthXByDoc / kmPerDrawing;
             acadDoc.DrawingSteps.Add(new DrawLayer(AcadConstants.LayerText));
-            acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ThisPipe, AcadConstants.DocStartX, AcadConstants.PipeStartY, thisPipeScale));
+            //acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ThisPipe, AcadConstants.DocStartX, AcadConstants.PipeStartY, thisPipeScale));
+            AddPipeLineWithPovPerehods(ref acadDoc, X, kmStart, kmEnd, povitrPerehods);
+            foreach (Zamer zamer in zamers)
+            {
+                string zamerType = zamer.GetCadType();
+                if (!string.IsNullOrEmpty(zamerType))
+                {
+                    acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(zamer.Km), AcadConstants.PipeStartY));
+                }
+                if (zamer.Name == ProjectConstants.RiverName)
+                {
+                    River river = zamer as River;
+                    acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(river.Km + (double)river.Length / 1000), AcadConstants.PipeStartY));
+                }
+                else if (zamer.Name == ProjectConstants.RoadName)
+                {
+                    Road road = zamer as Road;
+                    if (road.HasKozhuh)
+                    {
+                        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.Objkozhuh, X.Calkulate(road.Km), AcadConstants.PipeStartY));
+                    }
+                }
+                else if (zamer.Name == ProjectConstants.VyhodIsZemlyName)
+                {
+                    VyhodIsZemly vyhodIsZemly = zamer as VyhodIsZemly;
+                    if (vyhodIsZemly.PerehodType == PerehodTypes.finish && zamers.First().Km == zamer.Km)
+                    {
+                        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVhodVZemlyu, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
+                    }
+                    else if (vyhodIsZemly.PerehodType == PerehodTypes.start && zamers.Last().Km == zamer.Km)
+                    {
+                        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVyhodIzZemly, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
+                    }
+                }
+            }
+        }
+        private void AddPipeLineWithPovPerehods(ref AcadDoc acadDoc, CalculateCoordinateX X, double kmStart, double kmEnd, List<PovitrPerehod> povitrPerehods)
+        {
+            double start = kmStart;
+            foreach (PovitrPerehod perehod in povitrPerehods)
+            {
+                double perehodStart = (double)perehod.KmStart / 1000;
+                double perehodFinish = (double)perehod.KmFinish / 1000;
+                if (perehodFinish < kmStart) continue;
+                if (perehodStart > kmEnd) break;
+                if (kmStart <= perehodStart)
+                {
+                    DrawPipeLine(ref acadDoc, X, start, perehodStart);
+                    acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjPovitrPereh, X.Calkulate(perehodStart), AcadConstants.PipeStartY));
+                    start = perehodStart;
+                }
+                if (perehodFinish <= kmEnd)
+                {
+                    DrawPipeLine(ref acadDoc, X, start, perehodFinish, AcadConstants.ObjPovPerehHeight);
+                    acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjPovitrPereh, X.Calkulate(perehodFinish), AcadConstants.PipeStartY));
+                    start = perehodFinish;
+                }
+                else
+                {
+                    DrawPipeLine(ref acadDoc, X, start, kmEnd, AcadConstants.ObjPovPerehHeight);
+                    start = kmEnd;
+                }
+            }
+            if (start < kmEnd)
+            {
+                DrawPipeLine(ref acadDoc, X, start, kmEnd);
+            }
+        }
+        private void DrawPipeLine(ref AcadDoc acadDoc, CalculateCoordinateX X, double kmStart, double kmEnd, double yToUp = 0)
+        {
+            double thisPipeScale = X.Calkulate(kmEnd) - X.Calkulate(kmStart);
+            if (thisPipeScale > 0)
+            {
+                acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ThisPipe, X.Calkulate(kmStart), AcadConstants.PipeStartY + yToUp, thisPipeScale));
+            }
         }
     }
 }

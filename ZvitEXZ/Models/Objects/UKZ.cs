@@ -270,6 +270,16 @@ namespace ZvitEXZ.Models.Objects
         {
             return ProjectConstants.UKZName;
         }
+        public override string GetCadType()
+        {
+            switch (TehStan)
+            {
+                case "працює": return AcadConstants.ObjUKZ;
+                case "не працює": return AcadConstants.ObjUKZDontWork;
+                case "в резерві": return AcadConstants.ObjUKZRezerv;
+                default: return AcadConstants.ObjUKZ;
+            }
+        }
     }
 
 }

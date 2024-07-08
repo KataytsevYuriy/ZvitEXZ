@@ -47,5 +47,10 @@ namespace ZvitEXZ.Models.Objects
             if (String.IsNullOrEmpty(OtvodName)) return Name;
             return $"{Name} {OtvodName}";
         }
+        public override string GetCadType()
+        {
+            if (NapravlOtvoda == Napravlenye.right) return AcadConstants.ObjOtvodRight;
+            return AcadConstants.ObjOtvodLeft;
+        }
     }
 }

@@ -99,5 +99,10 @@ namespace ZvitEXZ.Models.Objects
         {
             return Name;
         }
+        public override string GetCadType()
+        {
+            if (IsBroken) return AcadConstants.ObjPVNwork;
+            return AcadConstants.ObjPV;
+        }
     }
 }

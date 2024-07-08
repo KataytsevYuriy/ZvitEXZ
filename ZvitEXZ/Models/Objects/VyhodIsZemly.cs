@@ -58,6 +58,10 @@ namespace ZvitEXZ.Models.Objects
             if (PerehodType == PerehodTypes.finish) return $"{Name} кінець";
             return Name;
         }
+        public override string GetCadType()
+        {
+            return base.GetCadType();
+        }
     }
     public enum PerehodTypes { undefined, start, finish }
 }
