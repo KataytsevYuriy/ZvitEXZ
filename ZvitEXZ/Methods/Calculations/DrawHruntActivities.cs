@@ -28,9 +28,9 @@ namespace ZvitEXZ.Methods.Calculations
         {
             switch (aktivityType)
             {
-                case HruntAktivityTypes.low: return AcadConstants.HruntActivitiLow;
-                case HruntAktivityTypes.medium: return AcadConstants.HruntActivitiMedium;
-                case HruntAktivityTypes.hight: return AcadConstants.HruntActivitiHight;
+                case HruntAktivityTypes.low: return AcadConstants.ZalivkaGreen;
+                case HruntAktivityTypes.medium: return AcadConstants.ZalivkaYellow;
+                case HruntAktivityTypes.hight: return AcadConstants.ZalivkaRed;
                 default: return "";
             }
         }

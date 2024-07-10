@@ -34,9 +34,9 @@ namespace ZvitEXZ.Methods.Calculations
         {
             double currentU = YSettings.UMin;
             CalculateCoordinateY Y = new CalculateCoordinateY(YSettings);
-            while (currentU <= YSettings.UMax)
+            while (currentU >= YSettings.UMax)
             {
-                string txt = $"-{Math.Round(currentU, 1).ToString().Replace(".", ",")}";
+                string txt = Math.Round(currentU, 1).ToString().Replace(".", ",");
                 double y = Y.Calculate(currentU);
                 acadDoc.DrawingSteps.Add(new DrawingText(txt, AcadConstants.DocStartX - AcadConstants.DigitMoveLeft, y, AcadConstants.DigitHeight));
                 acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX - AcadConstants.RyskaLenth, y, AcadConstants.DocStartX, y));
@@ -46,7 +46,7 @@ namespace ZvitEXZ.Methods.Calculations
         public void AddLineMinZah(ref AcadDoc acadDoc, CalculateCoordinateY Y)
         {
             acadDoc.DrawingSteps.Add(new DrawLayer("Текст"));
-            double y09 = Y.Calculate(0.9);
+            double y09 = Y.Calculate(-0.9);
             acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX, y09, AcadConstants.DocStartX + AcadConstants.LenthXByDoc, y09));
         }
     }

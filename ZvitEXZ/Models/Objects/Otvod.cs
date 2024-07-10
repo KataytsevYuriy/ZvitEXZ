@@ -52,5 +52,10 @@ namespace ZvitEXZ.Models.Objects
             if (NapravlOtvoda == Napravlenye.right) return AcadConstants.ObjOtvodRight;
             return AcadConstants.ObjOtvodLeft;
         }
+        public override string GetCadSignature()
+        {
+            if (string.IsNullOrEmpty(OtvodName)) return base.GetCadSignature();
+            return OtvodName;
+        }
     }
 }

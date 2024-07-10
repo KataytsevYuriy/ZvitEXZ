@@ -15,11 +15,15 @@ namespace ZvitEXZ.Models.Objects
         }
         public override string ToString()
         {
-            return ProjectConstants.UDZName;
+            return  ProjectConstants.UDZName;
         }
         public override string GetCadType()
         {
             return AcadConstants.ObjUDZ;
+        }
+        public override string GetCadSignature()
+        {
+            return ToString();
         }
     }
 }

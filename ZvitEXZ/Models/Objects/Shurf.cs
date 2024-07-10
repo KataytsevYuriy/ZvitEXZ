@@ -75,12 +75,11 @@ namespace ZvitEXZ.Models.Objects
             if (data[124] == null)
             {
                 ShurfLength = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите длинну шурфа");
+                Logs.AddError($"{ErrorMessageStart} укажите длину шурфа");
             }
             else
             {
                 ShurfLength = data[124].ToString();
-                Logs.AddError($"{ErrorMessageStart} укажите длинну шурфа");
             }
 
             if (data[125] == null)
@@ -255,7 +254,6 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 Thin1SharUp = data[143].ToString();
-                Logs.AddError($"{ErrorMessageStart} укажите толщину изоляции");
             }
 
             if (data[144] == null)
@@ -520,6 +518,14 @@ namespace ZvitEXZ.Models.Objects
             if (String.IsNullOrEmpty(AktNumber) || AktNumber == "-") return Name;
             return $"{Name} №{AktNumber}";
         }
-
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjShurf;
+        }
+        public override string GetCadSignature()
+        {
+            if (string.IsNullOrEmpty(AktNumber)) return "Шурф";
+            return $"Шурф №{AktNumber}";
+        }
     }
 }

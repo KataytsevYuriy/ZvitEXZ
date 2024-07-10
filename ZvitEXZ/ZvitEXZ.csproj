@@ -114,8 +114,11 @@
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\DrawHruntActivities.cs" />
+    <Compile Include="Methods\Calculations\Drawkorneb.cs" />
+    <Compile Include="Methods\Calculations\DrawNezahyst.cs" />
     <Compile Include="Methods\Calculations\DrawObjects.cs" />
     <Compile Include="Methods\Calculations\DrawPotencial.cs" />
+    <Compile Include="Methods\Calculations\DrawPovregdenya.cs" />
     <Compile Include="Methods\Calculations\GetAcadDrawing.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
     <Compile Include="Methods\Calculations\GetAllForest.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Methods\Calculations\GetHruntActivity.cs" />
     <Compile Include="Methods\Calculations\GetAllKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetAllNezahyst.cs" />
+    <Compile Include="Methods\Calculations\GetListUGrad.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\Converters\ConvertCadDocToArray.cs" />
     <Compile Include="Methods\File\Converters\ConvertKornebToArray.cs" />

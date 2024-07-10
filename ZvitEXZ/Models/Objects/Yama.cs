@@ -17,7 +17,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[21] == null)
             {
                 Yamalength = 0;
-                Logs.AddError($"км {data[1]} укажите длинну ямы");
+                Logs.AddError($"км {data[1]} укажите длину ямы");
 
             }
             else
@@ -29,7 +29,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Yamalength = 0;
-                    Logs.AddError($"км {data[1]} Неверная длинна ямы");
+                    Logs.AddError($"км {data[1]} Неверная длина ямы");
                 }
             }
         }

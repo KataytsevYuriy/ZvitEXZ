@@ -20,21 +20,34 @@ namespace ZvitEXZ.Models
 
         public static double DocStartX = 100;
 
-        //Draw Shkala
+        //Draw Shkala 
         public static double DigitHeight = 2;
         public static double DigitMoveLeft = 7;
         public static double RyskaLenth = 2;
-        public static double ShkalaUtzStep = 0.2;
+        public static double ShkalaUtzStep = -0.2;
+        public static double ShkalaUgradtep = -50;
 
 
         //Coordinates Utz
         public static double UtzStartY = 210;
         public static double UtzMinY = 219.5;
-        public static double UtzMin = 0.5;
+        public static double UtzMin = -0.5;
         public static double UtzMaxY = 162;
-        public static double UtzMax = 2.5;
+        public static double UtzMax = -2.5;
         public static double HruntActivityStartY = 51.5;
+        public static double PovregdenyaStartY = 30.5;
+        public static double NezahystUtzStartY = 39.25;
+        public static double KornebStartY = 44.5;
+        public static double KmobjectsStartY = 223.2;
+        public static double KmobjectsStepY = 3;
+        public static double SignatureObjectsStartY = 310;
+        public static double SignatureObjectsStepY = 5;
 
+        //Coordibates Gradient
+        public static double UgradMinY = 158;
+        public static double UgradMin = 0;
+        public static double UgradMaxY = 108;
+        public static double UgradMax = -150;
         //Coordinates objects
         public static double PipeStartY = 254;
         public static double ObjPovPerehHeight = 4.8;
@@ -109,8 +122,10 @@ namespace ZvitEXZ.Models
         public const string ObjZaroslyNP = "Заросли_непролазные";
 
         //Блоки с заливкой
-        public const string HruntActivitiLow = "green";
-        public const string HruntActivitiMedium = "yellow";
-        public const string HruntActivitiHight = "red";
+        public const string ZalivkaGreen = "green";
+        public const string ZalivkaYellow = "yellow";
+        public const string ZalivkaRed = "red";
+        public const string ZalivkaRedSmall = "red_small";
+        public const string ZalivkaBlue = "blue";
     }
 }

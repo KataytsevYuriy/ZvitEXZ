@@ -46,7 +46,7 @@ namespace ZvitEXZ
 
             if (zamers.Count > 0)
             {
-                Logs.AddLog($"Файл прочтен, колличество замеров {zamers.Count}");
+                Logs.AddLog($"Файл прочтен, количество замеров {zamers.Count}");
                 if (allowed) btnCalculate.Enabled = true;
             }
             else

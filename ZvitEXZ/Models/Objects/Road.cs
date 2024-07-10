@@ -102,7 +102,7 @@ namespace ZvitEXZ.Models.Objects
                 if (data[115] == null)
                 {
                     KozhuhLength = length;
-                    Logs.AddError($"{ErrorMessageStart} укажите длинну кожуха");
+                    Logs.AddError($"{ErrorMessageStart} укажите длину кожуха");
                 }
                 else
                 {
@@ -113,13 +113,13 @@ namespace ZvitEXZ.Models.Objects
                     catch
                     {
                         KozhuhLength = length;
-                        Logs.AddError($"{ErrorMessageStart} правильно укажите длинну кожуха");
+                        Logs.AddError($"{ErrorMessageStart} правильно укажите длину кожуха");
                     }
                 }
                 if (KozhuhLength < length)
                 {
                     KozhuhLength = length;
-                    Logs.AddError($"{ErrorMessageStart} правильную укажите длинну кожуха");
+                    Logs.AddError($"{ErrorMessageStart} правильную укажите длину кожуха");
                 }
             }
             if (!HasKozhuh)
@@ -317,6 +317,12 @@ namespace ZvitEXZ.Models.Objects
                 return AcadConstants.ObjRoadRail;
             }
             return "";
+        }
+        public override string GetCadSignature()
+        {
+            if (RoadType == RoadTypes.automobile) return $"автодорога {RoadName}";
+            if (RoadType == RoadTypes.train) return $"залізниця {RoadName}";
+            return base.GetCadSignature();
         }
     }
 }

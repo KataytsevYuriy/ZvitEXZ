@@ -15,7 +15,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[21] == null)
             {
                 Length = 0;
-                Logs.AddError($"км {data[1]} укажите длинну преграды");
+                Logs.AddError($"км {data[1]} укажите длину преграды");
 
             }
             else
@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Length = 0;
-                    Logs.AddError("Неверная длинна преграды");
+                    Logs.AddError("Неверная длина преграды");
                 }
             }
         }

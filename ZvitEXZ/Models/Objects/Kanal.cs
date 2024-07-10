@@ -42,5 +42,10 @@ namespace ZvitEXZ.Models.Objects
         {
             return AcadConstants.ObjKanal;
         }
+        public override string GetCadSignature()
+        {
+            if (!string.IsNullOrEmpty(KanalName)) return $"канал {KanalName}";
+            return base.GetCadSignature();
+        }
     }
 }

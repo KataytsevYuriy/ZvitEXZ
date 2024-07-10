@@ -151,7 +151,7 @@ namespace ZvitEXZ.Models.Objects
                     Imax = null;
                     Logs.AddError($"км {data[1]} неверно указан максимальный режим УКЗ");
                 }
-        }
+            }
 
             if (data[244] == null)
             {
@@ -268,7 +268,7 @@ namespace ZvitEXZ.Models.Objects
         }
         public override string ToString()
         {
-            return ProjectConstants.UKZName;
+            return $"{ProjectConstants.UKZName} {Identificator}";
         }
         public override string GetCadType()
         {
@@ -279,6 +279,10 @@ namespace ZvitEXZ.Models.Objects
                 case "в резерві": return AcadConstants.ObjUKZRezerv;
                 default: return AcadConstants.ObjUKZ;
             }
+        }
+        public override string GetCadSignature()
+        {
+            return ToString();
         }
     }
 

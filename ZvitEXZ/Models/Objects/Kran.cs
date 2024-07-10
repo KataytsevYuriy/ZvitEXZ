@@ -47,5 +47,13 @@ namespace ZvitEXZ.Models.Objects
             if (!string.IsNullOrEmpty(KranNumber)) return $"{ProjectConstants.KranName} №{KranNumber}";
             return ProjectConstants.KranName;
         }
+        public override string GetCadType()
+        {
+            return AcadConstants.ObjKran;
+        }
+        public override string GetCadSignature()
+        {
+            return ToString();
+        }
     }
 }

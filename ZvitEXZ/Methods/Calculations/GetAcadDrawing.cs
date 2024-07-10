@@ -20,9 +20,14 @@ namespace ZvitEXZ.Methods.Calculations
         string pipeName;
         string sourceFileName;
         CalculationYSettings UtzSettings;
+        CalculationYSettings UgradSettings;
         List<PovitrPerehod> PovitrPerehods;
         List<HruntAktivity> hruntAktivities;
-        public GetAcadDrawing(ExcelDictionary excelDictionary, List<Zamer> Zamers, List<PovitrPerehod> povitrPerehods, List<HruntAktivity> hruntAktivities)
+        List<Povregdenya> povregdenyas;
+        List<Nezahyst> nezahysts;
+        List<KorNebezpechny> korNebezpechnies;
+        public GetAcadDrawing(ExcelDictionary excelDictionary, List<Zamer> Zamers, List<PovitrPerehod> povitrPerehods, List<HruntAktivity> hruntAktivities,
+            List<Povregdenya> povregdenyas, List<Nezahyst> nezahysts, List<KorNebezpechny> korNebezpechnies)
         {
             this.Zamers = Zamers;
             this.excelDictionary = excelDictionary;
@@ -31,8 +36,12 @@ namespace ZvitEXZ.Methods.Calculations
                 excelDictionary.SourceFileName, excelDictionary.SourceFileName, excelDictionary.Shyfr);
             sourceFileName = excelDictionary.SourceFileName;
             UtzSettings = new CalculationYSettings(AcadConstants.UtzMin, AcadConstants.UtzMax, AcadConstants.UtzMinY, AcadConstants.UtzMaxY, AcadConstants.ShkalaUtzStep);
+            UgradSettings = new CalculationYSettings(AcadConstants.UgradMin, AcadConstants.UgradMax, AcadConstants.UgradMinY, AcadConstants.UgradMaxY, AcadConstants.ShkalaUgradtep);
             PovitrPerehods = povitrPerehods;
             this.hruntAktivities = hruntAktivities;
+            this.povregdenyas = povregdenyas;
+            this.nezahysts = nezahysts;
+            this.korNebezpechnies = korNebezpechnies;
         }
         public AcadDrawing Calculate(double kmstart, double kmPerDrawing = 3, bool drawAllDocs = true)
         {
@@ -52,17 +61,29 @@ namespace ZvitEXZ.Methods.Calculations
                 CalculateCoordinateX X = new CalculateCoordinateX(start, kmPerDrawing);
                 if (i + 1 < docCount) acadDoc.NextSheet = (i + 2).ToString();
                 List<Zamer> docZamers = Zamers.Where(el => el.Km >= start && el.Km <= end).ToList();
-                List<AcadZamer> acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Utz)).ToList();
+                List<AcadZamer> acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Utz == null ? null : -el.Utz)).ToList();
                 CalculateCoordinateY Y = new CalculateCoordinateY(UtzSettings);
                 potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerUtz, X, Y);        // Draw Utz
                 potencailDrawer.AddUtzShkala(ref acadDoc, UtzSettings);
                 potencailDrawer.AddLineMinZah(ref acadDoc, Y);
-                acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Upol)).ToList();
+                acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Upol == null ? null : -el.Upol)).ToList();
                 potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerUpol, X, Y);       // Draw Upol
+                acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Ugrad == null ? null : el.Ugrad * 1000)).ToList();                //Draw gradient
+                Y = new CalculateCoordinateY(UgradSettings);
+                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerGrad, X, Y);
+                potencailDrawer.AddUtzShkala(ref acadDoc, UgradSettings);
                 DrawObjects drawObjects = new DrawObjects();
                 drawObjects.AddObjects(ref acadDoc, docZamers, X, start, end, kmPerDrawing, PovitrPerehods);                //Draw pipe objects
                 DrawHruntActivities drawHruntActivities = new DrawHruntActivities();
                 drawHruntActivities.AddHruntActivities(ref acadDoc, X, start, end, hruntAktivities);
+                DrawPovregdenya drawPovregdenya = new DrawPovregdenya();
+                drawPovregdenya.AddPovregdenyas(ref acadDoc, X, start, end, povregdenyas);
+                DrawNezahyst drawNezahyst = new DrawNezahyst();
+                drawNezahyst.AddNezah(ref acadDoc, X, start, end, nezahysts);
+                Drawkorneb drawkorneb = new Drawkorneb();
+                drawkorneb.AddKorneb(ref acadDoc, X, start, end, korNebezpechnies);
+
+
                 AcadDrawing.Docs.Add(acadDoc);
             }
             return AcadDrawing;

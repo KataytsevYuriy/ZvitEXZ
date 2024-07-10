@@ -45,5 +45,10 @@ namespace ZvitEXZ.Models.Objects
                 default: return AcadConstants.ObjLep02;
             }
         }
+        public override string GetCadSignature()
+        {
+            if (string.IsNullOrEmpty(Voltage)) return "";
+            return $"{Voltage} кВ";
+        }
     }
 }

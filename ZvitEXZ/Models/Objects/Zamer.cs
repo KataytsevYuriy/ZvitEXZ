@@ -110,5 +110,9 @@ namespace ZvitEXZ.Models.Objects
         {
             return "";
         }
+        public virtual string GetCadSignature()
+        {
+            return "";
+        }
     }
 }

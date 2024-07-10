@@ -7,6 +7,7 @@ using ZvitEXZ.Methods.File.Converters;
 using System.Linq;
 using System.Collections;
 using ZvitEXZ.Models.AcadModels;
+using System.IO;
 
 namespace ZvitEXZ.Methods.Calculations
 {
@@ -47,7 +48,22 @@ namespace ZvitEXZ.Methods.Calculations
             SaveToFiles fileSaver = new SaveToFiles(dictionary.SourceFileName, pipeName);
             Progress.SetOperationCount(checkeD.CountTrue);
             Progress.AddStep();
-
+            if (checkeD.IsUpz || checkeD.IsUkz || checkeD.IsPv || checkeD.IsKorneb || checkeD.IsPovregd || checkeD.IsPovregdGNT ||
+                checkeD.IsNezahyst || checkeD.IsPerehody || checkeD.IsFlantsy || checkeD.IsZvedena || checkeD.IsShurfy ||
+                checkeD.IsPovitrPerehody || checkeD.IsStatistiks || checkeD.IsNenormHlybyna)
+                if (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonFileName}") &&
+                    (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonFileName2}")))
+                {
+                    Logs.AddAlarm("Файл \"Shablon.xlsb\" не найденн, он должен находиться в папке с программой");
+                    return;
+                }
+            if (checkeD.IsZapyska)
+                if (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonWordFileName}") &&
+                   (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonWordFileName2}")))
+                {
+                    Logs.AddAlarm("Файл \"Shablon.docm\" не найденн, он должен находиться в папке с программой");
+                    return;
+                }
             //Незахист
             if (checkeD.IsNezahyst)
             {
@@ -341,7 +357,7 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.HruntActivity) CalculateHruntActivity();
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
-            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods,hruntAktivities);
+            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts, korNebezpechny);
             acadDrawing = getAcadDrawing.Calculate(0);
         }
     }

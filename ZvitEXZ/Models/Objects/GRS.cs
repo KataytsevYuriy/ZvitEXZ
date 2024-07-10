@@ -33,5 +33,9 @@ namespace ZvitEXZ.Models.Objects
         {
             return AcadConstants.ObjGRS;
         }
+        public override string GetCadSignature()
+        {
+            return $"ГРС {NameGrs}";
+        }
     }
 }

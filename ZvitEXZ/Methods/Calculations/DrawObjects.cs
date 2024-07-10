@@ -18,12 +18,23 @@ namespace ZvitEXZ.Methods.Calculations
             acadDoc.DrawingSteps.Add(new DrawLayer(AcadConstants.LayerText));
             //acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ThisPipe, AcadConstants.DocStartX, AcadConstants.PipeStartY, thisPipeScale));
             AddPipeLineWithPovPerehods(ref acadDoc, X, kmStart, kmEnd, povitrPerehods);
+            int kmposition = 0;
+            int signatureposition = 0;
             foreach (Zamer zamer in zamers)
             {
                 string zamerType = zamer.GetCadType();
                 if (!string.IsNullOrEmpty(zamerType))
                 {
                     acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(zamer.Km), AcadConstants.PipeStartY));
+                    acadDoc.DrawingSteps.Add(new DrawingText(ConvertToString.DoubleToString(zamer.Km), X.Calkulate(zamer.Km),
+                        AcadConstants.KmobjectsStartY + kmposition * AcadConstants.KmobjectsStepY, 2));
+                    if(!string.IsNullOrEmpty(zamer.GetCadSignature()))
+                     acadDoc.DrawingSteps.Add(new DrawingText(zamer.GetCadSignature(), X.Calkulate(zamer.Km),
+                        AcadConstants.SignatureObjectsStartY + signatureposition * AcadConstants.SignatureObjectsStepY, 2));
+                    if (kmposition == 2) { kmposition = 0; }
+                    else { kmposition++; }
+                    if (signatureposition == 5) { signatureposition = 0; }
+                    else { signatureposition++; }
                 }
                 if (zamer.Name == ProjectConstants.RiverName)
                 {
@@ -50,6 +61,7 @@ namespace ZvitEXZ.Methods.Calculations
                         acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVyhodIzZemly, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
                     }
                 }
+
             }
         }
         private void AddPipeLineWithPovPerehods(ref AcadDoc acadDoc, CalculateCoordinateX X, double kmStart, double kmEnd, List<PovitrPerehod> povitrPerehods)

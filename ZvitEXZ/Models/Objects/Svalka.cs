@@ -18,7 +18,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[21] == null)
             {
                 Svalkalength = 0;
-                Logs.AddError($"км {data[1]} укажите длинну свалки");
+                Logs.AddError($"км {data[1]} укажите длину свалки");
             }
             else
             {
@@ -29,7 +29,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Svalkalength = 0;
-                    Logs.AddError($"км {data[1]} неверно указана длинна свалки");
+                    Logs.AddError($"км {data[1]} неверно указана длина свалки");
                 }
             }
         }

@@ -10,14 +10,18 @@ namespace ZvitEXZ.Methods.Calculations
     public class Crossing
     {
         private double crossLine;
-        public Crossing(double crossline)
+        private bool round;
+        public Crossing(double crossline, bool round = true)
         {
             crossLine = crossline;
+            this.round = round;
         }
         public double GetCrossing(double uStart, double kmStart, double uEnd, double kmEnd)
         {
             if (kmStart == kmEnd) return kmStart;
-            return Math.Round(kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd), 3);
+            if (round)
+                return Math.Round(kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd), 3);
+            return kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd);
         }
     }
 }

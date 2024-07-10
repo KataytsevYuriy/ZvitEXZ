@@ -91,5 +91,9 @@ namespace ZvitEXZ.Models.Objects
                 default: return AcadConstants.ObjTruboprovid;
             }
         }
+        public override string GetCadSignature()
+        {
+            return ToString();
+        }
     }
 }

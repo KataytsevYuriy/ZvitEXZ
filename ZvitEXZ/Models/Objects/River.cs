@@ -30,5 +30,10 @@ namespace ZvitEXZ.Models.Objects
         {
             return AcadConstants.ObjRiver;
         }
+        public override string GetCadSignature()
+        {
+            if (!string.IsNullOrEmpty(RiverName)) return $"річка {RiverName}";
+            return base.GetCadSignature();
+        }
     }
 }
