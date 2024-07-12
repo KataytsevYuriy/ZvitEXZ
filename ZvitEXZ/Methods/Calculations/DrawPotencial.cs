@@ -30,22 +30,29 @@ namespace ZvitEXZ.Methods.Calculations
             }
             if (pline.Values.Count > 3) acadDoc.DrawingSteps.Add(pline);
         }
-        public void AddUtzShkala(ref AcadDoc acadDoc, CalculationYSettings YSettings)
+        public void AddShkala(ref AcadDoc acadDoc, CalculationYSettings YSettings, List<double> signatures = null)
         {
             double currentU = YSettings.UMin;
             CalculateCoordinateY Y = new CalculateCoordinateY(YSettings);
-            while (currentU >= YSettings.UMax)
+            while (Math.Abs(currentU) <= Math.Abs(YSettings.UMax))
             {
                 string txt = Math.Round(currentU, 1).ToString().Replace(".", ",");
                 double y = Y.Calculate(currentU);
-                acadDoc.DrawingSteps.Add(new DrawingText(txt, AcadConstants.DocStartX - AcadConstants.DigitMoveLeft, y, AcadConstants.DigitHeight));
+                if (signatures == null)
+                    acadDoc.DrawingSteps.Add(new DrawingText(txt, AcadConstants.DocStartX - AcadConstants.DigitMoveLeft, y, AcadConstants.DigitHeight));
                 acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX - AcadConstants.RyskaLenth, y, AcadConstants.DocStartX, y));
                 currentU += YSettings.ShkalaStep;
             }
+            if (signatures != null)
+                foreach (double znak in signatures)
+                {
+                    string txt = Math.Round(znak).ToString();
+                    acadDoc.DrawingSteps.Add(new DrawingText(txt, AcadConstants.DocStartX - AcadConstants.DigitMoveLeft, Y.Calculate(znak), AcadConstants.DigitHeight));
+                }
         }
-        public void AddLineMinZah(ref AcadDoc acadDoc, CalculateCoordinateY Y)
+        public void AddLineMinZah(ref AcadDoc acadDoc, CalculateCoordinateY Y, string layerName = "Текст")
         {
-            acadDoc.DrawingSteps.Add(new DrawLayer("Текст"));
+            acadDoc.DrawingSteps.Add(new DrawLayer(layerName));
             double y09 = Y.Calculate(-0.9);
             acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX, y09, AcadConstants.DocStartX + AcadConstants.LenthXByDoc, y09));
         }

@@ -17,6 +17,9 @@ namespace ZvitEXZ.Models
         public static string LayerUpol = "График_UPolar";
         public static string LayerGrad = "График_G";
         public static string LayerText = "Текст";
+        public static string LayerNormHlubyna = "График_Глуб";
+        public static string LayerNotNormHlubyna = "График_Среза_НеНормативной_Глубины";
+        public static string LayerDstuHlubyna = "График_Нормативной_Глубины";
 
         public static double DocStartX = 100;
 
@@ -25,7 +28,9 @@ namespace ZvitEXZ.Models
         public static double DigitMoveLeft = 7;
         public static double RyskaLenth = 2;
         public static double ShkalaUtzStep = -0.2;
-        public static double ShkalaUgradtep = -50;
+        public static double ShkalaUgradStep = -50;
+        public static double ShkalaHlubynaStep = 1;
+        public static double ShkalaRhrStep = 10;
 
 
         //Coordinates Utz
@@ -46,8 +51,20 @@ namespace ZvitEXZ.Models
         //Coordibates Gradient
         public static double UgradMinY = 158;
         public static double UgradMin = 0;
-        public static double UgradMaxY = 108;
+        public static double UgradMaxY = 105;
         public static double UgradMax = -150;
+        public static double UgradTrimmedY = 101;
+        //Coordinates R hrunta
+        public static double RhrMinY = 78;
+        public static double RhrMin = 10;
+        public static double RhrMaxY = 96;
+        public static double RhrMax = 100;
+        //Coordinates Hlubynad
+        public static double HlubMinY = 74.5;
+        public static double HlubMin = 0;
+        public static double HlubMaxY = 57.5;
+        public static double HlubMax = 2;
+        public static double HlubTrimmed = HlubMax * 1.1;
         //Coordinates objects
         public static double PipeStartY = 254;
         public static double ObjPovPerehHeight = 4.8;

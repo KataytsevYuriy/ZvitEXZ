@@ -17,16 +17,20 @@ namespace ZvitEXZ.Models.Calculations
         public string GpsE { get; set; }
         public MestnostType Mestnost { get; set; }
         public string Description { get; set; }
-        public Hlubyna(double km, double? hlubynaFakt, double hlabanaInterpolated, string gpsN, string gpsE, MestnostType mestnost, string description)
+        public bool IsNormHlubyna
+        {
+            get { return HlubynaInterpolated >= MinHlubynaDSTU; }
+        }
+        public Hlubyna(double km, double? hlubynaFakt, double hlubinaInterpolated, string gpsN, string gpsE, MestnostType mestnost, string description, double minHlubynaDSTU = -1)
         {
             Km = km;
             HlubynaFakt = hlubynaFakt;
-            HlubynaInterpolated = hlabanaInterpolated;
+            HlubynaInterpolated = hlubinaInterpolated;
             GpsN = gpsN;
             GpsE = gpsE;
             Mestnost = mestnost;
             Description = description;
-            MinHlubynaDSTU = -1;
+            MinHlubynaDSTU = minHlubynaDSTU;
         }
         public Hlubyna(Zamer zamer) : this(zamer.Km, zamer.Hlub, -1, zamer.GpsN, zamer.GpsE, zamer.Mestnost, "")
         {

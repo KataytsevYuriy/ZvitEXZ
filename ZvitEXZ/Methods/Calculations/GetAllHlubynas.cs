@@ -20,15 +20,16 @@ namespace ZvitEXZ.Methods.Calculations
         {
             hlubynas = new List<Hlubyna>();
             hlubynas = zamers.Select(el => new Hlubyna(el)).ToList();
-            AddNormHlabByDSTYCx();
+            AddNormHlubByDSTYCx();
             InterpolateHlubynas();
+            AddCrossingHlubyna();
             return hlubynas;
         }
-        private void AddNormHlabByDSTYCx()
+        private void AddNormHlubByDSTYCx()
         {
             foreach (Hlubyna hlubyna in hlubynas)
             {
-                if(hlubyna.Mestnost==MestnostType.CX)
+                if (hlubyna.Mestnost == MestnostType.CX)
                 {
                     hlubyna.MinHlubynaDSTU = 1;
                 }
@@ -71,6 +72,23 @@ namespace ZvitEXZ.Methods.Calculations
                 hlubyna1.HlubynaInterpolated = Math.Round(dylyanka.HlybStart - (dylyanka.HlybStart - dylyanka.HlybEnd)
                     * (dylyanka.KmStart - hlubyna1.Km) / (dylyanka.KmStart - dylyanka.KmEnd), 2);
             }
+        }
+        private void AddCrossingHlubyna()
+        {
+            Hlubyna lastHlub = hlubynas.First();
+            List<Hlubyna> res = new List<Hlubyna>();
+            foreach (Hlubyna hlubyna in hlubynas)
+            {
+                if (lastHlub.IsNormHlubyna != hlubyna.IsNormHlubyna)
+                {
+                    Crossing crossing = new Crossing(lastHlub.MinHlubynaDSTU);
+                    double km = crossing.GetCrossing(lastHlub.HlubynaInterpolated, lastHlub.Km, hlubyna.HlubynaInterpolated, hlubyna.Km);
+                    res.Add(new Hlubyna(km, null, lastHlub.MinHlubynaDSTU, "", "", lastHlub.Mestnost, "", lastHlub.MinHlubynaDSTU));
+                }
+                res.Add(hlubyna);
+                lastHlub = hlubyna;
+            }
+            hlubynas = res;
         }
         private class InterpolationDylyanka
         {

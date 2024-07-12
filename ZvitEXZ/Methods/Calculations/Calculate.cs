@@ -357,7 +357,9 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.HruntActivity) CalculateHruntActivity();
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
-            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts, korNebezpechny);
+            if (!calculated.Neobstegeno) CalculateNeobstegeno();
+            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts,
+                korNebezpechny, hlubynas, neObstegenos);
             acadDrawing = getAcadDrawing.Calculate(0);
         }
     }
