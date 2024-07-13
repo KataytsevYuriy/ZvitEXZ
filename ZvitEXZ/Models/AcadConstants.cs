@@ -148,5 +148,16 @@ namespace ZvitEXZ.Models
         public const string ZalivkaRed = "red";
         public const string ZalivkaRedSmall = "red_small";
         public const string ZalivkaBlue = "blue";
+
+
+        //Namse
+        public static double NameShifrX = 300;
+        public static double NameShifrY = 15.15;
+        public static double NamePipeNameY = 11.4;
+        public static double NameKmY = 7.65;
+        public static double NamePipesDataY = 22.4;
+        public static double NamePipesDataX = 150;
+
+        public static double NameTexySyze = 2.2;
     }
 }

@@ -9,7 +9,7 @@ using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Methods.Calculations
 {
-    internal class Drawkorneb
+    internal class DrawKorneb
     {
         public void AddKorneb(ref AcadDoc acadDoc, CalculateCoordinateX X, double kmStart, double kmEnd, List<KorNebezpechny> korNebezpechnies)
         {

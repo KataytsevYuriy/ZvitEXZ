@@ -95,7 +95,7 @@ namespace ZvitEXZ.Models.Calculations
             PipeTypeRodPadezh = dictionary.PipeTypeRodPadezh;
             PipeName = dictionary.Name;
             DylyankaKm = dictionary.DylaynkaKm;
-            DylyankaName = dictionary.NameDilyanky;
+            DylyankaName = dictionary.NameDilyankasOwner;
             DN = dictionary.DN;
             IsolationType = dictionary.TypeIziliatsii;
             GradFirstLine = dictionary.GradFirstLine;

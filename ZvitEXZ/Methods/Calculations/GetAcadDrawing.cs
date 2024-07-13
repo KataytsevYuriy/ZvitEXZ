@@ -83,7 +83,7 @@ namespace ZvitEXZ.Methods.Calculations
                 acadZamers = trimGradient.Trim(acadZamers, out List<AcadZamer> trimmed);
                 Y = new CalculateCoordinateY(UgradSettings);
                 potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerGrad);
-                potencailDrawer.AddPotencial(ref acadDoc, acadZamers,  X, Y);
+                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, X, Y);
                 potencailDrawer.AddShkala(ref acadDoc, UgradSettings);
                 foreach (AcadZamer acadZamer in trimmed)
                 {
@@ -99,13 +99,14 @@ namespace ZvitEXZ.Methods.Calculations
                 drawPovregdenya.AddPovregdenyas(ref acadDoc, X, start, end, povregdenyas);
                 DrawNezahyst drawNezahyst = new DrawNezahyst();
                 drawNezahyst.AddNezah(ref acadDoc, X, start, end, nezahysts);
-                Drawkorneb drawkorneb = new Drawkorneb();
+                DrawKorneb drawkorneb = new DrawKorneb();
                 drawkorneb.AddKorneb(ref acadDoc, X, start, end, korNebezpechnies);
                 Y = new CalculateCoordinateY(HlubynasSettings);                                          //Draw hlubynas
                 DrawHlubynas drawHlubynas = new DrawHlubynas();
                 drawHlubynas.AddHlubynas(ref acadDoc, potencailDrawer, HlubynasSettings, hlubynas, start, end, X, Y, neObstegenos);
 
-
+                DrawName drawName = new DrawName();
+                drawName.AddNames(ref acadDoc, excelDictionary, start, end);
 
 
                 AcadDrawing.Docs.Add(acadDoc);

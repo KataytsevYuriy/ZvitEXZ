@@ -13,7 +13,7 @@ namespace ZvitEXZ.Models
         public string ShortType { get; set; }
         public string PipeTypeRodPadezh { get; set; }
         public string Name { get; set; }
-        public string NameDilyanky { get; set; }
+        public string NameDilyankasOwner { get; set; }
         public string DylaynkaKm { get; set; }
         public string DN { get; set; }
         public string TypeIziliatsii { get; set; }
@@ -37,6 +37,7 @@ namespace ZvitEXZ.Models
         public string DnToDn { get; set; } //переход диаметров
         public string Remonty { get; set; }
         public string PoperObstegennya { get; set; }
+        public string PipesData { get; set; }
         public string Shyfr { get; set; }//шифр газопровода
         public string SourceFileName { get; set; }//имя исхолного файла
         public ExcelDictionary(object[] data)
@@ -63,13 +64,13 @@ namespace ZvitEXZ.Models
             }
             if (data[3] == null)
             {
-                NameDilyanky = "";
+                NameDilyankasOwner = "";
             }
             else
             {
-                NameDilyanky = data[3].ToString();
+                NameDilyankasOwner = data[3].ToString();
             }
-            if (string.IsNullOrEmpty(NameDilyanky)) Logs.AddError("Укажмте название УКПГ(ЦВНГК)... в графе \"Назва ділянки\" (C3).");
+            if (string.IsNullOrEmpty(NameDilyankasOwner)) Logs.AddError("Укажмте название УКПГ(ЦВНГК)... в графе \"Назва УКПГ (ГКР) \" (C3).");
             if (data[4] == null) { DylaynkaKm = ""; }
             else
             {
@@ -176,6 +177,11 @@ namespace ZvitEXZ.Models
             else
             {
                 Remonty = data[28].ToString();
+            }
+            if (data[30] == null) { PipesData = ""; }
+            else
+            {
+                PipesData = data[30].ToString();
             }
             if (data[29] == null) { PoperObstegennya = ""; }
             else

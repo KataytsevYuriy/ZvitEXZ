@@ -116,7 +116,8 @@
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\DrawHlubynas.cs" />
     <Compile Include="Methods\Calculations\DrawHruntActivities.cs" />
-    <Compile Include="Methods\Calculations\Drawkorneb.cs" />
+    <Compile Include="Methods\Calculations\DrawKorneb.cs" />
+    <Compile Include="Methods\Calculations\DrawName.cs" />
     <Compile Include="Methods\Calculations\DrawNezahyst.cs" />
     <Compile Include="Methods\Calculations\DrawObjects.cs" />
     <Compile Include="Methods\Calculations\DrawPotencial.cs" />
