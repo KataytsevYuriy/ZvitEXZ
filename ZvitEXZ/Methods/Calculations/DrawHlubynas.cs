@@ -30,20 +30,23 @@ namespace ZvitEXZ.Methods.Calculations
             double kmStart, double kmEnd, CalculateCoordinateX X, CalculateCoordinateY Y, List<NeObstegeno> neObstegenos)
         {
             GetLists(hlubynas, kmStart, kmEnd, neObstegenos);
+            potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerDstuHlubyna);
             foreach (List<AcadZamer> ds in dstuHlubynas)
             {
                 if (ds.Count > 1)
-                    potencailDrawer.AddPotencial(ref acadDoc, ds, AcadConstants.LayerDstuHlubyna, X, Y);
+                    potencailDrawer.AddPotencial(ref acadDoc, ds, X, Y);
             }
+            potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerNotNormHlubyna);
             foreach (List<AcadZamer> nn in nenormHlubynas)
             {
                 if (nn.Count > 1)
-                    potencailDrawer.AddPotencial(ref acadDoc, nn, AcadConstants.LayerNotNormHlubyna, X, Y);
+                    potencailDrawer.AddPotencial(ref acadDoc, nn, X, Y);
             }
+            potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerNormHlubyna);
             foreach (List<AcadZamer> norm in normHlubynas)
             {
                 if (norm.Count > 1)
-                    potencailDrawer.AddPotencial(ref acadDoc, norm, AcadConstants.LayerNormHlubyna, X, Y);
+                    potencailDrawer.AddPotencial(ref acadDoc, norm, X, Y);
             }
             potencailDrawer.AddShkala(ref acadDoc, hlubynasSettings);
         }

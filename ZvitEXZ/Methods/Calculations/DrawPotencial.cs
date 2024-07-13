@@ -10,15 +10,19 @@ namespace ZvitEXZ.Methods.Calculations
 {
     public class DrawPotencial
     {
-        public void AddPotencial(ref AcadDoc acadDoc, List<AcadZamer> zamers, string layerName, CalculateCoordinateX X, CalculateCoordinateY Y)
+        public void SelectLayer(ref AcadDoc acadDoc, string layerName)
         {
             acadDoc.DrawingSteps.Add(new DrawLayer(layerName));
+        }
+        public void AddPotencial(ref AcadDoc acadDoc, List<AcadZamer> zamers, CalculateCoordinateX X, CalculateCoordinateY Y, bool trimBySteplenght = true)
+        {
+            //acadDoc.DrawingSteps.Add(new DrawLayer(layerName));
             double lastKm = -1;
             DrawPline pline = new DrawPline();
             foreach (AcadZamer zamer in zamers)
             {
                 if (zamer.Value == null) continue;
-                if (lastKm != -1 && zamer.Km - lastKm > AcadConstants.AcadMaxDrawingStep)
+                if (lastKm != -1 && zamer.Km - lastKm > AcadConstants.AcadMaxDrawingStep && trimBySteplenght)
                 {
                     if (pline.Values.Count > 3) acadDoc.DrawingSteps.Add(pline);
                     pline = new DrawPline();
@@ -50,10 +54,10 @@ namespace ZvitEXZ.Methods.Calculations
                     acadDoc.DrawingSteps.Add(new DrawingText(txt, AcadConstants.DocStartX - AcadConstants.DigitMoveLeft, Y.Calculate(znak), AcadConstants.DigitHeight));
                 }
         }
-        public void AddLineMinZah(ref AcadDoc acadDoc, CalculateCoordinateY Y, string layerName = "Текст")
+        public void AddLineMinZah(ref AcadDoc acadDoc, CalculateCoordinateY Y, double value = -0.9, string layerName = "Текст")
         {
             acadDoc.DrawingSteps.Add(new DrawLayer(layerName));
-            double y09 = Y.Calculate(-0.9);
+            double y09 = Y.Calculate(value);
             acadDoc.DrawingSteps.Add(new DrawPline(AcadConstants.DocStartX, y09, AcadConstants.DocStartX + AcadConstants.LenthXByDoc, y09));
         }
     }

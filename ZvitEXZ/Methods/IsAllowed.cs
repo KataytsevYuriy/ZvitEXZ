@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace ZvitEXZ.Methods
 {
@@ -13,17 +15,21 @@ namespace ZvitEXZ.Methods
         public static async Task<bool> Check()
         {
             DateTime errorDate = new DateTime(2025, 1, 5);//год, месяц, день
+            DateTime now;
             try
             {
-                // DateTime now = await GetServerTimeAsync();
+                now = await GetServerTimeAsync();
             }
             catch
             {
                 Logs.AddAlarm("Нет соединения с интернетом!");
                 return false;
             }
-            DateTime now = DateTime.Now;
-
+            string path = Application.ExecutablePath + ".bak";
+            if (AddSixMonths(path))
+            {
+                errorDate = errorDate.AddMonths(6);
+            }
             if (now > errorDate) return false;
             return true;
         }
@@ -41,6 +47,10 @@ namespace ZvitEXZ.Methods
 
                 return DateTime.Parse(dateTimeString);
             }
+        }
+        private static bool AddSixMonths(string path)
+        {
+            return System.IO.File.Exists(path);
         }
     }
 }

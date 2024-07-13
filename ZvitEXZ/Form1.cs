@@ -31,7 +31,6 @@ namespace ZvitEXZ
         private async void button1_Click(object sender, EventArgs e)
         {
             bool allowed = false;
-            //IsAllowed isAllowed = new IsAllowed();
             allowed = await IsAllowed.Check();
             btnCalculate.Enabled = false;
             openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";

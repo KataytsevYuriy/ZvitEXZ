@@ -20,6 +20,9 @@ namespace ZvitEXZ.Models
         public static string LayerNormHlubyna = "График_Глуб";
         public static string LayerNotNormHlubyna = "График_Среза_НеНормативной_Глубины";
         public static string LayerDstuHlubyna = "График_Нормативной_Глубины";
+        public static string LayerRhr = "График_Rгр.";
+        public static string LayerRhr20 = "График_Rгр_20Ом.";
+        public static string LayerRhr50 = "График_Rгр_50Ом.";
 
         public static double DocStartX = 100;
 
@@ -29,6 +32,7 @@ namespace ZvitEXZ.Models
         public static double RyskaLenth = 2;
         public static double ShkalaUtzStep = -0.2;
         public static double ShkalaUgradStep = -50;
+        public static double ShkalaRhruntaStep = 10;
         public static double ShkalaHlubynaStep = 1;
         public static double ShkalaRhrStep = 10;
 

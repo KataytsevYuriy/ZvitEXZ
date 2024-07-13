@@ -42,7 +42,7 @@ namespace ZvitEXZ.Methods.Calculations
             UtzSettings = new CalculationYSettings(AcadConstants.UtzMin, AcadConstants.UtzMax, AcadConstants.UtzMinY, AcadConstants.UtzMaxY, AcadConstants.ShkalaUtzStep);
             UgradSettings = new CalculationYSettings(AcadConstants.UgradMin, AcadConstants.UgradMax, AcadConstants.UgradMinY, AcadConstants.UgradMaxY, AcadConstants.ShkalaUgradStep);
             HlubynasSettings = new CalculationYSettings(AcadConstants.HlubMin, AcadConstants.HlubMax, AcadConstants.HlubMinY, AcadConstants.HlubMaxY, AcadConstants.ShkalaHlubynaStep);
-            RhrSettings = new CalculationYSettings(AcadConstants.RhrMin, AcadConstants.RhrMax, AcadConstants.RhrMinY, AcadConstants.RhrMaxY, AcadConstants.ShkalaUgradStep);
+            RhrSettings = new CalculationYSettings(AcadConstants.RhrMin, AcadConstants.RhrMax, AcadConstants.RhrMinY, AcadConstants.RhrMaxY, AcadConstants.ShkalaRhruntaStep);
             PovitrPerehods = povitrPerehods;
             this.hruntAktivities = hruntAktivities;
             this.povregdenyas = povregdenyas;
@@ -71,16 +71,19 @@ namespace ZvitEXZ.Methods.Calculations
                 List<Zamer> docZamers = Zamers.Where(el => el.Km >= start && el.Km <= end).ToList();
                 List<AcadZamer> acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Utz == null ? null : -el.Utz)).ToList();
                 CalculateCoordinateY Y = new CalculateCoordinateY(UtzSettings);
-                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerUtz, X, Y);        // Draw Utz
+                potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerUtz);
+                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, X, Y);        // Draw Utz
                 potencailDrawer.AddShkala(ref acadDoc, UtzSettings);
                 potencailDrawer.AddLineMinZah(ref acadDoc, Y);
                 acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Upol == null ? null : -el.Upol)).ToList();
-                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerUpol, X, Y);       // Draw Upol
+                potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerUpol);
+                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, X, Y);       // Draw Upol
                 acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Ugrad == null ? null : el.Ugrad * 1000)).ToList();                //Draw gradient
                 TrimGradient trimGradient = new TrimGradient();
                 acadZamers = trimGradient.Trim(acadZamers, out List<AcadZamer> trimmed);
                 Y = new CalculateCoordinateY(UgradSettings);
-                potencailDrawer.AddPotencial(ref acadDoc, acadZamers, AcadConstants.LayerGrad, X, Y);
+                potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerGrad);
+                potencailDrawer.AddPotencial(ref acadDoc, acadZamers,  X, Y);
                 potencailDrawer.AddShkala(ref acadDoc, UgradSettings);
                 foreach (AcadZamer acadZamer in trimmed)
                 {
@@ -88,8 +91,10 @@ namespace ZvitEXZ.Methods.Calculations
                 }
                 DrawObjects drawObjects = new DrawObjects();
                 drawObjects.AddObjects(ref acadDoc, docZamers, X, start, end, kmPerDrawing, PovitrPerehods);                //Draw pipe objects
-                DrawHruntActivities drawHruntActivities = new DrawHruntActivities();
+                DrawHruntActivities drawHruntActivities = new DrawHruntActivities();                                    //Draw Hrunts
                 drawHruntActivities.AddHruntActivities(ref acadDoc, X, start, end, hruntAktivities);
+                Y = new CalculateCoordinateY(RhrSettings);
+                drawHruntActivities.DrawGraph(ref acadDoc, potencailDrawer, RhrSettings, docZamers, start, end, X, Y, neObstegenos);
                 DrawPovregdenya drawPovregdenya = new DrawPovregdenya();
                 drawPovregdenya.AddPovregdenyas(ref acadDoc, X, start, end, povregdenyas);
                 DrawNezahyst drawNezahyst = new DrawNezahyst();
@@ -98,7 +103,8 @@ namespace ZvitEXZ.Methods.Calculations
                 drawkorneb.AddKorneb(ref acadDoc, X, start, end, korNebezpechnies);
                 Y = new CalculateCoordinateY(HlubynasSettings);                                          //Draw hlubynas
                 DrawHlubynas drawHlubynas = new DrawHlubynas();
-                drawHlubynas.AddHlubynas(ref acadDoc, potencailDrawer,HlubynasSettings, hlubynas, start, end, X, Y, neObstegenos);
+                drawHlubynas.AddHlubynas(ref acadDoc, potencailDrawer, HlubynasSettings, hlubynas, start, end, X, Y, neObstegenos);
+
 
 
 
