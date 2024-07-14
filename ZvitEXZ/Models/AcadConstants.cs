@@ -12,6 +12,8 @@ namespace ZvitEXZ.Models
         public static double AdocDefaultLenthKm = 3;
         public static double AcadMaxDrawingStep = 0.011;
 
+        public static double RepeatObjectsEvery = 0.05;
+
         //Acad Layer Names
         public static string LayerUtz = "График_U";
         public static string LayerUpol = "График_UPolar";
@@ -73,6 +75,15 @@ namespace ZvitEXZ.Models
         public static double PipeStartY = 254;
         public static double ObjPovPerehHeight = 4.8;
         public static double ObjPovPerehWidth = 1.25;
+        //Shkala Km
+        public static double ShkalaKmStartY = 282;
+        public static double ShkalaKmDigitStartY = 286.5;
+        public static double ShkalaKmDigitSize = 3.5;
+        public static double ShkalaKmDigitStep = 0.5;
+        public static double ShkalaKmDigitSdvigX = -3;
+        public static double ShkalaKmStep = 0.1;
+        public static string ShkalaKmBlockName = "shkalaKm";
+
 
 
         //Drawing block Names
@@ -141,6 +152,20 @@ namespace ZvitEXZ.Models
         public const string ObjPovitrPerehEnd = "Возд_перех_кон";
         public const string ObjPovitrPereh = "Возд_переход";
         public const string ObjZaroslyNP = "Заросли_непролазные";
+
+        //Mestnost
+        public const string MestnostCX = "Сх_поля";
+        public const string MestnostPosBPros = "Посадка";
+        public const string MestnostPosSPros = "посадка_просека";
+        public const string MestnostLesBPros = "Лес_лиственный";
+        public const string MestnostLesSPros = "Лес_просека";
+        public const string MestnostLug = "Луг";
+        public const string MestnostZarosly = "Заросли_пролазные";
+        public const string MestnostZabolHrunt = "Болото_проходимое";
+        public const string MestnostPustyr = "Пустырь";
+        public const string MestnostSad = "Cal";
+        public const string MestnostBalkaStart = "Балка_начало";
+        public const string MestnostBalkaEnd = "Балка_конец";
 
         //Блоки с заливкой
         public const string ZalivkaGreen = "green";

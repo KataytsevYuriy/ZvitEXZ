@@ -38,7 +38,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             calculated = new CalculationDone();
         }
-        public void CalculateAll(List<Zamer> Zamers, ExcelDictionary dictionary, Checked checkeD)
+        public void CalculateAll(List<Zamer> Zamers, ExcelDictionary dictionary, Checked checkeD, double kmPerDrawing)
         {
             SetMestnost setMestnost = new SetMestnost();
             zamers = setMestnost.Set(Zamers);
@@ -210,9 +210,9 @@ namespace ZvitEXZ.Methods.Calculations
             }
 
             //Drawing protokol
-            if (checkeD.IsProtokol)
+            if (checkeD.IsProtokol && ProjectConstants.IsAllowedCad)
             {
-                if (!calculated.Protokol) CalculateProtokol();
+                if (!calculated.Protokol) CalculateProtokol(kmPerDrawing);
                 fileSaver.SaveCadProtocol(acadDrawing);
             }
 
@@ -349,7 +349,7 @@ namespace ZvitEXZ.Methods.Calculations
             GetAllWordReplacer GetWordReplacer = new GetAllWordReplacer();
             wordReplaces = GetWordReplacer.Get(statistics);
         }
-        private void CalculateProtokol()
+        private void CalculateProtokol(double kmPerDrawing)
         {
             if (!calculated.Nezahyst) CalculateNezah();
             if (!calculated.Korneb) CalculateKorneb();
@@ -360,7 +360,7 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
             GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts,
                 korNebezpechny, hlubynas, neObstegenos);
-            acadDrawing = getAcadDrawing.Calculate(0);
+            acadDrawing = getAcadDrawing.Calculate(0, kmPerDrawing);
         }
     }
 }

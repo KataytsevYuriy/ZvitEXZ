@@ -39,7 +39,35 @@ namespace ZvitEXZ.Methods.Calculations
                 if (zamer.Name == ProjectConstants.RiverName)
                 {
                     River river = zamer as River;
+                    double sdvig = 1;
+                    while (sdvig * AcadConstants.RepeatObjectsEvery < (double)river.Length / 1000)
+                    {
+                        acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(river.Km + sdvig * AcadConstants.RepeatObjectsEvery), AcadConstants.PipeStartY));
+                        sdvig++;
+                    }
                     acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(river.Km + (double)river.Length / 1000), AcadConstants.PipeStartY));
+                }
+                if (zamer.Name == ProjectConstants.SwampName)
+                {
+                    Swamp swamp = zamer as Swamp;
+                    double sdvig = 1;
+                    while (sdvig * AcadConstants.RepeatObjectsEvery < (double)swamp.Length / 1000)
+                    {
+                        acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(swamp.Km + sdvig * AcadConstants.RepeatObjectsEvery), AcadConstants.PipeStartY));
+                        sdvig++;
+                    }
+                    //acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(swamp.Km + (double)swamp.Length / 1000), AcadConstants.PipeStartY));
+                }
+                if (zamer.Name == ProjectConstants.ZaroslyName)
+                {
+                    Zarosly zarosly = zamer as Zarosly;
+                    double sdvig = 1;
+                    while (sdvig * AcadConstants.RepeatObjectsEvery < (double)zarosly.Length / 1000)
+                    {
+                        acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(zarosly.Km + sdvig * AcadConstants.RepeatObjectsEvery), AcadConstants.PipeStartY));
+                        sdvig++;
+                    }
+                    //acadDoc.DrawingSteps.Add(new DrawBlock(zamerType, X.Calkulate(swamp.Km + (double)swamp.Length / 1000), AcadConstants.PipeStartY));
                 }
                 else if (zamer.Name == ProjectConstants.RoadName)
                 {

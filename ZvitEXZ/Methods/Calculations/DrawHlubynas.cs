@@ -34,7 +34,7 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (List<AcadZamer> ds in dstuHlubynas)
             {
                 if (ds.Count > 1)
-                    potencailDrawer.AddPotencial(ref acadDoc, ds, X, Y);
+                    potencailDrawer.AddPotencial(ref acadDoc, ds, X, Y, false);
             }
             potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerNotNormHlubyna);
             foreach (List<AcadZamer> nn in nenormHlubynas)
@@ -50,7 +50,7 @@ namespace ZvitEXZ.Methods.Calculations
             }
             potencailDrawer.AddShkala(ref acadDoc, hlubynasSettings);
         }
-        private void GetLists(List<Hlubyna> hlubynas, double kmStart, double kmEnd, List<NeObstegeno> neObstegenos)
+        private void GetLists(List<Hlubyna> hlubynas, double kmStart, double kmEnd, List<NeObstegeno> neObstegenos, bool ignoreNeobstegenoInDstuHlubyna = true)
         {
 
             List<NeObstegeno> neObstDoc = neObstegenos.Where(no => no.KmStart < kmEnd && no.KmEnd > kmStart).ToList();
@@ -90,7 +90,29 @@ namespace ZvitEXZ.Methods.Calculations
             {
                 nenormHlubynas.Add(hlN.Select(h => new AcadZamer(h.Km, h.HlubynaInterpolated)).ToList());
             }
-
+            if (ignoreNeobstegenoInDstuHlubyna)
+            {
+                dstuHlubynas = new List<List<AcadZamer>>();
+                List<AcadZamer> dstu = new List<AcadZamer>();
+                Hlubyna lastZamer = null;
+                foreach (Hlubyna el in hlubynas)
+                {
+                    if (el.Km < kmStart) continue;
+                    if (el.Km > kmEnd) break;
+                    if (lastZamer == null)
+                    {
+                        dstu.Add(new AcadZamer(kmStart, el.MinHlubynaDSTU));
+                    }
+                    else if (lastZamer.MinHlubynaDSTU != el.MinHlubynaDSTU)
+                    {
+                        dstu.Add(new AcadZamer(el.Km, lastZamer.MinHlubynaDSTU));
+                        dstu.Add(new AcadZamer(el.Km, el.MinHlubynaDSTU));
+                    }
+                    lastZamer = el;
+                }
+                dstu.Add(new AcadZamer(kmEnd, lastZamer.MinHlubynaDSTU));
+                dstuHlubynas.Add(dstu);
+            }
 
         }
         private void MergeHlubynas(List<Hlubyna> hlubynas)

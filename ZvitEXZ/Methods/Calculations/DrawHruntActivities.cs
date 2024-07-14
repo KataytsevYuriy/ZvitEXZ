@@ -93,7 +93,7 @@ namespace ZvitEXZ.Methods.Calculations
         private List<List<AcadZamer>> TrimNeobstegeno(List<AcadZamer> data, List<NeObstegeno> neObstegenos)
         {
             List<List<AcadZamer>> res = new List<List<AcadZamer>>();
-            if (neObstegenos.Count < 2) return res;
+            if (data.Count < 2) return res;
             List<AcadZamer> dilyanka = new List<AcadZamer>();
             AcadZamer lastZamer = null;
             CalculateValueByKm calculateValueByKm = new CalculateValueByKm();

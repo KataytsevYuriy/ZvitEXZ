@@ -170,7 +170,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[135] == null)
             {
                 IsMehPoshkodzhenObhortka = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите мех. повреждения");
+                //Logs.AddError($"{ErrorMessageStart} укажите мех. повреждения");
             }
             else
             {

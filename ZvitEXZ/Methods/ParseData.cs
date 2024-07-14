@@ -47,6 +47,10 @@ namespace ZvitEXZ.Methods
                 case "с/х  кон": return MestnostType.CXEnd;
                 case "Посадка нач": return MestnostType.PosBProsStart;
                 case "посадка кон": return MestnostType.PosBProsEnd;
+                case "Посадка прос нач": return MestnostType.PosSProsStart;
+                case "посадка прос кон": return MestnostType.PosSProsEnd;
+                case "Лес нач": return MestnostType.LesBProsStart;
+                case "лес кон": return MestnostType.LesBProsEnd;
                 case "Лес прос нач": return MestnostType.LesSProsStart;
                 case "лес прос кон": return MestnostType.LesSProsEnd;
                 case "Луг нач": return MestnostType.LugStart;

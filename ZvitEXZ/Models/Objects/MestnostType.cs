@@ -40,5 +40,23 @@ namespace ZvitEXZ.Models.Objects
                 default: return "";
             }
         }
+    public string CadName(MestnostType mestnost)
+        {
+            switch (mestnost)
+            {
+                case MestnostType.CX: return AcadConstants.MestnostCX;
+                case MestnostType.PosBPros: return AcadConstants.MestnostPosBPros;
+                case MestnostType.PosSPros: return AcadConstants.MestnostPosSPros;
+                case MestnostType.LesBPros: return AcadConstants.MestnostLesBPros;
+                case MestnostType.LesSPros: return AcadConstants.MestnostLesSPros;
+                case MestnostType.Lug: return AcadConstants.MestnostLug;
+                case MestnostType.Zarosly: return AcadConstants.MestnostZarosly;
+                case MestnostType.ZabolHrunt: return AcadConstants.MestnostPustyr;
+                case MestnostType.Sad: return AcadConstants.MestnostSad;
+                case MestnostType.BalkaStart: return AcadConstants.MestnostBalkaStart;
+                case MestnostType.BalkaEnd: return AcadConstants.MestnostBalkaEnd;
+                default: return "";
+            }
+        }
     }
 }

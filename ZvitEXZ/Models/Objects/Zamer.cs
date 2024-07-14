@@ -19,6 +19,7 @@ namespace ZvitEXZ.Models.Objects
         public double? Rhr { get; set; }
         public double? Hlub { get; set; }
         public MestnostType Mestnost { get; set; }
+        public MestnostType Balka { get; set; }
         public bool IsBalka { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
@@ -60,7 +61,6 @@ namespace ZvitEXZ.Models.Objects
                 Logs.AddAlarm($"Потенциалы УДАЛЕНЫ");
                 Utz = null;
                 Ugrad = null;
-
             }
 
             try
@@ -92,6 +92,8 @@ namespace ZvitEXZ.Models.Objects
                 Hlub = null;
             }
             Mestnost = ParseData.Mestnost(data[13]);
+            if (Mestnost == MestnostType.BalkaStart || Mestnost == MestnostType.BalkaEnd) { Balka = Mestnost; }
+            else { Balka = MestnostType.IndefinedType; }
             IsBalka = false;
             Name = "";
             Note = ParseData.String(data[303]);

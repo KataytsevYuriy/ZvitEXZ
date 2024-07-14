@@ -23,7 +23,7 @@ namespace ZvitEXZ.Methods.Calculations
                 string namePipe = excelDictionary.ShortType[0].ToString().ToUpper() + excelDictionary.ShortType.Substring(1) + " " + excelDictionary.Name;
                 acadDoc.DrawingSteps.Add(new DrawingText(namePipe, AcadConstants.NameShifrX, AcadConstants.NamePipeNameY, AcadConstants.NameTexySyze));
             }
-            string km = $"км {ConvertToString.DoubleToString(kmStart)} - км {ConvertToString.DoubleToString(kmEnd)}";
+            string km = $"км {ConvertToString.DoubleToString(kmStart, 3, true)} - км {ConvertToString.DoubleToString(kmEnd, 3, true)}";
             acadDoc.DrawingSteps.Add(new DrawingText(km, AcadConstants.NameShifrX, AcadConstants.NameKmY, AcadConstants.NameTexySyze));
             if (!string.IsNullOrEmpty(excelDictionary.PipesData))
                 acadDoc.DrawingSteps.Add(new DrawingText(excelDictionary.PipesData, AcadConstants.NamePipesDataX, AcadConstants.NamePipesDataY, AcadConstants.NameTexySyze));

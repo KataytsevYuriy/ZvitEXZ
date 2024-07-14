@@ -19,6 +19,8 @@ namespace ZvitEXZ
         List<Zamer> zamers = new List<Zamer>();
         public ExcelDictionary ExcelDictionary;
         private bool clearAll = true;
+        double[] cadkmPerDrawing = { 0.3, 0.5, 1, 3, 5, 10 };
+        double kmPerDrawing;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +28,9 @@ namespace ZvitEXZ
             Logs.AddForm(this);
             Progress.AddForm(this);
             Done.AddForm(this);
+            cbCadKmperDrawing.DataSource = cadkmPerDrawing;
+            cbCadKmperDrawing.SelectedIndex = 3;
+            kmPerDrawing = AcadConstants.AdocDefaultLenthKm;
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -80,8 +85,9 @@ namespace ZvitEXZ
                     ProjectConstants.DocShablonPath = openFileDialog1.FileName; ;
                 }
             }
+            kmPerDrawing = (double)cbCadKmperDrawing.SelectedValue;
             Calculate calculate = new Calculate();
-            calculate.CalculateAll(zamers, ExcelDictionary, chekeD);
+            calculate.CalculateAll(zamers, ExcelDictionary, chekeD, kmPerDrawing);
             btnCalculate.Enabled = true;
             btnOpen.Enabled = true;
         }
@@ -229,8 +235,7 @@ namespace ZvitEXZ
 
         private async void button1_Click_1(object sender, EventArgs e)
         {
-            //DateTime dt = await GetServerTimeAsync();
-            //string d = dt.ToString();
+
         }
 
 

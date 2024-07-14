@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Methods
 {
@@ -30,7 +31,8 @@ namespace ZvitEXZ.Methods
             {
                 errorDate = errorDate.AddMonths(6);
             }
-            if (now > errorDate) return false;
+            if (now <= errorDate) ProjectConstants.IsAllowedCad = true;
+            if (now > errorDate.AddMonths(3)) return false;
             return true;
         }
         public static async Task<DateTime> GetServerTimeAsync()

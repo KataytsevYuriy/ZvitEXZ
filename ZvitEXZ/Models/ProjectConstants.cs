@@ -137,5 +137,8 @@ namespace ZvitEXZ.Models
 
         //static variables
         public static string DocShablonPath;
+
+        //IsAllowed
+        public static bool IsAllowedCad = false;
     }
 }

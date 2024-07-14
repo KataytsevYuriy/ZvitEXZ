@@ -51,10 +51,12 @@ namespace ZvitEXZ.Methods.Calculations
             this.hlubynas = hlubynas;
             this.neObstegenos = neObstegenos;
         }
-        public AcadDrawing Calculate(double kmstart, double kmPerDrawing = 3, bool drawAllDocs = true)
+        public AcadDrawing Calculate(double kmstart, double kmPerDrawing = 0, bool drawAllDocs = true)
         {
             DrawPotencial potencailDrawer = new DrawPotencial();
             double kmStart = Math.Round(kmstart, 3);
+            if (kmPerDrawing == 0)
+                kmPerDrawing = AcadConstants.AdocDefaultLenthKm;
             this.lenthByKm = AcadConstants.LenthXByDoc / kmPerDrawing;
             double fullKm = Zamers.Last().Km;
             int docCount = (int)((fullKm - kmstart) / kmPerDrawing);
@@ -64,8 +66,8 @@ namespace ZvitEXZ.Methods.Calculations
                 double start = kmstart + i * kmPerDrawing;
                 double end = start + kmPerDrawing;
                 if (fullKm < end) end = fullKm;
-                AcadDoc acadDoc = new AcadDoc(AcadDrawing.PipeName, $"{sourceFileName}_{start}-{end}".Replace(".", ","), AcadDrawing.FolderName,
-                    AcadDrawing.Shifr, start, end, i + 1);
+                AcadDoc acadDoc = new AcadDoc(AcadDrawing.PipeName, $"{sourceFileName}_{ConvertToString.DoubleToString(start, 3, true)}-{ConvertToString.DoubleToString(end, 3, true)}",
+                    AcadDrawing.FolderName, AcadDrawing.Shifr, start, end, i + 1);
                 CalculateCoordinateX X = new CalculateCoordinateX(start, kmPerDrawing);
                 if (i + 1 < docCount) acadDoc.NextSheet = (i + 2).ToString();
                 List<Zamer> docZamers = Zamers.Where(el => el.Km >= start && el.Km <= end).ToList();
@@ -94,7 +96,7 @@ namespace ZvitEXZ.Methods.Calculations
                 DrawHruntActivities drawHruntActivities = new DrawHruntActivities();                                    //Draw Hrunts
                 drawHruntActivities.AddHruntActivities(ref acadDoc, X, start, end, hruntAktivities);
                 Y = new CalculateCoordinateY(RhrSettings);
-                drawHruntActivities.DrawGraph(ref acadDoc, potencailDrawer, RhrSettings, docZamers, start, end, X, Y, neObstegenos);
+                drawHruntActivities.DrawGraph(ref acadDoc, potencailDrawer, RhrSettings, Zamers, start, end, X, Y, neObstegenos);
                 DrawPovregdenya drawPovregdenya = new DrawPovregdenya();
                 drawPovregdenya.AddPovregdenyas(ref acadDoc, X, start, end, povregdenyas);
                 DrawNezahyst drawNezahyst = new DrawNezahyst();
@@ -104,8 +106,12 @@ namespace ZvitEXZ.Methods.Calculations
                 Y = new CalculateCoordinateY(HlubynasSettings);                                          //Draw hlubynas
                 DrawHlubynas drawHlubynas = new DrawHlubynas();
                 drawHlubynas.AddHlubynas(ref acadDoc, potencailDrawer, HlubynasSettings, hlubynas, start, end, X, Y, neObstegenos);
+                DrawMestnost drawMestnost = new DrawMestnost();                                         //Draw Mestnost
+                drawMestnost.AddMestnost(ref acadDoc, docZamers, X);
 
-                DrawName drawName = new DrawName();
+                DrawShkalaKm drawShkalaKm = new DrawShkalaKm();
+                drawShkalaKm.AddShkala(ref acadDoc, start, kmPerDrawing);                               //Draw Shkala
+                DrawName drawName = new DrawName();                                                     //Draw pipe name
                 drawName.AddNames(ref acadDoc, excelDictionary, start, end);
 
 

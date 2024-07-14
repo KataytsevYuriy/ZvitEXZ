@@ -8,10 +8,11 @@ namespace ZvitEXZ.Methods
 {
     internal static class ConvertToString
     {
-        public static string DoubleToString(double? data, int decimalCount = 3)
+        public static string DoubleToString(double? data, int decimalCount = 3, bool addZero=false)
         {
             if (data == null) return "";
             if (decimalCount == 1) return Math.Round((double)data, decimalCount).ToString("0.0").Replace(".", ",");
+            if(addZero) return Math.Round((double)data, decimalCount).ToString("0.0##").Replace(".", ",");
             return Math.Round((double)data, decimalCount).ToString().Replace(".", ",");
         }
     }

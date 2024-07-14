@@ -117,11 +117,13 @@
     <Compile Include="Methods\Calculations\DrawHlubynas.cs" />
     <Compile Include="Methods\Calculations\DrawHruntActivities.cs" />
     <Compile Include="Methods\Calculations\DrawKorneb.cs" />
+    <Compile Include="Methods\Calculations\DrawMestnost.cs" />
     <Compile Include="Methods\Calculations\DrawName.cs" />
     <Compile Include="Methods\Calculations\DrawNezahyst.cs" />
     <Compile Include="Methods\Calculations\DrawObjects.cs" />
     <Compile Include="Methods\Calculations\DrawPotencial.cs" />
     <Compile Include="Methods\Calculations\DrawPovregdenya.cs" />
+    <Compile Include="Methods\Calculations\DrawShkalaKm.cs" />
     <Compile Include="Methods\Calculations\GetAcadDrawing.cs" />
     <Compile Include="Methods\Calculations\GetAllFlanets.cs" />
     <Compile Include="Methods\Calculations\GetAllForest.cs" />
