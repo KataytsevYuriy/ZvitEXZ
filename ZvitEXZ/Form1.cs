@@ -11,6 +11,8 @@ using ZvitEXZ.Methods.Calculations;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Objects;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
+using System.Linq;
 
 namespace ZvitEXZ
 {
@@ -52,6 +54,7 @@ namespace ZvitEXZ
             {
                 Logs.AddLog($"Файл прочтен, количество замеров {zamers.Count}");
                 if (allowed) btnCalculate.Enabled = true;
+                tbKmStart.Text =Math.Truncate(zamers.FirstOrDefault().Km).ToString();
             }
             else
             {
@@ -76,6 +79,19 @@ namespace ZvitEXZ
             btnCalculate.Enabled = false;
             btnOpen.Enabled = false;
             Models.Calculations.Checked chekeD = new Models.Calculations.Checked(this);
+            if (!string.IsNullOrEmpty(tbKmStart.Text))
+            {
+                try
+                {
+                    AcadConstants.KmStart = Math.Round(Parse.ParseDouble(tbKmStart.Text));
+                }
+                catch
+                {
+                    Logs.AddAlarm("Введите корректное значение начального километража");
+                    btnCalculate.Enabled = true;
+                    return;
+                }
+            }
             ProjectConstants.DocShablonPath = "";
             if (!cbIsStandartWordShablon.Checked)
             {
@@ -273,6 +289,20 @@ namespace ZvitEXZ
             {
                 clearAll = false;
                 cbAll.Checked = false;
+            }
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            CalculatePointOfLinesCrossing calculatePointOfLinesCrossing = new CalculatePointOfLinesCrossing();
+            calculatePointOfLinesCrossing.Calculate(138, 139, 69.4, 66, 66, 67.7, out double w, out double ff);
+        }
+
+        private void tbKmStart_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(tbKmStart.Text, "[^0-9]"))
+            {
+                tbKmStart.Text = tbKmStart.Text.Remove(tbKmStart.Text.Length - 1);
             }
         }
     }

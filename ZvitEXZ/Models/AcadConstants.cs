@@ -8,6 +8,7 @@ namespace ZvitEXZ.Models
 {
     internal static class AcadConstants
     {
+        public static double? KmStart = null;
         public static double LenthXByDoc = 300;
         public static double AdocDefaultLenthKm = 3;
         public static double AcadMaxDrawingStep = 0.011;

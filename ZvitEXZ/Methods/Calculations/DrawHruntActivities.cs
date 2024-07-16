@@ -103,7 +103,7 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     foreach (NeObstegeno neObstegeno in neObstegenos)
                     {
-                        if (neObstegeno.KmStart < lastZamer.Km) continue;
+                        if (neObstegeno.KmEnd <= lastZamer.Km) continue;
                         if (neObstegeno.KmStart >= zamer.Km) break;
                         TrimHrunt(lastZamer, zamer, neObstegeno, calculateValueByKm, out AcadZamer trimmedBefor, out lastZamer);
                         if (trimmedBefor != null) dilyanka.Add(trimmedBefor);
@@ -128,7 +128,7 @@ namespace ZvitEXZ.Methods.Calculations
         private void TrimHrunt(AcadZamer start, AcadZamer end, NeObstegeno neObstegeno, CalculateValueByKm calculateValueByKm,
             out AcadZamer trimmedBefor, out AcadZamer trimmedAfter)
         {
-            if (start.Km == neObstegeno.KmStart)
+            if (start.Km >= neObstegeno.KmStart)
             {
                 trimmedBefor = null;
             }
@@ -136,7 +136,7 @@ namespace ZvitEXZ.Methods.Calculations
             {
                 trimmedBefor = new AcadZamer(neObstegeno.KmStart, calculateValueByKm.Calcculate(start.Km, start.Value, end.Km, end.Value, neObstegeno.KmStart));
             }
-            if (end.Km == neObstegeno.KmEnd)
+            if (end.Km <= neObstegeno.KmEnd)
             {
                 trimmedAfter = null;
             }

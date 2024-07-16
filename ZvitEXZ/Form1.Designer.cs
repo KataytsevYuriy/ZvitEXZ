@@ -55,8 +55,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbKmStart = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -341,10 +344,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tabControl1.Location = new System.Drawing.Point(167, 12);
+            this.tabControl1.Location = new System.Drawing.Point(141, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(380, 490);
+            this.tabControl1.Size = new System.Drawing.Size(438, 490);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
@@ -372,22 +375,43 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(372, 459);
+            this.tabPage1.Size = new System.Drawing.Size(430, 459);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.tbKmStart);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.cbCadKmperDrawing);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(372, 459);
+            this.tabPage2.Size = new System.Drawing.Size(430, 459);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            // 
+            // tbKmStart
+            // 
+            this.tbKmStart.BackColor = System.Drawing.SystemColors.Control;
+            this.tbKmStart.Location = new System.Drawing.Point(266, 59);
+            this.tbKmStart.Name = "tbKmStart";
+            this.tbKmStart.Size = new System.Drawing.Size(68, 24);
+            this.tbKmStart.TabIndex = 3;
+            this.tbKmStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbKmStart.TextChanged += new System.EventHandler(this.tbKmStart_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(254, 18);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Начальный километраж графиков ";
             // 
             // label1
             // 
@@ -414,11 +438,23 @@
             this.cbCadKmperDrawing.Size = new System.Drawing.Size(76, 26);
             this.cbCadKmperDrawing.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 429);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 543);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.labelFileName);
@@ -469,6 +505,9 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ComboBox cbCadKmperDrawing;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        internal System.Windows.Forms.TextBox tbKmStart;
     }
 }
 

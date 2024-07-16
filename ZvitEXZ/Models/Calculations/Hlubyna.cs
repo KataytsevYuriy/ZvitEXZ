@@ -25,7 +25,14 @@ namespace ZvitEXZ.Models.Calculations
         {
             Km = km;
             HlubynaFakt = hlubynaFakt;
-            HlubynaInterpolated = hlubinaInterpolated;
+            if (hlubynaFakt != null)
+            {
+                HlubynaInterpolated = (double)HlubynaFakt;
+            }
+            else
+            {
+                HlubynaInterpolated = hlubinaInterpolated;
+            }
             GpsN = gpsN;
             GpsE = gpsE;
             Mestnost = mestnost;

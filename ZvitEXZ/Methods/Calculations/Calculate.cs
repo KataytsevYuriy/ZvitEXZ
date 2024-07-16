@@ -360,7 +360,9 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
             GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts,
                 korNebezpechny, hlubynas, neObstegenos);
-            acadDrawing = getAcadDrawing.Calculate(0, kmPerDrawing);
+            if (AcadConstants.KmStart == null)
+                AcadConstants.KmStart = zamers.FirstOrDefault().Km;
+            acadDrawing = getAcadDrawing.Calculate((double)AcadConstants.KmStart, kmPerDrawing);
         }
     }
 }

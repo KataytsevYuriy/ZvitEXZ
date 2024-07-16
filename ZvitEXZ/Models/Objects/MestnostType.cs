@@ -51,7 +51,7 @@ namespace ZvitEXZ.Models.Objects
                 case MestnostType.LesSPros: return AcadConstants.MestnostLesSPros;
                 case MestnostType.Lug: return AcadConstants.MestnostLug;
                 case MestnostType.Zarosly: return AcadConstants.MestnostZarosly;
-                case MestnostType.ZabolHrunt: return AcadConstants.MestnostPustyr;
+                case MestnostType.ZabolHrunt: return AcadConstants.MestnostZabolHrunt;
                 case MestnostType.Sad: return AcadConstants.MestnostSad;
                 case MestnostType.BalkaStart: return AcadConstants.MestnostBalkaStart;
                 case MestnostType.BalkaEnd: return AcadConstants.MestnostBalkaEnd;

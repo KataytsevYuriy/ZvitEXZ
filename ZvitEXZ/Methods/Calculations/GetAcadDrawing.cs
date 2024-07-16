@@ -65,6 +65,8 @@ namespace ZvitEXZ.Methods.Calculations
             {
                 double start = kmstart + i * kmPerDrawing;
                 double end = start + kmPerDrawing;
+                double lastKm = Zamers.Last().Km;
+                if (end > lastKm) end = lastKm;
                 if (fullKm < end) end = fullKm;
                 AcadDoc acadDoc = new AcadDoc(AcadDrawing.PipeName, $"{sourceFileName}_{ConvertToString.DoubleToString(start, 3, true)}-{ConvertToString.DoubleToString(end, 3, true)}",
                     AcadDrawing.FolderName, AcadDrawing.Shifr, start, end, i + 1);
