@@ -70,6 +70,7 @@ namespace ZvitEXZ.Methods.Calculations
             {
                 if (!calculated.Nezahyst) CalculateNezah();
                 fileSaver.SaveNezahyst(nezahysts);
+                fileSaver.SaveNezahystUpol(nezahystsUpol);
                 Progress.AddStep();
                 Done.Nezahyst();
             }

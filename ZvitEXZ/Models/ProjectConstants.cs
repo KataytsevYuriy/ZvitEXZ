@@ -77,6 +77,7 @@ namespace ZvitEXZ.Models
         public const string ShablonWordFileName = @"..\..\Shablon.docm";
         public const string PVFolderName = "Додаток_И-ПВ";
         public const string NezahFolderName = "Додаток_М-Незахист";
+        public const string NezahpolFileName = "Додаток_М-Незахист_поляриз";
         public const string KornebFolderName = "Додаток_К-КорНеб";
         public const string ZvedenaFolderName = "Додаток_Р-Зведена";
         public const string UkzFolderName = "Додаток_Д-УКЗ";
