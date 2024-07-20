@@ -31,7 +31,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 KanalState = data[113].ToString();
             }
-
+            IsOrientir = true;
         }
         public override string ToString()
         {

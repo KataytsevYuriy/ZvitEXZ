@@ -108,6 +108,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Methods\Calculations\AddOrientir.cs" />
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\CalculateCoordinateX.cs" />
     <Compile Include="Methods\Calculations\CalculateCoordinateY.cs" />

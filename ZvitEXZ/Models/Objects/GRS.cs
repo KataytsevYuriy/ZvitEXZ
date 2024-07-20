@@ -23,6 +23,7 @@ namespace ZvitEXZ.Models.Objects
                 data[90], data[91], "на виході з ГРС", data[97], data[92]));
             if (data[101] != null) Flantsy.Add(new Flanets(Km, $"{Name} {NameGrs}", "-", data[105], data[106], data[99],
                 data[100], data[101], "на виході з ГРС", data[107], data[102]));
+            IsOrientir = true;
         }
         public override string ToString()
         {

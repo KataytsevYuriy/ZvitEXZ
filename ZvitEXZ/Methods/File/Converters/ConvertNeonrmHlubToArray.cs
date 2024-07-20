@@ -22,7 +22,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 res[i, 2] = ConvertToString.DoubleToString((nenormHlubyna.KmEnd - nenormHlubyna.KmStart) * 1000, 0);
                 res[i, 3] = ConvertToString.DoubleToString(nenormHlubyna.HlubMin);
                 res[i, 4] = ConvertToString.DoubleToString(nenormHlubyna.HlubNorma);
-                res[i, 5] = "";
+                res[i, 5] = nenormHlubyna.Description;
                 res[i, 6] = nenormHlubyna.GpsN;
                 res[i, 7] = nenormHlubyna.GpsE;
                 res[i, 8] = "";

@@ -319,7 +319,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
-            GetAllNenormHlubyna getAllNenormHlubynas = new GetAllNenormHlubyna(hlubynas, neObstegenos);
+            GetAllNenormHlubyna getAllNenormHlubynas = new GetAllNenormHlubyna(hlubynas, neObstegenos, zamers.Where(z => z.IsOrientir == true).ToList());
             nenormHlubynas = getAllNenormHlubynas.Get();
             calculated.NenormHlybyna = true;
         }

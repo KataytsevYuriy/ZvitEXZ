@@ -5,6 +5,7 @@
         public Swamp(object[] data) : base(data)
         {
             Name = ProjectConstants.SwampName;
+            IsOrientir = true;
         }
         public override string ToString()
         {

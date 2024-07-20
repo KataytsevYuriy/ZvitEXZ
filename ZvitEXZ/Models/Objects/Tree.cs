@@ -12,6 +12,7 @@ namespace ZvitEXZ.Models.Objects
         public Tree(object[] data) : base(data)
         {
             Name = ProjectConstants.TreeName;
+            IsOrientir = true;
         }
         public override string ToString()
         {

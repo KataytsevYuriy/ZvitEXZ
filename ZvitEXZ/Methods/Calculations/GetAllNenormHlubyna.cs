@@ -14,11 +14,13 @@ namespace ZvitEXZ.Methods.Calculations
         private List<Hlubyna> hlubynas;
         private List<NeObstegeno> neObstegenos;
         List<NenormHlubyna> nenormHlubynas;
-        public GetAllNenormHlubyna(List<Hlubyna> hlubynas, List<NeObstegeno> neObstegenos)
+        List<Zamer> orientirs;
+        public GetAllNenormHlubyna(List<Hlubyna> hlubynas, List<NeObstegeno> neObstegenos, List<Zamer> orientirs)
         {
             this.neObstegenos = neObstegenos;
             this.hlubynas = hlubynas;
             nenormHlubynas = new List<NenormHlubyna>();
+            this.orientirs = orientirs;
         }
         public List<NenormHlubyna> Get()
         {
@@ -73,6 +75,7 @@ namespace ZvitEXZ.Methods.Calculations
             }
             TrimNeobstegeno();
             AddMinhlub();
+            AddOrientirs();
             return nenormHlubynas;
         }
         private void TrimNeobstegeno()
@@ -103,6 +106,14 @@ namespace ZvitEXZ.Methods.Calculations
                     nenormHlubyna.GpsE= hlubyna.GpsE;
                     nenormHlubyna.HlubNorma=hlubyna.MinHlubynaDSTU;
                 }
+            }
+        }
+        private void AddOrientirs()
+        {
+            AddOrientir addOrientir = new AddOrientir();
+            foreach(NenormHlubyna hlubyna in nenormHlubynas)
+            {
+                hlubyna.Description = addOrientir.Add(orientirs, hlubyna.KmStart, hlubyna.KmEnd);
             }
         }
     }

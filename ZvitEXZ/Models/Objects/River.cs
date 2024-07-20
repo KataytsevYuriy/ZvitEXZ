@@ -21,6 +21,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 RiverName = data[67].ToString();
             }
+            IsOrientir = true;
         }
         public override string ToString()
         {

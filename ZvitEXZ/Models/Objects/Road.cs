@@ -271,6 +271,7 @@ namespace ZvitEXZ.Models.Objects
                         break;
                 }
             }
+            IsOrientir = true;
         }
         public override string ToString()
         {
