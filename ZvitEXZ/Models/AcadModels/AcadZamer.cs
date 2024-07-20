@@ -10,10 +10,19 @@ namespace ZvitEXZ.Models.AcadModels
     {
         public double Km { get; set; }
         public double? Value { get; set; }
+        public string GpsN { get; set; }
+        public string GpsE { get; set; }
         public AcadZamer(double km, double? value)
         {
             Km = km;
             Value = value;
+            GpsN = "";
+            GpsE = "";
+        }
+        public AcadZamer(double km, double? value, string gpsN, string gpsE) : this(km, value)
+        {
+            GpsN = gpsN;
+            GpsE = gpsE;
         }
     }
 }

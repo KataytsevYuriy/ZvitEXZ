@@ -14,6 +14,7 @@ namespace ZvitEXZ.Methods.Calculations
     public class Calculate
     {
         List<Nezahyst> nezahysts;
+        List<Nezahyst> nezahystsUpol;
         List<KorNebezpechny> korNebezpechny;
         List<Povregdenya> povregdenyas;
         List<PovregdenyaGNT> povregdenyasGNT;
@@ -229,7 +230,10 @@ namespace ZvitEXZ.Methods.Calculations
         {
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
             GetAllNezahyst getNezahyst = new GetAllNezahyst();
-            nezahysts = getNezahyst.CalculateNezah(zamers, neObstegenos);
+            List<AcadZamer> utz = zamers.Select(el => new AcadZamer(el.Km, el.Utz, el.GpsN, el.GpsE)).ToList();
+            nezahysts = getNezahyst.CalculateNezah(utz, neObstegenos);
+            List<AcadZamer> upol = zamers.Select(el => new AcadZamer(el.Km, el.Upol, el.GpsN, el.GpsE)).ToList();
+            nezahystsUpol = getNezahyst.CalculateNezah(upol, neObstegenos, 0.85);
             calculated.Nezahyst = true;
         }
         private void CalculateKorneb()
@@ -358,7 +362,7 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
-            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts,
+            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts, nezahystsUpol,
                 korNebezpechny, hlubynas, neObstegenos);
             if (AcadConstants.KmStart == null)
                 AcadConstants.KmStart = zamers.FirstOrDefault().Km;

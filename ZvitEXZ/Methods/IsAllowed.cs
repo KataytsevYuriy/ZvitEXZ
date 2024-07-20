@@ -19,7 +19,8 @@ namespace ZvitEXZ.Methods
             DateTime now;
             try
             {
-                now = await GetServerTimeAsync();
+                //now = await GetServerTimeAsync();
+                now=DateTime.Now;
             }
             catch
             {

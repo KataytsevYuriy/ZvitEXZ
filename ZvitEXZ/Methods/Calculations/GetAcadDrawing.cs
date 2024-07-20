@@ -27,11 +27,12 @@ namespace ZvitEXZ.Methods.Calculations
         List<HruntAktivity> hruntAktivities;
         List<Povregdenya> povregdenyas;
         List<Nezahyst> nezahysts;
+        List<Nezahyst> nezahystsUpol;
         List<KorNebezpechny> korNebezpechnies;
         List<Hlubyna> hlubynas;
         List<NeObstegeno> neObstegenos;
         public GetAcadDrawing(ExcelDictionary excelDictionary, List<Zamer> Zamers, List<PovitrPerehod> povitrPerehods, List<HruntAktivity> hruntAktivities,
-            List<Povregdenya> povregdenyas, List<Nezahyst> nezahysts, List<KorNebezpechny> korNebezpechnies, List<Hlubyna> hlubynas, List<NeObstegeno> neObstegenos)
+            List<Povregdenya> povregdenyas, List<Nezahyst> nezahysts,List<Nezahyst> nezahystsUpol, List<KorNebezpechny> korNebezpechnies, List<Hlubyna> hlubynas, List<NeObstegeno> neObstegenos)
         {
             this.Zamers = Zamers;
             this.excelDictionary = excelDictionary;
@@ -47,6 +48,7 @@ namespace ZvitEXZ.Methods.Calculations
             this.hruntAktivities = hruntAktivities;
             this.povregdenyas = povregdenyas;
             this.nezahysts = nezahysts;
+            this.nezahystsUpol = nezahystsUpol;
             this.korNebezpechnies = korNebezpechnies;
             this.hlubynas = hlubynas;
             this.neObstegenos = neObstegenos;
@@ -102,7 +104,8 @@ namespace ZvitEXZ.Methods.Calculations
                 DrawPovregdenya drawPovregdenya = new DrawPovregdenya();
                 drawPovregdenya.AddPovregdenyas(ref acadDoc, X, start, end, povregdenyas);
                 DrawNezahyst drawNezahyst = new DrawNezahyst();
-                drawNezahyst.AddNezah(ref acadDoc, X, start, end, nezahysts);
+                drawNezahyst.AddNezah(ref acadDoc, X, start, end, nezahysts, AcadConstants.NezahystUtzStartY);
+                drawNezahyst.AddNezah(ref acadDoc, X, start, end, nezahystsUpol, AcadConstants.NezahystUpolStartY);
                 DrawKorneb drawkorneb = new DrawKorneb();
                 drawkorneb.AddKorneb(ref acadDoc, X, start, end, korNebezpechnies);
                 Y = new CalculateCoordinateY(HlubynasSettings);                                          //Draw hlubynas

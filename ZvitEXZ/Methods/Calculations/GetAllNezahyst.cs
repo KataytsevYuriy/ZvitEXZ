@@ -3,15 +3,16 @@ using ZvitEXZ.Models.Calculations;
 using ZvitEXZ.Models.Objects;
 using ZvitEXZ.Models;
 using System.Linq;
+using ZvitEXZ.Models.AcadModels;
 
 
 namespace ZvitEXZ.Methods.Calculations
 {
     internal class GetAllNezahyst
     {
-        public List<Nezahyst> CalculateNezah(List<Zamer> zamers, List<NeObstegeno> neObstegenos)
+        public List<Nezahyst> CalculateNezah(List<AcadZamer> zamers, List<NeObstegeno> neObstegenos, double crossLine = 0.9)
         {
-            double crossLine = 0.9;
+            //double crossLine = 0.9;
             Crossing crossingNezah = new Crossing(crossLine);
             int flag = 0; //0 - Null, 1 - защищено, 2 - незахист
             double kmStart = 0;
@@ -21,28 +22,28 @@ namespace ZvitEXZ.Methods.Calculations
             string gpsNMinUtz = "";
             string gpsEMinUtz = "";
             List<Nezahyst> res = new List<Nezahyst>();
-            foreach (Zamer zamer in zamers)
+            foreach (AcadZamer zamer in zamers)
             {
-                if (zamer.Utz == null) continue;
-                if (zamer.Utz < crossLine) // незахист
+                if (zamer.Value == null) continue;
+                if (zamer.Value < crossLine) // незахист
                 {
                     if (flag == 0)
                     {
                         kmStart = zamer.Km;
-                        minUtz = zamer.Utz;
+                        minUtz = zamer.Value;
                         gpsNMinUtz = zamer.GpsN;
                         gpsEMinUtz = zamer.GpsE;
                     }
                     else if (flag == 1)
                     {
-                        kmStart = crossingNezah.GetCrossing((double)lastUtz, lastKm, (double)zamer.Utz, zamer.Km);
-                        minUtz = zamer.Utz;
+                        kmStart = crossingNezah.GetCrossing((double)lastUtz, lastKm, (double)zamer.Value, zamer.Km);
+                        minUtz = zamer.Value;
                         gpsNMinUtz = zamer.GpsN;
                         gpsEMinUtz = zamer.GpsE;
                     }
-                    else if (minUtz > zamer.Utz) //if flag ==2
+                    else if (minUtz > zamer.Value) //if flag ==2
                     {
-                        minUtz = zamer.Utz;
+                        minUtz = zamer.Value;
                         gpsNMinUtz = zamer.GpsN;
                         gpsEMinUtz = zamer.GpsE;
                     }
@@ -52,7 +53,7 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     if (flag == 2)
                     {
-                        double kmEnd = crossingNezah.GetCrossing((double)lastUtz, lastKm, (double)zamer.Utz, zamer.Km);
+                        double kmEnd = crossingNezah.GetCrossing((double)lastUtz, lastKm, (double)zamer.Value, zamer.Km);
                         if (kmEnd > kmStart)
                         {
                             Nezahyst nezahyst = new Nezahyst(kmStart, kmEnd, (double)minUtz, gpsNMinUtz, gpsEMinUtz);
@@ -61,7 +62,7 @@ namespace ZvitEXZ.Methods.Calculations
                     }
                     flag = 1;
                 }
-                lastUtz = zamer.Utz;
+                lastUtz = zamer.Value;
                 lastKm = zamer.Km;
             }
             if (flag == 2)
@@ -83,7 +84,7 @@ namespace ZvitEXZ.Methods.Calculations
             }
             return res;
         }
-        private List<Nezahyst> AddPotencial(List<Nezahyst> data, List<Zamer> zamers)
+        private List<Nezahyst> AddPotencial(List<Nezahyst> data, List<AcadZamer> zamers)
         {
             foreach (Nezahyst nezahyst in data)
             {
@@ -91,21 +92,21 @@ namespace ZvitEXZ.Methods.Calculations
                 double minUtz = 0;
                 string gpsN = "";
                 string gpsE = "";
-                foreach(Zamer zamer in zamers)
+                foreach(AcadZamer zamer in zamers)
                 {
-                    if (zamer.Ugrad == null) continue;
+                    if (zamer.Value == null) continue;
                     if (zamer.Km<nezahyst.KmStart) continue;
                     if(zamer.Km>nezahyst.KmEnd) break;
                     if (minUtz == 0)
                     {
-                        minUtz = zamer.Utz ?? 0;
+                        minUtz = zamer.Value ?? 0;
                         gpsN = zamer.GpsN;
                         gpsE = zamer.GpsE;
                         continue;
                     }
-                    if (minUtz > zamer.Utz)
+                    if (minUtz > zamer.Value)
                     {
-                        minUtz = zamer.Utz ?? 0;
+                        minUtz = zamer.Value ?? 0;
                         gpsN = zamer.GpsN;
                         gpsE = zamer.GpsE;
                     }
