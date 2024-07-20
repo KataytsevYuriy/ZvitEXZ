@@ -232,9 +232,10 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
             GetAllNezahyst getNezahyst = new GetAllNezahyst();
             List<AcadZamer> utz = zamers.Select(el => new AcadZamer(el.Km, el.Utz, el.GpsN, el.GpsE)).ToList();
-            nezahysts = getNezahyst.CalculateNezah(utz, neObstegenos);
+            List<Zamer> orientirs = zamers.Where(z => z.IsOrientir == true).ToList();
+            nezahysts = getNezahyst.CalculateNezah(utz, orientirs, neObstegenos);
             List<AcadZamer> upol = zamers.Select(el => new AcadZamer(el.Km, el.Upol, el.GpsN, el.GpsE)).ToList();
-            nezahystsUpol = getNezahyst.CalculateNezah(upol, neObstegenos, 0.85);
+            nezahystsUpol = getNezahyst.CalculateNezah(upol, orientirs, neObstegenos, 0.85);
             calculated.Nezahyst = true;
         }
         private void CalculateKorneb()

@@ -174,6 +174,7 @@ namespace ZvitEXZ.Models
         public const string ZalivkaYellow = "yellow";
         public const string ZalivkaRed = "red";
         public const string ZalivkaRedSmall = "red_small";
+        public const string ZalivkaBlueSmall = "blue_small";
         public const string ZalivkaBlue = "blue";
 
 

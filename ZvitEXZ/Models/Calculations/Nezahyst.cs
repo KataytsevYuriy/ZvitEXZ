@@ -12,12 +12,16 @@ namespace ZvitEXZ.Models.Calculations
         public double MinUtz { get; set; }
         public string MinGpsN { get; set; }
         public string MinGpsE { get; set; }
-        public Nezahyst(double kmStart, double kmEnd, double minUtz, string minGpsN, string minGpsE)
+        public string Orientir { get; set; }
+        public bool IsPerezahyst { get; set; }
+        public Nezahyst(double kmStart, double kmEnd, double minUtz, string minGpsN, string minGpsE, bool isPerezahyst = false)
             : base(kmStart, kmEnd)
         {
             MinUtz = Math.Round(minUtz, 3);
             MinGpsN = minGpsN;
             MinGpsE = minGpsE;
+            Orientir = "";
+            IsPerezahyst = isPerezahyst;
         }
         public override Dylyanka Trim(Dylyanka trimmer, ref Dylyanka ostatok)
         {

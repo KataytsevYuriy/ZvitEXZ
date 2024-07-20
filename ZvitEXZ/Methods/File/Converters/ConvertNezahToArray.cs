@@ -26,10 +26,11 @@ namespace ZvitEXZ.Methods.File.Converters
                 }
                 else
                 {
-                    res[i, 3] = $"-{ConvertToString.DoubleToString(item.MinUtz)}";
+                    string star = item.IsPerezahyst ? "*" : "";
+                    res[i, 3] = $"-{ConvertToString.DoubleToString(item.MinUtz)}{star}";
                 }
                 res[i, 4] = "";
-                res[i, 5] = "";
+                res[i, 5] = item.Orientir;
                 res[i, 6] = String.IsNullOrEmpty(item.MinGpsN) ? "-" : item.MinGpsN;
                 res[i, 7] = String.IsNullOrEmpty(item.MinGpsE) ? "-" : item.MinGpsE;
                 i++;
