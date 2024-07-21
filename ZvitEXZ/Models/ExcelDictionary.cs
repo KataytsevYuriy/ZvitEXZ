@@ -17,6 +17,7 @@ namespace ZvitEXZ.Models
         public string DylaynkaKm { get; set; }
         public string DN { get; set; }
         public string TypeIziliatsii { get; set; }
+        public IsolationTypes IsolationType { get; set; }
         public float GradFirstLine { get; set; }
         public float GradSecondLine { get; set; }
         public string NameOrganization { get; set; }
@@ -86,12 +87,14 @@ namespace ZvitEXZ.Models
                 TypeIziliatsii = "стрічкове";
                 GradFirstLine = float.Parse(data[10].ToString().Replace(",", "."));
                 GradSecondLine = float.Parse(data[8].ToString().Replace(",", "."));
+                IsolationType = IsolationTypes.plivka;
             }
             else
             {
                 TypeIziliatsii = "бітумне";
                 GradFirstLine = float.Parse(data[9].ToString().Replace(",", "."));
                 GradSecondLine = float.Parse(data[7].ToString().Replace(",", "."));
+                IsolationType=IsolationTypes.bitum;
             }
             if (data[11] == null) { NameOrganization = ""; }
             else
@@ -198,7 +201,11 @@ namespace ZvitEXZ.Models
             {
                 SourceFileName = data[36].ToString();
             }
-
         }
+
+    }
+    public enum IsolationTypes
+    {
+        undefined, bitum, plivka
     }
 }

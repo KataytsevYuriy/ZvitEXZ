@@ -230,12 +230,13 @@ namespace ZvitEXZ.Methods.Calculations
         private void CalculateNezah()
         {
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
+            double uPerezah = excelDictionary.IsolationType == IsolationTypes.plivka ? ProjectConstants.UperezahPlivka : ProjectConstants.UperezahBitum;
             GetAllNezahyst getNezahyst = new GetAllNezahyst();
             List<AcadZamer> utz = zamers.Select(el => new AcadZamer(el.Km, el.Utz, el.GpsN, el.GpsE)).ToList();
             List<Zamer> orientirs = zamers.Where(z => z.IsOrientir == true).ToList();
-            nezahysts = getNezahyst.CalculateNezah(utz, orientirs, neObstegenos);
+            nezahysts = getNezahyst.CalculateNezah(utz, orientirs, neObstegenos, 0.9, uPerezah);
             List<AcadZamer> upol = zamers.Select(el => new AcadZamer(el.Km, el.Upol, el.GpsN, el.GpsE)).ToList();
-            nezahystsUpol = getNezahyst.CalculateNezah(upol, orientirs, neObstegenos, 0.85);
+            nezahystsUpol = getNezahyst.CalculateNezah(upol, orientirs, neObstegenos, 0.85, uPerezah);
             calculated.Nezahyst = true;
         }
         private void CalculateKorneb()

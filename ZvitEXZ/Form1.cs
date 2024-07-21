@@ -50,7 +50,8 @@ namespace ZvitEXZ
             listObjects = fileReader.ReadFile(fileName);
             ParseAllZamers parseAllZamers = new ParseAllZamers();
             zamers = parseAllZamers.Parse(listObjects, out ExcelDictionary);
-
+            CheckErrors checkErrors = new CheckErrors();
+            checkErrors.Check(zamers);
             if (zamers.Count > 0)
             {
                 Logs.AddLog($"Файл прочтен, количество замеров {zamers.Count}");

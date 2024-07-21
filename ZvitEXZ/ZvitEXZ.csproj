@@ -114,6 +114,7 @@
     <Compile Include="Methods\Calculations\CalculateCoordinateY.cs" />
     <Compile Include="Methods\Calculations\CalculatePointOfLinesCrossing.cs" />
     <Compile Include="Methods\Calculations\CalculateValueByKm.cs" />
+    <Compile Include="Methods\Calculations\CheckErrors.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\DrawHlubynas.cs" />

@@ -133,6 +133,8 @@ namespace ZvitEXZ.Models
 
         public static double PovregdenyaFirstCherga = -0.02;
         public static double PovregdenyaSecondCherga = -0.15;
+        public static double UperezahBitum = 2.5;
+        public static double UperezahPlivka = 3.5;
         public static double StepVymiryvannya = 0.0101;
         public static double DylyankaGNT = 0.1;
 
