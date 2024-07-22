@@ -60,6 +60,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbMaxPotencial = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -382,6 +384,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.cbMaxPotencial);
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.tbKmStart);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
@@ -449,6 +453,31 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(267, 18);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Максимальное значение потенциала";
+            // 
+            // cbMaxPotencial
+            // 
+            this.cbMaxPotencial.AllowDrop = true;
+            this.cbMaxPotencial.BackColor = System.Drawing.SystemColors.Control;
+            this.cbMaxPotencial.FormattingEnabled = true;
+            this.cbMaxPotencial.Items.AddRange(new object[] {
+            "0.3",
+            "0.5",
+            "1",
+            "3",
+            "5"});
+            this.cbMaxPotencial.Location = new System.Drawing.Point(281, 93);
+            this.cbMaxPotencial.Name = "cbMaxPotencial";
+            this.cbMaxPotencial.Size = new System.Drawing.Size(76, 26);
+            this.cbMaxPotencial.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,6 +537,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         internal System.Windows.Forms.TextBox tbKmStart;
+        private System.Windows.Forms.ComboBox cbMaxPotencial;
+        private System.Windows.Forms.Label label3;
     }
 }
 

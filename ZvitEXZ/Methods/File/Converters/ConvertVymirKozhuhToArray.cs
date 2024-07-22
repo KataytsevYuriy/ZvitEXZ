@@ -23,15 +23,15 @@ namespace ZvitEXZ.Methods.File.Converters
                 res[i, 0] = (i + 1).ToString();
                 res[i, 1] = ConvertToString.DoubleToString(item.Km);
                 res[i, 2] = item.RoadName;
-                res[i, 3] = ConvertToString.DoubleToString(item.KozhuhLength);
-                res[i, 4] = item.ProtectionType;
+                res[i, 3] = item.HasKozhuh ? ConvertToString.DoubleToString(item.KozhuhLength) : "-";
+                res[i, 4] = item.HasKozhuh ? item.ProtectionType : "-";
                 res[i, 5] = item.CheckPlace;
                 res[i, 6] = item.UtzOn;
                 res[i, 7] = item.UkozhOn;
                 res[i, 8] = item.UtzOff;
                 res[i, 9] = item.UkozhOff;
-                res[i, 10] = item.AtestationKontakt;
-                res[i, 11] = "";
+                res[i, 10] = item.HasKozhuh ? item.AtestationKontakt : "-";
+                res[i, 11] = item.HasKozhuh ? "" : "кожух відсутній";
                 i++;
             }
             return res;

@@ -19,10 +19,10 @@ namespace ZvitEXZ.Methods.File.Converters
             {
                 res[i, 0] = ConvertToString.DoubleToString(item.Km * 1000);
                 res[i, 1] = item.RoadName;
-                res[i, 2] = item.PvStartProvodUtz;
+                res[i, 2] = item.PvStartProvodUkozh;
                 res[i, 3] = item.PvEndProvodUkozh;
-                res[i, 4] = item.PvEndProvodUtz;
-                res[i, 5] = item.PvEndProvodUkozh;
+                res[i, 4] = item.PvStartProvodUtz;
+                res[i, 5] = item.PvEndProvodUtz;
                 res[i, 6] = item.SvechaStart;
                 res[i, 7] = item.SvechaEnd;
                 res[i, 8] = item.Primechanye;

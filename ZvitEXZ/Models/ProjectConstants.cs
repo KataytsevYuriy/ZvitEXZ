@@ -69,6 +69,8 @@ namespace ZvitEXZ.Models
         public const string UPZNInNaborka = "УПЗ";
         public const string NeobstegenaDylyankaName = "Необстежена ділянка";
         public const string NeobstegenaDylyankaNInNaborka = "Необсл уч-ок";
+        public const string UstanovytName = "Встановити";
+        public const string UstanovytNameInNaborka = "Установить";
 
         //File Names
         public const string ShablonFileName2 = "Shablon.xlsb";

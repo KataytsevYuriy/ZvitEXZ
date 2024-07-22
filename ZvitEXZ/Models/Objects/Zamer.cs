@@ -41,6 +41,7 @@ namespace ZvitEXZ.Models.Objects
             try
             {
                 Utz = ParseData.DoubleNullable(data[3]);
+                if (Math.Abs((double)Utz) > 3.5) Logs.AddError($"км {Km} должен быть > -3,5В и <3,5В");
             }
             catch
             {

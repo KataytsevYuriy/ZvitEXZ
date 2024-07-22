@@ -100,8 +100,10 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     nenormHlubyna.HlubMin = hlubyna.HlubynaFakt ?? 0;
                     nenormHlubyna.GpsN = hlubyna.GpsN;
-                    nenormHlubyna.GpsE= hlubyna.GpsE;
-                    nenormHlubyna.HlubNorma=hlubyna.MinHlubynaDSTU;
+                    nenormHlubyna.GpsE = hlubyna.GpsE;
+                    nenormHlubyna.HlubNorma = hlubyna.MinHlubynaDSTU;
+                    if (nenormHlubyna.HlubMin >= nenormHlubyna.HlubNorma)
+                        Logs.AddError($"Проверьте ненормативную глубину на участке км {nenormHlubyna.KmStart} -  км {nenormHlubyna.KmEnd}, невозможно на участке интерполированная глубина ниже нормы, но фактичесская на проставлена");
                 }
             }
         }

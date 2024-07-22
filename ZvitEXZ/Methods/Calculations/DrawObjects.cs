@@ -77,18 +77,18 @@ namespace ZvitEXZ.Methods.Calculations
                         acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.Objkozhuh, X.Calkulate(road.Km), AcadConstants.PipeStartY));
                     }
                 }
-                else if (zamer.Name == ProjectConstants.VyhodIsZemlyName)
-                {
-                    VyhodIsZemly vyhodIsZemly = zamer as VyhodIsZemly;
-                    if (vyhodIsZemly.PerehodType == PerehodTypes.finish && zamers.First().Km == zamer.Km)
-                    {
-                        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVhodVZemlyu, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
-                    }
-                    else if (vyhodIsZemly.PerehodType == PerehodTypes.start && zamers.Last().Km == zamer.Km)
-                    {
-                        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVyhodIzZemly, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
-                    }
-                }
+                //else if (zamer.Name == ProjectConstants.VyhodIsZemlyName)
+                //{
+                //    VyhodIsZemly vyhodIsZemly = zamer as VyhodIsZemly;
+                //    if (vyhodIsZemly.PerehodType == PerehodTypes.finish && zamers.First().Km == zamer.Km)
+                //    {
+                //        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVhodVZemlyu, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
+                //    }
+                //    else if (vyhodIsZemly.PerehodType == PerehodTypes.start && zamers.Last().Km == zamer.Km)
+                //    {
+                //        acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ObjVyhodIzZemly, X.Calkulate(vyhodIsZemly.Km), AcadConstants.PipeStartY));
+                //    }
+                //}
 
             }
         }

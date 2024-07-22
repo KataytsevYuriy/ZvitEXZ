@@ -51,7 +51,7 @@ namespace ZvitEXZ.Methods.Calculations
             this.hlubynas = hlubynas;
             this.neObstegenos = neObstegenos;
         }
-        public AcadDrawing Calculate(double kmstart, double kmPerDrawing = 0, bool drawAllDocs = true)
+        public AcadDrawing Calculate(double kmstart, bool onlyOneDrawing, double kmPerDrawing = 0, bool drawAllDocs = true)
         {
             DrawPotencial potencailDrawer = new DrawPotencial();
             double kmStart = Math.Round(kmstart, 3);
@@ -61,6 +61,7 @@ namespace ZvitEXZ.Methods.Calculations
             double fullKm = Zamers.Last().Km;
             int docCount = (int)((fullKm - kmstart) / kmPerDrawing);
             if (((fullKm - kmstart) % kmPerDrawing) > 0) docCount++;
+            if (onlyOneDrawing) docCount = 1;
             for (int i = 0; i < docCount; i++)
             {
                 double start = kmstart + i * kmPerDrawing;

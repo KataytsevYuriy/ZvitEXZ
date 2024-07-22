@@ -32,13 +32,22 @@ namespace ZvitEXZ.Models.Objects
                 PerehodType = PerehodTypes.start;
                 flanetsPlace = "на початку переходу";
             }
-            else
+            else if (data[109].ToString() == "кінець")
             {
                 PerehodType = PerehodTypes.finish;
                 flanetsPlace = "в кінці переходу";
             }
+            else if (data[109].ToString() == "вхід в землю(початок трубопроводу)")
+            {
+                PerehodType = PerehodTypes.vhodOnStart;
+            }
+            else if (data[109].ToString() == "вихід з землі(кінець трубопроводу)")
+            {
+                PerehodType = PerehodTypes.vyhodOnFinish;
+            }
+            else PerehodType = PerehodTypes.undefined;
             Flanets = new Flanets(Km, $"{Name} км {ConvertToString.DoubleToString(Km)}", "-", data[209], data[210],
-                data[110], data[111], data[123], flanetsPlace, data[211], data[224]);
+                            data[110], data[111], data[123], flanetsPlace, data[211], data[224]);
             if (data[249] == null) { OpysPereshkody = ""; }
             else { OpysPereshkody = data[249].ToString(); }
             if (data[250] == null) { RezultOglyduPokrytta = ""; }
@@ -56,12 +65,16 @@ namespace ZvitEXZ.Models.Objects
         {
             if (PerehodType == PerehodTypes.start) return $"{Name} початок";
             if (PerehodType == PerehodTypes.finish) return $"{Name} кінець";
+            if (PerehodType == PerehodTypes.vyhodOnFinish) return $"вихід з землі";
+            if (PerehodType == PerehodTypes.vhodOnStart) return $"вхід в землю";
             return Name;
         }
         public override string GetCadType()
         {
+            if (PerehodType == PerehodTypes.vyhodOnFinish) return AcadConstants.ObjVyhodIzZemly;
+            if (PerehodType == PerehodTypes.vhodOnStart) return AcadConstants.ObjVhodVZemlyu;
             return base.GetCadType();
         }
     }
-    public enum PerehodTypes { undefined, start, finish }
+    public enum PerehodTypes { undefined, start, finish, vyhodOnFinish, vhodOnStart }
 }

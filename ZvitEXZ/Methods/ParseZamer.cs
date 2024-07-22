@@ -23,7 +23,7 @@ namespace ZvitEXZ.Methods
                 case ProjectConstants.PovorotNameInNaborka: return new Povorot(data);
                 case ProjectConstants.SvechaNameInNaborka: return new Svecha(data);
                 case ProjectConstants.TreeName: return new Tree(data);
-                case ProjectConstants.Stolb: return new Stolb(data);
+                case ProjectConstants.StolbInNaborka: return new Stolb(data);
                 case ProjectConstants.UKZNameInNaborka: return new UKZ(data);
                 case ProjectConstants.UDZNameInNaborka:return new UDZ(data);
                 case ProjectConstants.KranNameInNaborka:return new Kran(data);
@@ -45,6 +45,7 @@ namespace ZvitEXZ.Methods
                 case ProjectConstants.PerehodDNInNaborka:return new PerehodDn(data);
                 case ProjectConstants.UPZNInNaborka:return new UPZ(data);
                 case ProjectConstants.NeobstegenaDylyankaNInNaborka:return new NeObstegenaDylyanka(data);
+                case ProjectConstants.UstanovytNameInNaborka:return new Ustanovyte(data);
 
 
                 default:

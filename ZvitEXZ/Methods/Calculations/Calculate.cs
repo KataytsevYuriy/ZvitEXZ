@@ -38,7 +38,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             calculated = new CalculationDone();
         }
-        public void CalculateAll(List<Zamer> Zamers, ExcelDictionary dictionary, Checked checkeD, double kmPerDrawing)
+        public void CalculateAll(List<Zamer> Zamers, ExcelDictionary dictionary, Checked checkeD, double kmPerDrawing, bool onlyOneCadDrawing)
         {
             SetMestnost setMestnost = new SetMestnost();
             zamers = setMestnost.Set(Zamers);
@@ -196,7 +196,7 @@ namespace ZvitEXZ.Methods.Calculations
                 if (!calculated.Statistiks) CalculateAllStatistics();
                 fileSaver.SaveStatistics(statistics);
                 Progress.AddStep();
-                Done.NenormHlubynas();
+                Done.Statystics();
             }
 
             //Записка
@@ -212,8 +212,10 @@ namespace ZvitEXZ.Methods.Calculations
             //Drawing protokol
             if (checkeD.IsProtokol && ProjectConstants.IsAllowedCad)
             {
-                if (!calculated.Protokol) CalculateProtokol(kmPerDrawing);
+                if (!calculated.Protokol) CalculateProtokol(kmPerDrawing, onlyOneCadDrawing);
                 fileSaver.SaveCadProtocol(acadDrawing);
+                Progress.AddStep();
+                Done.Protokol();
             }
 
 
@@ -349,7 +351,7 @@ namespace ZvitEXZ.Methods.Calculations
             GetAllWordReplacer GetWordReplacer = new GetAllWordReplacer();
             wordReplaces = GetWordReplacer.Get(statistics);
         }
-        private void CalculateProtokol(double kmPerDrawing)
+        private void CalculateProtokol(double kmPerDrawing, bool onlyOneCadDrawing)
         {
             if (!calculated.Nezahyst) CalculateNezah();
             if (!calculated.Korneb) CalculateKorneb();
@@ -362,7 +364,7 @@ namespace ZvitEXZ.Methods.Calculations
                 korNebezpechny, hlubynas, neObstegenos);
             if (AcadConstants.KmStart == null)
                 AcadConstants.KmStart = zamers.FirstOrDefault().Km;
-            acadDrawing = getAcadDrawing.Calculate((double)AcadConstants.KmStart, kmPerDrawing);
+            acadDrawing = getAcadDrawing.Calculate((double)AcadConstants.KmStart, onlyOneCadDrawing, kmPerDrawing);
         }
     }
 }

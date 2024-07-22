@@ -22,6 +22,7 @@ namespace ZvitEXZ
         public ExcelDictionary ExcelDictionary;
         private bool clearAll = true;
         double[] cadkmPerDrawing = { 0.3, 0.5, 1, 3, 5, 10 };
+        double[] cadMaxPotencial = { -2, -2.5, -3, -3.5 };
         double kmPerDrawing;
         public Form1()
         {
@@ -32,6 +33,8 @@ namespace ZvitEXZ
             Done.AddForm(this);
             cbCadKmperDrawing.DataSource = cadkmPerDrawing;
             cbCadKmperDrawing.SelectedIndex = 3;
+            cbMaxPotencial.DataSource = cadMaxPotencial;
+            cbMaxPotencial.SelectedIndex = 1;
             kmPerDrawing = AcadConstants.AdocDefaultLenthKm;
         }
 
@@ -54,7 +57,7 @@ namespace ZvitEXZ
             {
                 Logs.AddLog($"Файл прочтен, количество замеров {zamers.Count}");
                 if (allowed) btnCalculate.Enabled = true;
-                tbKmStart.Text =Math.Truncate(zamers.FirstOrDefault().Km).ToString();
+                //tbKmStart.Text = Math.Truncate(zamers.FirstOrDefault().Km).ToString();
             }
             else
             {
@@ -79,11 +82,13 @@ namespace ZvitEXZ
             btnCalculate.Enabled = false;
             btnOpen.Enabled = false;
             Models.Calculations.Checked chekeD = new Models.Calculations.Checked(this);
+            bool onlyOneDrawing = false;
             if (!string.IsNullOrEmpty(tbKmStart.Text))
             {
                 try
                 {
                     AcadConstants.KmStart = Math.Round(Parse.ParseDouble(tbKmStart.Text));
+                    onlyOneDrawing = true;
                 }
                 catch
                 {
@@ -102,8 +107,9 @@ namespace ZvitEXZ
                 }
             }
             kmPerDrawing = (double)cbCadKmperDrawing.SelectedValue;
+            AcadConstants.UtzMax = (double)cbMaxPotencial.SelectedValue;
             Calculate calculate = new Calculate();
-            calculate.CalculateAll(zamers, ExcelDictionary, chekeD, kmPerDrawing);
+            calculate.CalculateAll(zamers, ExcelDictionary, chekeD, kmPerDrawing, onlyOneDrawing);
             btnCalculate.Enabled = true;
             btnOpen.Enabled = true;
         }
@@ -249,7 +255,7 @@ namespace ZvitEXZ
             }
         }
 
-        private async void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
 
         }

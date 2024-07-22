@@ -153,6 +153,13 @@ namespace ZvitEXZ.Models
         public const string ObjPovitrPerehEnd = "Возд_перех_кон";
         public const string ObjPovitrPereh = "Возд_переход";
         public const string ObjZaroslyNP = "Заросли_непролазные";
+        public const string ObjUstanovytPV = "Установить_ПВ";
+        public const string ObjUstanovytStolb = "Установить_столб_указательный";
+        public const string ObjUstanovytUkz = "Установить УКЗ";
+        public const string ObjUstanovytUdz = "Установить УДЗ";
+        public const string ObjUstanovytSvecha = "Установить_Свечу";
+        public const string ObjUstanovytKozhuh = "Установить кожух";
+        //Установить_столб_указательный
 
         //Mestnost
         public const string MestnostCX = "Сх_поля";
