@@ -108,11 +108,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Methods\Calculations\AddOrientir.cs" />
     <Compile Include="Methods\Calculations\Calculate.cs" />
     <Compile Include="Methods\Calculations\CalculateCoordinateX.cs" />
     <Compile Include="Methods\Calculations\CalculateCoordinateY.cs" />
     <Compile Include="Methods\Calculations\CalculatePointOfLinesCrossing.cs" />
     <Compile Include="Methods\Calculations\CalculateValueByKm.cs" />
+    <Compile Include="Methods\Calculations\CheckErrors.cs" />
     <Compile Include="Methods\Calculations\Crossing.cs" />
     <Compile Include="Methods\Calculations\Done.cs" />
     <Compile Include="Methods\Calculations\DrawHlubynas.cs" />

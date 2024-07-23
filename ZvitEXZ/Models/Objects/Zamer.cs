@@ -25,7 +25,7 @@ namespace ZvitEXZ.Models.Objects
         public string Note { get; set; }
         public int NumberSvyazky { get; set; }
         public string ErrorMessageStart { get; set; }
-
+        public bool IsOrientir { get; set; }
         public Zamer(object[] data)
         {
             if (data[1] == null) throw new ArgumentNullException("пустое значение КМ");
@@ -98,6 +98,7 @@ namespace ZvitEXZ.Models.Objects
             IsBalka = false;
             Name = "";
             Note = ParseData.String(data[303]);
+            IsOrientir = false;
         }
         public Zamer(double km, string gpsN, string gpsE)
         {

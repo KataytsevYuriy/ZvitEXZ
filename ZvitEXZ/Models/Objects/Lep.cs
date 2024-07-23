@@ -21,6 +21,7 @@ namespace ZvitEXZ.Models.Objects
                 Voltage = data[77].ToString();
             }
             Name = ProjectConstants.LepName;
+            IsOrientir = true;
         }
         public override string ToString()
         {

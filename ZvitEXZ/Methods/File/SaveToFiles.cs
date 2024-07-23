@@ -33,6 +33,11 @@ namespace ZvitEXZ.Methods.File
             writeToFile.WriteFile(_fileName, ProjectConstants.NezahFolderName, _pipeName, converter.ConvertNezah(nezahysts),
                 "B", "I", "I", ProjectConstants.PrintMessageNezahIsEmpty, 2);
         }
+      public void SaveNezahystUpol(List<Nezahyst> nezahysts)
+        {
+            writeToFile.WriteFile(_fileName, ProjectConstants.NezahFolderName, _pipeName, converter.ConvertNezah(nezahysts),
+                "B", "I", "I", ProjectConstants.PrintMessageNezahIsEmpty, 2,ProjectConstants.NezahpolFileName);
+        }
         public void SaveZvedena(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies, List<Povregdenya> povregdenyas)
         {
             writeToFile.WriteFile(_fileName, ProjectConstants.ZvedenaFolderName, _pipeName, converter.ConvertZvedena(zamers, korNebezpechnies, povregdenyas),

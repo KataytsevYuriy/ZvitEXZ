@@ -79,6 +79,7 @@ namespace ZvitEXZ.Models
         public const string ShablonWordFileName = @"..\..\Shablon.docm";
         public const string PVFolderName = "Додаток_И-ПВ";
         public const string NezahFolderName = "Додаток_М-Незахист";
+        public const string NezahpolFileName = "Додаток_М-Незахист_поляриз";
         public const string KornebFolderName = "Додаток_К-КорНеб";
         public const string ZvedenaFolderName = "Додаток_Р-Зведена";
         public const string UkzFolderName = "Додаток_Д-УКЗ";
@@ -97,6 +98,7 @@ namespace ZvitEXZ.Models
 
         //Korneb
         public const string KorNebNezahMessage = "Eзах менше нормативного";
+        public const string KorNebPerezahMessage = "Eзах більше нормативного";
         public const string KorNebRhrMessage = "ρґ<=20 Ом*м";
         public const string KorNebZabolHrMessage = "заболочений грунт";
         public const string KorNebTruboprovodMessage = "перетин із трубопроводом";
@@ -134,6 +136,8 @@ namespace ZvitEXZ.Models
 
         public static double PovregdenyaFirstCherga = -0.02;
         public static double PovregdenyaSecondCherga = -0.15;
+        public static double UperezahBitum = 2.5;
+        public static double UperezahPlivka = 3.5;
         public static double StepVymiryvannya = 0.0101;
         public static double DylyankaGNT = 0.1;
 

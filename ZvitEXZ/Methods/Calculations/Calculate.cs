@@ -14,6 +14,7 @@ namespace ZvitEXZ.Methods.Calculations
     public class Calculate
     {
         List<Nezahyst> nezahysts;
+        List<Nezahyst> nezahystsUpol;
         List<KorNebezpechny> korNebezpechny;
         List<Povregdenya> povregdenyas;
         List<PovregdenyaGNT> povregdenyasGNT;
@@ -69,6 +70,7 @@ namespace ZvitEXZ.Methods.Calculations
             {
                 if (!calculated.Nezahyst) CalculateNezah();
                 fileSaver.SaveNezahyst(nezahysts);
+                fileSaver.SaveNezahystUpol(nezahystsUpol);
                 Progress.AddStep();
                 Done.Nezahyst();
             }
@@ -230,8 +232,13 @@ namespace ZvitEXZ.Methods.Calculations
         private void CalculateNezah()
         {
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
+            double uPerezah = excelDictionary.IsolationType == IsolationTypes.plivka ? ProjectConstants.UperezahPlivka : ProjectConstants.UperezahBitum;
             GetAllNezahyst getNezahyst = new GetAllNezahyst();
-            nezahysts = getNezahyst.CalculateNezah(zamers, neObstegenos);
+            List<AcadZamer> utz = zamers.Select(el => new AcadZamer(el.Km, el.Utz, el.GpsN, el.GpsE)).ToList();
+            List<Zamer> orientirs = zamers.Where(z => z.IsOrientir == true).ToList();
+            nezahysts = getNezahyst.CalculateNezah(utz, orientirs, neObstegenos, 0.9, uPerezah);
+            List<AcadZamer> upol = zamers.Select(el => new AcadZamer(el.Km, el.Upol, el.GpsN, el.GpsE)).ToList();
+            nezahystsUpol = getNezahyst.CalculateNezah(upol, orientirs, neObstegenos, 0.85, uPerezah);
             calculated.Nezahyst = true;
         }
         private void CalculateKorneb()
@@ -316,7 +323,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
-            GetAllNenormHlubyna getAllNenormHlubynas = new GetAllNenormHlubyna(hlubynas, neObstegenos);
+            GetAllNenormHlubyna getAllNenormHlubynas = new GetAllNenormHlubyna(hlubynas, neObstegenos, zamers.Where(z => z.IsOrientir == true).ToList());
             nenormHlubynas = getAllNenormHlubynas.Get();
             calculated.NenormHlybyna = true;
         }
@@ -360,7 +367,7 @@ namespace ZvitEXZ.Methods.Calculations
             if (!calculated.Hlubyna) CalculateAllHlubynas();
             if (!calculated.NenormHlybyna) CalculateAllNenormHlubynas();
             if (!calculated.Neobstegeno) CalculateNeobstegeno();
-            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts,
+            GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts, nezahystsUpol,
                 korNebezpechny, hlubynas, neObstegenos);
             if (AcadConstants.KmStart == null)
                 AcadConstants.KmStart = zamers.FirstOrDefault().Km;

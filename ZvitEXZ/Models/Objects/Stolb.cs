@@ -30,6 +30,7 @@ namespace ZvitEXZ.Models.Objects
 
                 }
             }
+            IsOrientir = true;
         }
         public override string ToString()
         {

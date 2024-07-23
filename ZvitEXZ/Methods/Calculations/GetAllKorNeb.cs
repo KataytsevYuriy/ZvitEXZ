@@ -48,7 +48,8 @@ namespace ZvitEXZ.Methods.Calculations
             if (nezahysts != null && nezahysts.Count > 0)
                 foreach (Nezahyst item in nezahysts)
                 {
-                    korNebezpechny.Add(new KorNebezpechny(item.KmStart, item.KmEnd, ProjectConstants.KorNebNezahMessage));
+                    korNebezpechny.Add(new KorNebezpechny(item.KmStart, item.KmEnd,
+                        item.IsPerezahyst ? ProjectConstants.KorNebPerezahMessage : ProjectConstants.KorNebNezahMessage));
                 }
         }
         private void ByRhr()

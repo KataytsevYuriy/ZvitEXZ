@@ -60,6 +60,7 @@ namespace ZvitEXZ.Models.Objects
             else { UkozgOff = ParseData.DoubleNullable(data[254]); }
             if (data[255] == null) { Kontakt = ""; }
             else { Kontakt = data[255].ToString(); }
+            IsOrientir = true;
         }
         public override string ToString()
         {

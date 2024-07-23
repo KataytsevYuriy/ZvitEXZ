@@ -18,6 +18,7 @@ namespace ZvitEXZ.Models
         //Acad Layer Names
         public static string LayerUtz = "График_U";
         public static string LayerUpol = "График_UPolar";
+        public static string LayerUpolLine = "График_U_085";
         public static string LayerGrad = "График_G";
         public static string LayerText = "Текст";
         public static string LayerNormHlubyna = "График_Глуб";
@@ -48,7 +49,8 @@ namespace ZvitEXZ.Models
         public static double UtzMax = -2.5;
         public static double HruntActivityStartY = 51.5;
         public static double PovregdenyaStartY = 30.5;
-        public static double NezahystUtzStartY = 39.25;
+        public static double NezahystUtzStartY = 35.75;
+        public static double NezahystUpolStartY = 39.25;
         public static double KornebStartY = 44.5;
         public static double KmobjectsStartY = 223.2;
         public static double KmobjectsStepY = 3;
@@ -180,6 +182,7 @@ namespace ZvitEXZ.Models
         public const string ZalivkaYellow = "yellow";
         public const string ZalivkaRed = "red";
         public const string ZalivkaRedSmall = "red_small";
+        public const string ZalivkaBlueSmall = "blue_small";
         public const string ZalivkaBlue = "blue";
 
 

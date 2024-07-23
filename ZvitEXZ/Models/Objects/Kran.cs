@@ -41,6 +41,7 @@ namespace ZvitEXZ.Models.Objects
                     Logs.AddError($"км {Km} укажите вотенциал крана");
                 }
             }
+            IsOrientir = true;
         }
         public override string ToString()
         {

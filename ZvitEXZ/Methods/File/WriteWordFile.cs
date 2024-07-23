@@ -60,6 +60,19 @@ namespace ZvitEXZ.Methods.File
                             ref o, ref o, ref o, ref o, ref o,
                             ref replaceAll, ref o, ref o, ref o, ref o);
                     }
+                app.Selection.Find.Execute("<74 55>");
+                Microsoft.Office.Interop.Word.Range wordRange = app.Selection.Range;
+
+                var wordTable = doc.Tables.Add(wordRange,
+                   5, 4);
+
+                for (var j = 0; j < 5; j++)
+                {
+                    for (var k = 0; k < 4; k++)
+                    {
+                        wordTable.Cell(j + 1, k + 1).Range.Text = $"{j}-{k}";
+                    }
+                }
 
                 try
                 {

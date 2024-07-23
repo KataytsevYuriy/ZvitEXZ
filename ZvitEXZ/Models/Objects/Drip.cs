@@ -11,6 +11,7 @@ namespace ZvitEXZ.Models.Objects
         public Drip(object[] data) : base(data)
         {
             Name = ProjectConstants.DripName; 
+            IsOrientir = true;
         }
         public override string ToString()
         {

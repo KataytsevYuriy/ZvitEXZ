@@ -64,6 +64,7 @@ namespace ZvitEXZ.Models.Objects
                 NumberSvyazky = 0;
                 Logs.AddError($"км {data[1]} проверьте номер привязки");
             }
+            IsOrientir = true;
         }
         public PV(double km, string gpsN, string gpsE, double? utz, string description) : base(km, gpsN, gpsE)
         {

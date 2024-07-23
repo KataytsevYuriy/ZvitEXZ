@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Net.Http;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -13,6 +13,7 @@ using ZvitEXZ.Models.Objects;
 using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 
 namespace ZvitEXZ
 {
@@ -52,7 +53,8 @@ namespace ZvitEXZ
             listObjects = fileReader.ReadFile(fileName);
             ParseAllZamers parseAllZamers = new ParseAllZamers();
             zamers = parseAllZamers.Parse(listObjects, out ExcelDictionary);
-
+            CheckErrors checkErrors = new CheckErrors();
+            checkErrors.Check(zamers);
             if (zamers.Count > 0)
             {
                 Logs.AddLog($"Файл прочтен, количество замеров {zamers.Count}");
@@ -300,8 +302,9 @@ namespace ZvitEXZ
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            CalculatePointOfLinesCrossing calculatePointOfLinesCrossing = new CalculatePointOfLinesCrossing();
-            calculatePointOfLinesCrossing.Calculate(138, 139, 69.4, 66, 66, 67.7, out double w, out double ff);
+            HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create("http://www.google.com");
+            //WebProxy p = (WebProxy)WebRequest.DefaultWebProxy;
+            WebProxy proxy = (WebProxy)WebProxy.GetDefaultProxy();
         }
 
         private void tbKmStart_TextChanged(object sender, EventArgs e)

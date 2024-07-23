@@ -11,7 +11,7 @@ namespace ZvitEXZ.Methods.Calculations
 {
     internal class DrawNezahyst
     {
-        public void AddNezah(ref AcadDoc acadDoc, CalculateCoordinateX X, double kmStart, double kmEnd, List<Nezahyst> nezahysts)
+        public void AddNezah(ref AcadDoc acadDoc, CalculateCoordinateX X, double kmStart, double kmEnd, List<Nezahyst> nezahysts, double startY)
         {
             {
                 foreach (Nezahyst nezahyst in nezahysts)
@@ -20,8 +20,8 @@ namespace ZvitEXZ.Methods.Calculations
                     if (kmEnd < nezahyst.KmStart) break;
                     double start = kmStart > nezahyst.KmStart ? kmStart : nezahyst.KmStart;
                     double end = kmEnd > nezahyst.KmEnd ? nezahyst.KmEnd : kmEnd;
-                    acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.ZalivkaRedSmall, X.Calkulate(start), AcadConstants.NezahystUtzStartY,
-                        X.Calkulate(end) - X.Calkulate(start)));
+                    string blockName = nezahyst.IsPerezahyst ? AcadConstants.ZalivkaBlueSmall : AcadConstants.ZalivkaRedSmall;
+                    acadDoc.DrawingSteps.Add(new DrawBlock(blockName, X.Calkulate(start), startY, X.Calkulate(end) - X.Calkulate(start)));
                 }
             }
         }
