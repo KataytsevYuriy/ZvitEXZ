@@ -131,27 +131,33 @@ namespace ZvitEXZ.Methods.Calculations
                     if (!roadKozhuh1.IsPvStartProvodUkozh && !roadKozhuh1.IsPvStartProvodUtz)
                     {
                         roadKozhuh1.Atestation += "на початку переходу ПВ - відсутній; ";
+                        roadKozhuh1.Recomendation += "встановити ПВ на початку переходу, з виводами від трубопроводу та кожуху; ";
                     }
                     else if (!roadKozhuh1.IsPvStartProvodUkozh)
                     {
                         roadKozhuh1.Atestation += "на початку переходу вивід від кожуху - відсутній; ";
+                        roadKozhuh1.Recomendation += "обладнати ПВ на початку переходу виводом від захисного кожуху; ";
                     }
                     else if (!roadKozhuh1.IsPvStartProvodUtz)
                     {
                         roadKozhuh1.Atestation += "на початку переходу вивід від трубопроводу - відсутній; ";
+                        roadKozhuh1.Recomendation += "обладнати ПВ на початку переходу виводом від трубопроводу; ";
                     }
 
                     if (!roadKozhuh1.IsPvEndProvodUkozh && !roadKozhuh1.IsPvEndProvodUtz)
                     {
                         roadKozhuh1.Atestation += "в кінці переходу ПВ - відсутній; ";
+                        roadKozhuh1.Recomendation += "встановити ПВ в кінці переходу, з виводами від трубопроводу та кожуху; ";
                     }
                     else if (!roadKozhuh1.IsPvEndProvodUkozh)
                     {
                         roadKozhuh1.Atestation += "в кінці переходу вивід від кожуху - відсутній; ";
+                        roadKozhuh1.Recomendation += "обладнати ПВ в кінці переходу виводом від захисного кожуху; ";
                     }
                     else if (!roadKozhuh1.IsPvEndProvodUtz)
                     {
                         roadKozhuh1.Atestation += "в кінці переходу вивід від трубопроводу - відсутній; ";
+                        roadKozhuh1.Recomendation += "обладнати ПВ в кінці переходу виводом від трубопроводу; ";
                     }
                 }
                 else
@@ -164,15 +170,18 @@ namespace ZvitEXZ.Methods.Calculations
                     if (!roadKozhuh1.IsPvStartProvodUtz)
                     {
                         roadKozhuh1.Atestation += "на початку переходу ПВ - відсутній; ";
+                        roadKozhuh1.Recomendation += "встановити ПВ на початку переходу; ";
                     }
                     if (!roadKozhuh1.IsPvEndProvodUtz)
                     {
                         roadKozhuh1.Atestation += "в кінці переходу ПВ - відсутній; ";
+                        roadKozhuh1.Recomendation += "встановити ПВ в кінці переходу; ";
                     }
                 }
-                if (!roadKozhuh1.IsSvechaEnd && !roadKozhuh1.IsSvechaStart)
+                if (!roadKozhuh1.IsSvechaEnd && !roadKozhuh1.IsSvechaStart && roadKozhuh1.HasKozhuh)
                 {
-                    roadKozhuh1.Atestation += "захисні свічки на переході - відсутні; ";
+                    roadKozhuh1.Atestation += "витяжні свічки на переході - відсутні; ";
+                    roadKozhuh1.Recomendation += "встановити витяжну свічу; ";
                 }
                 roadKozhuh1.PvStartProvodUtz = roadKozhuh1.IsPvStartProvodUtz ? "так" : "ні";
                 roadKozhuh1.PvEndProvodUtz = roadKozhuh1.IsPvEndProvodUtz ? "так" : "ні";

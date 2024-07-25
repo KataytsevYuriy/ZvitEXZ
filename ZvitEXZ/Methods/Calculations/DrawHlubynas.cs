@@ -92,11 +92,12 @@ namespace ZvitEXZ.Methods.Calculations
                     lastHlub = el;
                 }
             }
-            if (lastHlub.IsNormHlubyna) { normHlubynas.Add(hlub); }
-            else
-            {
-                nenormHlubynas.Add(hlub);
-            }
+            if (hlub.Count > 0)
+                if (lastHlub.IsNormHlubyna) { normHlubynas.Add(hlub); }
+                else
+                {
+                    nenormHlubynas.Add(hlub);
+                }
             dstuHlubynas = new List<List<AcadZamer>>();
             List<AcadZamer> dstu = new List<AcadZamer>();
 
@@ -108,5 +109,5 @@ namespace ZvitEXZ.Methods.Calculations
             }
             dstuHlubynas.Add(dstu);
         }
-     }
+    }
 }

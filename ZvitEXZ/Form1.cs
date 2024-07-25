@@ -13,7 +13,7 @@ using ZvitEXZ.Models.Objects;
 using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Linq;
-using System.Net;
+//using System.Net;
 
 namespace ZvitEXZ
 {
@@ -302,11 +302,8 @@ namespace ZvitEXZ
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create("http://www.google.com");
-            //WebProxy p = (WebProxy)WebRequest.DefaultWebProxy;
-            WebProxy proxy = (WebProxy)WebProxy.GetDefaultProxy();
-        }
 
+        }
         private void tbKmStart_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(tbKmStart.Text, "[^0-9]"))

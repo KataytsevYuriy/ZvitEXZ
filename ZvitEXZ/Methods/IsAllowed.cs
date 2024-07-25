@@ -13,6 +13,7 @@ using System.Net;
 using System.Threading;
 using System.Net.NetworkInformation;
 using System.Security.Policy;
+using System.Globalization;
 
 namespace ZvitEXZ.Methods
 {
@@ -23,25 +24,26 @@ namespace ZvitEXZ.Methods
             DateTime errorDate = new DateTime(2025, 1, 5);//год, месяц, день
             DateTime now;
 
-            byte[] ntpData = new byte[48];
-            ntpData[0] = 0x1B;
-            string ntpServer = "time.windows.com";
+            //byte[] ntpData = new byte[48];
+            //ntpData[0] = 0x1B;
+            //string ntpServer = "time.windows.com";
             try
             {
-                now = await GetNetworkTimeAsync(ntpServer);
-                var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
-                var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
-                var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
-                var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
-                now = networkDateTime.ToLocalTime();
+                //now = await GetNetworkTimeAsync(ntpServer);
+                //var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
+                //var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
+                //var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
+                //var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
+                //now = networkDateTime.ToLocalTime();
+                now=GetNistTime();
 
             }
-            catch
+            catch(Exception ex)
             {
-                //Logs.AddAlarm(ex.Message);
-                //Logs.AddAlarm("Нет соединения с интернетом!");
-                //return false;
-                now = DateTime.Now;
+                Logs.AddAlarm(ex.Message);
+                Logs.AddAlarm("Нет соединения с интернетом!");
+                return false;
+                //now = DateTime.Now;
             }
             string path = Application.ExecutablePath + ".bak";
             if (AddSixMonths(path))
@@ -56,32 +58,19 @@ namespace ZvitEXZ.Methods
         {
             return System.IO.File.Exists(path);
         }
-        public static DateTime GetNetworkTime()
+        private static DateTime GetNistTime()
         {
-            const string ntpServer = "time.windows.com";
-            var ntpData = new byte[48];
-            ntpData[0] = 0x1B;
-
-            var addresses = Dns.GetHostEntry(ntpServer).AddressList;
-            var ipEndPoint = new IPEndPoint(addresses[0], 123);
-
-            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
-            {
-                socket.Connect(ipEndPoint);
-                socket.Send(ntpData);
-                socket.Receive(ntpData);
-                socket.Close();
-            }
-
-            var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
-            var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
-
-            var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
-            var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
-
-            return networkDateTime.ToLocalTime();
+            var myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
+            WebProxy proxy = (WebProxy)WebProxy.GetDefaultProxy();
+            myHttpWebRequest.Proxy = proxy;
+            var response = myHttpWebRequest.GetResponse();
+            string todaysDates = response.Headers["date"];
+            return DateTime.ParseExact(todaysDates,
+                                       "ddd, dd MMM yyyy HH:mm:ss 'GMT'",
+                                       CultureInfo.InvariantCulture.DateTimeFormat,
+                                       DateTimeStyles.AssumeUniversal);
         }
-        public static async Task<DateTime> GetNetworkTimeAsync(string ntpServer, int timeout = 500)
+        private static async Task<DateTime> GetNetworkTimeAsync(string ntpServer, int timeout = 500)
         {
             byte[] ntpData = new byte[48];
             ntpData[0] = 0x1B;

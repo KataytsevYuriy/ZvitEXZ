@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnOpen = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.rTBLogs = new System.Windows.Forms.RichTextBox();
@@ -55,13 +56,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cbMaxPotencial = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tbKmStart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbMaxPotencial = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -398,6 +399,31 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             // 
+            // cbMaxPotencial
+            // 
+            this.cbMaxPotencial.AllowDrop = true;
+            this.cbMaxPotencial.BackColor = System.Drawing.SystemColors.Control;
+            this.cbMaxPotencial.FormattingEnabled = true;
+            this.cbMaxPotencial.Items.AddRange(new object[] {
+            "0.3",
+            "0.5",
+            "1",
+            "3",
+            "5"});
+            this.cbMaxPotencial.Location = new System.Drawing.Point(281, 93);
+            this.cbMaxPotencial.Name = "cbMaxPotencial";
+            this.cbMaxPotencial.Size = new System.Drawing.Size(76, 26);
+            this.cbMaxPotencial.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(267, 18);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Максимальное значение потенциала";
+            // 
             // tbKmStart
             // 
             this.tbKmStart.BackColor = System.Drawing.SystemColors.Control;
@@ -450,32 +476,8 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(267, 18);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Максимальное значение потенциала";
-            // 
-            // cbMaxPotencial
-            // 
-            this.cbMaxPotencial.AllowDrop = true;
-            this.cbMaxPotencial.BackColor = System.Drawing.SystemColors.Control;
-            this.cbMaxPotencial.FormattingEnabled = true;
-            this.cbMaxPotencial.Items.AddRange(new object[] {
-            "0.3",
-            "0.5",
-            "1",
-            "3",
-            "5"});
-            this.cbMaxPotencial.Location = new System.Drawing.Point(281, 93);
-            this.cbMaxPotencial.Name = "cbMaxPotencial";
-            this.cbMaxPotencial.Size = new System.Drawing.Size(76, 26);
-            this.cbMaxPotencial.TabIndex = 5;
             // 
             // Form1
             // 
@@ -489,8 +491,9 @@
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.rTBLogs);
             this.Controls.Add(this.btnOpen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Zvit EXZ v1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

@@ -41,17 +41,17 @@ namespace ZvitEXZ.Methods.File
         public void SaveZvedena(List<Zamer> zamers, List<KorNebezpechny> korNebezpechnies, List<Povregdenya> povregdenyas)
         {
             writeToFile.WriteFile(_fileName, ProjectConstants.ZvedenaFolderName, _pipeName, converter.ConvertZvedena(zamers, korNebezpechnies, povregdenyas),
-                "A", "L", "L", ProjectConstants.PrintMessageNezahIsEmpty, 4);
+                "A", "L", "L", "", 4);
         }
         public void SaveUKZ(List<Zamer> data)
         {
             writeToFile.WriteFile(_fileName, ProjectConstants.UkzFolderName, _pipeName, converter.ConvertUKZ(data),
-                "A", "Y", "Y", ProjectConstants.PrintMessageNezahIsEmpty, 5);
+                "A", "Y", "Y", ProjectConstants.PrintMessageUkzIsEmpty, 5);
         }
         public void SavePovregd(List<Povregdenya> povregdenya)
         {
             writeToFile.WriteFile(_fileName, ProjectConstants.PovregdFolderName, _pipeName, converter.ConvertPovregd(povregdenya),
-               "A", "J", "J", ProjectConstants.PrintMessageNezahIsEmpty, 6);
+               "A", "J", "J", ProjectConstants.PrintMessagepovregdIsEmpty, 6);
         }
         public void SaveUPZ(List<UPZ> uPZs)
         {
