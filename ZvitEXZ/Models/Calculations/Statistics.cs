@@ -35,6 +35,7 @@ namespace ZvitEXZ.Models.Calculations
         public string WorkPressure { get; set; }
         public string Temperuture { get; set; }
         public string Rechovyna { get; set; }
+        public string ZvitNumber { get; set; }
         public string IsolationKlass { get; set; }
         public string IsolationConstruction { get; set; }
         public string DnToDn { get; set; } //переход диаметров
@@ -113,6 +114,7 @@ namespace ZvitEXZ.Models.Calculations
             WorkPressure = dictionary.WorkPressure;
             Temperuture = dictionary.Temperuture;
             Rechovyna = dictionary.Rechovyna;
+            ZvitNumber = dictionary.ZvitNumber;
             IsolationKlass = dictionary.IsolationKlass;
             IsolationConstruction = dictionary.IsolationConstruction;
             DnToDn = dictionary.DnToDn;

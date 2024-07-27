@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Calculations;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace ZvitEXZ.Methods.File
 {
@@ -60,8 +61,15 @@ namespace ZvitEXZ.Methods.File
                             ref o, ref o, ref o, ref o, ref o,
                             ref replaceAll, ref o, ref o, ref o, ref o);
                     }
-                //app.Selection.Find.Execute("<74 55>");
+                //app.Selection.Find.Execute($"[<]101 [>]*[<]102 [>]");
                 //Microsoft.Office.Interop.Word.Range wordRange = app.Selection.Range;
+                //if (wordRange.Tables.Count > 0)
+                //{
+                //    Table table = wordRange.Tables[1];
+                //    int c = table.Rows.Count;
+                //    table.Rows.Add(table.Rows[2]);
+                //    table.Cell(2, 2).Range.Text = "16";
+                //}
 
                 //var wordTable = doc.Tables.Add(wordRange,
                 //   5, 4);

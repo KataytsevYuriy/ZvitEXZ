@@ -34,6 +34,7 @@ namespace ZvitEXZ.Models
         public string Temperuture { get; set; }
         public string Rechovyna { get; set; }
         public string IsolationKlass { get; set; }
+        public string ZvitNumber { get; set; }
         public string IsolationConstruction { get; set; }
         public string DnToDn { get; set; } //переход диаметров
         public string Remonty { get; set; }
@@ -165,6 +166,11 @@ namespace ZvitEXZ.Models
             else
             {
                 IsolationKlass = data[24].ToString();
+            }
+            if (data[25] == null) { ZvitNumber = ""; }
+            else
+            {
+                ZvitNumber = data[25].ToString();
             }
             if (data[26] == null) { IsolationConstruction = ""; }
             else

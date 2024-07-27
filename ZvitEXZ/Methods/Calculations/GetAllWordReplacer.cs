@@ -47,7 +47,7 @@ namespace ZvitEXZ.Methods.Calculations
             wordReplaces.Add(new WordReplace("32", statistics.DnToDn));
             wordReplaces.Add(new WordReplace("33", statistics.Remonty));
             wordReplaces.Add(new WordReplace("34", statistics.PoperObstegennya));
-            wordReplaces.Add(new WordReplace("35", statistics.Shyfr.Replace("ПЗ","КК")));
+            wordReplaces.Add(new WordReplace("35", statistics.Shyfr.Replace("ПЗ", "КК")));
             wordReplaces.Add(new WordReplace("36", statistics.Shyfr.Replace("КК", "ПЗ").Replace("KK", "ПЗ")));
             wordReplaces.Add(new WordReplace("37", DoubleToString(statistics.KmFakt)));
             wordReplaces.Add(new WordReplace("38", statistics.DylyankaName.ToUpper()));
@@ -91,6 +91,8 @@ namespace ZvitEXZ.Methods.Calculations
                 shurves += $"км {DoubleToString(shurf.Km)} (акт № {shurf.AktNumber}), ";
             }
             wordReplaces.Add(new WordReplace("73", shurves));
+            if (!string.IsNullOrEmpty(statistics.ZvitNumber))
+                wordReplaces.Add(new WordReplace("74", $"#{statistics.ZvitNumber}"));
 
             return wordReplaces;
         }
