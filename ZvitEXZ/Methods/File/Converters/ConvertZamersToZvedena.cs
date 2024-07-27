@@ -75,7 +75,8 @@ namespace ZvitEXZ.Methods.File.Converters
                 //res[i, 8] = item.Rhr == null ? "" : item.Rhr.ToString().Replace(".", ",");
                 res[i, 9] = item.GpsN;
                 res[i, 10] = item.GpsE;
-                res[i, 11] = item.Note;
+                string ph = item.Ph != null ? $" Ph={ConvertToString.DoubleToString(item.Ph, 1)}" : "";
+                res[i, 11] = item.Note + ph;
                 i++;
             }
             return res;

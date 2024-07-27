@@ -35,7 +35,7 @@ namespace ZvitEXZ.Models.Objects
                 case MestnostType.LesSPros: return ProjectConstants.MestnostLesSPros;
                 case MestnostType.Lug: return ProjectConstants.MestnostLug;
                 case MestnostType.Zarosly: return ProjectConstants.MestnostZarosly;
-                case MestnostType.ZabolHrunt: return ProjectConstants.MestnostPustyr;
+                case MestnostType.ZabolHrunt: return ProjectConstants.MestnostZabolHrunt;
                 case MestnostType.Sad: return ProjectConstants.MestnostSad;
                 default: return "";
             }

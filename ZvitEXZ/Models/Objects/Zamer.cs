@@ -24,6 +24,7 @@ namespace ZvitEXZ.Models.Objects
         public string Name { get; set; }
         public string Note { get; set; }
         public int NumberSvyazky { get; set; }
+        public double? Ph { get; set; }
         public string ErrorMessageStart { get; set; }
         public bool IsOrientir { get; set; }
         public Zamer(object[] data)
@@ -91,6 +92,19 @@ namespace ZvitEXZ.Models.Objects
             catch
             {
                 Hlub = null;
+            }
+            if (data[305] == null) { Ph = null; }
+            else
+            {
+                try
+                {
+                    Ph = ParseData.DoubleNullable(data[305]);
+                }
+                catch
+                {
+                    Ph = null;
+                    Logs.AddError($"км {ConvertToString.DoubleToString(Km)} введено неверное значение Ph");
+                }
             }
             Mestnost = ParseData.Mestnost(data[13]);
             if (Mestnost == MestnostType.BalkaStart || Mestnost == MestnostType.BalkaEnd) { Balka = Mestnost; }
