@@ -14,17 +14,20 @@ namespace ZvitEXZ.Methods.Calculations
     {
         public void AddNames(ref AcadDoc acadDoc, ExcelDictionary excelDictionary, double kmStart, double kmEnd)
         {
+            double correctionX = 0;
+            if (AcadConstants.LenthXByDocDefault != AcadConstants.LenthXByDoc)
+                correctionX = AcadConstants.LenthXByDoc - AcadConstants.LenthXByDocDefault;
             acadDoc.DrawingSteps.Add(new DrawLayer(AcadConstants.LayerText));
             if (!string.IsNullOrEmpty(excelDictionary.Shyfr))
-                acadDoc.DrawingSteps.Add(new DrawingText(excelDictionary.Shyfr, AcadConstants.NameShifrX, AcadConstants.NameShifrY, AcadConstants.NameTexySyze));
+                acadDoc.DrawingSteps.Add(new DrawingText(excelDictionary.Shyfr, AcadConstants.NameShifrX + correctionX, AcadConstants.NameShifrY, AcadConstants.NameTexySyze));
 
             if (!string.IsNullOrEmpty(excelDictionary.ShortType))
             {
                 string namePipe = excelDictionary.ShortType[0].ToString().ToUpper() + excelDictionary.ShortType.Substring(1) + " " + excelDictionary.Name;
-                acadDoc.DrawingSteps.Add(new DrawingText(namePipe, AcadConstants.NameShifrX, AcadConstants.NamePipeNameY, AcadConstants.NameTexySyze));
+                acadDoc.DrawingSteps.Add(new DrawingText(namePipe, AcadConstants.NameShifrX + correctionX, AcadConstants.NamePipeNameY, AcadConstants.NameTexySyze));
             }
             string km = $"км {ConvertToString.DoubleToString(kmStart, 3, true)} - км {ConvertToString.DoubleToString(kmEnd, 3, true)}";
-            acadDoc.DrawingSteps.Add(new DrawingText(km, AcadConstants.NameShifrX, AcadConstants.NameKmY, AcadConstants.NameTexySyze));
+            acadDoc.DrawingSteps.Add(new DrawingText(km, AcadConstants.NameShifrX + correctionX, AcadConstants.NameKmY, AcadConstants.NameTexySyze));
             if (!string.IsNullOrEmpty(excelDictionary.PipesData))
                 acadDoc.DrawingSteps.Add(new DrawingText(excelDictionary.PipesData, AcadConstants.NamePipesDataX, AcadConstants.NamePipesDataY, AcadConstants.NameTexySyze));
         }
