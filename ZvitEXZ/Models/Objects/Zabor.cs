@@ -1,48 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
-using ZvitEXZ.Methods;
 using System.Threading.Tasks;
+using ZvitEXZ.Methods;
 
 namespace ZvitEXZ.Models.Objects
 {
-    internal class ObjectZamer : Zamer
+    internal class Zabor : Zamer
     {
         public string ObjectName { get; set; }
-        public double? Uobject { get; set; }
-        public ObjectZamer(object[] data) : base(data)
-        {
-            Name = ProjectConstants.ObjectName;
 
+        public Zabor(object[] data) : base(data)
+        {
+            Name = ProjectConstants.ZaborName;
             if (data[221] == null)
             {
                 ObjectName = "";
-                Logs.AddError($"км {data[1]} укажите название объекта");
             }
             else
             {
                 ObjectName = data[221].ToString();
             }
-
-            try
-            {
-                Uobject = ParseData.DoubleNullable(data[76]);
-            }
-            catch
-            {
-                Uobject = null;
-                Logs.AddError($"км {data[1]} Неверный потенциал объекта");
-            }
-            IsOrientir=true;
+            IsOrientir = true;
         }
         public override string ToString()
         {
-            return String.IsNullOrEmpty(ObjectName) ? Name : ObjectName;
+            string objName = string.IsNullOrEmpty(ObjectName) ? "" : " " + ObjectName;
+            return $"{Name}{objName}";
         }
         public override string GetCadType()
         {
-            return AcadConstants.ObjObjecstZamer;
+            return AcadConstants.ObjZabor;
         }
         public override string GetCadSignature()
         {

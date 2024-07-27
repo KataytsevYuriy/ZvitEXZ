@@ -209,6 +209,7 @@
     <Compile Include="Models\Calculations\WordReplace.cs" />
     <Compile Include="Models\Objects\Ctolb.cs" />
     <Compile Include="Models\Objects\Ustanovyte.cs" />
+    <Compile Include="Models\Objects\Zabor.cs" />
     <Compile Include="Models\ProjectConstants.cs" />
     <Compile Include="Models\ExcelDictionary.cs" />
     <Compile Include="Models\Objects\AtestationVumiruKozhuh.cs" />

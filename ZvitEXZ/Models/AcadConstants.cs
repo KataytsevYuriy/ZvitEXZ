@@ -161,6 +161,8 @@ namespace ZvitEXZ.Models
         public const string ObjUstanovytUdz = "Установить УДЗ";
         public const string ObjUstanovytSvecha = "Установить_Свечу";
         public const string ObjUstanovytKozhuh = "Установить кожух";
+        public const string ObjZabor = "Забор";
+        public const string ObjObjecstZamer = "Объект";
         //Установить_столб_указательный
 
         //Mestnost

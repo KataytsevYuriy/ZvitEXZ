@@ -46,6 +46,7 @@ namespace ZvitEXZ.Methods
                 case ProjectConstants.UPZNInNaborka:return new UPZ(data);
                 case ProjectConstants.NeobstegenaDylyankaNInNaborka:return new NeObstegenaDylyanka(data);
                 case ProjectConstants.UstanovytNameInNaborka:return new Ustanovyte(data);
+                case ProjectConstants.ZaborNameInNaborka:return new Zabor(data);
 
 
                 default:

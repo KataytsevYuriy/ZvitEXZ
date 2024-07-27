@@ -26,6 +26,7 @@ namespace ZvitEXZ.Methods
                 catch (Exception ex)
                 {
                     Logs.AddError($"{ex.Message} Объект не создан");
+                    break;
                 }
             }
             return result;
