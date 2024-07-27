@@ -39,10 +39,10 @@ namespace ZvitEXZ
             kmPerDrawing = AcadConstants.AdocDefaultLenthKm;
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             bool allowed = false;
-            allowed = await IsAllowed.Check();
+            allowed = IsAllowed.Check();
             btnCalculate.Enabled = false;
             openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
@@ -310,6 +310,18 @@ namespace ZvitEXZ
             {
                 tbKmStart.Text = tbKmStart.Text.Remove(tbKmStart.Text.Length - 1);
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSavePass_Click(object sender, EventArgs e)
+        {
+            Reg reg = new Reg();
+            bool write = reg.WriteData(tbLogin.Text, tbPassword.Text);
+            if (write) Logs.AddLog("Данные успешно сохранены");
         }
     }
 }

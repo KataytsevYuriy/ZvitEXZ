@@ -63,9 +63,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Internet_Settings = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbLogin = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnSavePass = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.Internet_Settings.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOpen
@@ -346,6 +356,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.Internet_Settings);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(141, 12);
             this.tabControl1.Name = "tabControl1";
@@ -479,6 +490,97 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // Internet_Settings
+            // 
+            this.Internet_Settings.BackColor = System.Drawing.SystemColors.Control;
+            this.Internet_Settings.Controls.Add(this.label8);
+            this.Internet_Settings.Controls.Add(this.btnSavePass);
+            this.Internet_Settings.Controls.Add(this.tbPassword);
+            this.Internet_Settings.Controls.Add(this.label7);
+            this.Internet_Settings.Controls.Add(this.tbLogin);
+            this.Internet_Settings.Controls.Add(this.label6);
+            this.Internet_Settings.Controls.Add(this.label5);
+            this.Internet_Settings.Controls.Add(this.label4);
+            this.Internet_Settings.Location = new System.Drawing.Point(4, 27);
+            this.Internet_Settings.Name = "Internet_Settings";
+            this.Internet_Settings.Size = new System.Drawing.Size(430, 459);
+            this.Internet_Settings.TabIndex = 2;
+            this.Internet_Settings.Text = "Internet Settings";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(338, 18);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Если вы используете Proxy с аутентификацией";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(337, 18);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "введите логин и пароль (для входа в Windows)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 18);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "логин";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // tbLogin
+            // 
+            this.tbLogin.BackColor = System.Drawing.SystemColors.Control;
+            this.tbLogin.Location = new System.Drawing.Point(90, 58);
+            this.tbLogin.Name = "tbLogin";
+            this.tbLogin.Size = new System.Drawing.Size(110, 24);
+            this.tbLogin.TabIndex = 6;
+            this.tbLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.tbPassword.Location = new System.Drawing.Point(90, 101);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(110, 24);
+            this.tbPassword.TabIndex = 8;
+            this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 104);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 18);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "пароль";
+            // 
+            // btnSavePass
+            // 
+            this.btnSavePass.Location = new System.Drawing.Point(90, 142);
+            this.btnSavePass.Name = "btnSavePass";
+            this.btnSavePass.Size = new System.Drawing.Size(110, 23);
+            this.btnSavePass.TabIndex = 12;
+            this.btnSavePass.Text = "Сохранить";
+            this.btnSavePass.UseVisualStyleBackColor = true;
+            this.btnSavePass.Click += new System.EventHandler(this.btnSavePass_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 181);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(418, 18);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "*если хотите удалить данные - сохраните пустые значения";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,6 +602,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.Internet_Settings.ResumeLayout(false);
+            this.Internet_Settings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,6 +645,15 @@
         internal System.Windows.Forms.TextBox tbKmStart;
         private System.Windows.Forms.ComboBox cbMaxPotencial;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage Internet_Settings;
+        private System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.TextBox tbLogin;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnSavePass;
+        internal System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Label label7;
     }
 }
 

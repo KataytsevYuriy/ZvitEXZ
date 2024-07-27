@@ -19,7 +19,7 @@ namespace ZvitEXZ.Methods
 {
     internal class IsAllowed
     {
-        public static async Task<bool> Check()
+        public static bool Check()
         {
             DateTime errorDate = new DateTime(2025, 1, 5);//год, месяц, день
             DateTime now;
@@ -27,6 +27,10 @@ namespace ZvitEXZ.Methods
             //byte[] ntpData = new byte[48];
             //ntpData[0] = 0x1B;
             //string ntpServer = "time.windows.com";
+            //Reg reg = new Reg();
+            ////bool write = reg.WriteData("test", "testPass");
+            //bool write = reg.WriteData("", "");
+            //bool read = reg.ReadData(out string userName, out string userPassword);
             try
             {
                 //now = await GetNetworkTimeAsync(ntpServer);
@@ -35,10 +39,10 @@ namespace ZvitEXZ.Methods
                 //var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
                 //var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
                 //now = networkDateTime.ToLocalTime();
-                now=GetNistTime();
+                now = GetNistTime();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logs.AddAlarm(ex.Message);
                 Logs.AddAlarm("Нет соединения с интернетом!");
@@ -62,6 +66,16 @@ namespace ZvitEXZ.Methods
         {
             var myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
             WebProxy proxy = (WebProxy)WebProxy.GetDefaultProxy();
+            //WebProxy proxy = System.Net.WebProxy.GetDefaultProxy();
+            if (proxy.Address != null)
+            {
+                Reg reg = new Reg();
+                bool readSuccessful = reg.ReadData(out string userName, out string userPassword);
+                if (readSuccessful && !string.IsNullOrEmpty(userName))
+                {
+                    proxy.Credentials = new NetworkCredential(userName, userPassword);
+                }
+            }
             myHttpWebRequest.Proxy = proxy;
             var response = myHttpWebRequest.GetResponse();
             string todaysDates = response.Headers["date"];
@@ -70,24 +84,24 @@ namespace ZvitEXZ.Methods
                                        CultureInfo.InvariantCulture.DateTimeFormat,
                                        DateTimeStyles.AssumeUniversal);
         }
-        private static async Task<DateTime> GetNetworkTimeAsync(string ntpServer, int timeout = 500)
-        {
-            byte[] ntpData = new byte[48];
-            ntpData[0] = 0x1B;
-            using (UdpClient client = new UdpClient(ntpServer, 123))
-            {
-                Task<UdpReceiveResult> receiveTask = client.ReceiveAsync(); // начинаем ждать ответа
-                await client.SendAsync(ntpData, ntpData.Length); // и только потом отправляем запрос
-                if (receiveTask == await Task.WhenAny(receiveTask, Task.Delay(timeout)))
-                    ntpData = receiveTask.Result.Buffer;
-                else
-                    throw new TimeoutException("Timeout occured while waiting for NTP server response");
-            }
-            var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
-            var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
-            var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
-            var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
-            return networkDateTime.ToLocalTime();
-        }
+        //private static async Task<DateTime> GetNetworkTimeAsync(string ntpServer, int timeout = 500)
+        //{
+        //    byte[] ntpData = new byte[48];
+        //    ntpData[0] = 0x1B;
+        //    using (UdpClient client = new UdpClient(ntpServer, 123))
+        //    {
+        //        Task<UdpReceiveResult> receiveTask = client.ReceiveAsync(); // начинаем ждать ответа
+        //        await client.SendAsync(ntpData, ntpData.Length); // и только потом отправляем запрос
+        //        if (receiveTask == await Task.WhenAny(receiveTask, Task.Delay(timeout)))
+        //            ntpData = receiveTask.Result.Buffer;
+        //        else
+        //            throw new TimeoutException("Timeout occured while waiting for NTP server response");
+        //    }
+        //    var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
+        //    var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
+        //    var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
+        //    var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
+        //    return networkDateTime.ToLocalTime();
+        //}
     }
 }

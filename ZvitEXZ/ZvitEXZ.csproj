@@ -178,6 +178,7 @@
     <Compile Include="Methods\PipeName.cs" />
     <Compile Include="Methods\Progress.cs" />
     <Compile Include="Methods\ReadExcelFile.cs" />
+    <Compile Include="Methods\Reg.cs" />
     <Compile Include="Methods\SetMestnost.cs" />
     <Compile Include="Methods\File\WriteEcxelFile.cs" />
     <Compile Include="Methods\ConvertToString.cs" />
