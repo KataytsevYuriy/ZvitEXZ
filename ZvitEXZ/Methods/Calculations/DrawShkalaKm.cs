@@ -14,7 +14,7 @@ namespace ZvitEXZ.Methods.Calculations
         {
             CalculateCoordinateX X = new CalculateCoordinateX(documentKmStart, kmPerDrawing);
             double km = documentKmStart;
-            double scale = AcadConstants.AdocDefaultLenthKm / kmPerDrawing;
+            double scale = AcadConstants.AdocDefaultLenthKm * AcadConstants.LenthXByDoc / (kmPerDrawing * AcadConstants.LenthXByDocDefault);
             while (km <= documentKmStart + kmPerDrawing)
             {
                 if (km < documentKmStart + kmPerDrawing)
@@ -22,6 +22,8 @@ namespace ZvitEXZ.Methods.Calculations
                 if (km % AcadConstants.ShkalaKmDigitStep == 0)
                     acadDoc.DrawingSteps.Add(new DrawingText(ConvertToString.DoubleToString(km, 1), X.Calkulate(km) + AcadConstants.ShkalaKmDigitSdvigX,
                         AcadConstants.ShkalaKmDigitStartY, AcadConstants.ShkalaKmDigitSize));
+                if (km != documentKmStart && km != documentKmStart + kmPerDrawing)
+                    acadDoc.DrawingSteps.Add(new DrawBlock(AcadConstants.LineDotsName, X.Calkulate(km), AcadConstants.LineDotsY));
                 km = Math.Round(km + AcadConstants.ShkalaKmStep, 1);
             }
         }

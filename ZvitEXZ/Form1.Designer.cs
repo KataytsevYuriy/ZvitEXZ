@@ -63,6 +63,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.tbDrawingWidth = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -385,6 +387,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.tbDrawingWidth);
+            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.cbMaxPotencial);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.tbKmStart);
@@ -410,7 +414,7 @@
             "1",
             "3",
             "5"});
-            this.cbMaxPotencial.Location = new System.Drawing.Point(281, 93);
+            this.cbMaxPotencial.Location = new System.Drawing.Point(339, 93);
             this.cbMaxPotencial.Name = "cbMaxPotencial";
             this.cbMaxPotencial.Size = new System.Drawing.Size(76, 26);
             this.cbMaxPotencial.TabIndex = 5;
@@ -427,9 +431,9 @@
             // tbKmStart
             // 
             this.tbKmStart.BackColor = System.Drawing.SystemColors.Control;
-            this.tbKmStart.Location = new System.Drawing.Point(266, 59);
+            this.tbKmStart.Location = new System.Drawing.Point(339, 59);
             this.tbKmStart.Name = "tbKmStart";
-            this.tbKmStart.Size = new System.Drawing.Size(68, 24);
+            this.tbKmStart.Size = new System.Drawing.Size(76, 24);
             this.tbKmStart.TabIndex = 3;
             this.tbKmStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbKmStart.TextChanged += new System.EventHandler(this.tbKmStart_TextChanged);
@@ -463,7 +467,7 @@
             "1",
             "3",
             "5"});
-            this.cbCadKmperDrawing.Location = new System.Drawing.Point(290, 16);
+            this.cbCadKmperDrawing.Location = new System.Drawing.Point(339, 16);
             this.cbCadKmperDrawing.Name = "cbCadKmperDrawing";
             this.cbCadKmperDrawing.Size = new System.Drawing.Size(76, 26);
             this.cbCadKmperDrawing.TabIndex = 0;
@@ -478,6 +482,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // tbDrawingWidth
+            // 
+            this.tbDrawingWidth.BackColor = System.Drawing.SystemColors.Control;
+            this.tbDrawingWidth.Location = new System.Drawing.Point(339, 126);
+            this.tbDrawingWidth.Name = "tbDrawingWidth";
+            this.tbDrawingWidth.Size = new System.Drawing.Size(76, 24);
+            this.tbDrawingWidth.TabIndex = 7;
+            this.tbDrawingWidth.Text = "300";
+            this.tbDrawingWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 132);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(187, 18);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Ширина графика в точках";
             // 
             // Form1
             // 
@@ -541,6 +564,8 @@
         internal System.Windows.Forms.TextBox tbKmStart;
         private System.Windows.Forms.ComboBox cbMaxPotencial;
         private System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.TextBox tbDrawingWidth;
+        private System.Windows.Forms.Label label4;
     }
 }
 

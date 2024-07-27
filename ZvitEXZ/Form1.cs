@@ -66,6 +66,7 @@ namespace ZvitEXZ
                 Logs.AddAlarm("Файл не прочтен");
                 Logs.AddError("\"Я там не ходив...\"");
             }
+            tabControl1.SelectedIndex = 0;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -85,6 +86,26 @@ namespace ZvitEXZ
             btnOpen.Enabled = false;
             Models.Calculations.Checked chekeD = new Models.Calculations.Checked(this);
             bool onlyOneDrawing = false;
+            if (cbProtokol.Checked)
+                if (string.IsNullOrEmpty(tbDrawingWidth.Text))
+                {
+                    Logs.AddError("Неверно введено значение длинны графика автокада");
+                    btnCalculate.Enabled = true;
+                    btnOpen.Enabled = true;
+                    return;
+                }
+                else
+                {
+                    bool parseWidth = double.TryParse(tbDrawingWidth.Text, out double acadWidth);
+                    if (!parseWidth)
+                    {
+                        Logs.AddError("Неверно введено значение длинны графика автокада");
+                        btnCalculate.Enabled = true;
+                        btnOpen.Enabled = true;
+                        return;
+                    }
+                    AcadConstants.LenthXByDoc = acadWidth;
+                }
             if (!string.IsNullOrEmpty(tbKmStart.Text))
             {
                 try

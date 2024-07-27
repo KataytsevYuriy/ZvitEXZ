@@ -10,6 +10,7 @@ namespace ZvitEXZ.Models
     {
         public static double? KmStart = null;
         public static double LenthXByDoc = 300;
+        public static double LenthXByDocDefault = 300;
         public static double AdocDefaultLenthKm = 3;
         public static double AcadMaxDrawingStep = 0.011;
 
@@ -86,6 +87,8 @@ namespace ZvitEXZ.Models
         public static double ShkalaKmDigitSdvigX = -3;
         public static double ShkalaKmStep = 0.1;
         public static string ShkalaKmBlockName = "shkalaKm";
+        public static string LineDotsName = "dots";
+        public static double LineDotsY = 222;
 
 
 
