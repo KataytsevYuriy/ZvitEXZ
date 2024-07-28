@@ -70,9 +70,7 @@ namespace ZvitEXZ.Methods.File.Converters
                 res[i, 5] = IsPovregdenya(item.Km);
                 res[i, 6] = IsKornenebezpechny(item.Km);
                 res[i, 7] = ConvertToString.DoubleToString(item.Hlub, 2);
-                //res[i, 7] = item.Hlub == null ? "" : item.Hlub.ToString().Replace(".", ",");
                 res[i, 8] = ConvertToString.DoubleToString(item.Rhr, 0);
-                //res[i, 8] = item.Rhr == null ? "" : item.Rhr.ToString().Replace(".", ",");
                 res[i, 9] = item.GpsN;
                 res[i, 10] = item.GpsE;
                 string ph = item.Ph != null ? $" Ph={ConvertToString.DoubleToString(item.Ph, 1)}" : "";

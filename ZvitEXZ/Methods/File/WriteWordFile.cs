@@ -48,9 +48,25 @@ namespace ZvitEXZ.Methods.File
                 doc = docs.Open(fileName, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o, ref o);
                 doc.Activate();
 
+                //                                      Найти и заполнить таблицу
+                //try
+                //{
+                //    string markStart = $"[<]101 [>]";
+                //    string markEnd = $"[<]102 [>]";
+                //    string[,] data = { { "1", "2", "3" }, { "11", "22", "33" } };
+                //    CompliteTable(ref app, markStart, markEnd, data);
+                //}
+                //catch
+                //{
+                //    Logs.AddError("Таблица (название) не построена");
+                //}
+                //                                  Удалить взаписке markStart и markEnd
+
+      
                 if (wordReplaces.Count > 0)
                     foreach (WordReplace wordReplace in wordReplaces)
                     {
+
                         Find findObject = app.Selection.Find;
                         findObject.ClearFormatting();
                         findObject.Text = $"[<]{wordReplace.Source} *[>]";
@@ -61,26 +77,7 @@ namespace ZvitEXZ.Methods.File
                             ref o, ref o, ref o, ref o, ref o,
                             ref replaceAll, ref o, ref o, ref o, ref o);
                     }
-                //app.Selection.Find.Execute($"[<]101 [>]*[<]102 [>]");
-                //Microsoft.Office.Interop.Word.Range wordRange = app.Selection.Range;
-                //if (wordRange.Tables.Count > 0)
-                //{
-                //    Table table = wordRange.Tables[1];
-                //    int c = table.Rows.Count;
-                //    table.Rows.Add(table.Rows[2]);
-                //    table.Cell(2, 2).Range.Text = "16";
-                //}
 
-                //var wordTable = doc.Tables.Add(wordRange,
-                //   5, 4);
-
-                //for (var j = 0; j < 5; j++)
-                //{
-                //    for (var k = 0; k < 4; k++)
-                //    {
-                //        wordTable.Cell(j + 1, k + 1).Range.Text = $"{j}-{k}";
-                //    }
-                //}
 
                 try
                 {
@@ -97,6 +94,28 @@ namespace ZvitEXZ.Methods.File
                 app.Quit();
             }
         }
+        private void CompliteTable(ref Application app, string markStart, string markEnd, string[,] data)
+        {
+            int rowCount = data.GetLength(0);
+            int colCount = data.GetLength(1);
+            app.Selection.Find.Execute($"{markStart}*{markEnd}");
+            Microsoft.Office.Interop.Word.Range wordRange = app.Selection.Range;
+            if (wordRange.Tables.Count > 0)
+            {
+                Table table = wordRange.Tables[1];
+                for (int i = 1; i < rowCount; i++)
+                {
+                    table.Rows.Add(table.Rows[2]);
+                }
+                for (int r = 1; r <= rowCount; r++)
+                {
+                    for (int c = 1; c <= colCount; c++)
+                    {
+                        table.Cell(r, c).Range.Text = data[r - 1, c - 1];
+                    }
 
+                }
+            }
+        }
     }
 }
