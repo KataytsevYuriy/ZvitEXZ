@@ -56,7 +56,7 @@ namespace ZvitEXZ.Methods.Calculations
         public AcadDrawing Calculate(double kmstart, bool onlyOneDrawing, double kmPerDrawing = 0, bool drawAllDocs = true)
         {
             DrawPotencial potencailDrawer = new DrawPotencial();
-            double kmStart = Math.Round(kmstart, 3);
+            double kmStart = Math.Round(kmstart, 0);
             if (kmPerDrawing == 0)
                 kmPerDrawing = AcadConstants.AdocDefaultLenthKm;
             this.lenthByKm = AcadConstants.LenthXByDoc / kmPerDrawing;
@@ -79,8 +79,14 @@ namespace ZvitEXZ.Methods.Calculations
                 List<AcadZamer> acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Utz == null ? null : -el.Utz)).ToList();
                 CalculateCoordinateY Y = new CalculateCoordinateY(UtzSettings);
                 potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerUtz);
+                TrimPotencial trimPotencial = new TrimPotencial();                  //trim Utz
+                acadZamers = trimPotencial.Trim(acadZamers, AcadConstants.UtzMax, out List<AcadZamer> trimmedUtz);
                 potencailDrawer.AddPotencial(ref acadDoc, acadZamers, X, Y);        // Draw Utz
                 potencailDrawer.AddShkala(ref acadDoc, UtzSettings);
+                foreach (AcadZamer acadZamer in trimmedUtz)
+                {
+                    acadDoc.DrawingSteps.Add(new DrawingText(Math.Round((double)acadZamer.Value).ToString(), X.Calkulate(acadZamer.Km), AcadConstants.UtzTrimmedY, 2.2));
+                }
                 potencailDrawer.AddLineMinZah(ref acadDoc, Y);
                 acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Upol == null ? null : -el.Upol)).ToList();
                 potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerUpol);
@@ -88,13 +94,12 @@ namespace ZvitEXZ.Methods.Calculations
                 //potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerUpolLine);
                 potencailDrawer.AddLineMinZah(ref acadDoc, Y, -0.85, AcadConstants.LayerUpolLine);
                 acadZamers = docZamers.Select(el => new AcadZamer(el.Km, el.Ugrad == null ? null : el.Ugrad * 1000)).ToList();                //Draw gradient
-                TrimGradient trimGradient = new TrimGradient();
-                acadZamers = trimGradient.Trim(acadZamers, out List<AcadZamer> trimmed);
+                acadZamers = trimPotencial.Trim(acadZamers, AcadConstants.UgradMax, out List<AcadZamer> trimmedUgrad);
                 Y = new CalculateCoordinateY(UgradSettings);
                 potencailDrawer.SelectLayer(ref acadDoc, AcadConstants.LayerGrad);
                 potencailDrawer.AddPotencial(ref acadDoc, acadZamers, X, Y);
                 potencailDrawer.AddShkala(ref acadDoc, UgradSettings);
-                foreach (AcadZamer acadZamer in trimmed)
+                foreach (AcadZamer acadZamer in trimmedUgrad)
                 {
                     acadDoc.DrawingSteps.Add(new DrawingText(Math.Round((double)acadZamer.Value).ToString(), X.Calkulate(acadZamer.Km), AcadConstants.UgradTrimmedY, 2.2));
                 }

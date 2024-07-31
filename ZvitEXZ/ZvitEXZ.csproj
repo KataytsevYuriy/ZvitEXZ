@@ -145,7 +145,7 @@
     <Compile Include="Methods\Calculations\GetAllKorNeb.cs" />
     <Compile Include="Methods\Calculations\GetAllNezahyst.cs" />
     <Compile Include="Methods\Calculations\GetListUGrad.cs" />
-    <Compile Include="Methods\Calculations\TrimGradient.cs" />
+    <Compile Include="Methods\Calculations\TrimPotencial.cs" />
     <Compile Include="Methods\CreateFolder.cs" />
     <Compile Include="Methods\File\Converters\ConvertCadDocToArray.cs" />
     <Compile Include="Methods\File\Converters\ConvertKornebToArray.cs" />

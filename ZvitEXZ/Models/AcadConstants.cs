@@ -46,8 +46,11 @@ namespace ZvitEXZ.Models
         public static double UtzStartY = 210;
         public static double UtzMinY = 219.5;
         public static double UtzMin = -0.5;
-        public static double UtzMaxY = 162;
+        public static double UtzMaxY = 163.5;
         public static double UtzMax = -2.5;
+        public static double UtzTrimmedY = 161;
+
+        //Coordidates Zalivky
         public static double HruntActivityStartY = 51.5;
         public static double PovregdenyaStartY = 30.5;
         public static double NezahystUtzStartY = 35.75;
@@ -57,13 +60,12 @@ namespace ZvitEXZ.Models
         public static double KmobjectsStepY = 3;
         public static double SignatureObjectsStartY = 310;
         public static double SignatureObjectsStepY = 5;
-
         //Coordibates Gradient
         public static double UgradMinY = 158;
         public static double UgradMin = 0;
-        public static double UgradMaxY = 105;
+        public static double UgradMaxY = 102;
         public static double UgradMax = -150;
-        public static double UgradTrimmedY = 101;
+        public static double UgradTrimmedY = 99.5;
         //Coordinates R hrunta
         public static double RhrMinY = 78;
         public static double RhrMin = 10;

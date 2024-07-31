@@ -370,8 +370,9 @@ namespace ZvitEXZ.Methods.Calculations
             GetAcadDrawing getAcadDrawing = new GetAcadDrawing(excelDictionary, zamers, povitrPerehods, hruntAktivities, povregdenyas, nezahysts, nezahystsUpol,
                 korNebezpechny, hlubynas, neObstegenos);
             if (AcadConstants.KmStart == null)
-                AcadConstants.KmStart = zamers.FirstOrDefault().Km;
-            acadDrawing = getAcadDrawing.Calculate((double)AcadConstants.KmStart, onlyOneCadDrawing, kmPerDrawing);
+                AcadConstants.KmStart = (int)zamers.FirstOrDefault().Km;
+            double start = AcadConstants.KmStart == null ? 0 : (double)AcadConstants.KmStart;
+            acadDrawing = getAcadDrawing.Calculate(start, onlyOneCadDrawing, kmPerDrawing);
         }
     }
 }

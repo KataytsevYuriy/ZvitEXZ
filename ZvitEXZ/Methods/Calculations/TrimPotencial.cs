@@ -8,16 +8,16 @@ using ZvitEXZ.Models.AcadModels;
 
 namespace ZvitEXZ.Methods.Calculations
 {
-    internal class TrimGradient
+    internal class TrimPotencial
     {
-        public List<AcadZamer> Trim(List<AcadZamer> data, out List<AcadZamer> trimmed)
+        public List<AcadZamer> Trim(List<AcadZamer> data, double trimValue, out List<AcadZamer> trimmed)
         {
             List<AcadZamer> res = new List<AcadZamer>();
             trimmed = new List<AcadZamer>();
             if (data.Count == 0) return res;
             double lastKm = -1, lastVal = 0;
             double maxKm = data.First().Km, maxVal = 0;
-            double trimValue = AcadConstants.UgradMax;
+            //double trimValue = AcadConstants.UgradMax;
             Crossing crossing = new Crossing(trimValue, false);
             foreach (AcadZamer zamer in data)
             {
