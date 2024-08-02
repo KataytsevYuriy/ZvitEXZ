@@ -56,6 +56,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbDrawingWidth = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cbMaxPotencial = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbKmStart = new System.Windows.Forms.TextBox();
@@ -63,8 +65,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.tbDrawingWidth = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btnConvert = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -90,10 +91,10 @@
             this.rTBLogs.BackColor = System.Drawing.SystemColors.Control;
             this.rTBLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rTBLogs.HideSelection = false;
-            this.rTBLogs.Location = new System.Drawing.Point(585, 35);
+            this.rTBLogs.Location = new System.Drawing.Point(671, 39);
             this.rTBLogs.Name = "rTBLogs";
             this.rTBLogs.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rTBLogs.Size = new System.Drawing.Size(464, 463);
+            this.rTBLogs.Size = new System.Drawing.Size(478, 463);
             this.rTBLogs.TabIndex = 3;
             this.rTBLogs.Text = "";
             this.rTBLogs.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -120,9 +121,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 508);
+            this.progressBar1.Location = new System.Drawing.Point(3, 555);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1037, 23);
+            this.progressBar1.Size = new System.Drawing.Size(1156, 23);
             this.progressBar1.TabIndex = 7;
             this.progressBar1.UseWaitCursor = true;
             // 
@@ -349,7 +350,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tabControl1.Location = new System.Drawing.Point(141, 12);
+            this.tabControl1.Location = new System.Drawing.Point(227, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(438, 490);
@@ -402,6 +403,25 @@
             this.tabPage2.Size = new System.Drawing.Size(430, 459);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            // 
+            // tbDrawingWidth
+            // 
+            this.tbDrawingWidth.BackColor = System.Drawing.SystemColors.Control;
+            this.tbDrawingWidth.Location = new System.Drawing.Point(339, 126);
+            this.tbDrawingWidth.Name = "tbDrawingWidth";
+            this.tbDrawingWidth.Size = new System.Drawing.Size(76, 24);
+            this.tbDrawingWidth.TabIndex = 7;
+            this.tbDrawingWidth.Text = "300";
+            this.tbDrawingWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 132);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(187, 18);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Ширина графика в точках";
             // 
             // cbMaxPotencial
             // 
@@ -483,30 +503,23 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
-            // tbDrawingWidth
+            // btnConvert
             // 
-            this.tbDrawingWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.tbDrawingWidth.Location = new System.Drawing.Point(339, 126);
-            this.tbDrawingWidth.Name = "tbDrawingWidth";
-            this.tbDrawingWidth.Size = new System.Drawing.Size(76, 24);
-            this.tbDrawingWidth.TabIndex = 7;
-            this.tbDrawingWidth.Text = "300";
-            this.tbDrawingWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 132);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(187, 18);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Ширина графика в точках";
+            this.btnConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnConvert.Location = new System.Drawing.Point(12, 364);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(133, 33);
+            this.btnConvert.TabIndex = 13;
+            this.btnConvert.Text = "Конвертировать";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 543);
+            this.ClientSize = new System.Drawing.Size(1161, 590);
+            this.Controls.Add(this.btnConvert);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.progressBar1);
@@ -566,6 +579,7 @@
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.TextBox tbDrawingWidth;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnConvert;
     }
 }
 

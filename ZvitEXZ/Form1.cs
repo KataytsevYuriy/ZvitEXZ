@@ -332,5 +332,19 @@ namespace ZvitEXZ
                 tbKmStart.Text = tbKmStart.Text.Remove(tbKmStart.Text.Length - 1);
             }
         }
+
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
+            string fileName = openFileDialog1.FileName;
+            labelFileName.Text = Path.GetFileName(fileName);
+            ReadExcelFile fileReader = new ReadExcelFile();
+            List<object[]> listObjects = new List<object[]>();
+            listObjects = fileReader.ReadFile(fileName);
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
+            string naborkaFileName = openFileDialog1.FileName;
+            fileReader.WriteFile(fileName,naborkaFileName,listObjects);
+        }
     }
 }

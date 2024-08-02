@@ -62,6 +62,9 @@ namespace ZvitEXZ.Methods
         {
             var myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
             WebProxy proxy = (WebProxy)WebProxy.GetDefaultProxy();
+            //WebProxy proxy = WebProxy.GetDefaultProxy();
+            var uri = WebRequest.DefaultWebProxy.GetProxy(new Uri("http://www.google.com"));
+
             myHttpWebRequest.Proxy = proxy;
             myHttpWebRequest.Timeout = 1000;
             var response = await myHttpWebRequest.GetResponseAsync();
@@ -90,5 +93,33 @@ namespace ZvitEXZ.Methods
         //    var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
         //    return networkDateTime.ToLocalTime();
         //}
+        private async void Test()
+        {
+            var proxy = new WebProxy
+            {
+                Address = new Uri($"http://172.104.241.29:8081"),
+                BypassProxyOnLocal = false,
+                UseDefaultCredentials = false,
+
+                // Proxy credentials
+                Credentials = new NetworkCredential(
+        userName: "proxyUserName",
+        password: "proxyPassword")
+            };
+
+            // Create a client handler that uses the proxy
+            var httpClientHandler = new HttpClientHandler
+            {
+               // Proxy = proxy,
+            };
+            // Disable SSL verification
+            httpClientHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            // Finally, create the HTTP client object
+            var client = new HttpClient(handler: httpClientHandler, disposeHandler: true);
+
+            var result = await client.GetStringAsync("https://api.ipify.org/");
+            Console.WriteLine(result);
+        }
     }
 }
