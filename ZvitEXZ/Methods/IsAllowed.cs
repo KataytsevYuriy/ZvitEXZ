@@ -21,7 +21,7 @@ namespace ZvitEXZ.Methods
     {
         public static async Task<bool> Check()
         {
-            DateTime errorDate = new DateTime(2025, 1, 5);//год, месяц, день
+            DateTime errorDate = new DateTime(2026, 1, 5);//год, месяц, день
             DateTime now;
 
             //byte[] ntpData = new byte[48];
