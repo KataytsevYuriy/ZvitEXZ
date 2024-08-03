@@ -13,7 +13,7 @@ namespace ZvitEXZ.Methods
     {
         public List<object[]> ReadFile(string path)
         {
-            int colCount = 306;
+            int colCount = 307;
             List<object[]> res = new List<object[]>();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Excel.Application excelApp = new Excel.Application();
@@ -88,7 +88,7 @@ namespace ZvitEXZ.Methods
                 Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];//получить 1 лист
                 string range = $"A3:KU{data.Count + 2}";
                 worksheet.Range[range].Value = arrData;
-                string s = Path.GetDirectoryName(sourceFileName) + "\\" + Path.GetFileNameWithoutExtension(sourceFileName) + "Converted" + Path.GetExtension(sourceFileName);
+                string s = Path.GetDirectoryName(sourceFileName) + "\\" + Path.GetFileNameWithoutExtension(sourceFileName) + "_Converted" + Path.GetExtension(sourceFileName);
                 workbook.SaveAs(s, Excel.XlFileFormat.xlExcel12);
                 Logs.AddLog("Файл конвертирован");
             }

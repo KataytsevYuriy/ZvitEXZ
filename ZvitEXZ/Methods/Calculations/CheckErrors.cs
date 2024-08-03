@@ -22,6 +22,8 @@ namespace ZvitEXZ.Methods.Calculations
                 }
                 if (lastZamer != null && lastZamer.Km > zamer.Km)
                     Logs.AddError($"замеры (км {ConvertToString.DoubleToString(lastZamer.Km)}) и (км {ConvertToString.DoubleToString(zamer.Km)}) проверьте значения КМ");
+                if (lastZamer != null && lastZamer.Km == zamer.Km)
+                    Logs.AddError($"присутствуют 2 замера на одном \"км\" (км {ConvertToString.DoubleToString(lastZamer.Km)})");
                 if (zamer.Utz != null && Math.Abs((double)zamer.Utz) > 5)
                     Logs.AddError($"земер (км {ConvertToString.DoubleToString(zamer.Km)}) указан слишком большой потенциал т-з");
                 if (zamer.Ugrad != null && Math.Abs((double)zamer.Ugrad) > 1)

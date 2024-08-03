@@ -66,6 +66,7 @@
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnConvert = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -388,6 +389,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.tbDrawingWidth);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.cbMaxPotencial);
@@ -427,6 +429,7 @@
             // 
             this.cbMaxPotencial.AllowDrop = true;
             this.cbMaxPotencial.BackColor = System.Drawing.SystemColors.Control;
+            this.cbMaxPotencial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaxPotencial.FormattingEnabled = true;
             this.cbMaxPotencial.Items.AddRange(new object[] {
             "0.3",
@@ -442,7 +445,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 96);
+            this.label3.Location = new System.Drawing.Point(8, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(267, 18);
             this.label3.TabIndex = 4;
@@ -470,7 +473,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 19);
+            this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(276, 18);
             this.label1.TabIndex = 1;
@@ -480,6 +483,7 @@
             // 
             this.cbCadKmperDrawing.AllowDrop = true;
             this.cbCadKmperDrawing.BackColor = System.Drawing.SystemColors.Control;
+            this.cbCadKmperDrawing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCadKmperDrawing.FormattingEnabled = true;
             this.cbCadKmperDrawing.Items.AddRange(new object[] {
             "0.3",
@@ -513,6 +517,16 @@
             this.btnConvert.Text = "Конвертировать";
             this.btnConvert.UseVisualStyleBackColor = true;
             this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(8, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(280, 15);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "(если ввести - будет строить только 1 график)";
             // 
             // Form1
             // 
@@ -580,6 +594,7 @@
         internal System.Windows.Forms.TextBox tbDrawingWidth;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.Label label5;
     }
 }
 

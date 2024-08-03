@@ -335,16 +335,22 @@ namespace ZvitEXZ
 
         private void btnConvert_Click(object sender, EventArgs e)
         {
+            Progress.Clear();
             openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";
+            openFileDialog1.Title = "выберите конвертируемый файл";
+            openFileDialog1.FileName = "файл";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             string fileName = openFileDialog1.FileName;
             labelFileName.Text = Path.GetFileName(fileName);
             ReadExcelFile fileReader = new ReadExcelFile();
             List<object[]> listObjects = new List<object[]>();
             listObjects = fileReader.ReadFile(fileName);
+            openFileDialog1.Title = "выберите шаблон наборки";
+            openFileDialog1.FileName = "наборка";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             string naborkaFileName = openFileDialog1.FileName;
             fileReader.WriteFile(fileName,naborkaFileName,listObjects);
+            Progress.Finish();
         }
     }
 }
