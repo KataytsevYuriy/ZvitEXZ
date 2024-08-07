@@ -62,6 +62,7 @@ namespace ZvitEXZ.Methods
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Excel.Application excelApp = new Excel.Application();
             excelApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityForceDisable;
+            excelApp.Visible = true;
 
             try
             {
@@ -69,10 +70,10 @@ namespace ZvitEXZ.Methods
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 Excel.Worksheet worksheet2 = (Excel.Worksheet)workbook.Sheets[4];//получить 2 лист
-                object[,] dictData = (object[,])worksheet2.Range["C2:C36"].Value;
+                object[] dictData = data[0];
                 for (int i = 1; i < 36; i++)
                 {
-                    worksheet2.Cells[i + 1, 3] = dictData[i, 1];
+                    worksheet2.Cells[i + 1, 3] = dictData[i];
                 }
                 data.RemoveAt(0);
                 int rowcount = data.Count;
