@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZvitEXZ.Methods;
 using ZvitEXZ.Models;
 
 namespace ZvitEXZ.Models.Objects
@@ -15,6 +16,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[77] == null)
             {
                 Voltage = "";
+                Logs.AddError($"км {Km} вкажіть вольтаж ЛЕП");
             }
             else
             {

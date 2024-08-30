@@ -29,20 +29,20 @@ namespace ZvitEXZ.Models.Objects
         public bool IsOrientir { get; set; }
         public Zamer(object[] data)
         {
-            if (data[1] == null) throw new ArgumentNullException("пустое значение КМ");
+            if (data[1] == null) throw new ArgumentNullException("пусте значення КМ");
             try
             {
                 Km = Parse.ParseDouble(data[1]);
             }
             catch
             {
-                throw new ArgumentNullException("не верное значение КМ " + data[1].ToString());
+                throw new ArgumentNullException("невірне значення КМ " + data[1].ToString());
             }
             ErrorMessageStart = $"км {ConvertToString.DoubleToString(Km)}";
             try
             {
                 Utz = ParseData.DoubleNullable(data[3]);
-                if (Math.Abs((double)Utz) > 3.5) Logs.AddError($"км {Km} должен быть > -3,5В и <3,5В");
+                if (Math.Abs((double)Utz) > 3.5) Logs.AddError($"км {Km} повинен бути > -3,5В и <3,5В");
             }
             catch
             {
@@ -59,8 +59,8 @@ namespace ZvitEXZ.Models.Objects
             }
             if (Utz == null ^ Ugrad == null)
             {
-                Logs.AddAlarm($"км {data[1]} введен только защитный либо только градиент");
-                Logs.AddAlarm($"Потенциалы УДАЛЕНЫ");
+                Logs.AddAlarm($"км {data[1]} введен лише захисний або лише градіент");
+                Logs.AddAlarm($"Потенціали ВИДАЛЕНІ");
                 Utz = null;
                 Ugrad = null;
             }
@@ -103,7 +103,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Ph = null;
-                    Logs.AddError($"км {ConvertToString.DoubleToString(Km)} введено неверное значение Ph");
+                    Logs.AddError($"км {ConvertToString.DoubleToString(Km)} введено невірное значення Ph");
                 }
             }
             Mestnost = ParseData.Mestnost(data[13]);

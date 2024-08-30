@@ -45,6 +45,7 @@ namespace ZvitEXZ
             allowed = await IsAllowed.Check();
             btnCalculate.Enabled = false;
             openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";
+            openFileDialog1.Title = "оберіть файл наборки";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             string fileName = openFileDialog1.FileName;
             labelFileName.Text = Path.GetFileName(fileName);
@@ -57,13 +58,13 @@ namespace ZvitEXZ
             checkErrors.Check(zamers);
             if (zamers.Count > 0)
             {
-                Logs.AddLog($"Файл прочтен, количество замеров {zamers.Count}");
+                Logs.AddLog($"Файл прочитан, кількість вимірів {zamers.Count}");
                 if (allowed) btnCalculate.Enabled = true;
                 //tbKmStart.Text = Math.Truncate(zamers.FirstOrDefault().Km).ToString();
             }
             else
             {
-                Logs.AddAlarm("Файл не прочтен");
+                Logs.AddAlarm("Файл не прочитан");
                 Logs.AddError("\"Я там не ходив...\"");
             }
             tabControl1.SelectedIndex = 0;
@@ -89,7 +90,7 @@ namespace ZvitEXZ
             if (cbProtokol.Checked)
                 if (string.IsNullOrEmpty(tbDrawingWidth.Text))
                 {
-                    Logs.AddError("Неверно введено значение длинны графика автокада");
+                    Logs.AddError("Неверно введено значення довжини графіка автокада");
                     btnCalculate.Enabled = true;
                     btnOpen.Enabled = true;
                     return;
@@ -99,7 +100,7 @@ namespace ZvitEXZ
                     bool parseWidth = double.TryParse(tbDrawingWidth.Text, out double acadWidth);
                     if (!parseWidth)
                     {
-                        Logs.AddError("Неверно введено значение длинны графика автокада");
+                        Logs.AddError("Неверно введено значення довжини графіка автокада");
                         btnCalculate.Enabled = true;
                         btnOpen.Enabled = true;
                         return;
@@ -115,7 +116,7 @@ namespace ZvitEXZ
                 }
                 catch
                 {
-                    Logs.AddAlarm("Введите корректное значение начального километража");
+                    Logs.AddAlarm("Введіть коректне значення початкового кілометража");
                     btnCalculate.Enabled = true;
                     return;
                 }
@@ -337,7 +338,7 @@ namespace ZvitEXZ
         {
             Progress.Clear();
             openFileDialog1.Filter = "Excel (*.xlsb)|*.xlsb|All files(*.*)|*.*";
-            openFileDialog1.Title = "выберите конвертируемый файл";
+            openFileDialog1.Title = "оберіть конвертуємий файл";
             openFileDialog1.FileName = "файл";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             string fileName = openFileDialog1.FileName;
@@ -345,11 +346,11 @@ namespace ZvitEXZ
             ReadExcelFile fileReader = new ReadExcelFile();
             List<object[]> listObjects = new List<object[]>();
             listObjects = fileReader.ReadFile(fileName);
-            openFileDialog1.Title = "выберите шаблон наборки";
+            openFileDialog1.Title = "оберіть шаблон наборки";
             openFileDialog1.FileName = "наборка";
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) return;
             string naborkaFileName = openFileDialog1.FileName;
-            fileReader.WriteFile(fileName,naborkaFileName,listObjects);
+            fileReader.WriteFile(fileName, naborkaFileName, listObjects);
             Progress.Finish();
         }
     }

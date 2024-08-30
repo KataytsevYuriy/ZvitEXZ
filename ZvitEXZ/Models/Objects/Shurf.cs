@@ -65,7 +65,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[122] == null)
             {
                 AktNumber = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите номер акта");
+                Logs.AddError($"{ErrorMessageStart} вкажіть номер акта");
             }
             else
             {
@@ -75,7 +75,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[124] == null)
             {
                 ShurfLength = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите длину шурфа");
+                Logs.AddError($"{ErrorMessageStart} вкажіть довжину шурфа");
             }
             else
             {
@@ -85,7 +85,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[125] == null)
             {
                 IsolationSquare = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите площадь изоляции");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть площу ізоляції");
             }
             else
             {
@@ -104,7 +104,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[127] == null)
             {
                 MestnostCharacteristics = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите местность");
+                Logs.AddError($"{ErrorMessageStart} вкажіть місцевість");
             }
             else
             {
@@ -114,7 +114,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[129] == null)
             {
                 LitologHrunt = "";
-                Logs.AddError($"{ErrorMessageStart} укажите склад грунта");
+                Logs.AddError($"{ErrorMessageStart} вкажіть склад грунту");
             }
             else
             {
@@ -124,7 +124,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[130] == null)
             {
                 StanHruntu = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите стан грунту");
+                Logs.AddError($"{ErrorMessageStart} вкажіть стан грунту");
             }
             else
             {
@@ -180,7 +180,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[136] == null)
             {
                 IzolationType1 = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите тип изоляции");
+                Logs.AddError($"{ErrorMessageStart} вкажіть тип ізоляції");
             }
             else
             {
@@ -199,7 +199,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[138] == null)
             {
                 StanPoverhnyUp = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите стан поверхности");
+                Logs.AddError($"{ErrorMessageStart} вкажіть стан поверхні");
             }
             else
             {
@@ -209,7 +209,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[139] == null)
             {
                 StanPoverhnyDown = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите стан поверхности");
+                Logs.AddError($"{ErrorMessageStart} вкажіть стан поверхні");
             }
             else
             {
@@ -219,7 +219,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[140] == null)
             {
                 StanPoverhnyRight = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите стан поверхности");
+                Logs.AddError($"{ErrorMessageStart} вкажіть стан поверхні");
             }
             else
             {
@@ -229,7 +229,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[141] == null)
             {
                 StanPoverhnyLeft = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите стан поверхности");
+                Logs.AddError($"{ErrorMessageStart} вкажіть стан поверхні");
             }
             else
             {
@@ -239,7 +239,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[142] == null)
             {
                 IzolationStructure = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите структуру изоляции");
+                Logs.AddError($"{ErrorMessageStart} вкажіть структуру изоляції");
             }
             else
             {
@@ -249,7 +249,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[143] == null)
             {
                 Thin1SharUp = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите толщину изоляции");
+                Logs.AddError($"{ErrorMessageStart} вкажіть толщину изоляції");
             }
             else
             {
@@ -259,7 +259,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[144] == null)
             {
                 Thin1SharDown = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите толщину изоляции");
+                Logs.AddError($"{ErrorMessageStart} вкажіть толщину изоляції");
             }
             else
             {
@@ -269,7 +269,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[145] == null)
             {
                 Thin1SharRight = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите толщину изоляции");
+                Logs.AddError($"{ErrorMessageStart} вкажіть толщину изоляції");
             }
             else
             {
@@ -279,7 +279,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[146] == null)
             {
                 Thin1SharLeft = "-";
-                Logs.AddError($"{ErrorMessageStart} укажите толщину изоляции");
+                Logs.AddError($"{ErrorMessageStart} вкажіть толщину изоляції");
             }
             else
             {
@@ -325,7 +325,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[151] == null)
             {
                 IsHruntovka = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите нилачие грунтовки");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть наявність грунтівки");
             }
             else
             {
@@ -335,7 +335,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[152] == null)
             {
                 Adheziya = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите наличие адгезии");
+                Logs.AddError($"{ErrorMessageStart} вкажіть наявність адгезії");
             }
             else
             {
@@ -345,7 +345,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[153] == null)
             {
                 Vologa = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите наличие влажности");
+                Logs.AddError($"{ErrorMessageStart} вкажіть наявність вологи");
             }
             else
             {
@@ -355,7 +355,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[154] == null)
             {
                 PipeTemperature = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите температуру трубы");
+                Logs.AddError($"{ErrorMessageStart} вкажіть температуру труби");
             }
             else
             {
@@ -365,7 +365,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[155] == null)
             {
                 StanPoverhnyPipe = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите стан поверхности трубы");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть стан поверхні труби");
             }
             else
             {
@@ -375,7 +375,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[156] == null)
             {
                 SquareMetalPipe = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите площадь поверхности трубы");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть площу поверхні труби");
             }
             else
             {
@@ -385,7 +385,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[157] == null)
             {
                 IsKorozyaExist = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите наличие корозии");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть наявність корозії");
             }
             else
             {
@@ -432,7 +432,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[162] == null)
             {
                 UtzBeforShurf = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите потенциал до шурфования");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть потенціал до шурфования");
             }
             else
             {
@@ -443,7 +443,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[163] == null)
             {
                 UtzAfterShurf = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите потенциал после шурфования");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть потенціал після шурфования");
             }
             else
             {
@@ -454,7 +454,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[164] == null)
             {
                 UtzInShurf = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите потенциал в шурфе");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть потенціал в шурфі");
             }
             else
             {
@@ -464,7 +464,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[165] == null)
             {
                 ShurfMadeOrganization = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите кто шурфовал (организация)");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть кто шурфував (организація)");
             }
             else
             {
@@ -474,7 +474,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[166] == null)
             {
                 ShurfMadeUser = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите кто шурфовал");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть кто шурфував");
             }
             else
             {
@@ -484,7 +484,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[167] == null)
             {
                 PredstavnykZakazchyka = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите представитель заказчика");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть представник замовника");
             }
             else
             {
@@ -494,7 +494,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[168] == null)
             {
                 DateOglyadu = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите дату");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть дату");
             }
             else
             {
@@ -504,14 +504,14 @@ namespace ZvitEXZ.Models.Objects
             if (data[169] == null)
             {
                 PhotoPoverhny = "-";
-                Logs.AddError($"{ErrorMessageStart}  укажите фото певерхности");
+                Logs.AddError($"{ErrorMessageStart}  вкажіть фото певерхні");
             }
             else
             {
                 PhotoPoverhny = data[169].ToString();
             }
-            if (Hlub == null) Logs.AddError($"{ErrorMessageStart}  укажите глубину");
-            if (Rhr == null) Logs.AddError($"{ErrorMessageStart}  укажите сопротивление грунта");
+            if (Hlub == null) Logs.AddError($"{ErrorMessageStart}  вкажіть глибину");
+            if (Rhr == null) Logs.AddError($"{ErrorMessageStart}  вкажіть опір грунта");
         }
         public override string ToString()
         {

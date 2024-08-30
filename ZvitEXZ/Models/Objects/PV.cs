@@ -45,7 +45,7 @@ namespace ZvitEXZ.Models.Objects
                 ProvodTypePidklichenya1 = ProvodTypePidklichenyas.undefined;
                 ProvodTypePidklichenya2 = ProvodTypePidklichenyas.undefined;
                 ProvodTypePidklichenya2 = ProvodTypePidklichenyas.undefined;
-                Logs.AddError($"км {data[1]} проверьте потенциал на проводах");
+                Logs.AddError($"км {data[1]} перевірте потенціал на проводах");
             }
             if (data[227] == null)
             {
@@ -62,7 +62,7 @@ namespace ZvitEXZ.Models.Objects
             catch
             {
                 NumberSvyazky = 0;
-                Logs.AddError($"км {data[1]} проверьте номер привязки");
+                Logs.AddError($"км {data[1]} перевірте номер привязки");
             }
             IsOrientir = true;
         }

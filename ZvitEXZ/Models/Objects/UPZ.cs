@@ -160,7 +160,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     NumberSvyazky = 0;
-                    Logs.AddError($"км {data[1]} неверный номерсвязки на УПЗ");
+                    Logs.AddError($"км {data[1]} неверний номер связки на УПЗ");
                 }
             }
 

@@ -37,7 +37,7 @@ namespace ZvitEXZ.Models.Objects
                     case "свеча вытяжная": Ustanovyt = UstanovytObjectTypes.svecha; break;
                     default:
                         Ustanovyt = UstanovytObjectTypes.undefined;
-                        Logs.AddError($"км {data[1]} неверно указан тип устанавливаемого объекта");
+                        Logs.AddError($"км {data[1]} невірно вказан тип устанавлюваємого об'екта");
                         break;
                 }
             }

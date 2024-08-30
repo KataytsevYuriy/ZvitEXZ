@@ -18,7 +18,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[73] == null)
             {
                 OtvodName = "";
-                Logs.AddError($"км {data[1]} укажите название отвода");
+                Logs.AddError($"км {data[1]} вкажіть назву відводу");
             }
             else
             {
@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[74] == null)
             {
                 NapravlOtvoda = Napravlenye.undefined;
-                Logs.AddError($"км {data[1]} задайте направление отвода");
+                Logs.AddError($"км {data[1]} задайте напрямок відводу");
             }
             else
             {
@@ -37,7 +37,7 @@ namespace ZvitEXZ.Models.Objects
                     case "право": NapravlOtvoda = Napravlenye.right; break;
                     default:
                         NapravlOtvoda = Napravlenye.undefined;
-                        Logs.AddError($"км {data[1]} неверно задано направление отвода");
+                        Logs.AddError($"км {data[1]} невірно задано напрямок відводу");
                         break;
                 }
             }

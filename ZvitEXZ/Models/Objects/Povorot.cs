@@ -17,7 +17,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[65] == null)
             {
                 NapravlenyePovorota = Napravlenye.undefined;
-                Logs.AddError($"км {data[1]} задайте направление поворота");
+                Logs.AddError($"км {data[1]} задайте напрямок повороту");
             }
             else
             {
@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
                     case "право": NapravlenyePovorota = Napravlenye.right; break;
                     default:
                         NapravlenyePovorota = Napravlenye.undefined;
-                        Logs.AddError($"км {data[1]} задайте направление поворота");
+                        Logs.AddError($"км {data[1]} задайте напрямок повороту");
                         break;
                 }
             }
@@ -40,13 +40,13 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Ugol = 0;
-                    Logs.AddError($"км {data[1]} неверно задан угол поворота");
+                    Logs.AddError($"км {data[1]} невірно задан кут повороту");
                 }
             }
             else
             {
                 Ugol = 0;
-                Logs.AddError($"км {data[1]} задайте угол поворота");
+                Logs.AddError($"км {data[1]} задайте кут повороту");
             }
         }
         public override string ToString()

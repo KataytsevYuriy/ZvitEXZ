@@ -71,7 +71,7 @@ namespace ZvitEXZ.Models
         public const string NeobstegenaDylyankaNInNaborka = "Необсл уч-ок";
         public const string UstanovytName = "Встановити";
         public const string UstanovytNameInNaborka = "Установить";
-        public const string ZaborName = "Забор";
+        public const string ZaborName = "Огорожа";
         public const string ZaborNameInNaborka = "Забор";
 
         //File Names

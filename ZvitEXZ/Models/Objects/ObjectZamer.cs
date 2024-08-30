@@ -18,7 +18,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[221] == null)
             {
                 ObjectName = "";
-                Logs.AddError($"км {data[1]} укажите название объекта");
+                Logs.AddError($"км {data[1]} вкажіть назвау об'екта");
             }
             else
             {
@@ -32,7 +32,7 @@ namespace ZvitEXZ.Models.Objects
             catch
             {
                 Uobject = null;
-                Logs.AddError($"км {data[1]} Неверный потенциал объекта");
+                Logs.AddError($"км {data[1]} Невірний потенціал об'екта");
             }
             IsOrientir=true;
         }

@@ -56,6 +56,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
             this.tbDrawingWidth = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbMaxPotencial = new System.Windows.Forms.ComboBox();
@@ -66,7 +67,6 @@
             this.cbCadKmperDrawing = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnConvert = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -77,9 +77,9 @@
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpen.Location = new System.Drawing.Point(12, 12);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(89, 32);
+            this.btnOpen.Size = new System.Drawing.Size(133, 32);
             this.btnOpen.TabIndex = 0;
-            this.btnOpen.Text = "Open File";
+            this.btnOpen.Text = "Відкрити файл";
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -106,9 +106,9 @@
             this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCalculate.Location = new System.Drawing.Point(12, 171);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(123, 33);
+            this.btnCalculate.Size = new System.Drawing.Size(133, 33);
             this.btnCalculate.TabIndex = 5;
-            this.btnCalculate.Text = "Рассчитать";
+            this.btnCalculate.Text = "Розрахувати";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
@@ -147,9 +147,9 @@
             this.cbProtokol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbProtokol.Location = new System.Drawing.Point(24, 402);
             this.cbProtokol.Name = "cbProtokol";
-            this.cbProtokol.Size = new System.Drawing.Size(254, 22);
+            this.cbProtokol.Size = new System.Drawing.Size(229, 22);
             this.cbProtokol.TabIndex = 16;
-            this.cbProtokol.Text = "Протокол построения графиков";
+            this.cbProtokol.Text = "Протокол побудови графіків";
             this.cbProtokol.UseVisualStyleBackColor = true;
             this.cbProtokol.CheckedChanged += new System.EventHandler(this.cbProtokol_CheckedChanged);
             // 
@@ -183,9 +183,9 @@
             this.cbPovitrPerehody.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbPovitrPerehody.Location = new System.Drawing.Point(80, 313);
             this.cbPovitrPerehody.Name = "cbPovitrPerehody";
-            this.cbPovitrPerehody.Size = new System.Drawing.Size(201, 22);
+            this.cbPovitrPerehody.Size = new System.Drawing.Size(179, 22);
             this.cbPovitrPerehody.TabIndex = 12;
-            this.cbPovitrPerehody.Text = "Ф-Воздушные Переходы";
+            this.cbPovitrPerehody.Text = "Ф-Повітряні переходи";
             this.cbPovitrPerehody.UseVisualStyleBackColor = true;
             this.cbPovitrPerehody.CheckedChanged += new System.EventHandler(this.cbPovitrPerehody_CheckedChanged);
             // 
@@ -195,9 +195,9 @@
             this.cbShurfy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbShurfy.Location = new System.Drawing.Point(80, 287);
             this.cbShurfy.Name = "cbShurfy";
-            this.cbShurfy.Size = new System.Drawing.Size(94, 22);
+            this.cbShurfy.Size = new System.Drawing.Size(91, 22);
             this.cbShurfy.TabIndex = 11;
-            this.cbShurfy.Text = "У-Шурфы";
+            this.cbShurfy.Text = "У-Шурфи";
             this.cbShurfy.UseVisualStyleBackColor = true;
             this.cbShurfy.CheckedChanged += new System.EventHandler(this.cbShurfy_CheckedChanged);
             // 
@@ -231,9 +231,9 @@
             this.cbFlantsy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbFlantsy.Location = new System.Drawing.Point(80, 205);
             this.cbFlantsy.Name = "cbFlantsy";
-            this.cbFlantsy.Size = new System.Drawing.Size(100, 22);
+            this.cbFlantsy.Size = new System.Drawing.Size(92, 22);
             this.cbFlantsy.TabIndex = 9;
-            this.cbFlantsy.Text = "П-Фланцы";
+            this.cbFlantsy.Text = "П-Фланці";
             this.cbFlantsy.UseVisualStyleBackColor = true;
             this.cbFlantsy.CheckedChanged += new System.EventHandler(this.cbFlantsy_CheckedChanged);
             // 
@@ -340,9 +340,9 @@
             this.cbAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbAll.Location = new System.Drawing.Point(16, 14);
             this.cbAll.Name = "cbAll";
-            this.cbAll.Size = new System.Drawing.Size(58, 22);
+            this.cbAll.Size = new System.Drawing.Size(51, 22);
             this.cbAll.TabIndex = 0;
-            this.cbAll.Text = "ВСЕ";
+            this.cbAll.Text = "ВСІ";
             this.cbAll.UseVisualStyleBackColor = true;
             this.cbAll.CheckedChanged += new System.EventHandler(this.cbAll_CheckedChanged);
             // 
@@ -384,7 +384,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(430, 459);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Main";
+            this.tabPage1.Text = "Головна";
             // 
             // tabPage2
             // 
@@ -404,7 +404,17 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(430, 459);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Settings";
+            this.tabPage2.Text = "Налаштування";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(8, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(264, 15);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "(якшо ввесди - буде будувати лише 1 графік)";
             // 
             // tbDrawingWidth
             // 
@@ -421,9 +431,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 132);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(187, 18);
+            this.label4.Size = new System.Drawing.Size(186, 18);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Ширина графика в точках";
+            this.label4.Text = "Ширина графику в точках";
             // 
             // cbMaxPotencial
             // 
@@ -447,9 +457,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 101);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(267, 18);
+            this.label3.Size = new System.Drawing.Size(257, 18);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Максимальное значение потенциала";
+            this.label3.Text = "Максимальне значення потенциалу";
             // 
             // tbKmStart
             // 
@@ -466,18 +476,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(254, 18);
+            this.label2.Size = new System.Drawing.Size(244, 18);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Начальный километраж графиков ";
+            this.label2.Text = "Початковий кілометраж графиків";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 18);
+            this.label1.Size = new System.Drawing.Size(237, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Колличестко километром на графике";
+            this.label1.Text = "Кількість километрів на графику";
             // 
             // cbCadKmperDrawing
             // 
@@ -514,19 +524,9 @@
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(133, 33);
             this.btnConvert.TabIndex = 13;
-            this.btnConvert.Text = "Конвертировать";
+            this.btnConvert.Text = "Конвертувати";
             this.btnConvert.UseVisualStyleBackColor = true;
             this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(8, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(280, 15);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "(если ввести - будет строить только 1 график)";
             // 
             // Form1
             // 
@@ -543,7 +543,7 @@
             this.Controls.Add(this.btnOpen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Zvit EXZ v1.1";
+            this.Text = "Звіт ЕХЗ v1.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

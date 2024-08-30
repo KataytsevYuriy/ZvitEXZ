@@ -66,7 +66,7 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 FlanetsType = FlanetsTypes.undefined;
-                Logs.AddError($"км {km} неверно указан тип фланца");
+                Logs.AddError($"км {km} невірно вказаний тип фланця");
             }
             FlanetsPlace = flanetsPlace;
             if (atestationVimiryv == null) { AtestationVimiryv = FlanestAtistation.undefined; }

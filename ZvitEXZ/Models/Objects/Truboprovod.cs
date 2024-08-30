@@ -21,7 +21,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[69] == null)
             {
                 TruboprovodName = "";
-                Logs.AddError($"км {data[1]} укажите название трубопровода");
+                Logs.AddError($"км {data[1]} вкажіть назву трубопроводу");
             }
             else
             {
@@ -31,7 +31,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[70] == null)
             {
                 TruboprovodType = "";
-                Logs.AddError($"км {data[1]} укажите тип трубопровода");
+                Logs.AddError($"км {data[1]} вкажіть тип трубопроводу");
             }
             else
             {

@@ -18,7 +18,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[75] == null)
             {
                 KranNumber = "";
-                Logs.AddError($"км {Km} укажите номер крана");
+                Logs.AddError($"км {Km} вкажіть номер крана");
             }
             else
             {
@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[76] == null)
             {
                 UKrana = null;
-                Logs.AddError($"км {Km} укажите потенциал крана");
+                Logs.AddError($"км {Km} вкажіть потенціал крана");
             }
             else
             {
@@ -38,7 +38,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UKrana=null;
-                    Logs.AddError($"км {Km} укажите вотенциал крана");
+                    Logs.AddError($"км {Km} вкажіть потенціал крана");
                 }
             }
             IsOrientir = true;

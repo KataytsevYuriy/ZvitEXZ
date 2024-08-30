@@ -62,8 +62,7 @@ namespace ZvitEXZ.Methods
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Excel.Application excelApp = new Excel.Application();
             excelApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityForceDisable;
-            excelApp.Visible = true;
-
+            //excelApp.Visible = true;
             try
             {
                 Excel.Workbook workbook = excelApp.Workbooks.Open(ShablonFileName, Type.Missing, Type.Missing,

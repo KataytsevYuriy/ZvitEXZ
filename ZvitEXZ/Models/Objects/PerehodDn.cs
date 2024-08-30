@@ -16,7 +16,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[241] == null)
             {
                 NewDn = 0;
-                Logs.AddError($"км {data[1]} укажите новый диаметр");
+                Logs.AddError($"км {data[1]} вкажіть новий діаметр");
             }
             else
             {
@@ -27,7 +27,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     NewDn = 0;
-                    Logs.AddError($"км {data[1]} Неверный новый диаметр");
+                    Logs.AddError($"км {data[1]} Невірний новий діаметр");
                 }
             }
         }

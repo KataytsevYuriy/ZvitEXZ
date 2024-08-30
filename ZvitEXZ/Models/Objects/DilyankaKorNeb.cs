@@ -19,12 +19,12 @@ namespace ZvitEXZ.Models.Objects
             Border = ParseData.StartAndEnd(data[116]);
             if (Border == StartEnd.undefined)
             {
-                Logs.AddError($"км {data[1]} укажите границу кор-неб участка");
+                Logs.AddError($"км {data[1]} укажіть межу кор-неб ділянки");
             }
             if (data[117] == null)
             {
                 Reazon = CharacterCorneb.undefined;
-                Logs.AddError($"км {data[1]} укажите причину кор-неб участка");
+                Logs.AddError($"км {data[1]} укажіть причину кор-неб ділянки");
             }
             else if (data[117].ToString() == "t газа > 40°")
             {
@@ -45,7 +45,7 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 Reazon = CharacterCorneb.undefined;
-                Logs.AddError($"км {data[1]} неверно указана причина кор-неб участка");
+                Logs.AddError($"км {data[1]} невірно вказана причина кор-неб ділянки");
             }
         }
         public override string ToString()

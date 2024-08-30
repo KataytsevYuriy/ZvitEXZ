@@ -36,7 +36,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[53] == null)
             {
                 Identificator = "";
-                Logs.AddError($"км {data[1]} укажите идентификатор УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть ідентифікатор УКЗ");
             }
             else
             {
@@ -45,7 +45,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[54] == null)
             {
                 TypeUkryttya = "";
-                Logs.AddError($"км {data[1]} укажите тип укрытия УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть тип укриття УКЗ");
             }
             else
             {
@@ -55,7 +55,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[57] == null)
             {
                 PreobrazovatelType = "";
-                Logs.AddError($"км {data[1]} укажите тип преобразователя УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть тип перетворювача УКЗ");
             }
             else
             {
@@ -65,7 +65,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[172] == null)
             {
                 StartUsing = "";
-                Logs.AddError($"км {data[1]} укажите дату начала єксплуатации УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть дату початку єксплуатації УКЗ");
             }
             else
             {
@@ -75,7 +75,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[58] == null)
             {
                 Power = "";
-                Logs.AddError($"км {data[1]} укажите мощность УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть потужність УКЗ");
             }
             else
             {
@@ -84,7 +84,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[59] == null)
             {
                 Uwork = null;
-                Logs.AddError($"км {data[1]} укажите рабочий режим УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть робочий режим УКЗ");
             }
             else
             {
@@ -95,14 +95,14 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Uwork = null;
-                    Logs.AddError($"км {data[1]} неверно указан рабочий режим УКЗ");
+                    Logs.AddError($"км {data[1]} невірно вказан робочий режим УКЗ");
                 }
             }
 
             if (data[60] == null)
             {
                 Iwork = null;
-                Logs.AddError($"км {data[1]} укажите рабочий режим УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть робочий режим УКЗ");
             }
             else
             {
@@ -113,14 +113,14 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Iwork = null;
-                    Logs.AddError($"км {data[1]} неверно указан рабочий режим УКЗ");
+                    Logs.AddError($"км {data[1]} невірно вказан робочий режим УКЗ");
                 }
             }
 
             if (data[61] == null)
             {
                 Umax = null;
-                Logs.AddError($"км {data[1]} укажите максимальный режим УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть максимальний режим УКЗ");
             }
             else
             {
@@ -131,14 +131,14 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Umax = null;
-                    Logs.AddError($"км {data[1]} неверно указан максимальный режим УКЗ");
+                    Logs.AddError($"км {data[1]} невірно вказан максимальний режим УКЗ");
                 }
             }
 
             if (data[62] == null)
             {
                 Imax = null;
-                Logs.AddError($"км {data[1]} укажите максимальный режим УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть максимальний режим УКЗ");
             }
             else
             {
@@ -149,14 +149,14 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Imax = null;
-                    Logs.AddError($"км {data[1]} неверно указан максимальный режим УКЗ");
+                    Logs.AddError($"км {data[1]} невірно вказан максимальний режим УКЗ");
                 }
             }
 
             if (data[244] == null)
             {
                 RecomendedPower = "";
-                Logs.AddError($"км {data[1]} укажите рекомендуемую мощность УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть рекомендуєму потужність УКЗ");
             }
             else
             {
@@ -165,7 +165,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[50] == null)
             {
                 UtzOn = "";
-                Logs.AddError($"км {data[1]} укажите Uт-з в рабочем режиме УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть Uт-з в рабочому режимі УКЗ");
             }
             else
             {
@@ -175,7 +175,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[226] == null)
             {
                 UtzOff = "";
-                Logs.AddError($"км {data[1]} укажите Uт-з при выкл УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть Uт-з при викл УКЗ");
             }
             else
             {
@@ -185,7 +185,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[52] == null)
             {
                 UtzRecomended = "";
-                Logs.AddError($"км {data[1]} укажите рекомендованый Uт-з");
+                Logs.AddError($"км {data[1]} вкажіть рекомендований Uт-з");
             }
             else
             {
@@ -196,7 +196,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 Urecomended = "";
                 Irecomended = "";
-                Logs.AddError($"км {data[1]} укажите рекомендованый режим работы");
+                Logs.AddError($"км {data[1]} вкажіть рекомендований режим роботы");
             }
             else
             {
@@ -210,14 +210,14 @@ namespace ZvitEXZ.Models.Objects
                 {
                     Urecomended = "";
                     Irecomended = "";
-                    Logs.AddError($"км {data[1]} неверно указано рекомендованый режим работы");
+                    Logs.AddError($"км {data[1]} невірно вказано рекомендований режим роботы");
                 }
             }
 
             if (data[177] == null)
             {
                 Raz = "";
-                Logs.AddError($"км {data[1]} укажите сопротивление анода");
+                Logs.AddError($"км {data[1]} вкажіть опір анода");
             }
             else
             {
@@ -227,7 +227,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[186] == null)
             {
                 MarkaKatodProvoda = "";
-                Logs.AddError($"км {data[1]} укажите марку катодного кабеля");
+                Logs.AddError($"км {data[1]} вкажіть марку катодного кабеля");
             }
             else
             {
@@ -237,7 +237,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[187] == null)
             {
                 SecenieKatodProvoda = "";
-                Logs.AddError($"км {data[1]} укажите сечение катодного кабеля");
+                Logs.AddError($"км {data[1]} вкажіть перетин катодного кабеля");
             }
             else
             {
@@ -247,7 +247,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[189] == null)
             {
                 Rzah = "";
-                Logs.AddError($"км {data[1]} укажите сопротивление защитного заземления");
+                Logs.AddError($"км {data[1]} вкажіть опір захисного заземлення");
             }
             else
             {
@@ -257,7 +257,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[55] == null)
             {
                 TehStan = "";
-                Logs.AddError($"км {data[1]} укажите тех. состояние УКЗ");
+                Logs.AddError($"км {data[1]} вкажіть тех. стан УКЗ");
             }
             else
             {

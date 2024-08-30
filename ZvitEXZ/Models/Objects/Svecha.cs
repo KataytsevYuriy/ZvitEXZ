@@ -18,7 +18,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[47] == null)
             {
                 Specification = SvechaSpecifications.SpecificationType.undefined;
-                Logs.AddError($"км {data[1]} не задана спецификация свечи");
+                Logs.AddError($"км {data[1]} не задана специфікація свічі");
             }
             else
             {
@@ -30,7 +30,7 @@ namespace ZvitEXZ.Models.Objects
                         Specification = SvechaSpecifications.SpecificationType.produvochna; break;
                     default:
                         Specification = SvechaSpecifications.SpecificationType.undefined;
-                        Logs.AddError($"км {data[1]} неверно задана спецификация свечи");
+                        Logs.AddError($"км {data[1]} невірно задана специфікация свічі");
                         break;
 
                 }
@@ -49,14 +49,14 @@ namespace ZvitEXZ.Models.Objects
                         TehnicState = SvechaSpecifications.TehnicState.needToPaint; break;
                     default:
                         TehnicState = SvechaSpecifications.TehnicState.undefined;
-                        Logs.AddError($"км {data[1]} неверно задано техничесское состояние");
+                        Logs.AddError($"км {data[1]} невірно задано технічний стан");
                         break;
                 }
             }
             if (data[49] == null)
             {
                 USvechy = null;
-                Logs.AddError($"км {data[1]} не задан потенциал свечи");
+                Logs.AddError($"км {data[1]} не задан потенціал свічі");
             }
             else
             {
@@ -67,7 +67,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     USvechy = null;
-                    Logs.AddError($"км {data[1]} неверно задан потенциал свечи");
+                    Logs.AddError($"км {data[1]} невірно задан потенціал свічі");
                 }
             }
             if (data[248] == null)
@@ -83,7 +83,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     NumberSvyazky = 0;
-                    Logs.AddError($"км {data[1]} проверьте номер привязки");
+                    Logs.AddError($"км {data[1]} перевірте номер прив'язки");
                 }
             }
         }

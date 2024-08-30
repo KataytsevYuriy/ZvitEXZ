@@ -57,7 +57,7 @@ namespace ZvitEXZ.Models.Objects
             {
                 RoadName = "";
                 if (RoadType == RoadTypes.automobile || RoadType == RoadTypes.train)
-                    Logs.AddError($"{ErrorMessageStart} укажите название дороги");
+                    Logs.AddError($"{ErrorMessageStart} вкажіть назву дороги");
             }
             else
             {
@@ -66,7 +66,7 @@ namespace ZvitEXZ.Models.Objects
             if (data[21] == null)
             {
                 length = null;
-                Logs.AddError($"{ErrorMessageStart} укажите ширину дороги");
+                Logs.AddError($"{ErrorMessageStart} вкажіть ширину дороги");
             }
             else
             {
@@ -77,7 +77,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     Upol = null;
-                    Logs.AddError($"{ErrorMessageStart} укажите ширину дороги");
+                    Logs.AddError($"{ErrorMessageStart} вкажіть ширину дороги");
                 }
             }
             if (data[114] == null)
@@ -91,7 +91,7 @@ namespace ZvitEXZ.Models.Objects
             else
             {
                 HasKozhuh = false;
-                Logs.AddError($"{ErrorMessageStart} неверно указано наличие кожуха");
+                Logs.AddError($"{ErrorMessageStart} неверно вказано наявність кожуха");
             }
             if (!HasKozhuh)
             {
@@ -102,7 +102,7 @@ namespace ZvitEXZ.Models.Objects
                 if (data[115] == null)
                 {
                     KozhuhLength = length;
-                    Logs.AddError($"{ErrorMessageStart} укажите длину кожуха");
+                    Logs.AddError($"{ErrorMessageStart} вкажіть довжину кожуха");
                 }
                 else
                 {
@@ -113,13 +113,13 @@ namespace ZvitEXZ.Models.Objects
                     catch
                     {
                         KozhuhLength = length;
-                        Logs.AddError($"{ErrorMessageStart} правильно укажите длину кожуха");
+                        Logs.AddError($"{ErrorMessageStart} правильно вкажіть довжину кожуха");
                     }
                 }
                 if (KozhuhLength < length)
                 {
                     KozhuhLength = length;
-                    Logs.AddError($"{ErrorMessageStart} правильную укажите длину кожуха");
+                    Logs.AddError($"{ErrorMessageStart} правильную вкажіть довжину кожуха");
                 }
             }
             if (!HasKozhuh)
@@ -129,7 +129,7 @@ namespace ZvitEXZ.Models.Objects
             else if (data[208] == null)
             {
                 ProtectionType = ProtectionTypes.undefined;
-                Logs.AddError($"{ErrorMessageStart} укажите тип защиты кожуха");
+                Logs.AddError($"{ErrorMessageStart} укажите тип захисту кожуха");
             }
             else
             {
@@ -140,7 +140,7 @@ namespace ZvitEXZ.Models.Objects
                     case "БСЗ": ProtectionType = ProtectionTypes.bzk; break;
                     default:
                         ProtectionType = ProtectionTypes.without;
-                        Logs.AddError($"{ErrorMessageStart} неверно указано тип защиты кожуха");
+                        Logs.AddError($"{ErrorMessageStart} неверно вказано тип захиту кожуха");
                         break;
                 }
             }
@@ -157,7 +157,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UtzStartOff = null;
-                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно вкажіть заміри на УПЗ");
                 }
             }
             if (data[215] == null)
@@ -173,7 +173,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UtzFinishOff = null;
-                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно вкажіть заміри на УПЗ");
                 }
             }
             if (data[216] == null)
@@ -189,7 +189,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UkzStartOff = null;
-                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно вкажіть заміри на УПЗ");
                 }
             }
             if (data[217] == null)
@@ -205,12 +205,12 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     UkzFinishOff = null;
-                    Logs.AddError($"{ErrorMessageStart} правильно укажите замеры на УПЗ");
+                    Logs.AddError($"{ErrorMessageStart} правильно вкажіть заміри на УПЗ");
                 }
             }
             if (data[248] == null)
             {
-                Logs.AddError($"{ErrorMessageStart} проверьте номер привязки");
+                Logs.AddError($"{ErrorMessageStart} перевірте номер прив'язки");
                 NumberSvyazky = 0;
             }
             else
@@ -222,7 +222,7 @@ namespace ZvitEXZ.Models.Objects
                 catch
                 {
                     NumberSvyazky = 0;
-                    Logs.AddError($"{ErrorMessageStart} проверьте номер привязки");
+                    Logs.AddError($"{ErrorMessageStart} перевірте номер прив'язки");
                 }
             }
             if (!HasKozhuh)
@@ -232,7 +232,7 @@ namespace ZvitEXZ.Models.Objects
             else if (data[218] == null)
             {
                 AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
-                Logs.AddError($"{ErrorMessageStart} неуказана атестация измерений");
+                Logs.AddError($"{ErrorMessageStart} невказана атестация вимірювань");
             }
             else
             {
@@ -245,7 +245,7 @@ namespace ZvitEXZ.Models.Objects
                     case "не можливо роз'єднати": AtestationVumiruKozhuh = AtestationVumiruKozhuhs.coudNotCheck; break;
                     default:
                         AtestationVumiruKozhuh = AtestationVumiruKozhuhs.undefined;
-                        Logs.AddError($"{ErrorMessageStart} неверно указана (неуказана) атестация измерений");
+                        Logs.AddError($"{ErrorMessageStart} невірно вказана (невказана) атестація вимірювань");
                         break;
                 }
             }

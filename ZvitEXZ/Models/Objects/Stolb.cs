@@ -25,7 +25,7 @@ namespace ZvitEXZ.Models.Objects
                     case "кілометровий": StolbType = StolbTypes.kilimetroviy; break;
                     default:
                         StolbType = StolbTypes.undefined;
-                        Logs.AddError($"км {data[1]} неверно указан тип столба");
+                        Logs.AddError($"км {data[1]} невірно вказан тип столба");
                         break;
 
                 }
