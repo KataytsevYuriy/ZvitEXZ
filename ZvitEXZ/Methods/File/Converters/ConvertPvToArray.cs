@@ -39,7 +39,12 @@ namespace ZvitEXZ.Methods.File.Converters
                     }
                     res[i, 3] = kabel;
                     res[i, 4] = pidkluchennya;
-                    res[i, 7] = item.IsBroken ? "Зламаний" : "робочий";
+                    if (item.IsBroken)
+                    { res[i, 7] = "зламаний"; }
+                    else if (item.ProvodType1 == "провід обірваний" && string.IsNullOrEmpty(item.ProvodType2) && string.IsNullOrEmpty(item.ProvodType3))
+                    { res[i, 7] = "провід обірваний"; }
+                    else
+                    { res[i, 7] = "робочий"; }
                 }
                 else
                 {

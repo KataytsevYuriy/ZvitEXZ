@@ -10,7 +10,7 @@ using ZvitEXZ.Methods;
 using ZvitEXZ.Methods.Calculations;
 using ZvitEXZ.Models;
 using ZvitEXZ.Models.Objects;
-using Newtonsoft.Json.Linq;
+//using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.Linq;
 //using System.Net;
@@ -352,6 +352,7 @@ namespace ZvitEXZ
             string naborkaFileName = openFileDialog1.FileName;
             fileReader.WriteFile(fileName, naborkaFileName, listObjects);
             Progress.Finish();
+            Logs.AddLog("Файл конвертовано");
         }
     }
 }

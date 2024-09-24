@@ -55,12 +55,20 @@ namespace ZvitEXZ.Methods.Calculations
                 if (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonFileName}") &&
                     (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonFileName2}")))
                 {
-                    Logs.AddAlarm("Файл \"Shablon.xlsb\" не найденн, он должен находиться в папке с программой");
+                    Logs.AddAlarm("Файл \"Shablon.xlsb\" не знайдено, він повинен знаходитися в разом з програмою");
                     return;
                 }
             if (checkeD.IsZapyska)
-                if (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonWordFileName}") &&
-                   (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonWordFileName2}")))
+                if (!string.IsNullOrEmpty(ProjectConstants.DocShablonPath))
+                {
+                    if (!System.IO.File.Exists(ProjectConstants.DocShablonPath))
+                    {
+                        Logs.AddAlarm($"Файл \"{ProjectConstants.DocShablonPath}\" не знайдено");
+                        return;
+                    }
+                }
+                else if (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonWordFileName}") &&
+                    (!System.IO.File.Exists($"{Directory.GetCurrentDirectory()}\\{ProjectConstants.ShablonWordFileName2}")))
                 {
                     Logs.AddAlarm("Файл \"Shablon.docm\" не найденн, он должен находиться в папке с программой");
                     return;
@@ -201,6 +209,10 @@ namespace ZvitEXZ.Methods.Calculations
                 Done.Statystics();
             }
 
+            if (checkeD.IsNezahyst || checkeD.IsKorneb || checkeD.IsPv || checkeD.IsZvedena || checkeD.IsUkz || checkeD.IsPovregd || checkeD.IsPovregdGNT
+                            || checkeD.IsUpz || checkeD.IsPerehody || checkeD.IsFlantsy || checkeD.IsPovitrPerehody || checkeD.IsShurfy || checkeD.IsNenormHlybyna || checkeD.IsStatistiks)
+                Logs.AddLog("Таблиці побудовані");
+
             //Записка
             if (checkeD.IsZapyska)
             {
@@ -209,6 +221,7 @@ namespace ZvitEXZ.Methods.Calculations
                 writeWordFile.Save(dictionary.SourceFileName, wordReplaces);
                 Progress.AddStep();
                 Done.Zapyska();
+                Logs.AddLog("Записка побудована");
             }
 
             //Drawing protokol
@@ -218,14 +231,12 @@ namespace ZvitEXZ.Methods.Calculations
                 fileSaver.SaveCadProtocol(acadDrawing);
                 Progress.AddStep();
                 Done.Protokol();
+                Logs.AddLog("Протокол побудований");
             }
-
 
 
             CalculateAllHlubynas();
 
-
-            Logs.AddLog("Таблицы построены");
             Progress.Finish();
 
         }

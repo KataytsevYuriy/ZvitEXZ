@@ -36,6 +36,7 @@ namespace ZvitEXZ.Models.Calculations
         public string Temperuture { get; set; }
         public string Rechovyna { get; set; }
         public string ZvitNumber { get; set; }
+        public string DogovorNumber { get; set; }
         public string IsolationKlass { get; set; }
         public string IsolationConstruction { get; set; }
         public string DnToDn { get; set; } //переход диаметров
@@ -73,6 +74,8 @@ namespace ZvitEXZ.Models.Calculations
         public double Umax { get; set; }
         public double HlubMin { get; set; }
         public double HlybMax { get; set; }
+        public double ZaglubutuKm { get; set; }
+        public double ZaglubutuPercent { get; set; }
         public double ForestsAll { get; set; }
         public double ForestsAllPrecent { get; set; }
         public double ForestsToClear { get; set; }
@@ -167,9 +170,12 @@ namespace ZvitEXZ.Models.Calculations
             Kanals = zamers.Where(el => el.Name == ProjectConstants.KanalName).Select(tr => tr as Kanal).ToList();
             Rivers = zamers.Where(el => el.Name == ProjectConstants.RiverName).Select(tr => tr as River).ToList();
             Leps = zamers.Where(el => el.Name == ProjectConstants.LepName).Select(tr => tr as Lep).ToList();
-            PvCount=zamers.Where(el=>el.Name==ProjectConstants.PVName).Count();
+            PvCount = zamers.Where(el => el.Name == ProjectConstants.PVName).Count();
             NenormHlubynas = nenormHlubynas;
-            Shurves=shurves;
+            Shurves = shurves;
+            DogovorNumber = dictionary.DogovorNumber;
+            ZaglubutuKm = Math.Round(nenormHlubynas.Sum(nnhl => nnhl.KmEnd - nnhl.KmStart), 3);
+            ZaglubutuPercent = GetPersent(ZaglubutuKm);
         }
         public Statistics()
         {

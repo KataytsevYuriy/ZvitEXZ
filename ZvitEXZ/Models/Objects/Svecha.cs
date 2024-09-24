@@ -73,6 +73,8 @@ namespace ZvitEXZ.Models.Objects
             if (data[248] == null)
             {
                 NumberSvyazky = 0;
+                if (Specification != SvechaSpecifications.SpecificationType.produvochna)
+                    Logs.AddError($"км {data[1]} свіча є, але не прив'язана до переходу");
             }
             else
             {

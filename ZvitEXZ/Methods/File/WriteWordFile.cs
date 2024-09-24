@@ -85,7 +85,7 @@ namespace ZvitEXZ.Methods.File
                 }
                 catch
                 {
-                    Logs.AddAlarm($"не удалось сохранить файл \"{newFileName}\" снимите защиту от записи");
+                    Logs.AddAlarm($"не вдалося зберегти файл \"{newFileName}\" зніміть захист з файла");
                 }
             }
             finally
