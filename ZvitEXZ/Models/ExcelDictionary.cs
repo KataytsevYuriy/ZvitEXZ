@@ -79,10 +79,10 @@ namespace ZvitEXZ.Models
             {
                 DylaynkaKm = data[4].ToString();
             }
-            if (data[5] == null) { StartDN = ""; }
+            if (data[5] == null) { DN = ""; }
             else
             {
-                StartDN = data[5].ToString();
+                DN = data[5].ToString();
             }
             if (data[6].ToString() == "стрічкове")
             {
@@ -118,10 +118,10 @@ namespace ZvitEXZ.Models
             {
                 BuildingsOrganization = data[14].ToString();
             }
-            if (data[15] == null) { DN = ""; }
+            if (data[15] == null) { StartDN = ""; }
             else
             {
-                DN = data[15].ToString();
+                StartDN = data[15].ToString();
             }
             if (data[16] == null) { Thikness = ""; }
             else

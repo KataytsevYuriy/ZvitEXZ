@@ -27,13 +27,13 @@ namespace ZvitEXZ.Methods.Calculations
             wordReplaces.Add(new WordReplace("12", statistics.PipeName.ToUpper()));
             wordReplaces.Add(new WordReplace("13", statistics.DylyankaName));
             wordReplaces.Add(new WordReplace("14", statistics.DylyankaKm));
-            wordReplaces.Add(new WordReplace("15", statistics.StartDN));
+            wordReplaces.Add(new WordReplace("15", statistics.DN));
             wordReplaces.Add(new WordReplace("16", statistics.IsolationType));
             wordReplaces.Add(new WordReplace("17", statistics.NameOrganization));
             wordReplaces.Add(new WordReplace("18", statistics.DateStart));
             wordReplaces.Add(new WordReplace("19", statistics.ProjectsOrganization));
             wordReplaces.Add(new WordReplace("20", statistics.BuildingsOrganization));
-            wordReplaces.Add(new WordReplace("21", statistics.DN));
+            wordReplaces.Add(new WordReplace("21", statistics.StartDN));
             wordReplaces.Add(new WordReplace("22", statistics.Thikness));
             wordReplaces.Add(new WordReplace("23", statistics.StealMark));
             wordReplaces.Add(new WordReplace("24", statistics.PipeBuilder));
