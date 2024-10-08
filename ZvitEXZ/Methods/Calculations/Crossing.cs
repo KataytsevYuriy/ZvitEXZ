@@ -19,6 +19,7 @@ namespace ZvitEXZ.Methods.Calculations
         public double GetCrossing(double uStart, double kmStart, double uEnd, double kmEnd)
         {
             if (kmStart == kmEnd) return kmStart;
+            if (uStart == uEnd) return Math.Round((kmStart + kmEnd) / 2, 3);
             if (round)
                 return Math.Round(kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd), 3);
             return kmStart - (uStart - crossLine) * (kmStart - kmEnd) / (uStart - uEnd);

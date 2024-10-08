@@ -25,53 +25,77 @@ namespace ZvitEXZ.Methods.Calculations
         public List<NenormHlubyna> Get()
         {
             double kmStart = -1, kmEnd, lastKm = -1;
+            List<Hlubyna> dyilyanka = new List<Hlubyna>();
+            List<List<Hlubyna>> listHlubynas = new List<List<Hlubyna>>();
+            bool isFirstrDilyanka = true;
             double hlMin = -1, lastHl = -1, lastHlDSTU = -1, hlMinDSTU = -1;
             string gpsN = "", gpsE = "";
             foreach (Hlubyna hlubyna in hlubynas)
             {
-                if (hlubyna.HlubynaInterpolated == -1) continue;
-                //if (hlubyna.HlubynaFakt == null) continue;
-                if (hlubyna.HlubynaInterpolated < hlubyna.MinHlubynaDSTU)
+                if (dyilyanka.Count > 0)
                 {
-                    if (lastKm == -1)
+                    if (hlubyna.HlubynaFakt != null)
                     {
-                        kmStart = hlubyna.Km;
-                        hlMin = hlubyna.HlubynaInterpolated;
-                        gpsN = hlubyna.GpsN;
-                        gpsE = hlubyna.GpsE;
-                        hlMinDSTU = hlubyna.MinHlubynaDSTU;
+                        dyilyanka.Add(hlubyna);
+                        listHlubynas.Add(dyilyanka);
+                        dyilyanka = new List<Hlubyna>();
+                        dyilyanka.Add(hlubyna);
                     }
-                    else if (kmStart == -1)
+                    else
                     {
-                        Crossing crossing = new Crossing(hlubyna.MinHlubynaDSTU);
-                        kmStart = crossing.GetCrossing(lastHl, lastKm, hlubyna.HlubynaInterpolated, hlubyna.Km);
-                        hlMin = hlubyna.HlubynaInterpolated;
-                        gpsN = hlubyna.GpsN;
-                        gpsE = hlubyna.GpsE;
-                        hlMinDSTU = hlubyna.MinHlubynaDSTU;
-                    }
-                    else if (hlMin > hlubyna.HlubynaInterpolated)
-                    {
-                        hlMin = hlubyna.HlubynaInterpolated;
-                        gpsN = hlubyna.GpsN;
-                        gpsE = hlubyna.GpsE;
-                        hlMinDSTU = hlubyna.MinHlubynaDSTU;
+                        dyilyanka.Add(hlubyna);
                     }
                 }
-                else if (kmStart != -1)
+                else if (hlubyna.HlubynaFakt != null)
                 {
-                    Crossing crossing = new Crossing(lastHlDSTU);
-                    kmEnd = crossing.GetCrossing(lastHl, lastKm, hlubyna.HlubynaInterpolated, hlubyna.Km);
+                    dyilyanka.Add(hlubyna);
+                }
+            }
+            Hlubyna fisrtHlub, lastHlub=null;
+            foreach (List<Hlubyna> dilyankaHlubynas in listHlubynas)
+            {
+                fisrtHlub = dilyankaHlubynas.FirstOrDefault();
+                lastHlub = dilyankaHlubynas.LastOrDefault();
+                if (isFirstrDilyanka)
+                {
+                    if (!fisrtHlub.IsNormHlubyna)
+                    {
+                        kmStart = fisrtHlub.Km;
+                        hlMin = fisrtHlub.HlubynaInterpolated;
+                        gpsN = fisrtHlub.GpsN;
+                        gpsE = fisrtHlub.GpsE;
+                        hlMinDSTU = fisrtHlub.MinHlubynaDSTU;
+                    }
+                    isFirstrDilyanka = false;
+                }
+                if (!fisrtHlub.IsNormHlubyna && !lastHlub.IsNormHlubyna)
+                {
+                    if (fisrtHlub.HlubynaInterpolated > lastHlub.HlubynaInterpolated)
+                    {
+                        hlMin = lastHlub.HlubynaInterpolated;
+                        gpsN = lastHlub.GpsN;
+                        gpsE = lastHlub.GpsE;
+                        hlMinDSTU = lastHlub.MinHlubynaDSTU;
+                    }
+                }
+                if (!fisrtHlub.IsNormHlubyna && lastHlub.IsNormHlubyna)
+                {
+                    kmEnd = GetCrossingInList(dilyankaHlubynas);
                     nenormHlubynas.Add(new NenormHlubyna(kmStart, kmEnd, hlMin, hlMinDSTU, gpsN, gpsE, ""));
                     kmStart = -1;
                 }
-                lastKm = hlubyna.Km;
-                lastHl = hlubyna.HlubynaInterpolated;
-                lastHlDSTU = hlubyna.MinHlubynaDSTU;
+                if (fisrtHlub.IsNormHlubyna && !lastHlub.IsNormHlubyna)
+                {
+                    kmStart = GetCrossingInList(dilyankaHlubynas);
+                    hlMin = lastHlub.HlubynaInterpolated;
+                    gpsN = lastHlub.GpsN;
+                    gpsE = lastHlub.GpsE;
+                    hlMinDSTU = lastHlub.MinHlubynaDSTU;
+                }
             }
             if (kmStart != -1)
             {
-                nenormHlubynas.Add(new NenormHlubyna(kmStart, lastKm, hlMin, hlMinDSTU, gpsN, gpsE, ""));
+                nenormHlubynas.Add(new NenormHlubyna(kmStart, lastHlub.Km, hlMin, hlMinDSTU, gpsN, gpsE, ""));
             }
             TrimNeobstegeno();
             AddMinhlub();
@@ -113,10 +137,32 @@ namespace ZvitEXZ.Methods.Calculations
         private void AddOrientirs()
         {
             AddOrientir addOrientir = new AddOrientir();
-            foreach(NenormHlubyna hlubyna in nenormHlubynas)
+            foreach (NenormHlubyna hlubyna in nenormHlubynas)
             {
                 hlubyna.Description = addOrientir.Add(orientirs, hlubyna.KmStart, hlubyna.KmEnd);
             }
+        }
+        private double GetCrossingInList(List<Hlubyna> hlubynas)
+        {
+            double km = 0;
+            Hlubyna first = hlubynas.First();
+            Hlubyna last=null;
+            foreach (Hlubyna item in hlubynas)
+            {
+                if (first.IsNormHlubyna == item.IsNormHlubyna)
+                {
+                    first = item;
+                }
+                else
+                {
+                    last = item;
+                    break;
+                }
+            }
+            if(last == null) return km;
+            Crossing crossing = new Crossing(first.IsNormHlubyna?last.MinHlubynaDSTU:first.MinHlubynaDSTU);
+            km = crossing.GetCrossing(first.HlubynaInterpolated, first.Km, last.HlubynaInterpolated, last.Km);
+            return km;
         }
     }
 }
