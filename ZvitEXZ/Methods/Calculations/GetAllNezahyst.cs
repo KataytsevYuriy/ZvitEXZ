@@ -26,6 +26,12 @@ namespace ZvitEXZ.Methods.Calculations
             foreach (AcadZamer zamer in zamers)
             {
                 if (zamer.Value == null) continue;
+                if (flag == 2 && lastKm + ProjectConstants.StepVymiryvannya < zamer.Km)
+                {
+                    Nezahyst nezahyst = new Nezahyst(kmStart, lastKm, (double)minUtz, gpsNMinUtz, gpsEMinUtz);
+                    res.Add(nezahyst);
+                    flag = 0;
+                }
                 if (zamer.Value < uNezah) // незахист
                 {
                     if (flag == 0)

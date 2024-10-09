@@ -180,7 +180,7 @@ namespace ZvitEXZ.Models
         public const string MestnostZarosly = "Заросли_пролазные";
         public const string MestnostZabolHrunt = "Болото_проходимое";
         public const string MestnostPustyr = "Пустырь";
-        public const string MestnostSad = "Cal";
+        public const string MestnostSad = "Сад";
         public const string MestnostBalkaStart = "Балка_начало";
         public const string MestnostBalkaEnd = "Балка_конец";
 

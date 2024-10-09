@@ -17,8 +17,12 @@ namespace ZvitEXZ.Methods.Calculations
                 if (lastZamer != null && lastZamer is Pereshkoda)
                 {
                     Pereshkoda pereshkoda = lastZamer as Pereshkoda;
-                    if (pereshkoda.Km + (double)pereshkoda.Length / 1000 > zamer.Km)
+                    if (Math.Round(pereshkoda.Km + (double)pereshkoda.Length / 1000, 3) > zamer.Km)
+                    {
+                        //double t = pereshkoda.Km + (double)pereshkoda.Length / 1000;
+                        //double r = (double)pereshkoda.Length;
                         Logs.AddError($"земер (км {ConvertToString.DoubleToString(pereshkoda.Km)}) на объекте с возможность свертки указана слишком большая длинна");
+                    }
                 }
                 if (lastZamer != null && lastZamer.Km > zamer.Km)
                     Logs.AddError($"замеры (км {ConvertToString.DoubleToString(lastZamer.Km)}) и (км {ConvertToString.DoubleToString(zamer.Km)}) проверьте значения КМ");

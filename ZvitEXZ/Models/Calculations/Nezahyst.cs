@@ -26,11 +26,11 @@ namespace ZvitEXZ.Models.Calculations
         public override Dylyanka Trim(Dylyanka trimmer, ref Dylyanka ostatok)
         {
             Nezahyst result = null;
-            if (KmStart < trimmer.KmStart && KmEnd > trimmer.KmStart)
+            if (KmStart < trimmer.KmStart && KmEnd >= trimmer.KmStart)
             {
                 result = new Nezahyst(ostatok.KmStart, trimmer.KmStart, 0, "", "");
             }
-            if (ostatok.KmStart < trimmer.KmEnd && ostatok.KmEnd > trimmer.KmEnd)
+            if (ostatok.KmStart <= trimmer.KmEnd && ostatok.KmEnd > trimmer.KmEnd)
             {
                 ostatok = new Nezahyst(trimmer.KmEnd, KmEnd, 0, "", "");
             }

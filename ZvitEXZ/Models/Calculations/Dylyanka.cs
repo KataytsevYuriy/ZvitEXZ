@@ -24,10 +24,18 @@ namespace ZvitEXZ.Models.Calculations
                 if (rested.KmStart > trim.KmEnd) continue;
                 if (rested.KmEnd < trim.KmStart) break;
                 Dylyanka trimed = Trim(trim, ref rested);
-                if (trimed != null && trimed.KmStart < trimed.KmEnd) result.Add(trimed);
+                if (trimed != null && trimed.KmStart < trimed.KmEnd)
+                {
+                    result.Add(trimed);
+                    trimed = null;
+                }
                 if (rested == null) break;
             }
-            if (rested != null) result.Add(rested);
+            if (rested != null)
+            {
+                result.Add(rested);
+                rested = null;
+            }
             return result;
         }
         public virtual Dylyanka Trim(Dylyanka trimer, ref Dylyanka ostatok)

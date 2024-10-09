@@ -129,7 +129,7 @@ namespace ZvitEXZ.Models.Objects
             else if (data[208] == null)
             {
                 ProtectionType = ProtectionTypes.undefined;
-                Logs.AddError($"{ErrorMessageStart} укажите тип захисту кожуха");
+                Logs.AddError($"{ErrorMessageStart} вкажіть тип захисту кожуха");
             }
             else
             {
@@ -140,7 +140,7 @@ namespace ZvitEXZ.Models.Objects
                     case "БСЗ": ProtectionType = ProtectionTypes.bzk; break;
                     default:
                         ProtectionType = ProtectionTypes.without;
-                        Logs.AddError($"{ErrorMessageStart} неверно вказано тип захиту кожуха");
+                        Logs.AddError($"{ErrorMessageStart} невірно вказано тип захиту кожуха");
                         break;
                 }
             }
