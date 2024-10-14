@@ -30,7 +30,7 @@ namespace ZvitEXZ.Methods.File.Converters
             MestnostToString mestnostToString = new MestnostToString();
             foreach (Zamer item in zamers)
             {
-                res[i, 0] = Math.Round(item.Km * 1000).ToString();
+                res[i, 0] = Math.Round(item.Km * 1000);//.ToString();
                 if (item.Utz == null)
                 {
                     res[i, 1] = "";

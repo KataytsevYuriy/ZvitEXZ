@@ -13,7 +13,7 @@ namespace ZvitEXZ.Methods.File.Converters
         {
             int count = data.Count;
             if (count == 0) return new string[0, 0];
-            object[,] res = new object[count, 25];
+            object[,] res = new object[count, 27];
             int i = 0;
             foreach (Zamer zamer in data)
             {
@@ -52,11 +52,13 @@ namespace ZvitEXZ.Methods.File.Converters
                 res[i, 17] = item.Urecomended.Replace(".", ",");
                 res[i, 18] = item.Irecomended.Replace(".", ",");
                 res[i, 19] = item.Raz.Replace(".", ",");
-                res[i, 20] = item.MarkaKatodProvoda;
-                res[i, 21] = item.SecenieKatodProvoda;
-                res[i, 22] = item.Raz.Replace(".", ",");
-                res[i, 23] = item.TehStan;
-                res[i, 24] = item.Note;
+                res[i, 20] = item.MarkaKatodProvoda + " " + item.SechenieKatodProvoda;
+                res[i, 21] = item.LenghtKatodProvoda;
+                res[i, 22] = item.MarkaAnodProvoda + " " + item.SechenieAnodProvoda;
+                res[i, 23] = item.LenghtAnodProvoda;
+                res[i, 24] = item.Rzah.Replace(".", ",");
+                res[i, 25] = item.TehStan;
+                res[i, 26] = item.Note;
                 i++;
             }
             return res;

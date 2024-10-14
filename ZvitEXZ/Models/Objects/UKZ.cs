@@ -27,7 +27,11 @@ namespace ZvitEXZ.Models.Objects
         public string Urecomended { get; set; }
         public string Raz { get; set; }
         public string MarkaKatodProvoda { get; set; }
-        public string SecenieKatodProvoda { get; set; }
+        public string SechenieKatodProvoda { get; set; }
+        public string LenghtKatodProvoda { get; set; } 
+        public string MarkaAnodProvoda { get; set; }
+        public string SechenieAnodProvoda { get; set; }
+        public string LenghtAnodProvoda { get; set; }
         public string Rzah { get; set; }
         public string TehStan { get; set; }
         public UKZ(object[] data) : base(data)
@@ -236,12 +240,49 @@ namespace ZvitEXZ.Models.Objects
 
             if (data[187] == null)
             {
-                SecenieKatodProvoda = "";
+                SechenieKatodProvoda = "";
                 Logs.AddError($"км {data[1]} вкажіть перетин катодного кабеля");
             }
             else
             {
-                SecenieKatodProvoda = data[187].ToString();
+                SechenieKatodProvoda = data[187].ToString();
+            }
+            if (data[188] == null)
+            {
+                LenghtKatodProvoda = "";
+                Logs.AddError($"км {data[1]} вкажіть довжину катодного кабеля");
+            }
+            else
+            {
+                LenghtKatodProvoda = data[188].ToString();
+            }
+             if (data[202] == null)
+            {
+                MarkaAnodProvoda = "";
+                Logs.AddError($"км {data[1]} вкажіть марку анодного кабеля");
+            }
+            else
+            {
+                MarkaAnodProvoda = data[202].ToString();
+            }
+
+            if (data[204] == null)
+            {
+                SechenieAnodProvoda = "";
+                Logs.AddError($"км {data[1]} вкажіть перетин анодного кабеля");
+            }
+            else
+            {
+                SechenieAnodProvoda = data[204].ToString();
+            }
+            if (data[203] == null)
+            {
+                LenghtAnodProvoda = "";
+                Logs.AddError($"км {data[1]} вкажіть довжину анодного кабеля");
+            }
+            else
+            {
+                LenghtAnodProvoda = data[203].ToString();
             }
 
             if (data[189] == null)

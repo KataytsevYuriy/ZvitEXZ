@@ -18,9 +18,9 @@ namespace ZvitEXZ.Methods.File.Converters
             foreach (Povregdenya item in data)
             {
                 res[i, 0] = (i + 1).ToString();
-                res[i, 1] = Math.Round(item.KmStart * 1000).ToString();
-                res[i, 2] = Math.Round(item.KmEnd * 1000).ToString();
-                res[i, 3] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
+                res[i, 1] = Math.Round(item.KmStart * 1000);//.ToString();
+                res[i, 2] = Math.Round(item.KmEnd * 1000);//.ToString();
+                res[i, 3] = Math.Round((item.KmEnd - item.KmStart) * 1000);//.ToString();
                 res[i, 4] = item.GpsN;
                 res[i, 5] = item.GpsE;
                 res[i, 6] = ConvertToString.DoubleToString(Math.Round(item.MaxGradient * 1000));

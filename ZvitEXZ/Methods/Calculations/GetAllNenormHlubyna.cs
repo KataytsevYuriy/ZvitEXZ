@@ -24,11 +24,11 @@ namespace ZvitEXZ.Methods.Calculations
         }
         public List<NenormHlubyna> Get()
         {
-            double kmStart = -1, kmEnd, lastKm = -1;
+            double kmStart = -1, kmEnd/*, lastKm = -1*/;
             List<Hlubyna> dyilyanka = new List<Hlubyna>();
             List<List<Hlubyna>> listHlubynas = new List<List<Hlubyna>>();
             bool isFirstrDilyanka = true;
-            double hlMin = -1, lastHl = -1, lastHlDSTU = -1, hlMinDSTU = -1;
+            double hlMin = -1, /*lastHl = -1, lastHlDSTU = -1,*/ hlMinDSTU = -1;
             string gpsN = "", gpsE = "";
             foreach (Hlubyna hlubyna in hlubynas)
             {

@@ -17,7 +17,7 @@ namespace ZvitEXZ.Methods.File
             ConvertPvToArray convertPv = new ConvertPvToArray();
             return convertPv.Convert(data);
         }
-        public string[,] ConvertKorneb(List<KorNebezpechny> kornebs)
+        public object[,] ConvertKorneb(List<KorNebezpechny> kornebs)
         {
             ConvertKornebToArray convert = new ConvertKornebToArray();
             return convert.Convert(kornebs);
@@ -67,7 +67,7 @@ namespace ZvitEXZ.Methods.File
             ConvertShurvesToArray converter = new ConvertShurvesToArray();
             return converter.Convert(shurves);
         }
-        public string[,] ConvertNenormHlubyna(List<NenormHlubyna> nenormHlubyna)
+        public object[,] ConvertNenormHlubyna(List<NenormHlubyna> nenormHlubyna)
         {
             ConvertNeonrmHlubToArray converter = new ConvertNeonrmHlubToArray();
             return converter.Convert(nenormHlubyna);

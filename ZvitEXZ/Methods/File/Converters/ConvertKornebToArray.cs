@@ -9,17 +9,17 @@ namespace ZvitEXZ.Methods.File.Converters
 {
     internal class ConvertKornebToArray
     {
-        public string[,] Convert(List<KorNebezpechny> kornebs)
+        public object[,] Convert(List<KorNebezpechny> kornebs)
         {
             int count = kornebs.Count;
             if (count == 0) return new string[0, 0];
-            string[,] res = new string[count, 4];
+            object[,] res = new object[count, 4];
             int i = 0;
             foreach (KorNebezpechny korneb in kornebs)
             {
-                res[i, 0] = Math.Round(korneb.KmStart * 1000).ToString();
-                res[i, 1] = Math.Round(korneb.KmEnd * 1000).ToString();
-                res[i, 2] = Math.Round((korneb.KmEnd - korneb.KmStart) * 1000).ToString();
+                res[i, 0] = Math.Round(korneb.KmStart * 1000);//.ToString();
+                res[i, 1] = Math.Round(korneb.KmEnd * 1000);//.ToString();
+                res[i, 2] = Math.Round((korneb.KmEnd - korneb.KmStart) * 1000);//.ToString();
                 res[i, 3] = korneb.Description;
                 i++;
             }

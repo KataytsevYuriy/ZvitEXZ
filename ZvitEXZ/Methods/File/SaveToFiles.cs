@@ -46,7 +46,7 @@ namespace ZvitEXZ.Methods.File
         public void SaveUKZ(List<Zamer> data)
         {
             writeToFile.WriteFile(_fileName, ProjectConstants.UkzFolderName, _pipeName, converter.ConvertUKZ(data),
-                "A", "Y", "Y", ProjectConstants.PrintMessageUkzIsEmpty, 5);
+                "A", "AA", "AA", ProjectConstants.PrintMessageUkzIsEmpty, 5);
         }
         public void SavePovregd(List<Povregdenya> povregdenya)
         {

@@ -17,9 +17,9 @@ namespace ZvitEXZ.Methods.File.Converters
             int i = 0;
             foreach (Nezahyst item in data)
             {
-                res[i, 0] = Math.Round(item.KmStart * 1000).ToString();
-                res[i, 1] = Math.Round(item.KmEnd * 1000).ToString();
-                res[i, 2] = Math.Round((item.KmEnd - item.KmStart) * 1000).ToString();
+                res[i, 0] = Math.Round(item.KmStart * 1000);//.ToString();
+                res[i, 1] = Math.Round(item.KmEnd * 1000);//.ToString();
+                res[i, 2] = Math.Round((item.KmEnd - item.KmStart) * 1000);//.ToString();
                 if (item.MinUtz == 0)
                 {
                     res[i, 3] = "-";
