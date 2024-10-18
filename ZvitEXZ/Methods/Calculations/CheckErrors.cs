@@ -21,17 +21,17 @@ namespace ZvitEXZ.Methods.Calculations
                     {
                         //double t = pereshkoda.Km + (double)pereshkoda.Length / 1000;
                         //double r = (double)pereshkoda.Length;
-                        Logs.AddError($"земер (км {ConvertToString.DoubleToString(pereshkoda.Km)}) на объекте с возможность свертки указана слишком большая длинна");
+                        Logs.AddError($"вимір (км {ConvertToString.DoubleToString(pereshkoda.Km)}) на об'екті з можливістю звертання вказана дуже велика довжина");
                     }
                 }
                 if (lastZamer != null && lastZamer.Km > zamer.Km)
-                    Logs.AddError($"замеры (км {ConvertToString.DoubleToString(lastZamer.Km)}) и (км {ConvertToString.DoubleToString(zamer.Km)}) проверьте значения КМ");
+                    Logs.AddError($"вимір (км {ConvertToString.DoubleToString(lastZamer.Km)}) и (км {ConvertToString.DoubleToString(zamer.Km)}) перевірте значення КМ");
                 if (lastZamer != null && lastZamer.Km == zamer.Km)
-                    Logs.AddError($"присутствуют 2 замера на одном \"км\" (км {ConvertToString.DoubleToString(lastZamer.Km)})");
+                    Logs.AddError($"присутстні 2 виміра на одному \"км\" (км {ConvertToString.DoubleToString(lastZamer.Km)})");
                 if (zamer.Utz != null && Math.Abs((double)zamer.Utz) > 5)
-                    Logs.AddError($"земер (км {ConvertToString.DoubleToString(zamer.Km)}) указан слишком большой потенциал т-з");
+                    Logs.AddError($"вимір (км {ConvertToString.DoubleToString(zamer.Km)}) вказан дуже великий потенциал т-з");
                 if (zamer.Ugrad != null && Math.Abs((double)zamer.Ugrad) > 1)
-                    Logs.AddError($"земер (км {ConvertToString.DoubleToString(zamer.Km)}) указан слишком большой потенциал град");
+                    Logs.AddError($"вимір (км {ConvertToString.DoubleToString(zamer.Km)}) вказан дуже великий потенциал град");
                 lastZamer = zamer;
             }
         }

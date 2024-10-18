@@ -70,7 +70,7 @@ namespace ZvitEXZ.Methods.Calculations
                 {
                     River river = item as River;
                     if (river.Length > 0)
-                        korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (double)river.Length / 1000, filter));
+                        korNebezpechny.Add(new KorNebezpechny(river.Km, river.Km + (double)river.Length / 1000, river.ToString()));
                 }
             }
         }
