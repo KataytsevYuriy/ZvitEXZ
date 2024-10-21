@@ -92,7 +92,7 @@ namespace ZvitEXZ.Methods.Calculations
             }
             wordReplaces.Add(new WordReplace("73", shurves));
             if (!string.IsNullOrEmpty(statistics.ZvitNumber))
-                wordReplaces.Add(new WordReplace("74", $"#{statistics.ZvitNumber}"));
+                wordReplaces.Add(new WordReplace("74", statistics.ZvitNumber));
             wordReplaces.Add(new WordReplace("75", statistics.DogovorNumber));
             wordReplaces.Add(new WordReplace("76", DoubleToString(statistics.ZaglubutuKm, 3)));
             wordReplaces.Add(new WordReplace("77", DoubleToString(statistics.ZaglubutuPercent, 2)));
