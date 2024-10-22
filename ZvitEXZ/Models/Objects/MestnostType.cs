@@ -19,6 +19,7 @@ namespace ZvitEXZ.Models.Objects
         ZabolHrunt, ZabolHruntStart, ZabolHruntEnd,
         Pustyr, PustyrStart, PustyrEnd,
         Sad, SadStart, SadEnd,
+        RiverPoyma, RiverPoymaStart,RiverPoymaEnd,
         BalkaStart, BalkaEnd,
         Error
     }
@@ -37,6 +38,7 @@ namespace ZvitEXZ.Models.Objects
                 case MestnostType.Zarosly: return ProjectConstants.MestnostZarosly;
                 case MestnostType.ZabolHrunt: return ProjectConstants.MestnostZabolHrunt;
                 case MestnostType.Sad: return ProjectConstants.MestnostSad;
+                case MestnostType.RiverPoyma: return ProjectConstants.MestnostPoyma;
                 default: return "";
             }
         }
@@ -55,6 +57,7 @@ namespace ZvitEXZ.Models.Objects
                 case MestnostType.Sad: return AcadConstants.MestnostSad;
                 case MestnostType.BalkaStart: return AcadConstants.MestnostBalkaStart;
                 case MestnostType.BalkaEnd: return AcadConstants.MestnostBalkaEnd;
+                //case MestnostType.RiverPoyma: return AcadConstants.MestnostBalkaEnd;
                 default: return "";
             }
         }

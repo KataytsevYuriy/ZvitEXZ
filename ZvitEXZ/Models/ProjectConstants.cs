@@ -130,6 +130,7 @@ namespace ZvitEXZ.Models
         public const string MestnostPustyr = "пустир";
         public const string MestnostSad = "сад";
         public const string MestnostBalka = "балка";
+        public const string MestnostPoyma = "заплавина річки";
 
 
         public const double TruboprovodKornebLength = 0.05;

@@ -33,13 +33,18 @@ namespace ZvitEXZ.Models.Objects
             {
                 try
                 {
-                    UKrana= ParseData.DoubleNullable(data[76]);
+                    UKrana = ParseData.DoubleNullable(data[76]);
                 }
                 catch
                 {
-                    UKrana=null;
+                    UKrana = null;
                     Logs.AddError($"км {Km} вкажіть потенціал крана");
                 }
+            }
+            if (UKrana != null && Utz != null)
+            {
+                if(Math.Abs( (double)UKrana -(double)Utz)>0.011) 
+                    Logs.AddError($"км {Km} захисний потенціал не дорівнює потенціалу крана");
             }
             IsOrientir = true;
         }

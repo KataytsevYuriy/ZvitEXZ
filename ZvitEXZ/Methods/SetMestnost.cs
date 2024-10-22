@@ -115,6 +115,14 @@ namespace ZvitEXZ.Methods
                         zamer.Mestnost = MestnostType.Sad;
                         mestnostFlag = MestnostType.IndefinedType;
                         break;
+                     case (MestnostType)32:
+                        zamer.Mestnost = MestnostType.RiverPoyma;
+                        mestnostFlag = MestnostType.RiverPoyma;
+                        break;
+                     case (MestnostType)33:
+                        zamer.Mestnost = MestnostType.RiverPoyma;
+                        mestnostFlag = MestnostType.IndefinedType;
+                        break;
                     default:
                         zamer.Mestnost = mestnostFlag;
                         break;

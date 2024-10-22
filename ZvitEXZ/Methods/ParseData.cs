@@ -65,6 +65,8 @@ namespace ZvitEXZ.Methods
                 case "сад кон": return MestnostType.SadEnd;
                 case "Балка начало": return MestnostType.BalkaStart;
                 case "балка кон": return MestnostType.BalkaEnd;
+                case "Пойма нач": return MestnostType.RiverPoymaStart;
+                case "пойма кон": return MestnostType.RiverPoymaEnd;
                 default: return MestnostType.Error;
             };
         }

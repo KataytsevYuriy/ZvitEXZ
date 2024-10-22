@@ -11,7 +11,7 @@ namespace ZvitEXZ.Methods
     {
         public string GetPipeName(ExcelDictionary dictionary)
         {
-            return $"{char.ToUpper(dictionary.Type[0])}{dictionary.Type.Substring(1)} {dictionary.Name}, ДУ{dictionary.DN}";
+            return $"{char.ToUpper(dictionary.Type[0])}{dictionary.Type.Substring(1)} {dictionary.Name}, Ду{dictionary.DN}";
         }
     }
 }

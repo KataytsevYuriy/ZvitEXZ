@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZvitEXZ.Models;
 using ZvitEXZ.Models.Objects;
 
 namespace ZvitEXZ.Methods.Calculations
@@ -22,6 +23,13 @@ namespace ZvitEXZ.Methods.Calculations
                         //double t = pereshkoda.Km + (double)pereshkoda.Length / 1000;
                         //double r = (double)pereshkoda.Length;
                         Logs.AddError($"вимір (км {ConvertToString.DoubleToString(pereshkoda.Km)}) на об'екті з можливістю звертання вказана дуже велика довжина");
+                    }
+                }
+                else if (lastZamer != null && !(lastZamer is Road))
+                {
+                    if (Math.Round(zamer.Km - lastZamer.Km, 3) > ProjectConstants.StepVymiryvannya)
+                    {
+                        Logs.AddError($"велика дистанція між вимірами (км {ConvertToString.DoubleToString(lastZamer.Km)}) та (км {ConvertToString.DoubleToString(zamer.Km)})");
                     }
                 }
                 if (lastZamer != null && lastZamer.Km > zamer.Km)
