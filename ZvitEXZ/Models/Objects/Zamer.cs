@@ -29,7 +29,10 @@ namespace ZvitEXZ.Models.Objects
         public bool IsOrientir { get; set; }
         public Zamer(object[] data)
         {
-            if (data[1] == null) throw new ArgumentNullException("пусте значення КМ");
+            if (data[1] == null)
+            {
+                throw new ArgumentNullException("пусте значення КМ");
+            }
             try
             {
                 Km = Parse.ParseDouble(data[1]);
